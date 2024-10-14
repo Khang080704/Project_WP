@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "KeepItFit - Project WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "KeepItFit - Project WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
