@@ -8,7 +8,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <NavigationView x:Name="nvSample" SelectionChanged="nvSample_SelectionChanged" >
+
+        <NavigationView.PaneHeader>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <!-- User image-->
+                <Image Source="Assets/user.png" Width="50" Height="50"/>
+                <!-- annoucment-->
+                <TextBlock Foreground="White" HorizontalAlignment="Center">Hi</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Foreground="Green">User@gmail.com</TextBlock>
+            </StackPanel>
+        </NavigationView.PaneHeader>
+
+        <NavigationView.MenuItems >
+            <NavigationViewItem  FontWeight="Bold" Icon="Play" Content="Home" Tag="HomePage"/>
+            <NavigationViewItem  FontWeight="Bold" Icon="Save" Content="Food" Tag="FoodDiary" />
+            <NavigationViewItem  FontWeight="Bold" Icon="Refresh" Content="Exercise" Tag="ExercisePage" />
+            <NavigationViewItem  FontWeight="Bold" Icon="Download" Content="Proteins" Tag="ProteinPage" />
+        </NavigationView.MenuItems>
+
+        <NavigationView.FooterMenuItems>
+            <StackPanel>
+
+            </StackPanel>
+        </NavigationView.FooterMenuItems>
+        <Frame x:Name="contentFrame"/>
+    </NavigationView>
+
 </Window>

@@ -19,27 +19,13 @@ using Windows.Foundation.Collections;
 namespace KeepItFit___Project_WinUI
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class ExercisePage : Page
     {
-        public MainWindow()
+        public ExercisePage()
         {
             this.InitializeComponent();
-        }
-
-        private void nvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-            var selectionItem = args.SelectedItem as NavigationViewItem;
-            string selectedTag = selectionItem.Tag as string;
-            if (selectedTag == "FoodDiary")
-            {
-                contentFrame.Navigate(typeof(FoodDiary));
-            }
-            else if (selectedTag == "ExercisePage")
-            {
-                contentFrame.Navigate(typeof(ExercisePage));
-            }
         }
     }
 }
