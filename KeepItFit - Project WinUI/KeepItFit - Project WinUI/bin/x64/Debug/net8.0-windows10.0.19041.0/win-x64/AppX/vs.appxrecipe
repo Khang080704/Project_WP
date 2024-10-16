@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-10-16T01:48:06.027</Modified>
+      <Modified>2024-10-16T03:43:27.353</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-10-16T01:48:05.886</Modified>
+      <Modified>2024-10-16T03:43:27.210</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\KeepItFit - Project WinUI.runtimeconfig.json">
       <PackagePath>KeepItFit - Project WinUI.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\KeepItFit - Project WinUI.dll">
       <PackagePath>KeepItFit - Project WinUI.dll</PackagePath>
-      <Modified>2024-10-16T01:48:05.807</Modified>
+      <Modified>2024-10-16T03:43:27.128</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>KeepItFit - Project WinUI.exe</PackagePath>
-      <Modified>2024-10-16T01:48:05.807</Modified>
+      <Modified>2024-10-16T03:43:27.132</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x64\native\WebView2Loader.dll</PackagePath>
@@ -875,7 +875,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\KeepItFit - Project WinUI.deps.json">
       <PackagePath>KeepItFit - Project WinUI.deps.json</PackagePath>
-      <Modified>2024-10-16T01:45:36.207</Modified>
+      <Modified>2024-10-16T01:55:45.717</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>

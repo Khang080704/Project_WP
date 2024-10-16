@@ -1,3 +1,4 @@
+using KeepItFit___Project_WinUI.View;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -13,26 +14,26 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace KeepItFit___Project_WinUI
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class FoodDiary : Page
     {
         public FoodDiary()
         {
             this.InitializeComponent();
         }
-        private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
+        private void TextBlock_Tapped_QuickAdd(object sender, TappedRoutedEventArgs e)
         {
             TextBlock mealClicked = sender as TextBlock;
             string mealName = mealClicked.Name;
             this.Frame.Navigate(typeof(FoodPage), mealName);
         }
 
+        private void TextBlock_Tapped_Meal(object sender, TappedRoutedEventArgs e)
+        {
+            TextBlock mealClicked = sender as TextBlock;
+            string mealName = mealClicked.Name;
+            this.Frame.Navigate(typeof(AddFood), mealName);
+        }
     }
 }

@@ -226,91 +226,93 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
         
         private void InitTypeTables()
         {
-            _typeNameTable = new string[41];
+            _typeNameTable = new string[42];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
             _typeNameTable[3] = "Boolean";
-            _typeNameTable[4] = "KeepItFit___Project_WinUI.ExercisePage";
+            _typeNameTable[4] = "KeepItFit___Project_WinUI.View.AddFood";
             _typeNameTable[5] = "Microsoft.UI.Xaml.Controls.Page";
             _typeNameTable[6] = "Microsoft.UI.Xaml.Controls.UserControl";
-            _typeNameTable[7] = "KeepItFit___Project_WinUI.FoodDiary";
-            _typeNameTable[8] = "KeepItFit___Project_WinUI.FoodPage";
-            _typeNameTable[9] = "KeepItFit___Project_WinUI.FoodPage.DashBoardViewModel";
-            _typeNameTable[10] = "Microsoft.UI.Xaml.Controls.NavigationView";
-            _typeNameTable[11] = "Microsoft.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[12] = "Microsoft.UI.Xaml.UIElement";
-            _typeNameTable[13] = "System.Collections.Generic.IList`1<Object>";
-            _typeNameTable[14] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
-            _typeNameTable[15] = "Double";
-            _typeNameTable[16] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
-            _typeNameTable[17] = "System.Enum";
-            _typeNameTable[18] = "System.ValueType";
-            _typeNameTable[19] = "Microsoft.UI.Xaml.DataTemplate";
-            _typeNameTable[20] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
-            _typeNameTable[21] = "Microsoft.UI.Xaml.Style";
-            _typeNameTable[22] = "Microsoft.UI.Xaml.Controls.StyleSelector";
-            _typeNameTable[23] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
-            _typeNameTable[24] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
-            _typeNameTable[25] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
-            _typeNameTable[26] = "String";
-            _typeNameTable[27] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
-            _typeNameTable[28] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
-            _typeNameTable[29] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
-            _typeNameTable[30] = "Microsoft.UI.Xaml.DependencyObject";
-            _typeNameTable[31] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
-            _typeNameTable[32] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
-            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.IconElement";
-            _typeNameTable[34] = "Microsoft.UI.Xaml.Controls.InfoBadge";
-            _typeNameTable[35] = "Microsoft.UI.Xaml.Controls.Control";
-            _typeNameTable[36] = "KeepItFit___Project_WinUI.MainWindow";
-            _typeNameTable[37] = "Microsoft.UI.Xaml.Window";
-            _typeNameTable[38] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[39] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
-            _typeNameTable[40] = "Int32";
+            _typeNameTable[7] = "KeepItFit___Project_WinUI.ExercisePage";
+            _typeNameTable[8] = "KeepItFit___Project_WinUI.FoodDiary";
+            _typeNameTable[9] = "KeepItFit___Project_WinUI.FoodPage";
+            _typeNameTable[10] = "KeepItFit___Project_WinUI.FoodPage.DashBoardViewModel";
+            _typeNameTable[11] = "Microsoft.UI.Xaml.Controls.NavigationView";
+            _typeNameTable[12] = "Microsoft.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[13] = "Microsoft.UI.Xaml.UIElement";
+            _typeNameTable[14] = "System.Collections.Generic.IList`1<Object>";
+            _typeNameTable[15] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
+            _typeNameTable[16] = "Double";
+            _typeNameTable[17] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
+            _typeNameTable[18] = "System.Enum";
+            _typeNameTable[19] = "System.ValueType";
+            _typeNameTable[20] = "Microsoft.UI.Xaml.DataTemplate";
+            _typeNameTable[21] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
+            _typeNameTable[22] = "Microsoft.UI.Xaml.Style";
+            _typeNameTable[23] = "Microsoft.UI.Xaml.Controls.StyleSelector";
+            _typeNameTable[24] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
+            _typeNameTable[25] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
+            _typeNameTable[26] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
+            _typeNameTable[27] = "String";
+            _typeNameTable[28] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
+            _typeNameTable[29] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
+            _typeNameTable[30] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
+            _typeNameTable[31] = "Microsoft.UI.Xaml.DependencyObject";
+            _typeNameTable[32] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
+            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
+            _typeNameTable[34] = "Microsoft.UI.Xaml.Controls.IconElement";
+            _typeNameTable[35] = "Microsoft.UI.Xaml.Controls.InfoBadge";
+            _typeNameTable[36] = "Microsoft.UI.Xaml.Controls.Control";
+            _typeNameTable[37] = "KeepItFit___Project_WinUI.MainWindow";
+            _typeNameTable[38] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[39] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[40] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
+            _typeNameTable[41] = "Int32";
 
-            _typeTable = new global::System.Type[41];
+            _typeTable = new global::System.Type[42];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
             _typeTable[3] = typeof(global::System.Boolean);
-            _typeTable[4] = typeof(global::KeepItFit___Project_WinUI.ExercisePage);
+            _typeTable[4] = typeof(global::KeepItFit___Project_WinUI.View.AddFood);
             _typeTable[5] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
             _typeTable[6] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
-            _typeTable[7] = typeof(global::KeepItFit___Project_WinUI.FoodDiary);
-            _typeTable[8] = typeof(global::KeepItFit___Project_WinUI.FoodPage);
-            _typeTable[9] = typeof(global::KeepItFit___Project_WinUI.FoodPage.DashBoardViewModel);
-            _typeTable[10] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
-            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
-            _typeTable[12] = typeof(global::Microsoft.UI.Xaml.UIElement);
-            _typeTable[13] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
-            _typeTable[14] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
-            _typeTable[15] = typeof(global::System.Double);
-            _typeTable[16] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
-            _typeTable[17] = typeof(global::System.Enum);
-            _typeTable[18] = typeof(global::System.ValueType);
-            _typeTable[19] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
-            _typeTable[20] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
-            _typeTable[21] = typeof(global::Microsoft.UI.Xaml.Style);
-            _typeTable[22] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
-            _typeTable[23] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
-            _typeTable[24] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
-            _typeTable[25] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
-            _typeTable[26] = typeof(global::System.String);
-            _typeTable[27] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
-            _typeTable[28] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
-            _typeTable[29] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
-            _typeTable[30] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
-            _typeTable[31] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
-            _typeTable[32] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
-            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
-            _typeTable[34] = typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge);
-            _typeTable[35] = typeof(global::Microsoft.UI.Xaml.Controls.Control);
-            _typeTable[36] = typeof(global::KeepItFit___Project_WinUI.MainWindow);
-            _typeTable[37] = typeof(global::Microsoft.UI.Xaml.Window);
-            _typeTable[38] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[39] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
-            _typeTable[40] = typeof(global::System.Int32);
+            _typeTable[7] = typeof(global::KeepItFit___Project_WinUI.ExercisePage);
+            _typeTable[8] = typeof(global::KeepItFit___Project_WinUI.FoodDiary);
+            _typeTable[9] = typeof(global::KeepItFit___Project_WinUI.FoodPage);
+            _typeTable[10] = typeof(global::KeepItFit___Project_WinUI.FoodPage.DashBoardViewModel);
+            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
+            _typeTable[12] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
+            _typeTable[13] = typeof(global::Microsoft.UI.Xaml.UIElement);
+            _typeTable[14] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
+            _typeTable[15] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
+            _typeTable[16] = typeof(global::System.Double);
+            _typeTable[17] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
+            _typeTable[18] = typeof(global::System.Enum);
+            _typeTable[19] = typeof(global::System.ValueType);
+            _typeTable[20] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
+            _typeTable[21] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
+            _typeTable[22] = typeof(global::Microsoft.UI.Xaml.Style);
+            _typeTable[23] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
+            _typeTable[24] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
+            _typeTable[25] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
+            _typeTable[26] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
+            _typeTable[27] = typeof(global::System.String);
+            _typeTable[28] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
+            _typeTable[29] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
+            _typeTable[30] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
+            _typeTable[31] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
+            _typeTable[32] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
+            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
+            _typeTable[34] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
+            _typeTable[35] = typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge);
+            _typeTable[36] = typeof(global::Microsoft.UI.Xaml.Controls.Control);
+            _typeTable[37] = typeof(global::KeepItFit___Project_WinUI.MainWindow);
+            _typeTable[38] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[40] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
+            _typeTable[41] = typeof(global::System.Int32);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -346,37 +348,39 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
         }
 
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
-        private object Activate_4_ExercisePage() { return new global::KeepItFit___Project_WinUI.ExercisePage(); }
-        private object Activate_7_FoodDiary() { return new global::KeepItFit___Project_WinUI.FoodDiary(); }
-        private object Activate_8_FoodPage() { return new global::KeepItFit___Project_WinUI.FoodPage(); }
-        private object Activate_10_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
-        private object Activate_29_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
-        private object Activate_31_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
-        private object Activate_34_InfoBadge() { return new global::Microsoft.UI.Xaml.Controls.InfoBadge(); }
-        private object Activate_36_MainWindow() { return new global::KeepItFit___Project_WinUI.MainWindow(); }
-        private object Activate_38_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_4_AddFood() { return new global::KeepItFit___Project_WinUI.View.AddFood(); }
+        private object Activate_7_ExercisePage() { return new global::KeepItFit___Project_WinUI.ExercisePage(); }
+        private object Activate_8_FoodDiary() { return new global::KeepItFit___Project_WinUI.FoodDiary(); }
+        private object Activate_9_FoodPage() { return new global::KeepItFit___Project_WinUI.FoodPage(); }
+        private object Activate_11_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
+        private object Activate_30_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
+        private object Activate_32_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
+        private object Activate_35_InfoBadge() { return new global::Microsoft.UI.Xaml.Controls.InfoBadge(); }
+        private object Activate_37_MainWindow() { return new global::KeepItFit___Project_WinUI.MainWindow(); }
+        private object Activate_39_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void StaticInitializer_0_XamlControlsResources() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources).TypeHandle);
-        private void StaticInitializer_4_ExercisePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.ExercisePage).TypeHandle);
-        private void StaticInitializer_7_FoodDiary() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.FoodDiary).TypeHandle);
-        private void StaticInitializer_8_FoodPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.FoodPage).TypeHandle);
-        private void StaticInitializer_9_DashBoardViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.FoodPage.DashBoardViewModel).TypeHandle);
-        private void StaticInitializer_10_NavigationView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationView).TypeHandle);
-        private void StaticInitializer_13_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::System.Object>).TypeHandle);
-        private void StaticInitializer_16_NavigationViewDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode).TypeHandle);
-        private void StaticInitializer_17_Enum() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Enum).TypeHandle);
-        private void StaticInitializer_18_ValueType() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.ValueType).TypeHandle);
-        private void StaticInitializer_20_NavigationViewBackButtonVisible() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible).TypeHandle);
-        private void StaticInitializer_24_NavigationViewOverflowLabelMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode).TypeHandle);
-        private void StaticInitializer_25_NavigationViewPaneDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode).TypeHandle);
-        private void StaticInitializer_27_NavigationViewSelectionFollowsFocus() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus).TypeHandle);
-        private void StaticInitializer_28_NavigationViewShoulderNavigationEnabled() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled).TypeHandle);
-        private void StaticInitializer_29_NavigationViewTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings).TypeHandle);
-        private void StaticInitializer_31_NavigationViewItem() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem).TypeHandle);
-        private void StaticInitializer_32_NavigationViewItemBase() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase).TypeHandle);
-        private void StaticInitializer_34_InfoBadge() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge).TypeHandle);
-        private void StaticInitializer_36_MainWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.MainWindow).TypeHandle);
-        private void StaticInitializer_38_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
-        private void StaticInitializer_39_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
+        private void StaticInitializer_4_AddFood() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.View.AddFood).TypeHandle);
+        private void StaticInitializer_7_ExercisePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.ExercisePage).TypeHandle);
+        private void StaticInitializer_8_FoodDiary() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.FoodDiary).TypeHandle);
+        private void StaticInitializer_9_FoodPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.FoodPage).TypeHandle);
+        private void StaticInitializer_10_DashBoardViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.FoodPage.DashBoardViewModel).TypeHandle);
+        private void StaticInitializer_11_NavigationView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationView).TypeHandle);
+        private void StaticInitializer_14_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::System.Object>).TypeHandle);
+        private void StaticInitializer_17_NavigationViewDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode).TypeHandle);
+        private void StaticInitializer_18_Enum() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Enum).TypeHandle);
+        private void StaticInitializer_19_ValueType() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.ValueType).TypeHandle);
+        private void StaticInitializer_21_NavigationViewBackButtonVisible() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible).TypeHandle);
+        private void StaticInitializer_25_NavigationViewOverflowLabelMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode).TypeHandle);
+        private void StaticInitializer_26_NavigationViewPaneDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode).TypeHandle);
+        private void StaticInitializer_28_NavigationViewSelectionFollowsFocus() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus).TypeHandle);
+        private void StaticInitializer_29_NavigationViewShoulderNavigationEnabled() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled).TypeHandle);
+        private void StaticInitializer_30_NavigationViewTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings).TypeHandle);
+        private void StaticInitializer_32_NavigationViewItem() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem).TypeHandle);
+        private void StaticInitializer_33_NavigationViewItemBase() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase).TypeHandle);
+        private void StaticInitializer_35_InfoBadge() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge).TypeHandle);
+        private void StaticInitializer_37_MainWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::KeepItFit___Project_WinUI.MainWindow).TypeHandle);
+        private void StaticInitializer_39_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
+        private void StaticInitializer_40_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -384,13 +388,13 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
         }
-        private void VectorAdd_13_IList(object instance, object item)
+        private void VectorAdd_14_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.Object>)instance;
             var newItem = (global::System.Object)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_39_IList(object instance, object item)
+        private void VectorAdd_40_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -428,10 +432,10 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 4:   //  KeepItFit___Project_WinUI.ExercisePage
+            case 4:   //  KeepItFit___Project_WinUI.View.AddFood
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_ExercisePage;
-                userType.StaticInitializer = StaticInitializer_4_ExercisePage;
+                userType.Activator = Activate_4_AddFood;
+                userType.StaticInitializer = StaticInitializer_4_AddFood;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -444,35 +448,43 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 7:   //  KeepItFit___Project_WinUI.FoodDiary
+            case 7:   //  KeepItFit___Project_WinUI.ExercisePage
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_7_FoodDiary;
-                userType.StaticInitializer = StaticInitializer_7_FoodDiary;
+                userType.Activator = Activate_7_ExercisePage;
+                userType.StaticInitializer = StaticInitializer_7_ExercisePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 8:   //  KeepItFit___Project_WinUI.FoodPage
+            case 8:   //  KeepItFit___Project_WinUI.FoodDiary
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_8_FoodPage;
-                userType.StaticInitializer = StaticInitializer_8_FoodPage;
+                userType.Activator = Activate_8_FoodDiary;
+                userType.StaticInitializer = StaticInitializer_8_FoodDiary;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 9:   //  KeepItFit___Project_WinUI.FoodPage
+                userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_9_FoodPage;
+                userType.StaticInitializer = StaticInitializer_9_FoodPage;
                 userType.AddMemberName("viewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 9:   //  KeepItFit___Project_WinUI.FoodPage.DashBoardViewModel
+            case 10:   //  KeepItFit___Project_WinUI.FoodPage.DashBoardViewModel
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.StaticInitializer = StaticInitializer_9_DashBoardViewModel;
+                userType.StaticInitializer = StaticInitializer_10_DashBoardViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 10:   //  Microsoft.UI.Xaml.Controls.NavigationView
+            case 11:   //  Microsoft.UI.Xaml.Controls.NavigationView
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
-                userType.Activator = Activate_10_NavigationView;
-                userType.StaticInitializer = StaticInitializer_10_NavigationView;
+                userType.Activator = Activate_11_NavigationView;
+                userType.StaticInitializer = StaticInitializer_11_NavigationView;
                 userType.AddMemberName("PaneHeader");
                 userType.AddMemberName("MenuItems");
                 userType.AddMemberName("FooterMenuItems");
@@ -513,87 +525,87 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 11:   //  Microsoft.UI.Xaml.Controls.ContentControl
+            case 12:   //  Microsoft.UI.Xaml.Controls.ContentControl
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  Microsoft.UI.Xaml.UIElement
+            case 13:   //  Microsoft.UI.Xaml.UIElement
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 13:   //  System.Collections.Generic.IList`1<Object>
+            case 14:   //  System.Collections.Generic.IList`1<Object>
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_13_IList;
-                userType.CollectionAdd = VectorAdd_13_IList;
+                userType.StaticInitializer = StaticInitializer_14_IList;
+                userType.CollectionAdd = VectorAdd_14_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 14:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
+            case 15:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  Double
+            case 16:   //  Double
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 16:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
+            case 17:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_16_NavigationViewDisplayMode;
+                userType.StaticInitializer = StaticInitializer_17_NavigationViewDisplayMode;
                 userType.AddEnumValue("Minimal", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal);
                 userType.AddEnumValue("Compact", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact);
                 userType.AddEnumValue("Expanded", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded);
                 xamlType = userType;
                 break;
 
-            case 17:   //  System.Enum
+            case 18:   //  System.Enum
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
-                userType.StaticInitializer = StaticInitializer_17_Enum;
+                userType.StaticInitializer = StaticInitializer_18_Enum;
                 xamlType = userType;
                 break;
 
-            case 18:   //  System.ValueType
+            case 19:   //  System.ValueType
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.StaticInitializer = StaticInitializer_18_ValueType;
+                userType.StaticInitializer = StaticInitializer_19_ValueType;
                 xamlType = userType;
                 break;
 
-            case 19:   //  Microsoft.UI.Xaml.DataTemplate
+            case 20:   //  Microsoft.UI.Xaml.DataTemplate
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 20:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
+            case 21:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_20_NavigationViewBackButtonVisible;
+                userType.StaticInitializer = StaticInitializer_21_NavigationViewBackButtonVisible;
                 userType.AddEnumValue("Collapsed", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Collapsed);
                 userType.AddEnumValue("Visible", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Visible);
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Auto);
                 xamlType = userType;
                 break;
 
-            case 21:   //  Microsoft.UI.Xaml.Style
+            case 22:   //  Microsoft.UI.Xaml.Style
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 22:   //  Microsoft.UI.Xaml.Controls.StyleSelector
+            case 23:   //  Microsoft.UI.Xaml.Controls.StyleSelector
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 23:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
+            case 24:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 24:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
+            case 25:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_24_NavigationViewOverflowLabelMode;
+                userType.StaticInitializer = StaticInitializer_25_NavigationViewOverflowLabelMode;
                 userType.AddEnumValue("MoreLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.MoreLabel);
                 userType.AddEnumValue("NoLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.NoLabel);
                 xamlType = userType;
                 break;
 
-            case 25:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
+            case 26:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_25_NavigationViewPaneDisplayMode;
+                userType.StaticInitializer = StaticInitializer_26_NavigationViewPaneDisplayMode;
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto);
                 userType.AddEnumValue("Left", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left);
                 userType.AddEnumValue("Top", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top);
@@ -602,42 +614,42 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 26:   //  String
+            case 27:   //  String
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 27:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
+            case 28:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_27_NavigationViewSelectionFollowsFocus;
+                userType.StaticInitializer = StaticInitializer_28_NavigationViewSelectionFollowsFocus;
                 userType.AddEnumValue("Disabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Disabled);
                 userType.AddEnumValue("Enabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Enabled);
                 xamlType = userType;
                 break;
 
-            case 28:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
+            case 29:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_28_NavigationViewShoulderNavigationEnabled;
+                userType.StaticInitializer = StaticInitializer_29_NavigationViewShoulderNavigationEnabled;
                 userType.AddEnumValue("WhenSelectionFollowsFocus", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.WhenSelectionFollowsFocus);
                 userType.AddEnumValue("Always", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Always);
                 userType.AddEnumValue("Never", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Never);
                 xamlType = userType;
                 break;
 
-            case 29:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
+            case 30:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.StaticInitializer = StaticInitializer_29_NavigationViewTemplateSettings;
+                userType.StaticInitializer = StaticInitializer_30_NavigationViewTemplateSettings;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 30:   //  Microsoft.UI.Xaml.DependencyObject
+            case 31:   //  Microsoft.UI.Xaml.DependencyObject
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 31:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
+            case 32:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItemBase"));
-                userType.Activator = Activate_31_NavigationViewItem;
-                userType.StaticInitializer = StaticInitializer_31_NavigationViewItem;
+                userType.Activator = Activate_32_NavigationViewItem;
+                userType.StaticInitializer = StaticInitializer_32_NavigationViewItem;
                 userType.AddMemberName("Icon");
                 userType.AddMemberName("CompactPaneLength");
                 userType.AddMemberName("HasUnrealizedChildren");
@@ -650,44 +662,44 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 32:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
+            case 33:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
-                userType.StaticInitializer = StaticInitializer_32_NavigationViewItemBase;
+                userType.StaticInitializer = StaticInitializer_33_NavigationViewItemBase;
                 userType.AddMemberName("IsSelected");
                 xamlType = userType;
                 break;
 
-            case 33:   //  Microsoft.UI.Xaml.Controls.IconElement
+            case 34:   //  Microsoft.UI.Xaml.Controls.IconElement
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 34:   //  Microsoft.UI.Xaml.Controls.InfoBadge
+            case 35:   //  Microsoft.UI.Xaml.Controls.InfoBadge
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Control"));
-                userType.StaticInitializer = StaticInitializer_34_InfoBadge;
+                userType.StaticInitializer = StaticInitializer_35_InfoBadge;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 35:   //  Microsoft.UI.Xaml.Controls.Control
+            case 36:   //  Microsoft.UI.Xaml.Controls.Control
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 36:   //  KeepItFit___Project_WinUI.MainWindow
+            case 37:   //  KeepItFit___Project_WinUI.MainWindow
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_36_MainWindow;
-                userType.StaticInitializer = StaticInitializer_36_MainWindow;
+                userType.Activator = Activate_37_MainWindow;
+                userType.StaticInitializer = StaticInitializer_37_MainWindow;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 37:   //  Microsoft.UI.Xaml.Window
+            case 38:   //  Microsoft.UI.Xaml.Window
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 38:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 39:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_38_TreeViewNode;
-                userType.StaticInitializer = StaticInitializer_38_TreeViewNode;
+                userType.Activator = Activate_39_TreeViewNode;
+                userType.StaticInitializer = StaticInitializer_39_TreeViewNode;
                 userType.AddMemberName("Children");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("Depth");
@@ -699,15 +711,15 @@ namespace KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 39:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 40:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_39_IList;
-                userType.CollectionAdd = VectorAdd_39_IList;
+                userType.StaticInitializer = StaticInitializer_40_IList;
+                userType.CollectionAdd = VectorAdd_40_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 40:   //  Int32
+            case 41:   //  Int32
                 xamlType = new global::KeepItFit___Project_WinUI.KeepItFit___Project_WinUI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }

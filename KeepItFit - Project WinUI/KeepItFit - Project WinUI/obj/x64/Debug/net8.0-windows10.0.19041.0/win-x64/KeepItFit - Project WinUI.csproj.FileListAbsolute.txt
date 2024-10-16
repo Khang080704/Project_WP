@@ -266,3 +266,8 @@ C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64
 C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\ExercisePage.xbf
 C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\FoodDiary.xbf
 C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\FoodPage.xbf
+C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\AddFood.xbf
+C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\AddFood.g.i.cs
+C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\AddFood.g.cs
+C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\AddFood.xaml
+C:\GitHub\Project_WP\KeepItFit - Project WinUI\KeepItFit - Project WinUI\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\AddFood.xbf

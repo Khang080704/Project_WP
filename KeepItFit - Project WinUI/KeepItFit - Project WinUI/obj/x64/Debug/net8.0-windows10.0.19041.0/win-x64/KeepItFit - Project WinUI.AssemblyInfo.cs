@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KeepItFit - Project WinUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e259db7edef30ea7bdbc98da3fc0bb77c4a4f01f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+988a246c7a90cde60170679ea7121466b088798d")]
 [assembly: System.Reflection.AssemblyProductAttribute("KeepItFit - Project WinUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KeepItFit - Project WinUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

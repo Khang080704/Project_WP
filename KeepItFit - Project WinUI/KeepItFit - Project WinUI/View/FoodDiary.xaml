@@ -59,14 +59,13 @@
         </StackPanel>
 
         <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
-                   FontSize="15" FontWeight="Bold"
-                   >
+                   FontSize="15" FontWeight="Bold">
             Breakfast
         </TextBlock>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="5 0 0 0" Foreground="#0000FF">Add Food</TextBlock>
+            <TextBlock x:Name="_BreakFast" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
             <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-            <TextBlock x:Name="BreakFast" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped">
+            <TextBlock x:Name="BreakFast" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
                 Quick Tools
             </TextBlock>
         </StackPanel>
@@ -82,9 +81,9 @@
                Lunch
         </TextBlock>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="5 0 0 0" Foreground="#0000FF">Add Food</TextBlock>
+            <TextBlock x:Name="_Lunch" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
             <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-            <TextBlock x:Name="Lunch" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped">Quick Tools</TextBlock>
+            <TextBlock x:Name="Lunch" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">Quick Tools</TextBlock>
         </StackPanel>
 
         <Line Stroke="SteelBlue"
@@ -98,9 +97,9 @@
             Dinner
         </TextBlock>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="5 0 0 0" Foreground="#0000FF">Add Food</TextBlock>
+            <TextBlock Name="_Dinner" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
             <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-            <TextBlock Name="Dinner" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped">Quick Tools</TextBlock>
+            <TextBlock Name="Dinner" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">Quick Tools</TextBlock>
         </StackPanel>
 
         <Line Stroke="SteelBlue"
@@ -114,9 +113,9 @@
             Snacks
         </TextBlock>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="5 0 0 0" Foreground="#0000FF">Add Food</TextBlock>
+            <TextBlock Name="_Snacks" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
             <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-            <TextBlock Name="Snacks" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped">Quick Tools</TextBlock>
+            <TextBlock Name="Snacks" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">Quick Tools</TextBlock>
         </StackPanel>
 
         <Line Stroke="SteelBlue"
