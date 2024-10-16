@@ -25,7 +25,7 @@ namespace KeepItFit___Project_WinUI
             public List<Meals> meals { get; set; }
             public void init()
             {
-                mealDAO dao = new MockDAO();
+                IDao dao = new MockDAO();
                 meals = dao.GetAllMeals();
             }
         }

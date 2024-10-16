@@ -7,8 +7,10 @@ using KeepItFit___Project_WinUI.ViewModel;
 
 namespace KeepItFit___Project_WinUI.Model
 {
-    public interface mealDAO
+    public interface IDao
     {
         public List<Meals> GetAllMeals();
+        public List<Food> GetFoodRecent();
+        public List<Food> GetFoodFrequent();
     }
 }

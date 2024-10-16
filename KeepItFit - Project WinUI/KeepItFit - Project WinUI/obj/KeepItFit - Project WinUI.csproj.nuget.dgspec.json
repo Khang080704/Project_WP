@@ -57,6 +57,10 @@
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
               "version": "[1.6.240923002, )"
+            },
+            "PropertyChanged.Fody": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             }
           },
           "imports": [
