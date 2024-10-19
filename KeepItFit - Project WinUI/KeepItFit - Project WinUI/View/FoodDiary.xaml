@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center"
-             Width="790" Height="auto" Background="White">
+             Width="790" Height="auto">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
                     FontSize="15" FontWeight="Bold">
@@ -27,7 +27,7 @@
         <Line Stroke="SteelBlue"
            X1="0" Y1="0"
            X2="800" Y2="0"
-           StrokeThickness="2" Margin="0 20 0 10"/>
+           StrokeThickness="2" Margin="0 10 0 10"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Border Background="#0000FF" Width="80" Height="40" >
@@ -122,11 +122,141 @@
               X1="0" Y1="0"
               X2="800" Y2="0"
               StrokeThickness="2" Margin="0 10 0 10"/>
+
+
+        <!-- Calculate nutritions-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock HorizontalAlignment="Right" Text="Totals" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+            <TextBlock HorizontalAlignment="Right" Text="Your Daily Goal" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
+            <TextBlock HorizontalAlignment="Right" Text="Remaining" FontWeight="Bold" Grid.Row="2" Grid.Column="0"/>
+
+            <!-- Nutrition total-->
+            <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="80" >
+                <TextBlock Name="Calo_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="2" Background="LightGray" Width="100">
+                <TextBlock Name="Carbon_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="3" Background="LightGray" Width="80">
+                <TextBlock Name="Lipid_ToTal" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="4" Background="LightGray" Width="80" >
+                <TextBlock Name="Protein_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="5" Background="LightGray" Width="80">
+                <TextBlock Name="Sodium_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="6" Background="LightGray" Width="80">
+                <TextBlock Name="Sugar_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            
+            <!-- Nutrition Daily-->
+            <Border Grid.Row="1" Grid.Column="1" Background="LightGray" Width="80">
+                <TextBlock Name="Calo_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="2" Background="LightGray" Width="100">
+                <TextBlock Name="Carbon_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="3" Background="LightGray" Width="80">
+                <TextBlock Name="Lipid_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="4" Background="LightGray" Width="80">
+                <TextBlock Name="Protein_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="5" Background="LightGray" Width="80">
+                <TextBlock Name="Sodium_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="6" Background="LightGray" Width="80">
+                <TextBlock Name="Sugar_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            
+            <!-- Nutrition remain
+            remain = total - daily-->
+            <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="80">
+                <TextBlock Name="Calo_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="2" Background="LightGray" Width="100">
+                <TextBlock Name="Carbon_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="3" Background="LightGray" Width="80">
+                <TextBlock Name="Lipid_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="4" Background="LightGray" Width="80">
+                <TextBlock Name="Protein_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="5" Background="LightGray" Width="80">
+                <TextBlock Name="Sodium_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="6" Background="LightGray" Width="80">
+                <TextBlock Name="Sugar_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+            
+            <!-- Nutrition Label-->
+
+            <Border Grid.Row="3" Grid.Column="1" Background="#0000FF" Width="80" Height="30">
+                <TextBlock Text="Calories" FontWeight="Bold" HorizontalAlignment="Center"
+                           Foreground="White" 
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Row="3" Grid.Column="2" Background="#0000FF" Width="100" Height="30">
+                <TextBlock Text="Carbohydrates" FontWeight="Bold" HorizontalAlignment="Center"
+                           Foreground="White" 
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Row="3" Grid.Column="3" Background="#0000FF" Width="80" Height="30">
+                <TextBlock Text="Lipid" FontWeight="Bold" HorizontalAlignment="Center"
+               Foreground="White" 
+               VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Row="3" Grid.Column="4" Background="#0000FF" Width="80" Height="30">
+                <TextBlock Text="Protein" FontWeight="Bold" HorizontalAlignment="Center"
+               Foreground="White" 
+               VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Row="3" Grid.Column="5" Background="#0000FF" Width="80" Height="30">
+                <TextBlock Text="Sodium" FontWeight="Bold" HorizontalAlignment="Center"
+               Foreground="White" 
+               VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Row="3" Grid.Column="6" Background="#0000FF" Width="80" Height="30">
+                <TextBlock Text="Sugar" FontWeight="Bold" HorizontalAlignment="Center"
+               Foreground="White" 
+               VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+
+        <TextBlock HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">
+            When you're done logging your food and exercise for that day, click here:
+        </TextBlock>
+
+        <Button Background="green" Margin="10" HorizontalAlignment="Center">
+            <TextBlock Foreground="White">
+                Finish this entry
+            </TextBlock>
+        </Button>
+
         <Frame x:Name="HomeFoodFrame"/>
-
-        <StackPanel Orientation="Horizontal">
-
-        </StackPanel>
     </StackPanel>
 
 </Page>
