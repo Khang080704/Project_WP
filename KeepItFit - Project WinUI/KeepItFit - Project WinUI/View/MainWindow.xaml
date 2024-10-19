@@ -11,9 +11,13 @@
     <NavigationView x:Name="nvSample" SelectionChanged="nvSample_SelectionChanged" >
 
         <NavigationView.PaneHeader>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image Source="../Assets/logo_app.jpg" Width="150" Height="50"/>
                 <!-- User image-->
-                <Image Source="../Assets/user.png" Width="50" Height="50"/>
+                <Image Name="userAvatar" Source="../Assets/user.png" Width="100" Height="100" Margin="0 20 0 5"/>
+                <Button Name="changeAvatar" Click="changeAvatar_Click">
+                    Change your avatar
+                </Button>
                 <!-- annoucment-->
                 <TextBlock Foreground="White" HorizontalAlignment="Center">Hi</TextBlock>
                 <TextBlock HorizontalAlignment="Center" Foreground="Green">User@gmail.com</TextBlock>
