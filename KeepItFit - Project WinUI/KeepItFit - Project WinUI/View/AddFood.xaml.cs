@@ -67,19 +67,19 @@ namespace KeepItFit___Project_WinUI.View
             //Get the parameter passed from the previous page
             if (e.Parameter is string mealName && !string.IsNullOrEmpty(mealName))
             {
-                if (mealName == "_BreakFast")
+                if (mealName == "BreakFast")
                 {
                     meal.Text = "Add Food To Breakfast";
                 }
-                else if (mealName == "_Lunch")
+                else if (mealName == "Lunch")
                 {
                     meal.Text = "Add Food To Lunch";
                 }
-                else if (mealName == "_Dinner")
+                else if (mealName == "Dinner")
                 {
                     meal.Text = "Add Food To Dinner";
                 }
-                else if (mealName == "_Snacks")
+                else if (mealName == "Snacks")
                 {
                     meal.Text = "Add Food To Snacks";
                 }

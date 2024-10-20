@@ -65,7 +65,7 @@
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1"
                                 HorizontalAlignment="Right">
-                        <TextBox Background="#084F96" Text="0" FontWeight="Bold"
+                        <TextBox Name="CaloBox" Background="#084F96" Text="0" FontWeight="Bold"
                                  Foreground="White" Height="30"/>
                         <TextBlock Text="kcal" FontWeight="Bold" 
                                    Foreground="Black" VerticalAlignment="Center"
@@ -139,8 +139,8 @@
             <Button Width="120" Height="50" FontWeight="Bold" Click="Button_Click">
                 Cancel
             </Button>
-            <Button Background="Green" Foreground="White"
-                    Width="150" Height="50" FontWeight="Bold">
+            <Button Name="AddJournal" Background="Green" Foreground="White"
+                    Width="150" Height="50" FontWeight="Bold" Click="AddJournal_Click">
                 Add to Journal
             </Button>
         </StackPanel>

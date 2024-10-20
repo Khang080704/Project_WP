@@ -53,5 +53,9 @@ namespace KeepItFit___Project_WinUI
             this.Frame.Navigate(typeof(FoodDiary));
         }
 
+        private void AddJournal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

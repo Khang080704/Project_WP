@@ -3,14 +3,102 @@
     x:Class="KeepItFit___Project_WinUI.FoodDiary"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:KeepItFit___Project_WinUI"
+    xmlns:local="using:KeepItFit___Project_WinUI.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        
+        <!-- >>>>>>>>>>>>>>>>>>>>>>>Label template <<<<<<<<<<<<<<<<<<<< -->
+        <DataTemplate x:Key="Nutrition_Lable" x:DataType="local:Nutritions">
+            <StackPanel>
+                <Border Background="#0000FF" Width="80" Height="40" 
+                        BorderThickness="3">
+                    <TextBlock Text="{x:Bind name}" FontWeight="Bold" Foreground="White"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+        <!-- >>>>>>>>>>>>>>>>>>>>>>>Label template <<<<<<<<<<<<<<<<<<<< -->
 
+        <!-- Meal template-->    
+        <DataTemplate x:Key="meal" x:DataType="local:Meals">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
+                 FontSize="15" FontWeight="Bold"
+                 Text="{x:Bind mealName}">
+                </TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
+                    <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
+                    <TextBlock Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
+                        Quick Tools
+                    </TextBlock>
+                </StackPanel>
+                <Line Stroke="SteelBlue"
+                      X1="0" Y1="0"
+                      X2="800" Y2="0"
+                      StrokeThickness="2" Margin="0 10 0 10"/>
+            </StackPanel>
+        </DataTemplate>
+        <!-- Meal template-->
+
+
+        <!-- >>>>>>>>>>>>>>>>> Template for table <<<<<<<<<<<<<<<<<<<-->
+        <DataTemplate x:Key="Nutrition_Table" x:DataType="local:Nutritions">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Nutrition total-->
+                <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="80"
+                        BorderThickness="3">
+                    <TextBlock Text="{x:Bind Total}" FontWeight="Bold" HorizontalAlignment="Center"/>
+                </Border>
+
+                <!-- Nutrition Daily-->
+                <Border Grid.Row="1" Grid.Column="1" Background="LightGray" Width="80"
+                        BorderThickness="3">
+                    <TextBlock Text="{x:Bind Daily}" FontWeight="Bold" HorizontalAlignment="Center"/>
+                </Border>
+                
+                <!-- Nutrition remain
+                    remain = total - daily-->
+                <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="80"
+                        BorderThickness="3">
+                    <TextBlock  Text="{x:Bind Remain}" FontWeight="Bold" HorizontalAlignment="Center"/>
+                </Border>
+
+                <!-- Nutrition Label-->
+                <Border Grid.Row="3" Grid.Column="1" Background="#0000FF" Width="80" Height="30"
+                        BorderThickness="3">
+                    <TextBlock Text="{x:Bind name}" FontWeight="Bold" HorizontalAlignment="Center"
+                   Foreground="White" 
+                   VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </DataTemplate>
+        <!-- >>>>>>>>>>>>>>>>> Template for table <<<<<<<<<<<<<<<<<<<-->
+
+        <!-- >>>>>>>>>>>>>>>>>> Format for ItemResource <<<<<<<<<<<<<<<<-->
+        <ItemsPanelTemplate x:Key="HorizalFormat">
+            <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        <!-- >>>>>>>>>>>>>>>>>> Format for ItemResource <<<<<<<<<<<<<<<<-->
+    </Page.Resources>
+
+    <!-- Main content-->
     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center"
-             Width="790" Height="auto">
+             Width="auto" Height="auto">
+        <!-- Calendar infor-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
                     FontSize="15" FontWeight="Bold">
@@ -29,223 +117,36 @@
            X2="800" Y2="0"
            StrokeThickness="2" Margin="0 10 0 10"/>
 
+        <!-- Nutritions Label MVVM-->
+        <ItemsControl ItemsSource="{x:Bind nutri.nutrition}"
+                      ItemTemplate="{StaticResource Nutrition_Lable}"
+                      ItemsPanel="{StaticResource HorizalFormat}"
+                      HorizontalAlignment="Right">
+
+        </ItemsControl>
+        
+        <!-- Meal information-->
+        <ItemsControl ItemsSource="{x:Bind nutri.mealList}"
+                      ItemTemplate="{StaticResource meal}">
+
+        </ItemsControl>
+        
+        <!-- Summary Table-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Border Background="#0000FF" Width="80" Height="40" >
-                <TextBlock Text="Calories" FontWeight="Bold" Foreground="White"
-                           HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-            <Border Background="#0000FF" Width="auto" Height="40" Margin="10 10 0 10">
-                <TextBlock Text="Carbonhydrates" FontWeight="Bold" Foreground="White"
-               HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-            <Border Background="#0000FF" Width="80" Height="40" Margin="10 10 0 10">
-                <TextBlock Text="Lipids" FontWeight="Bold" Foreground="White"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border Background="#0000FF" Width="80" Height="40" Margin="10 10 0 10">
-                <TextBlock Text="Protein" FontWeight="Bold" Foreground="White"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border Background="#0000FF" Width="80" Height="40" Margin="10 10 10 10">
-                <TextBlock Text="Sodium" FontWeight="Bold" Foreground="White"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           />
-            </Border>
-            <Border Background="#0000FF" Width="80" Height="40" Margin="10 10 10 10">
-                <TextBlock Text="Sugars" FontWeight="Bold" Foreground="White"
-               HorizontalAlignment="Center" VerticalAlignment="Center"
-               />
-            </Border>
+            <StackPanel Orientation="Vertical" Margin="0 0 20 0">
+                <TextBlock HorizontalAlignment="Right" Text="Total" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
+                <TextBlock Margin="0 10 0 0" HorizontalAlignment="Right" Text="Your Daily Goal" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
+                <TextBlock Margin="0 10 0 0" HorizontalAlignment="Right" Text="Remaining" FontWeight="Bold" Grid.Row="2" Grid.Column="0"/>
+            </StackPanel>
+
+            <!-- Calculate nutritions-->
+            <ItemsControl ItemsSource="{x:Bind nutri.nutrition}"
+              ItemTemplate="{StaticResource Nutrition_Table}"
+              ItemsPanel="{StaticResource HorizalFormat}">
+
+            </ItemsControl>
         </StackPanel>
-
-        <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
-                   FontSize="15" FontWeight="Bold">
-            Breakfast
-        </TextBlock>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock x:Name="_BreakFast" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
-            <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-            <TextBlock x:Name="BreakFast" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
-                Quick Tools
-            </TextBlock>
-        </StackPanel>
-
-        <Line Stroke="SteelBlue"
-              X1="0" Y1="0"
-              X2="800" Y2="0"
-              StrokeThickness="2" Margin="0 10 0 10"/>
-
-
-        <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
-                   FontSize="15" FontWeight="Bold">
-               Lunch
-        </TextBlock>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock x:Name="_Lunch" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
-            <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-            <TextBlock x:Name="Lunch" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">Quick Tools</TextBlock>
-        </StackPanel>
-
-        <Line Stroke="SteelBlue"
-      X1="0" Y1="0"
-      X2="800" Y2="0"
-      StrokeThickness="2" Margin="0 10 0 10"/>
-
-
-        <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
-                   FontSize="15" FontWeight="Bold">
-            Dinner
-        </TextBlock>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Name="_Dinner" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
-            <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-            <TextBlock Name="Dinner" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">Quick Tools</TextBlock>
-        </StackPanel>
-
-        <Line Stroke="SteelBlue"
-      X1="0" Y1="0"
-      X2="800" Y2="0"
-      StrokeThickness="2" Margin="0 10 0 10"/>
-
-
-        <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
-                   FontSize="15" FontWeight="Bold">
-            Snacks
-        </TextBlock>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Name="_Snacks" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
-            <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-            <TextBlock Name="Snacks" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">Quick Tools</TextBlock>
-        </StackPanel>
-
-        <Line Stroke="SteelBlue"
-              X1="0" Y1="0"
-              X2="800" Y2="0"
-              StrokeThickness="2" Margin="0 10 0 10"/>
-
-
-        <!-- Calculate nutritions-->
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock HorizontalAlignment="Right" Text="Totals" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
-            <TextBlock HorizontalAlignment="Right" Text="Your Daily Goal" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
-            <TextBlock HorizontalAlignment="Right" Text="Remaining" FontWeight="Bold" Grid.Row="2" Grid.Column="0"/>
-
-            <!-- Nutrition total-->
-            <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="80" >
-                <TextBlock Name="Calo_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="0" Grid.Column="2" Background="LightGray" Width="100">
-                <TextBlock Name="Carbon_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="0" Grid.Column="3" Background="LightGray" Width="80">
-                <TextBlock Name="Lipid_ToTal" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="0" Grid.Column="4" Background="LightGray" Width="80" >
-                <TextBlock Name="Protein_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="0" Grid.Column="5" Background="LightGray" Width="80">
-                <TextBlock Name="Sodium_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="0" Grid.Column="6" Background="LightGray" Width="80">
-                <TextBlock Name="Sugar_Total" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            
-            <!-- Nutrition Daily-->
-            <Border Grid.Row="1" Grid.Column="1" Background="LightGray" Width="80">
-                <TextBlock Name="Calo_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="1" Grid.Column="2" Background="LightGray" Width="100">
-                <TextBlock Name="Carbon_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="1" Grid.Column="3" Background="LightGray" Width="80">
-                <TextBlock Name="Lipid_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="1" Grid.Column="4" Background="LightGray" Width="80">
-                <TextBlock Name="Protein_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="1" Grid.Column="5" Background="LightGray" Width="80">
-                <TextBlock Name="Sodium_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="1" Grid.Column="6" Background="LightGray" Width="80">
-                <TextBlock Name="Sugar_Daily" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            
-            <!-- Nutrition remain
-            remain = total - daily-->
-            <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="80">
-                <TextBlock Name="Calo_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="2" Grid.Column="2" Background="LightGray" Width="100">
-                <TextBlock Name="Carbon_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="2" Grid.Column="3" Background="LightGray" Width="80">
-                <TextBlock Name="Lipid_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="2" Grid.Column="4" Background="LightGray" Width="80">
-                <TextBlock Name="Protein_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="2" Grid.Column="5" Background="LightGray" Width="80">
-                <TextBlock Name="Sodium_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            <Border Grid.Row="2" Grid.Column="6" Background="LightGray" Width="80">
-                <TextBlock Name="Sugar_Remain" Text="0" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
-            
-            <!-- Nutrition Label-->
-
-            <Border Grid.Row="3" Grid.Column="1" Background="#0000FF" Width="80" Height="30">
-                <TextBlock Text="Calories" FontWeight="Bold" HorizontalAlignment="Center"
-                           Foreground="White" 
-                           VerticalAlignment="Center"/>
-            </Border>
-
-            <Border Grid.Row="3" Grid.Column="2" Background="#0000FF" Width="100" Height="30">
-                <TextBlock Text="Carbohydrates" FontWeight="Bold" HorizontalAlignment="Center"
-                           Foreground="White" 
-                           VerticalAlignment="Center"/>
-            </Border>
-
-            <Border Grid.Row="3" Grid.Column="3" Background="#0000FF" Width="80" Height="30">
-                <TextBlock Text="Lipid" FontWeight="Bold" HorizontalAlignment="Center"
-               Foreground="White" 
-               VerticalAlignment="Center"/>
-            </Border>
-
-            <Border Grid.Row="3" Grid.Column="4" Background="#0000FF" Width="80" Height="30">
-                <TextBlock Text="Protein" FontWeight="Bold" HorizontalAlignment="Center"
-               Foreground="White" 
-               VerticalAlignment="Center"/>
-            </Border>
-
-            <Border Grid.Row="3" Grid.Column="5" Background="#0000FF" Width="80" Height="30">
-                <TextBlock Text="Sodium" FontWeight="Bold" HorizontalAlignment="Center"
-               Foreground="White" 
-               VerticalAlignment="Center"/>
-            </Border>
-
-            <Border Grid.Row="3" Grid.Column="6" Background="#0000FF" Width="80" Height="30">
-                <TextBlock Text="Sugar" FontWeight="Bold" HorizontalAlignment="Center"
-               Foreground="White" 
-               VerticalAlignment="Center"/>
-            </Border>
-        </Grid>
-
+        
         <TextBlock HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">
             When you're done logging your food and exercise for that day, click here:
         </TextBlock>
@@ -255,6 +156,7 @@
                 Finish this entry
             </TextBlock>
         </Button>
+        <!-- End-->
 
         <Frame x:Name="HomeFoodFrame"/>
     </StackPanel>
