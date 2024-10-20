@@ -107,12 +107,64 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSugar = 2.2f,
                     foodQuantity = 100,
                     foodUnit = "grams"
-                },      
+                },
             };
 
             return result;
         }
 
+        public List<Nutritions> GetAllNutrtion()
+        {
+            var result = new List<Nutritions>()
+    {
+
+        new Nutritions()
+        {
+            name = "Calories",
+            Total = 0,
+            Daily = 0,
+            Remain = 0
+        },
+        new Nutritions()
+        {
+            name = "Carbs",
+            Total = 0,
+            Daily = 0,
+            Remain = 0
+        },
+        new Nutritions()
+        {
+            name = "Fat",
+            Total = 0,
+            Daily = 0,
+            Remain = 0
+        },
+        new Nutritions()
+        {
+            name = "Protein",
+            Total = 0,
+            Daily = 0,
+            Remain = 0
+        },
+        new Nutritions()
+        {
+            name = "Sodium",
+            Total = 0,
+            Daily = 0,
+            Remain = 0
+        },
+        new Nutritions()
+        {
+            name = "Sugar",
+            Total = 0,
+            Daily = 0,
+            Remain = 0
+        }
+    };
+            return result;
+        }
     }
+
+
 
 }
