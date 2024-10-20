@@ -67,6 +67,7 @@
             </Grid>
         </Border>
         
+        
         <!-- Calories table -->
         <ItemsControl ItemsSource="{x:Bind viewModel.nutritions}"
                       ItemTemplate="{StaticResource nutrionList}">
