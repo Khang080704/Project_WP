@@ -14,6 +14,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.StartScreen;
+using System.Diagnostics;
 
 
 namespace KeepItFit___Project_WinUI
@@ -23,10 +25,12 @@ namespace KeepItFit___Project_WinUI
         public class DashBoardViewModel
         {
             public List<Meals> meals { get; set; }
+            public List<Nutritions> nutritions { get; set; }
             public void init()
             {
                 IDao dao = new MockDAO();
                 meals = dao.GetAllMeals();
+                nutritions = dao.GetAllNutrtion();
             }
         }
         public DashBoardViewModel viewModel { get; set; }
@@ -55,6 +59,10 @@ namespace KeepItFit___Project_WinUI
 
         private void AddJournal_Click(object sender, RoutedEventArgs e)
         {
+            foreach (var i in viewModel.nutritions)
+            {
+                Debug.WriteLine(i.Total);
+            }
 
         }
     }

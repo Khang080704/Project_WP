@@ -22,22 +22,35 @@ namespace KeepItFit___Project_WinUI
     {
         public class DashBoardNutritions
         {
-            public List<Nutritions> nutrition {  get; set; }
+            public List<Nutritions> nutrition { get; set; }
             public List<Meals> mealList { get; set; }
             public void initNutrition()
             {
                 IDao dao = new MockDAO();
                 nutrition = dao.GetAllNutrtion();
-                
+
             }
             public void initMeal()
             {
                 IDao dao = new MockDAO();
                 mealList = dao.GetAllMeals();
             }
+            public Nutritions getNutritions(string name)
+            {
+                var result = new Nutritions();
+                foreach(var i in nutrition)
+                {
+                    if(i.name == name)
+                    {
+                        result = i;
+                        break;
+                    }
+                }
+                return result;
+            }
         }
 
-        public DashBoardNutritions nutri {  get; set; }
+        public DashBoardNutritions nutri { get; set; }
         public FoodDiary()
         {
             this.InitializeComponent();

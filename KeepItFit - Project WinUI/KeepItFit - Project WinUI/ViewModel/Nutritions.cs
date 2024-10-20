@@ -10,6 +10,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
     public class Nutritions : INotifyPropertyChanged
     {
         public string name {  get; set; }
+        public string unit { get; set; }
         public int Total { get; set; }
         public int Daily { get; set; }
         public int Remain { get; set; }

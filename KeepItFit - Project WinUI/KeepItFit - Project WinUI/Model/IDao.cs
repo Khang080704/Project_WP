@@ -14,4 +14,5 @@ namespace KeepItFit___Project_WinUI.Model
         public List<Food> GetFoodFrequent();
         public List<Nutritions> GetAllNutrtion();
     }
+
 }

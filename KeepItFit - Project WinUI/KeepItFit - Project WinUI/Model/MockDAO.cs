@@ -107,7 +107,7 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSugar = 2.2f,
                     foodQuantity = 100,
                     foodUnit = "grams"
-                },      
+                },
             };
 
             return result;
@@ -123,47 +123,54 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Calories",
                     Total = 0,
                     Daily = 0,
-                    Remain = 0
+                    Remain = 0,
+                    unit = "kcal"
                 },
                 new Nutritions()
                 {
                     name = "Carbs",
                     Total = 0,
                     Daily = 0,
-                    Remain = 0
+                    Remain = 0,
+                    unit = "g"
                 },
                 new Nutritions()
                 {
                     name = "Fat",
                     Total = 0,
                     Daily = 0,
-                    Remain = 0
+                    Remain = 0,
+                    unit = "g"
                 },
                 new Nutritions()
                 {
                     name = "Protein",
                     Total = 0,
                     Daily = 0,
-                    Remain = 0
+                    Remain = 0,
+                    unit = "g"
                 },
                 new Nutritions()
                 {
                     name = "Sodium",
                     Total = 0,
                     Daily = 0,
-                    Remain = 0
+                    Remain = 0,
+                    unit = "mg"
                 },
                 new Nutritions()
                 {
                     name = "Sugar",
                     Total = 0,
                     Daily = 0,
-                    Remain = 0
-                }
+                    Remain = 0,
+                    unit = "g"
+                },
             };
             return result;
         }
-
     }
+
+
 
 }

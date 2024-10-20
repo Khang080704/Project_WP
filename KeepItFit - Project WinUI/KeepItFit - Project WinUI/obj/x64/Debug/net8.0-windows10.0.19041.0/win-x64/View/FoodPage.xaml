@@ -11,7 +11,34 @@
 
     <Page.Resources>
         <DataTemplate x:Key="meal"                         >
-            <TextBlock x:ConnectionId='3'                         />
+            <TextBlock x:ConnectionId='8'                         />
+        </DataTemplate>
+
+        <DataTemplate x:Key="nutrionList"                              >
+            <Border x:ConnectionId='3' BorderBrush="Black" BorderThickness="0 0 0 1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:ConnectionId='4' FontWeight="Bold" TextAlignment="left" Margin="15"
+                               FontSize="20"                     
+                               Grid.Row="0" Grid.Column="0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1"
+                                HorizontalAlignment="Right">
+                        <TextBox x:ConnectionId='5' Background="#084F96"                                                                        FontWeight="Bold"
+                                 Foreground="White" Height="30" PlaceholderText="0"
+                                 TextAlignment="left"/>
+                        <TextBlock x:ConnectionId='6'                      FontWeight="Bold" 
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="10" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </Grid>
+                    
+            </Border>
         </DataTemplate>
     </Page.Resources>
 
@@ -21,125 +48,36 @@
             Quick add
         </TextBlock>
 
+        <Border BorderBrush="Black" BorderThickness="0,0,0,2">
+            <Grid>
+                <!-- Content for meal -->
+                <TextBlock FontWeight="Bold" TextAlignment="Left" Margin="15"
+                   VerticalAlignment="Center" Grid.Column="0" 
+                   FontSize="25">
+                       Meal name
+                </TextBlock>
+                <!-- Button for meal-->
+                <ComboBox x:ConnectionId='12' PlaceholderText="Breakfast" Width="150" Background="#084F96"
+                  PlaceholderForeground="White" Grid.Column="1" Grid.Row="0"
+                  HorizontalAlignment="Right"
+                  Margin="15" Foreground="White" FontWeight="Bold"
+                                                        
+                  ItemTemplate="{StaticResource meal}"
+                  Name="mealList"/>
+            </Grid>
+        </Border>
+        
         <!-- Calories table -->
-        <Grid Background="#D9D9D9" Width="800" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <ItemsControl x:ConnectionId='9'                                            
+                      ItemTemplate="{StaticResource nutrionList}">
 
-            <Border Grid.Row="0" BorderBrush="Black" Grid.ColumnSpan="2" BorderThickness="0,0,0,2">
-                <Grid>
-                    <!-- Content for meal -->
-                    <TextBlock FontWeight="Bold" TextAlignment="Left" Margin="15"
-                               VerticalAlignment="Center" Grid.Column="0" 
-                               FontSize="25">
-                        Meal name
-                    </TextBlock>
-                    <!-- Button for meal-->
-                    <ComboBox x:ConnectionId='7' PlaceholderText="Breakfast" Width="150" Background="#084F96"
-                              PlaceholderForeground="White" Grid.Column="1" Grid.Row="0"
-                              HorizontalAlignment="Right"
-                              Margin="15" Foreground="White" FontWeight="Bold"
-                                                                    
-                              ItemTemplate="{StaticResource meal}"
-                              Name="mealList"/>
-                </Grid>
-            </Border>
-
-            <Border BorderBrush="Black" BorderThickness="0 0 0 1" Grid.Row="1" Grid.ColumnSpan="2">
-                <Grid>
-                    <!--Calories -->
-                    <TextBlock FontWeight="Bold" TextAlignment="Left" Margin="15"
-                               VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"
-                               FontSize="25">
-                        Calories
-                    </TextBlock>
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1"
-                                HorizontalAlignment="Right">
-                        <TextBox x:ConnectionId='6' Name="CaloBox" Background="#084F96" Text="0" FontWeight="Bold"
-                                 Foreground="White" Height="30"/>
-                        <TextBlock Text="kcal" FontWeight="Bold" 
-                                   Foreground="Black" VerticalAlignment="Center"
-                                   Margin="10"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-
-
-            <!-- Cabohydrats-->
-            <Border BorderBrush="Black" BorderThickness="0 0 0 1" Grid.Row="2" Grid.ColumnSpan="2">
-                <Grid>
-                    <!--Calories -->
-                    <TextBlock FontWeight="Bold" TextAlignment="Left" Margin="15"
-                               VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"
-                               FontSize="25">
-                        Cabonhydrates
-                    </TextBlock>
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1"
-                                HorizontalAlignment="Right">
-                        <TextBox Background="#084F96" Text="0" FontWeight="Bold"
-                                 Foreground="White" Height="30"/>
-                        <TextBlock Text="kcal" FontWeight="Bold" 
-                                   Foreground="Black" VerticalAlignment="Center"
-                                   Margin="10"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-
-            <!-- Fats-->
-            <Border BorderBrush="Black" BorderThickness="0 0 0 1" Grid.Row="3" Grid.ColumnSpan="2">
-                <Grid>
-                    <!--Calories -->
-                    <TextBlock FontWeight="Bold" TextAlignment="Left" Margin="15"
-                               VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"
-                               FontSize="25">
-                        Fats
-                    </TextBlock>
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1"
-                                HorizontalAlignment="Right">
-                        <TextBox Background="#084F96" Text="0" FontWeight="Bold"
-                                 Foreground="White" Height="30"/>
-                        <TextBlock Text="kcal" FontWeight="Bold" 
-                                   Foreground="Black" VerticalAlignment="Center"
-                                   Margin="10"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-
-            <!-- Proteins-->
-            <Border BorderBrush="Black" BorderThickness="0 0 0 1" Grid.Row="4" Grid.ColumnSpan="2">
-                <Grid>
-                    <!--Calories -->
-                    <TextBlock FontWeight="Bold" TextAlignment="Left" Margin="15"
-                               VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"
-                               FontSize="25">
-                        Proteins
-                    </TextBlock>
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1"
-                                HorizontalAlignment="Right">
-                        <TextBox Background="#084F96" Text="0" FontWeight="Bold"
-                                    Foreground="White" Height="30"/>
-                        <TextBlock Text="kcal" FontWeight="Bold" 
-                                   Foreground="Black" VerticalAlignment="Center"
-                                   Margin="10"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </Grid>
+        </ItemsControl>
+        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
-            <Button x:ConnectionId='4' Width="120" Height="50" FontWeight="Bold"                     >
+            <Button x:ConnectionId='10' Width="120" Height="50" FontWeight="Bold"                     >
                 Cancel
             </Button>
-            <Button x:ConnectionId='5' Name="AddJournal" Background="Green" Foreground="White"
+            <Button x:ConnectionId='11' Name="AddJournal" Background="Green" Foreground="White"
                     Width="150" Height="50" FontWeight="Bold"                         >
                 Add to Journal
             </Button>

@@ -148,12 +148,12 @@
         </StackPanel>
         
         <TextBlock HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">
-            When you're done logging your food and exercise for that day, click here:
+        When you're done logging your food and exercise for that day, click here:
         </TextBlock>
 
         <Button Background="green" Margin="10" HorizontalAlignment="Center">
             <TextBlock Foreground="White">
-                Finish this entry
+            Finish this entry
             </TextBlock>
         </Button>
         <!-- End-->
