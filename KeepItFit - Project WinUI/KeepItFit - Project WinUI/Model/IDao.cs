@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,9 @@ namespace KeepItFit___Project_WinUI.Model
 {
     public interface IDao
     {
-        public List<Meals> GetAllMeals();
-        public List<Food> GetFoodRecent();
-        public List<Food> GetFoodFrequent();
+        public ObservableCollection<Meals> GetAllMeals();
+        public ObservableCollection<Food> GetFoodRecent();
+        public ObservableCollection<Food> GetFoodFrequent();
         public List<Nutritions> GetAllNutrtion();
     }
 

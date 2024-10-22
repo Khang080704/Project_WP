@@ -16,29 +16,19 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.StartScreen;
 using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 
 namespace KeepItFit___Project_WinUI
 {
     public sealed partial class FoodPage : Page
     {
-        public class DashBoardViewModel
-        {
-            public List<Meals> meals { get; set; }
-            public List<Nutritions> nutritions { get; set; }
-            public void init()
-            {
-                IDao dao = new MockDAO();
-                meals = dao.GetAllMeals();
-                nutritions = dao.GetAllNutrtion();
-            }
-        }
-        public DashBoardViewModel viewModel { get; set; }
+        public FoodPageViewModel viewModel { get; set; }
 
         public FoodPage()
         {
             this.InitializeComponent();
-            viewModel = new DashBoardViewModel();
+            viewModel = new FoodPageViewModel();
             viewModel.init();
         }
 
