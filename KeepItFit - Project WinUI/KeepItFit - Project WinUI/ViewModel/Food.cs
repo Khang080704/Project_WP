@@ -18,7 +18,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public float foodSodium { get; set; }
         public float foodSugar { get; set; }
         public float foodQuantity { get; set; }
-        public string foodUnit { get; set;}
+        public List<string> foodUnit { get; set;}
 
 
         public event PropertyChangedEventHandler PropertyChanged;

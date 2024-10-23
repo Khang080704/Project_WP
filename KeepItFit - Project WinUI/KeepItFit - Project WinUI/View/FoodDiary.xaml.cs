@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -22,30 +23,22 @@ namespace KeepItFit___Project_WinUI
 {
     public sealed partial class FoodDiary : Page
     {
-
-        public class DashBoardNutritions
-        {
-            public List<Nutritions> nutrition { get; set; }
-            public List<Meals> mealList { get; set; }
-            public void initNutrition()
-            {
-                IDao dao = new MockDAO();
-                nutrition = dao.GetAllNutrtion();
-
+        public NutritionsViewModel nutri { get; set; }
+                    if(i.name == name)
+                    {
+                        result = i;
+                        break;
+                    }
+                }
+                return result;
             }
-            public void initMeal()
-            {
-                IDao dao = new MockDAO();
-                mealList = dao.GetAllMeals();
-            }
-
         }
 
         public DashBoardNutritions nutri { get; set; }
         public FoodDiary()
         {
             this.InitializeComponent();
-            nutri = new DashBoardNutritions();
+            nutri = new NutritionsViewModel();
             nutri.initNutrition();
             nutri.initMeal();
 
