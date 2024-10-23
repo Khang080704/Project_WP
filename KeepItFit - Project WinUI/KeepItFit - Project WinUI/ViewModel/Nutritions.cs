@@ -14,7 +14,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public int Total { get; set; }
         public int Daily { get; set; }
         public int Remain { get; set; }
-        void updateRemaining()
+        public void updateInfo()
         {
             Remain = Daily - Total;
         }

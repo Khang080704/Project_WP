@@ -54,16 +54,14 @@ namespace KeepItFit___Project_WinUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //Cancel button
             this.Frame.Navigate(typeof(FoodDiary));
+           
         }
 
         private void AddJournal_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var i in viewModel.nutritions)
-            {
-                Debug.WriteLine(i.Total);
-            }
-
+            this.Frame.Navigate(typeof(FoodDiary),viewModel.nutritions);
         }
     }
 }

@@ -121,7 +121,8 @@
         <ItemsControl ItemsSource="{x:Bind nutri.nutrition}"
                       ItemTemplate="{StaticResource Nutrition_Lable}"
                       ItemsPanel="{StaticResource HorizalFormat}"
-                      HorizontalAlignment="Right">
+                      HorizontalAlignment="Right"
+                      Name="Nutrion_list">
 
         </ItemsControl>
         

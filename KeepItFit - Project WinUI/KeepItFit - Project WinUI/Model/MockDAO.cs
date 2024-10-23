@@ -124,7 +124,7 @@ namespace KeepItFit___Project_WinUI.Model
                     Total = 0,
                     Daily = 0,
                     Remain = 0,
-                    unit = "kcal"
+                    unit = "kcal",
                 },
                 new Nutritions()
                 {
@@ -140,7 +140,7 @@ namespace KeepItFit___Project_WinUI.Model
                     Total = 0,
                     Daily = 0,
                     Remain = 0,
-                    unit = "g"
+                    unit = "g",
                 },
                 new Nutritions()
                 {
@@ -148,7 +148,7 @@ namespace KeepItFit___Project_WinUI.Model
                     Total = 0,
                     Daily = 0,
                     Remain = 0,
-                    unit = "g"
+                    unit = "g",
                 },
                 new Nutritions()
                 {

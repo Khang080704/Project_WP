@@ -10,16 +10,19 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KeepItFit___Project_WinUI
 {
     public sealed partial class FoodDiary : Page
     {
+
         public class DashBoardNutritions
         {
             public List<Nutritions> nutrition { get; set; }
@@ -35,19 +38,7 @@ namespace KeepItFit___Project_WinUI
                 IDao dao = new MockDAO();
                 mealList = dao.GetAllMeals();
             }
-            public Nutritions getNutritions(string name)
-            {
-                var result = new Nutritions();
-                foreach(var i in nutrition)
-                {
-                    if(i.name == name)
-                    {
-                        result = i;
-                        break;
-                    }
-                }
-                return result;
-            }
+
         }
 
         public DashBoardNutritions nutri { get; set; }
@@ -57,7 +48,9 @@ namespace KeepItFit___Project_WinUI
             nutri = new DashBoardNutritions();
             nutri.initNutrition();
             nutri.initMeal();
+
         }
+        
         private void TextBlock_Tapped_QuickAdd(object sender, TappedRoutedEventArgs e)
         {
             TextBlock mealClicked = sender as TextBlock;
@@ -77,6 +70,8 @@ namespace KeepItFit___Project_WinUI
             string mealName = meal.mealName;
             this.Frame.Navigate(typeof(AddFood), mealName);
         }
+
+
 
     }
 }
