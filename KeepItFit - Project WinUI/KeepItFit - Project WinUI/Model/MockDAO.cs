@@ -15,13 +15,16 @@ namespace KeepItFit___Project_WinUI.Model
             var result = new ObservableCollection<Meals>()
             {
                 new Meals() {
-                    mealName = "BreakFast"
+                    mealName = "BreakFast",
+                    nutriList = GetAllNutrtion()
                 },
                 new Meals() {
-                    mealName = "Lunch"
+                    mealName = "Lunch",
+                    nutriList = GetAllNutrtion()
                 },
                 new Meals() {
-                    mealName = "Dinner"
+                    mealName = "Dinner",
+                    nutriList = GetAllNutrtion()
                 },
                 new Meals()
                 {
@@ -145,7 +148,7 @@ namespace KeepItFit___Project_WinUI.Model
                 {
                     name = "Calories",
                     Total = 0,
-                    Daily = 0,
+                    Daily = 2300,
                     Remain = 0,
                     unit = "kcal",
                 },
@@ -153,7 +156,7 @@ namespace KeepItFit___Project_WinUI.Model
                 {
                     name = "Carbs",
                     Total = 0,
-                    Daily = 0,
+                    Daily = 300,
                     Remain = 0,
                     unit = "g"
                 },
@@ -161,7 +164,7 @@ namespace KeepItFit___Project_WinUI.Model
                 {
                     name = "Fat",
                     Total = 0,
-                    Daily = 0,
+                    Daily = 60,
                     Remain = 0,
                     unit = "g",
                 },
@@ -169,7 +172,7 @@ namespace KeepItFit___Project_WinUI.Model
                 {
                     name = "Protein",
                     Total = 0,
-                    Daily = 0,
+                    Daily = 60,
                     Remain = 0,
                     unit = "g",
                 },
@@ -177,7 +180,7 @@ namespace KeepItFit___Project_WinUI.Model
                 {
                     name = "Sodium",
                     Total = 0,
-                    Daily = 0,
+                    Daily = 2300,
                     Remain = 0,
                     unit = "mg"
                 },
@@ -185,7 +188,7 @@ namespace KeepItFit___Project_WinUI.Model
                 {
                     name = "Sugar",
                     Total = 0,
-                    Daily = 0,
+                    Daily = 30,
                     Remain = 0,
                     unit = "g"
                 },

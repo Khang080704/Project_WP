@@ -11,14 +11,22 @@
     NavigationCacheMode="Enabled">
     
     <Page.Resources>
-        
+        <!-- Converter zone-->
+        <local:ValueToColorConverter x:Key="ColorConverter"/>
+
         <!-- >>>>>>>>>>>>>>>>>>>>>>>Label template <<<<<<<<<<<<<<<<<<<< -->
         <DataTemplate x:Key="Nutrition_Lable" x:DataType="local:Nutritions">
             <StackPanel>
-                <Border Background="#0000FF" Width="80" Height="40" 
-                        BorderThickness="3">
-                    <TextBlock Text="{x:Bind name}" FontWeight="Bold" Foreground="White"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Border Background="#0000FF" Width="80" Height="auto" 
+                        BorderThickness="3" >
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{x:Bind name}" FontWeight="Bold" Foreground="White"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </TextBlock>
+                        <TextBlock Text="{x:Bind unit}" FontWeight="Bold" Foreground="LightGray"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    
                 </Border>
             </StackPanel>
         </DataTemplate>
@@ -28,10 +36,14 @@
         <!-- Meal template-->
         <DataTemplate x:Key="meal" x:DataType="local:Meals">
             <StackPanel Orientation="Vertical">
-                <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
-                 FontSize="15" FontWeight="Bold"
-                 Text="{x:Bind mealName}">
-                </TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
+                               FontSize="15" FontWeight="Bold"
+                               Text="{x:Bind mealName}">
+                    </TextBlock>
+                    
+                </StackPanel>
+                
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
                     <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
@@ -85,7 +97,8 @@
                     remain = total - daily-->
                 <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="80"
                         BorderThickness="3">
-                    <TextBlock  Text="{x:Bind Remain}" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{x:Bind Remain}" FontWeight="Bold" HorizontalAlignment="Center"
+                               Foreground="{x:Bind Remain,Converter={StaticResource ColorConverter}}"/>
                 </Border>
 
                 <!-- Nutrition Label-->

@@ -28,14 +28,9 @@ namespace KeepItFit___Project_WinUI
         public FoodDiary()
         {
             this.InitializeComponent();
-
-            
             nutri = new NutritionsViewModel();
             nutri.initNutrition();
             nutri.initMeal();
-            
-            
-            
         }
         
         private void TextBlock_Tapped_QuickAdd(object sender, TappedRoutedEventArgs e)
@@ -74,9 +69,7 @@ namespace KeepItFit___Project_WinUI
                     i.Total += list[count++];
                     i.Remain = i.Daily - i.Total;
                 }
-
             }
-
         }
 
 

@@ -13,6 +13,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
         {
             get; set;
         }
+        public List<Nutritions> nutriList { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
