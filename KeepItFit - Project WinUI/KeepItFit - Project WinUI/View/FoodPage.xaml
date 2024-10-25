@@ -29,7 +29,7 @@
                                Grid.Row="0" Grid.Column="0"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1"
                                 HorizontalAlignment="Right">
-                        <TextBox Background="#084F96" Text="{x:Bind Total, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"
+                        <TextBox Background="#084F96" Text="{x:Bind input, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"
                                  Foreground="White" Height="30" PlaceholderText="0"
                                  TextAlignment="left"/>
                         <TextBlock Text="{x:Bind unit}" FontWeight="Bold" 

@@ -7,7 +7,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Enabled">
+    
     <Page.Resources>
         
         <!-- >>>>>>>>>>>>>>>>>>>>>>>Label template <<<<<<<<<<<<<<<<<<<< -->
@@ -23,7 +25,7 @@
         <!-- >>>>>>>>>>>>>>>>>>>>>>>Label template <<<<<<<<<<<<<<<<<<<< -->
 
         
-        <!-- Meal template-->    
+        <!-- Meal template-->
         <DataTemplate x:Key="meal" x:DataType="local:Meals">
             <StackPanel Orientation="Vertical">
                 <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
@@ -44,6 +46,14 @@
             </StackPanel>
         </DataTemplate>
         <!-- Meal template-->
+        
+        
+        <DataTemplate x:Key="Nutrition_Data" x:DataType="local:Nutritions">
+            <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="80"
+                    BorderThickness="3">
+                <TextBlock Text="{x:Bind Total}" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+        </DataTemplate>
 
 
         <!-- >>>>>>>>>>>>>>>>> Template for table <<<<<<<<<<<<<<<<<<<-->
@@ -128,9 +138,10 @@
         </ItemsControl>
         
         <!-- Meal information-->
-        <ItemsControl ItemsSource="{x:Bind nutri.mealList}"
+        <ItemsControl Name="mealInfor"
+                      ItemsSource="{x:Bind nutri.mealList}"
                       ItemTemplate="{StaticResource meal}">
-
+                      
         </ItemsControl>
         
         <!-- Summary Table-->

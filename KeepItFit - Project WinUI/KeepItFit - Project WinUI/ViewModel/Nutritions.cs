@@ -14,8 +14,10 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public int Total { get; set; }
         public int Daily { get; set; }
         public int Remain { get; set; }
+        public int input { get; set; }
         public void updateInfo()
         {
+            Total += input;
             Remain = Daily - Total;
         }
         public event PropertyChangedEventHandler PropertyChanged;

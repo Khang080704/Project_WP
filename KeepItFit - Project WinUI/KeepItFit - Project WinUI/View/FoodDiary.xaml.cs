@@ -21,27 +21,21 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KeepItFit___Project_WinUI
 {
+    
     public sealed partial class FoodDiary : Page
     {
         public NutritionsViewModel nutri { get; set; }
-                    if(i.name == name)
-                    {
-                        result = i;
-                        break;
-                    }
-                }
-                return result;
-            }
-        }
-
-        public DashBoardNutritions nutri { get; set; }
         public FoodDiary()
         {
             this.InitializeComponent();
+
+            
             nutri = new NutritionsViewModel();
             nutri.initNutrition();
             nutri.initMeal();
-
+            
+            
+            
         }
         
         private void TextBlock_Tapped_QuickAdd(object sender, TappedRoutedEventArgs e)
@@ -62,6 +56,27 @@ namespace KeepItFit___Project_WinUI
             var meal = mealClicked.DataContext as Meals;
             string mealName = meal.mealName;
             this.Frame.Navigate(typeof(AddFood), mealName);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(e.Parameter is Dictionary<string, int[]>)
+            {
+                Dictionary<string, int[]> result = e.Parameter as Dictionary<string, int[]>;
+                
+                string name = result.Keys.First();
+                int[] list = result[name];
+                int count = 0;
+
+                foreach(var i in nutri.nutrition)
+                {
+                    i.Total += list[count++];
+                    i.Remain = i.Daily - i.Total;
+                }
+
+            }
+
         }
 
 

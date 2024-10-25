@@ -46,12 +46,32 @@ namespace KeepItFit___Project_WinUI
         {
             //Cancel button
             this.Frame.Navigate(typeof(FoodDiary));
-           
+            var screen = new FoodDiary();
         }
 
         private void AddJournal_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(FoodDiary),viewModel.nutritions);
+            var selectedMeal = mealList.PlaceholderText;
+            string meal = "";
+            if(selectedMeal != null)
+            {
+                meal = selectedMeal.ToString();
+            }
+            int[] nutritionAmount = new int[viewModel.nutritions.Count];
+            int count = 0;
+            foreach(var i in viewModel.nutritions)
+            {
+                nutritionAmount[count++] = i.input;
+            }
+
+            var parameters = new Dictionary<string, int[]>();
+            parameters.Add(
+                meal, nutritionAmount
+                );
+
+
+            this.Frame.Navigate(typeof(FoodDiary),parameters);
         }
+
     }
 }
