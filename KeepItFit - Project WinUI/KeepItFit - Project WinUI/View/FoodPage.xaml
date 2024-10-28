@@ -9,11 +9,15 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
+
+        <Page.Resources>
         <DataTemplate x:Key="meal" x:DataType="local:Meals">
             <TextBlock Text="{x:Bind mealName}"/>
         </DataTemplate>
     </Page.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+        
 
     <StackPanel Orientation="Vertical">
         <TextBlock Foreground="#0958A7" FontSize="20"
@@ -144,6 +148,7 @@
                 Add to Journal
             </Button>
         </StackPanel>
-    </StackPanel>
-
+        
+         </StackPanel>
+     </ScrollViewer>
 </Page>
