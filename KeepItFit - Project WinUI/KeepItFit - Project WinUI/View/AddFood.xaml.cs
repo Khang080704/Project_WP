@@ -206,6 +206,7 @@ namespace KeepItFit___Project_WinUI.View
             };
             if (_lastClickedButton == RecentButton)
             {
+                parameters.foodList = foodListRecent_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
             }
             else if (_lastClickedButton == FrequentButton)
