@@ -14,27 +14,21 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.StartScreen;
+using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 
 namespace KeepItFit___Project_WinUI
 {
     public sealed partial class FoodPage : Page
     {
-        public class DashBoardViewModel
-        {
-            public List<Meals> meals { get; set; }
-            public void init()
-            {
-                IDao dao = new MockDAO();
-                meals = dao.GetAllMeals();
-            }
-        }
-        public DashBoardViewModel viewModel { get; set; }
+        public FoodPageViewModel viewModel { get; set; }
 
         public FoodPage()
         {
             this.InitializeComponent();
-            viewModel = new DashBoardViewModel();
+            viewModel = new FoodPageViewModel();
             viewModel.init();
         }
 
@@ -50,7 +44,33 @@ namespace KeepItFit___Project_WinUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //Cancel button
             this.Frame.Navigate(typeof(FoodDiary));
+            var screen = new FoodDiary();
+        }
+
+        private void AddJournal_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedMeal = mealList.PlaceholderText;
+            string meal = "";
+            if(selectedMeal != null)
+            {
+                meal = selectedMeal.ToString();
+            }
+            int[] nutritionAmount = new int[viewModel.nutritions.Count];
+            int count = 0;
+            foreach(var i in viewModel.nutritions)
+            {
+                nutritionAmount[count++] = i.input;
+            }
+
+            var parameters = new Dictionary<string, int[]>();
+            parameters.Add(
+                meal, nutritionAmount
+                );
+
+
+            this.Frame.Navigate(typeof(FoodDiary),parameters);
         }
 
     }

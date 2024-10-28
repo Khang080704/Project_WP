@@ -11,20 +11,24 @@
 
     <Page.Resources>
         <DataTemplate x:Key="foodList" x:DataType="local:Food">
-            <Grid Background="#F0F0F0" BorderBrush="Beige" BorderThickness="1">
+            <Grid Background="#FBFBFB" BorderBrush="#999EA5" BorderThickness="0.5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox Grid.Column="0" x:Name="foodCheckBox" Content="{x:Bind foodName}" Padding="30,5,0,0"  Margin="10,5,10,10" FontSize="15"/>
-                <TextBlock Grid.Column="1" Text="{x:Bind foodQuantity}" Margin="10,10,10,10" FontSize="15"/>
-                <TextBlock Grid.Column="2" Text="{x:Bind foodUnit}" Margin="10,10,10,10" FontSize="15"/>
+                <CheckBox Grid.Column="0" x:Name="foodCheckBox" Content="{x:Bind foodName}" Padding="30,5,0,0" Checked="FoodCheckBox_Checked" Unchecked="FoodCheckBox_Unchecked"  Margin="10,5,10,10" FontSize="15"/>
+                <TextBlock Grid.Column="1" Text="Qty" Margin="10,15,10,10" FontWeight="Bold" FontSize="15"/>
+                <TextBox Grid.Column="2" Text="{x:Bind foodQuantity,Mode=TwoWay}" Margin="10,10,10,10" FontSize="15"/>
+                <TextBlock Grid.Column="3" Text="of" Margin="10,15,10,10" FontSize="15"/>
+                <ComboBox Grid.Column="4" ItemsSource="{x:Bind foodUnit}" SelectedItem="{x:Bind selectedFoodUnit, Mode=TwoWay}" Margin="10,10,10,10" FontSize="15"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel Background="White">
+    <StackPanel>
         <Frame Name="MainFrame"/>
         <TextBlock x:Name="meal" FontWeight="Bold" FontSize="15" Margin="10, 10, 0, 0" Foreground="#0958A7"/>
         <Line X1="0" Y1="10" X2="1000" Y2="10" Stroke="#D9D9D9" StrokeThickness="2"/>
@@ -36,46 +40,82 @@
         </StackPanel >
 
         <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-            <TextBox x:Name="searchBox" PlaceholderText="Search for food"  Width="300" Height="30"/>
+            <TextBox x:Name="searchBox" PlaceholderText="Search for food"  Width="300" Height="30" TextChanged="SearchBox_TextChanged"/>
             <Button Content="Search" Foreground="#FFFFFF" FontWeight="Bold" Click="SearchButton_Click" Background="#08964F" Margin="10, 0, 0, 0"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,50,0,0">
-            <Button FontWeight="Bold" Foreground="#FFFFFF" Width="90" Height="40" FontSize="15" Background="#084F96" Content="Recent" Click="Button_Click" Tag="Recent" Margin="0,0,5,0"/>
-            <Button FontWeight="Bold" Foreground="#FFFFFF" Width="100" Height="40" FontSize="15" Background="#084F96" Content="Frequency" Click="Button_Click" Tag="Frequency" Margin="0,0,5,0"/>
-            <Button FontWeight="Bold" Foreground="#FFFFFF" Width="90" Height="40" FontSize="15" Background="#084F96" Content="My Food" Click="Button_Click" Tag="MyFood" Margin="0,0,5,0"/>
-            <Button FontWeight="Bold" Foreground="#FFFFFF" Width="90" Height="40" FontSize="15" Background="#084F96" Content="Meal" Click="Button_Click" Tag="Meal" Margin="0,0,15,0"/>
+            <Button x:Name="RecentButton" FontWeight="Bold" Foreground="#FFFFFF" Width="90" Height="40" FontSize="15" Background="#084F96" Content="Recent" Click="ButtonRecentFrenquencyMyFood_Click" Tag="Recent" Margin="0,0,5,0"/>
+            <Button x:Name="FrequentButton" FontWeight="Bold" Foreground="#FFFFFF" Width="100" Height="40" FontSize="15" Background="#084F96" Content="Frequency" Click="ButtonRecentFrenquencyMyFood_Click" Tag="Frequency" Margin="0,0,5,0"/>
+            <Button x:Name="MyFoodButton" FontWeight="Bold" Foreground="#FFFFFF" Width="90" Height="40" FontSize="15" Background="#084F96" Content="My Food" Click="ButtonRecentFrenquencyMyFood_Click" Tag="MyFood" Margin="0,0,5,0"/>
         </StackPanel>
+
+        <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#D9D9D9" StrokeThickness="4"/>
+
         
-        <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#D9D9D9" StrokeThickness="2"/>
+         <!--List view of Recent-->
+        <ListView x:Name="foodRecentListView" Margin="10,10,10,10"
+                   ItemsSource="{x:Bind viewModel.foodRecent, Mode=TwoWay}"
+                   ItemTemplate="{StaticResource foodList}"
+                   Visibility="Collapsed" Height="400">
+        </ListView>
+        <!--Show anouncement if you haven't add food on "Recent"-->
+        <TextBlock x:Name="showNoneAnouncementFoodRecent" Visibility="Collapsed" Margin="10,10,10,10" TextWrapping="Wrap" Height="400">
+             <Run x:Name="firstRunFoodRecent"/>
+             <LineBreak/>
+             <LineBreak/>
+             <Run FontWeight="Bold" Text="TIP:"/>
+             <Run x:Name="secondRunFoodRecent"
+                  Text=" As you enter foods to your food diary, the foods you've 
+                  eaten most recently will appear in this list so that you can quickly 
+                  add them to your meals."/>    
+        </TextBlock>
 
-        <!--List view of Recent-->
-        <ItemsControl x:Name="foodRecentListView" Margin="10,10,10,10"
-              ItemsSource="{x:Bind viewModel.foodRecent, Mode=TwoWay}"
-              ItemTemplate="{StaticResource foodList}"
-              Visibility="Collapsed">
-        </ItemsControl>
-
+        
         <!--List view of Frequent-->
-        <ItemsControl x:Name="foodFrequentListView" Margin="10,10,10,10"
-               ItemsSource="{x:Bind viewModel.foodFrequent, Mode=TwoWay}"
-               ItemTemplate="{StaticResource foodList}"
-               Visibility="Collapsed">
-        </ItemsControl>
+        <ListView x:Name="foodFrequentListView" Margin="10,10,10,10"
+                   ItemsSource="{x:Bind viewModel.foodFrequent, Mode=TwoWay}"
+                   ItemTemplate="{StaticResource foodList}"
+                   Visibility="Collapsed" Height="400">
+        </ListView>
+        <!--Show anouncement if you haven't add food on "Frequency"-->
+        <TextBlock x:Name="showNoneAnouncementFoodFrequent" Visibility="Collapsed" Margin="10,10,10,10" TextWrapping="Wrap" Height="400">
+            <Run x:Name="firstRunFoodFrequent"/>
+            <LineBreak/>
+            <LineBreak/>
+            <Run FontWeight="Bold" Text="TIP:"/>
+            <Run x:Name="secondRunFoodFrequent"/>   
+        </TextBlock>
 
-        <!--List view of My Food-->
-        <ItemsControl x:Name="foodMyFoodListView" Margin="10,10,10,10"
-           ItemsSource="{x:Bind viewModel.foodMyFood, Mode=TwoWay}"
-           ItemTemplate="{StaticResource foodList}"
-           Visibility="Collapsed">
-        </ItemsControl>
         
-        <!--List view of Meal-->
-        <ItemsControl x:Name="foodMealListView" Margin="10,10,10,10"
-           ItemsSource="{x:Bind viewModel.foodMeal, Mode=TwoWay}"
-           ItemTemplate="{StaticResource foodList}"
-           Visibility="Collapsed">
-        </ItemsControl>
+        <!--List view of My Food-->
+        <ListView x:Name="foodMyFoodListView" Margin="10,10,10,10"
+            ItemsSource="{x:Bind viewModel.foodMyFood, Mode=TwoWay}"
+            ItemTemplate="{StaticResource foodList}"
+            Visibility="Collapsed" Height="400">
+        </ListView>
+        <!--Show anouncement if you haven't add food on "My Food"-->
+        <TextBlock x:Name="showNoneAnouncementFoodFMyFood" Visibility="Collapsed" Margin="10,10,10,10" TextWrapping="Wrap" Height="400">
+             <Run x:Name="firstRunFoodMyFood" Text="You have not created any personal foods yet."/>
+             <LineBreak/>
+             <LineBreak/>
+             <Run FontWeight="Bold" Text="TIP:"/>
+             <Run x:Name="secondRunFoodMyFood" 
+                 Text=" If you cannot find a food in the database, you can create your own personal food. Foods that you create will appear in this list for easy access."/>
+        </TextBlock>
+        
+        
+        <!--Add Checked and Delete Button-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="addCheckedButton" Content="Add Checked" Foreground="#FFFFFF" FontWeight="Bold" 
+                 Width="120" Height="40" FontSize="15" 
+                 Background="#08964F" Click="AddChecked_Click" Margin="10,10,0,0"/>
+
+            <Button x:Name="deleteItemsButton" Content="Delete From The List" Foreground="#FFFFFF" FontWeight="Bold" 
+                 Width="200" Height="40" FontSize="15" 
+                 Background="#08964F" Click="DeleteItems_Click" Margin="100,10,0,0"/>
+        </StackPanel>
+       
 
     </StackPanel>
 </Page>

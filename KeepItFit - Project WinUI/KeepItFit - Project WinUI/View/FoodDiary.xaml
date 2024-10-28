@@ -7,43 +7,65 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Enabled">
+    
     <Page.Resources>
+        <!-- Converter zone-->
+        <local:ValueToColorConverter x:Key="ColorConverter"/>
 
         <!-- >>>>>>>>>>>>>>>>>>>>>>>Label template <<<<<<<<<<<<<<<<<<<< -->
         <DataTemplate x:Key="Nutrition_Lable" x:DataType="local:Nutritions">
             <StackPanel>
-                <Border Background="#0000FF" Width="80" Height="40" 
-                    BorderThickness="3">
-                    <TextBlock Text="{x:Bind name}" FontWeight="Bold" Foreground="White"
-                HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Border Background="#0000FF" Width="80" Height="auto" 
+                        BorderThickness="3" >
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{x:Bind name}" FontWeight="Bold" Foreground="White"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </TextBlock>
+                        <TextBlock Text="{x:Bind unit}" FontWeight="Bold" Foreground="LightGray"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    
                 </Border>
             </StackPanel>
         </DataTemplate>
         <!-- >>>>>>>>>>>>>>>>>>>>>>>Label template <<<<<<<<<<<<<<<<<<<< -->
 
+        
         <!-- Meal template-->
         <DataTemplate x:Key="meal" x:DataType="local:Meals">
             <StackPanel Orientation="Vertical">
-                <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
-             FontSize="15" FontWeight="Bold"
-             Text="{x:Bind mealName}">
-                </TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
+                               FontSize="15" FontWeight="Bold"
+                               Text="{x:Bind mealName}">
+                    </TextBlock>
+                    
+                </StackPanel>
+                
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
                     <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
                     <TextBlock Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
-                    Quick Tools
+                        Quick Tools
                     </TextBlock>
                 </StackPanel>
                 <Line Stroke="SteelBlue"
-                  X1="0" Y1="0"
-                  X2="800" Y2="0"
-                  StrokeThickness="2" Margin="0 10 0 10"/>
+                      X1="0" Y1="0"
+                      X2="800" Y2="0"
+                      StrokeThickness="2" Margin="0 10 0 10"/>
             </StackPanel>
         </DataTemplate>
         <!-- Meal template-->
+        
+        
+        <DataTemplate x:Key="Nutrition_Data" x:DataType="local:Nutritions">
+            <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="80"
+                    BorderThickness="3">
+                <TextBlock Text="{x:Bind Total}" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+        </DataTemplate>
 
 
         <!-- >>>>>>>>>>>>>>>>> Template for table <<<<<<<<<<<<<<<<<<<-->
@@ -61,29 +83,30 @@
                 </Grid.ColumnDefinitions>
                 <!-- Nutrition total-->
                 <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="80"
-                    BorderThickness="3">
+                        BorderThickness="3">
                     <TextBlock Text="{x:Bind Total}" FontWeight="Bold" HorizontalAlignment="Center"/>
                 </Border>
 
                 <!-- Nutrition Daily-->
                 <Border Grid.Row="1" Grid.Column="1" Background="LightGray" Width="80"
-                    BorderThickness="3">
+                        BorderThickness="3">
                     <TextBlock Text="{x:Bind Daily}" FontWeight="Bold" HorizontalAlignment="Center"/>
                 </Border>
-
+                
                 <!-- Nutrition remain
-                remain = total - daily-->
+                    remain = total - daily-->
                 <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="80"
-                    BorderThickness="3">
-                    <TextBlock  Text="{x:Bind Remain}" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        BorderThickness="3">
+                    <TextBlock Text="{x:Bind Remain}" FontWeight="Bold" HorizontalAlignment="Center"
+                               Foreground="{x:Bind Remain,Converter={StaticResource ColorConverter}}"/>
                 </Border>
 
                 <!-- Nutrition Label-->
                 <Border Grid.Row="3" Grid.Column="1" Background="#0000FF" Width="80" Height="30"
-                    BorderThickness="3">
+                        BorderThickness="3">
                     <TextBlock Text="{x:Bind name}" FontWeight="Bold" HorizontalAlignment="Center"
-               Foreground="White" 
-               VerticalAlignment="Center"/>
+                   Foreground="White" 
+                   VerticalAlignment="Center"/>
                 </Border>
             </Grid>
         </DataTemplate>
@@ -98,12 +121,12 @@
 
     <!-- Main content-->
     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center"
-         Width="auto" Height="auto">
+             Width="auto" Height="auto">
         <!-- Calendar infor-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
-                FontSize="15" FontWeight="Bold">
-         Your exercise Daily for
+                    FontSize="15" FontWeight="Bold">
+             Your exercise Daily for
             </TextBlock>
             <Button>
                 <FontIcon Glyph="&#xE76B;"/>
@@ -114,24 +137,26 @@
             </Button>
         </StackPanel>
         <Line Stroke="SteelBlue"
-       X1="0" Y1="0"
-       X2="800" Y2="0"
-       StrokeThickness="2" Margin="0 10 0 10"/>
+           X1="0" Y1="0"
+           X2="800" Y2="0"
+           StrokeThickness="2" Margin="0 10 0 10"/>
 
         <!-- Nutritions Label MVVM-->
         <ItemsControl ItemsSource="{x:Bind nutri.nutrition}"
-                  ItemTemplate="{StaticResource Nutrition_Lable}"
-                  ItemsPanel="{StaticResource HorizalFormat}"
-                  HorizontalAlignment="Right">
+                      ItemTemplate="{StaticResource Nutrition_Lable}"
+                      ItemsPanel="{StaticResource HorizalFormat}"
+                      HorizontalAlignment="Right"
+                      Name="Nutrion_list">
 
         </ItemsControl>
-
+        
         <!-- Meal information-->
-        <ItemsControl ItemsSource="{x:Bind nutri.mealList}"
-                  ItemTemplate="{StaticResource meal}">
-
+        <ItemsControl Name="mealInfor"
+                      ItemsSource="{x:Bind nutri.mealList}"
+                      ItemTemplate="{StaticResource meal}">
+                      
         </ItemsControl>
-
+        
         <!-- Summary Table-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel Orientation="Vertical" Margin="0 0 20 0">
@@ -142,12 +167,12 @@
 
             <!-- Calculate nutritions-->
             <ItemsControl ItemsSource="{x:Bind nutri.nutrition}"
-          ItemTemplate="{StaticResource Nutrition_Table}"
-          ItemsPanel="{StaticResource HorizalFormat}">
+              ItemTemplate="{StaticResource Nutrition_Table}"
+              ItemsPanel="{StaticResource HorizalFormat}">
 
             </ItemsControl>
         </StackPanel>
-
+        
         <TextBlock HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">
         When you're done logging your food and exercise for that day, click here:
         </TextBlock>

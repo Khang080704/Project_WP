@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using KeepItFit___Project_WinUI.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -11,19 +13,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography.X509Certificates;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using Windows.UI.ViewManagement;
+using Microsoft.UI.Windowing;
+using Microsoft.UI;
 
 namespace KeepItFit___Project_WinUI
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
     public partial class App : Application
     {
         /// <summary>
@@ -32,18 +32,27 @@ namespace KeepItFit___Project_WinUI
         /// </summary>
         public App()
         {
+            
             this.InitializeComponent();
+            
         }
-
-        /// <summary>
-        /// Invoked when the application is launched.
-        /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();
+            // Lấy AppWindow từ WindowHandle
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
+            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
+
+            // Sử dụng OverlappedPresenter để chỉnh trạng thái cửa sổ
+            var presenter = appWindow.Presenter as OverlappedPresenter;
+            if (presenter != null)
+            {
+                presenter.Maximize();  // Phóng to cửa sổ
+            }
+
             m_window.Activate();
-        }
+        }        
 
         private Window m_window;
     }

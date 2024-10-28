@@ -10,41 +10,29 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KeepItFit___Project_WinUI
 {
+    
     public sealed partial class FoodDiary : Page
     {
-        public class DashBoardNutritions
-        {
-            public List<Nutritions> nutrition { get; set; }
-            public List<Meals> mealList { get; set; }
-            public void initNutrition()
-            {
-                IDao dao = new MockDAO();
-                nutrition = dao.GetAllNutrtion();
-
-            }
-            public void initMeal()
-            {
-                IDao dao = new MockDAO();
-                mealList = dao.GetAllMeals();
-            }
-        }
-
-        public DashBoardNutritions nutri { get; set; }
+        public NutritionsViewModel nutri { get; set; }
         public FoodDiary()
         {
             this.InitializeComponent();
-            nutri = new DashBoardNutritions();
+            nutri = new NutritionsViewModel();
             nutri.initNutrition();
             nutri.initMeal();
         }
+        
         private void TextBlock_Tapped_QuickAdd(object sender, TappedRoutedEventArgs e)
         {
             TextBlock mealClicked = sender as TextBlock;
@@ -64,6 +52,27 @@ namespace KeepItFit___Project_WinUI
             string mealName = meal.mealName;
             this.Frame.Navigate(typeof(AddFood), mealName);
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(e.Parameter is Dictionary<string, int[]>)
+            {
+                Dictionary<string, int[]> result = e.Parameter as Dictionary<string, int[]>;
+                
+                string name = result.Keys.First();
+                int[] list = result[name];
+                int count = 0;
+
+                foreach(var i in nutri.nutrition)
+                {
+                    i.Total += list[count++];
+                    i.Remain = i.Daily - i.Total;
+                }
+            }
+        }
+
+
 
     }
 }
