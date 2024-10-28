@@ -19,11 +19,11 @@
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="2.5*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox Grid.Column="0" x:Name="foodCheckBox" Content="{x:Bind foodName}" Padding="30,5,0,0" Checked="FoodCheckBox_Checked"  Margin="10,5,10,10" FontSize="15"/>
+                <CheckBox Grid.Column="0" x:Name="foodCheckBox" Content="{x:Bind foodName}" Padding="30,5,0,0" Checked="FoodCheckBox_Checked" Unchecked="FoodCheckBox_Unchecked"  Margin="10,5,10,10" FontSize="15"/>
                 <TextBlock Grid.Column="1" Text="Qty" Margin="10,15,10,10" FontWeight="Bold" FontSize="15"/>
                 <TextBox Grid.Column="2" Text="{x:Bind foodQuantity,Mode=TwoWay}" Margin="10,10,10,10" FontSize="15"/>
                 <TextBlock Grid.Column="3" Text="of" Margin="10,15,10,10" FontSize="15"/>
-                <ComboBox Grid.Column="4" ItemsSource="{x:Bind foodUnit}" SelectedItem="{x:Bind foodUnit, Mode=TwoWay}" Margin="10,10,10,10" FontSize="15"/>
+                <ComboBox Grid.Column="4" ItemsSource="{x:Bind foodUnit}" SelectedItem="{x:Bind selectedFoodUnit, Mode=TwoWay}" Margin="10,10,10,10" FontSize="15"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -40,7 +40,7 @@
         </StackPanel >
 
         <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-            <TextBox x:Name="searchBox" PlaceholderText="Search for food"  Width="300" Height="30"/>
+            <TextBox x:Name="searchBox" PlaceholderText="Search for food"  Width="300" Height="30" TextChanged="SearchBox_TextChanged"/>
             <Button Content="Search" Foreground="#FFFFFF" FontWeight="Bold" Click="SearchButton_Click" Background="#08964F" Margin="10, 0, 0, 0"/>
         </StackPanel>
 
@@ -111,13 +111,11 @@
                  Width="120" Height="40" FontSize="15" 
                  Background="#08964F" Click="AddChecked_Click" Margin="10,10,0,0"/>
 
-            <Button x:Name="DeleteItemsButton" Content="Delete From The List" Foreground="#FFFFFF" FontWeight="Bold" 
+            <Button x:Name="deleteItemsButton" Content="Delete From The List" Foreground="#FFFFFF" FontWeight="Bold" 
                  Width="200" Height="40" FontSize="15" 
-                 Background="#08964F" Click="AddChecked_Click" Margin="100,10,0,0"/>
+                 Background="#08964F" Click="DeleteItems_Click" Margin="100,10,0,0"/>
         </StackPanel>
        
-        
-        
 
     </StackPanel>
 </Page>

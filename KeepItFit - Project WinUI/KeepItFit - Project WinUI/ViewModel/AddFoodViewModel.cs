@@ -15,6 +15,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public ObservableCollection<Food> foodFrequent { get; set; }
         public ObservableCollection<Food> foodMyFood { get; set; } //Update later -> don't understand what its function
 
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void init()
@@ -23,7 +24,6 @@ namespace KeepItFit___Project_WinUI.ViewModel
             foodRecent = dao.GetFoodRecent();
             foodFrequent = dao.GetFoodFrequent();
         }
-
         
     }
 }

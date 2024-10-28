@@ -14,6 +14,8 @@ namespace KeepItFit___Project_WinUI.Model
         public ObservableCollection<Food> GetFoodRecent();
         public ObservableCollection<Food> GetFoodFrequent();
         public List<Nutritions> GetAllNutrtion();
+
+        public ObservableCollection<Food> GetFoodDatabase();
     }
 
 }

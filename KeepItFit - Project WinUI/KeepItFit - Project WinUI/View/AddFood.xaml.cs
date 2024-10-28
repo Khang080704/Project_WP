@@ -31,6 +31,10 @@ namespace KeepItFit___Project_WinUI.View
 
         private string mealName; //Breakfast, Lunch, Dinner, Snacks
 
+        private List<Food> foodListRecent_Checked = new List<Food>();
+        private List<Food> foodListFrequent_Checked = new List<Food>();
+        private List<Food> foodListMyFood_Checked = new List<Food>();
+
         public AddFood()
         {
             this.InitializeComponent();
@@ -141,48 +145,134 @@ namespace KeepItFit___Project_WinUI.View
             }
         }
 
-
         //CheckBox for each food item in a list
         private void FoodCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox checkBox = sender as CheckBox;
-            
-            if (checkBox != null)
-            {
-                Food foodItem = checkBox.DataContext as Food;
 
-                if (foodItem != null)
-                {
-                    if (viewModel.foodRecent.Contains(foodItem))
-                    {
-                        //viewModel.foodRecent.Remove(foodItem); 
-                    }
-                    else if (viewModel.foodFrequent.Contains(foodItem))
-                    {
-                        //viewModel.foodFrequent.Remove(foodItem);
-                    }
-                    else if (viewModel.foodMyFood.Contains(foodItem))
-                    {
-                        //viewModel.foodMyFood.Remove(foodItem);
-                    }
-                }
+            Food foodItem = checkBox.DataContext as Food;
+
+            if (viewModel.foodRecent.Contains(foodItem))
+            {
+                foodListRecent_Checked.Add(foodItem);
+            }
+            else if (viewModel.foodFrequent.Contains(foodItem))
+            {
+                foodListFrequent_Checked.Add(foodItem);
+            }
+            else if (viewModel.foodMyFood.Contains(foodItem))
+            {
+                foodListMyFood_Checked.Add(foodItem);
             }
         }
 
-        //Add the food you choose to the list of foods in a meal
-        private void AddChecked_Click(object sender, RoutedEventArgs e)
+        //Uncheck the CheckBox for each food item in a list
+        private void FoodCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            CheckBox checkBox = sender as CheckBox;
+
+            Food foodItem = checkBox.DataContext as Food;
+
+            if (viewModel.foodRecent.Contains(foodItem))
+            {
+                foodListRecent_Checked.Remove(foodItem);
+            }
+            else if (viewModel.foodFrequent.Contains(foodItem))
+            {
+                foodListFrequent_Checked.Remove(foodItem);
+            }
+            else if (viewModel.foodMyFood.Contains(foodItem))
+            {
+                foodListMyFood_Checked.Remove(foodItem);
+            }
 
         }
 
+        public class NavigationParameters_AddFood_ToFoodDiary
+        {
+            public List<Food> foodList { get; set; }
+            public string mealName { get; set; }
+
+        }
+
+        //Add the food you choose to the list of foods in a meal (navigate to FoodDiary)
+        private void AddChecked_Click(object sender, RoutedEventArgs e)
+        {
+            // parameters to pass to the next page
+            var parameters = new NavigationParameters_AddFood_ToFoodDiary
+            {
+                foodList = new List<Food>(),
+                mealName = mealName
+            };
+            if (_lastClickedButton == RecentButton)
+            {
+                this.Frame.Navigate(typeof(FoodDiary), parameters);
+            }
+            else if (_lastClickedButton == FrequentButton)
+            {
+                parameters.foodList = foodListFrequent_Checked;
+                this.Frame.Navigate(typeof(FoodDiary), parameters);
+            }
+            else if (_lastClickedButton == MyFoodButton)
+            {
+                parameters.foodList = foodListMyFood_Checked;
+                this.Frame.Navigate(typeof(FoodDiary), parameters);
+            }
+        }
+
+        //Move to the page to add calories to the food (navigate to FoodPage)
         private void HyperlinkToAddCaloriesPage_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(FoodPage), mealName);
         }
 
+        //Delete the food items you choose
+        private void DeleteItems_Click(object sender, RoutedEventArgs e)
+        {
+            if (_lastClickedButton == RecentButton)
+            {
+                foreach (Food food in foodListRecent_Checked)
+                {
+                    viewModel.foodRecent.Remove(food);
+                }
+            }
+            else if (_lastClickedButton == FrequentButton)
+            {
+                foreach (Food food in foodListFrequent_Checked)
+                {
+                    viewModel.foodFrequent.Remove(food);
+                }
+            }
+            else if (_lastClickedButton == MyFoodButton)
+            {
+                foreach (Food food in foodListMyFood_Checked)
+                {
+                    viewModel.foodMyFood.Remove(food);
+                }
+            } 
+        }
+
+        public class NavigationParameters_AddFood
+        {
+            public string Query { get; set; }
+            public string MealName { get; set; }
+        }
+
+        // Search for food in the Database (navigate to SearchFood)
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.Navigate(new AddFoodPage());
+            string query = searchBox.Text.ToLower();
+            var parameters = new NavigationParameters_AddFood
+            {
+                Query = query,
+                MealName = mealName
+            };
+            this.Frame.Navigate(typeof(SearchFood), parameters);
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
     }
 }

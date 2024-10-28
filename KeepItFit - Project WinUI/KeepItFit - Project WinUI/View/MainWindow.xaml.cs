@@ -26,6 +26,7 @@ namespace KeepItFit___Project_WinUI
         public MainWindow()
         {
             this.InitializeComponent();
+      
         }
 
         private void nvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

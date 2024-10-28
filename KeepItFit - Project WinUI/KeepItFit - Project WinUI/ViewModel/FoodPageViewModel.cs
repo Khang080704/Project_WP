@@ -14,13 +14,17 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public ObservableCollection<Meals> meals { get; set; }
         public List<Nutritions> nutritions { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public void init()
         {
             IDao dao = new MockDAO();
             meals = dao.GetAllMeals();
             nutritions = dao.GetAllNutrtion();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
