@@ -27,6 +27,7 @@ namespace KeepItFit___Project_WinUI
     public sealed partial class FoodDiary : Page
     {
         public NutritionsViewModel nutri { get; set; }
+        //init 4 variables, each variable responsive for a meal zone
         public InputNutritionViewModel BreakFastNutri { get; set; }
         public InputNutritionViewModel LunchNutri { get; set; }
         public InputNutritionViewModel DinnerNutri { get; set; }
@@ -92,17 +93,20 @@ namespace KeepItFit___Project_WinUI
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            // Dictionary chứa ten bữa ăn (breakfast, lunch,...) 
-            // và danh sách thông số chất dinh dưỡng (calo, carbs,...)
+            // Dictionary contains meal's name (breakfast, lunch,...) 
+            // and nutrition list (calo, carbs,...)
             if(e.Parameter is Dictionary<string, List<int>>)
             {
+                //Data send from FoodPage
                 Dictionary<string, List<int>> result = e.Parameter as Dictionary<string, List<int>>;
                 
                 string name = result.Keys.First(); //Get meal name
                 List<int> list = result[name]; //Nutrion data list
 
+                //Check meal's name, call the InputNutritionViewModel respectively
                 if (name == "BreakFast")
                 {
+                    //Add new list into viewModel
                     BreakFastNutri.update(list);
                   
                 }
@@ -119,6 +123,7 @@ namespace KeepItFit___Project_WinUI
                     SnackNutri.update(list);
                 }
 
+                //In the table, set all total's value = 0, calcaulate again
                 foreach (var i in nutri.nutrition)
                 {
                     i.Total = 0;
@@ -158,6 +163,7 @@ namespace KeepItFit___Project_WinUI
             }
             else if (e.Parameter is NavigationParameters_SearchFood parameters_2)
             {
+                //Search Food to FoodDiary
                 Food food = parameters_2.selectedFood;
                 string mealName = parameters_2.selectedMeal.mealName;
 
@@ -184,22 +190,16 @@ namespace KeepItFit___Project_WinUI
                 }
                 updateTotal();
             }
-            else if(e.Parameter is NavigationParameters_AddFood_ToFoodDiary parameters_1)
-            {
-                List<Food> foodList = parameters_1.foodList;
-                string mealName = parameters_1.mealName;
-
-                //?�y l� t? AddFood sang FoodDiary
-            }    
-            else if (e.Parameter is NavigationParameters_SearchFood parameters_2)
-            {
-                Food food = parameters_2.selectedFood;
-                string mealName = parameters_2.selectedMeal.mealName;
-
-                //?�y l� t? SearchFood sang FoodDiary
-            }
+            
         }
 
+        //nutri.nutrition contains list of nutritions in order
+        //[0] : calories
+        //[1]: Carbs
+        //...
+        //When add a new InputNutritionViewModel to list,
+        //update total's value of nutrion by calculate sum 
+        //of all elements in src
         void updateForMeal(InputNutritionViewModel src)
         {
             foreach (var i in src.NutritionData)
@@ -213,15 +213,14 @@ namespace KeepItFit___Project_WinUI
             }
             
         }
-
-
         void updateTotal()
         {
-            //Update for break
+            //Calculate the total's value of all meal
             updateForMeal(BreakFastNutri);
             updateForMeal(LunchNutri);
             updateForMeal(DinnerNutri);
             updateForMeal(SnackNutri);
+            //Cal the remain
             foreach (var i in nutri.nutrition)
             {
                 i.Remain = i.Daily - i.Total;
@@ -230,6 +229,7 @@ namespace KeepItFit___Project_WinUI
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            //Delete 1 line
             var btn = sender as Button;
             var itemToDelete = btn?.Tag as InputNutritionData;
             if (itemToDelete != null)
@@ -253,6 +253,7 @@ namespace KeepItFit___Project_WinUI
                 
             }
 
+            //Set value to 0 and calculate from begin
             foreach (var i in nutri.nutrition)
             {
                 i.Total = 0;

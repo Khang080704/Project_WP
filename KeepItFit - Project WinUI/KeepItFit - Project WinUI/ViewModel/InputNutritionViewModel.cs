@@ -7,30 +7,36 @@ using System.Threading.Tasks;
 
 namespace KeepItFit___Project_WinUI.ViewModel
 {
+    //This class is used to display a list of nutrition that send from
+    //another page
     public class InputNutritionViewModel
     {
+        //List of Nutrition
         public ObservableCollection<InputNutritionData> NutritionData { get; set; }
         public ObservableCollection<InputNutritionData> init()
         {
             var result = new ObservableCollection<InputNutritionData>();
             return result;
         }
+        //Received a list from QuickAdd, update it (add) to NutritionData
         public void update(List<int> src)
         {
             var result = new InputNutritionData()
             {
-                CaloriesInput = src[0],
-                CarbsInput = src[1],
-                FatInput = src[2],
-                ProteinInput = src[3],
-                SodiumInput = src[4],
-                SugarInput = src[5],
+                CaloriesInput = src[0], //Calories
+                CarbsInput = src[1], //Carbs
+                FatInput = src[2], //Fat
+                ProteinInput = src[3], //Protein
+                SodiumInput = src[4], //Sodium
+                SugarInput = src[5], //Sugar
             };
-           
+            //src[0], src[1],... are default order of nutrition list
             NutritionData.Add(result);
         }
+        //Received From page SearchFood
         public void updateWithFood(Food src)
         {
+            //Convert to number
             var result = new InputNutritionData()
             {
                 name = $"{src.foodName}, {src.foodQuantity} {src.selectedFoodUnit}",
@@ -43,6 +49,8 @@ namespace KeepItFit___Project_WinUI.ViewModel
             };
             NutritionData.Add(result);
         }
+
+        //Received a food list from AddFood page
         public void updateWithListFood(List<Food> src)
         {
             foreach(var i in src)

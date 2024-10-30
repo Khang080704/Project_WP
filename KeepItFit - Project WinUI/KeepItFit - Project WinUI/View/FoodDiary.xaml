@@ -100,28 +100,28 @@
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"
                             Grid.Row="0" Grid.Column="1">
-                    <Border Background="LightGray" Width="80" Height="auto">
+                    <Border Background="LightGray" Width="80" Height="auto" BorderThickness="3">
                         <TextBlock FontSize="15" Text="{x:Bind CaloriesInput}"
                                    TextAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
 
-                    <Border Background="LightGray" Width="80" Height="auto">
+                    <Border Background="LightGray" Width="80" Height="auto" BorderThickness="3">
                         <TextBlock Margin="5" FontSize="15" Text="{x:Bind CarbsInput}"
                                    TextAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-                    <Border Background="LightGray" Width="80" Height="auto">
+                    <Border Background="LightGray" Width="80" Height="auto" BorderThickness="3">
                         <TextBlock Margin="5" FontSize="15" Text="{x:Bind FatInput}"
                                    TextAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-                    <Border Background="LightGray" Width="80" Height="auto">
+                    <Border Background="LightGray" Width="80" Height="auto" BorderThickness="3">
                         <TextBlock Margin="5" FontSize="15" Text="{x:Bind ProteinInput}"
                                    TextAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-                    <Border Background="LightGray" Width="80" Height="auto">
+                    <Border Background="LightGray" Width="80" Height="auto" BorderThickness="3">
                         <TextBlock Margin="5" FontSize="15" Text="{x:Bind SodiumInput}"
                                    TextAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-                    <Border Background="LightGray" Width="80" Height="auto">
+                    <Border Background="LightGray" Width="80" Height="auto" BorderThickness="3">
                         <TextBlock Margin="5" FontSize="15" Text="{x:Bind SugarInput}"
                                    TextAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
@@ -169,7 +169,7 @@
                       ItemsPanel="{StaticResource HorizalFormat}"
                       HorizontalAlignment="Right"
                       Name="Nutrion_list"
-                      Margin="0 0 30 0">
+                      Margin="0 0 33 0">
 
         </ItemsControl>
         

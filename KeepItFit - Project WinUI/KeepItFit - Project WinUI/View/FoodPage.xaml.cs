@@ -48,6 +48,18 @@ namespace KeepItFit___Project_WinUI
             this.Frame.Navigate(typeof(FoodDiary));
             var screen = new FoodDiary();
         }
+        bool checkAllZero(List<int> src)
+        {
+            foreach(var i in src)
+            {
+                if(i != 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+            
+        }
 
         private void AddJournal_Click(object sender, RoutedEventArgs e)
         {
@@ -68,8 +80,15 @@ namespace KeepItFit___Project_WinUI
                 meal, nutritionAmount
                 );
 
-
-            this.Frame.Navigate(typeof(FoodDiary),parameters);
+            if (!checkAllZero(nutritionAmount))
+            {
+                this.Frame.Navigate(typeof(FoodDiary), parameters);
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(FoodDiary));
+            }
+            
         }
 
     }
