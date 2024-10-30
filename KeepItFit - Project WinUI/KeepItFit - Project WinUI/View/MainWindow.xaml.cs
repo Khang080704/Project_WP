@@ -18,6 +18,7 @@ using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.Storage;
 using System.Threading.Tasks;
+using KeepItFit___Project_WinUI.View;
 
 namespace KeepItFit___Project_WinUI
 {
@@ -41,6 +42,11 @@ namespace KeepItFit___Project_WinUI
             {
                 contentFrame.Navigate(typeof(ExercisePage));
             }
+            else if(selectedTag == "HomePage")
+            {
+                contentFrame.Navigate(typeof(HomePage));
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

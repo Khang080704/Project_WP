@@ -148,15 +148,11 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
                     FontSize="15" FontWeight="Bold">
-             Your exercise Daily for
+             Your food Daily for
             </TextBlock>
-            <Button>
-                <FontIcon Glyph="&#xE76B;"/>
-            </Button>
+            
             <CalendarDatePicker Width="200" PlaceholderText="Pick a date"/>
-            <Button>
-                <FontIcon Glyph="&#xE76C;"/>
-            </Button>
+           
         </StackPanel>
         <Line Stroke="SteelBlue"
            X1="0" Y1="0"
