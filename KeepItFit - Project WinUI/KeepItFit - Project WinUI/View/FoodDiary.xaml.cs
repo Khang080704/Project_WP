@@ -184,6 +184,20 @@ namespace KeepItFit___Project_WinUI
                 }
                 updateTotal();
             }
+            else if(e.Parameter is NavigationParameters_AddFood_ToFoodDiary parameters_1)
+            {
+                List<Food> foodList = parameters_1.foodList;
+                string mealName = parameters_1.mealName;
+
+                //?ây là t? AddFood sang FoodDiary
+            }    
+            else if (e.Parameter is NavigationParameters_SearchFood parameters_2)
+            {
+                Food food = parameters_2.selectedFood;
+                string mealName = parameters_2.selectedMeal.mealName;
+
+                //?ây là t? SearchFood sang FoodDiary
+            }
         }
 
         void updateForMeal(InputNutritionViewModel src)
