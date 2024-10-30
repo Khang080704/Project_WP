@@ -57,14 +57,13 @@ namespace KeepItFit___Project_WinUI
             {
                 meal = selectedMeal.ToString();
             }
-            int[] nutritionAmount = new int[viewModel.nutritions.Count];
-            int count = 0;
+            List<int> nutritionAmount = new List<int>();
             foreach(var i in viewModel.nutritions)
             {
-                nutritionAmount[count++] = i.input;
+                nutritionAmount.Add(i.input);
             }
 
-            var parameters = new Dictionary<string, int[]>();
+            var parameters = new Dictionary<string, List<int>>();
             parameters.Add(
                 meal, nutritionAmount
                 );

@@ -18,7 +18,7 @@
         <DataTemplate x:Key="Nutrition_Lable" x:DataType="local:Nutritions">
             <StackPanel>
                 <Border Background="#0000FF" Width="80" Height="auto" 
-                        BorderThickness="3" >
+                        BorderThickness="3">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{x:Bind name}" FontWeight="Bold" Foreground="White"
                                    HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -32,33 +32,6 @@
         </DataTemplate>
         <!-- >>>>>>>>>>>>>>>>>>>>>>>Label template <<<<<<<<<<<<<<<<<<<< -->
 
-        
-        <!-- Meal template-->
-        <DataTemplate x:Key="meal" x:DataType="local:Meals">
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
-                               FontSize="15" FontWeight="Bold"
-                               Text="{x:Bind mealName}">
-                    </TextBlock>
-                    
-                </StackPanel>
-                
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
-                    <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
-                    <TextBlock Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
-                        Quick Tools
-                    </TextBlock>
-                </StackPanel>
-                <Line Stroke="SteelBlue"
-                      X1="0" Y1="0"
-                      X2="800" Y2="0"
-                      StrokeThickness="2" Margin="0 10 0 10"/>
-            </StackPanel>
-        </DataTemplate>
-        <!-- Meal template-->
-        
         
         <DataTemplate x:Key="Nutrition_Data" x:DataType="local:Nutritions">
             <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="80"
@@ -84,7 +57,7 @@
                 <!-- Nutrition total-->
                 <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="80"
                         BorderThickness="3">
-                    <TextBlock Text="{x:Bind Total}" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{x:Bind Total, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Center"/>
                 </Border>
 
                 <!-- Nutrition Daily-->
@@ -97,8 +70,8 @@
                     remain = total - daily-->
                 <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="80"
                         BorderThickness="3">
-                    <TextBlock Text="{x:Bind Remain}" FontWeight="Bold" HorizontalAlignment="Center"
-                               Foreground="{x:Bind Remain,Converter={StaticResource ColorConverter}}"/>
+                    <TextBlock Text="{x:Bind Remain, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Center"
+                               Foreground="{x:Bind Remain,Converter={StaticResource ColorConverter}, Mode=OneWay}"/>
                 </Border>
 
                 <!-- Nutrition Label-->
@@ -111,10 +84,59 @@
             </Grid>
         </DataTemplate>
         <!-- >>>>>>>>>>>>>>>>> Template for table <<<<<<<<<<<<<<<<<<<-->
+        
+        <!-- Template for data pass from another screen-->
+        <DataTemplate x:Key="DataForm" x:DataType="local:InputNutritionData">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{x:Bind name}" HorizontalAlignment="Left"
+                           Grid.Row="0" Grid.Column="0"/>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"
+                            Grid.Row="0" Grid.Column="1">
+                    <Border Background="LightGray" Width="80" Height="auto">
+                        <TextBlock FontSize="15" Text="{x:Bind CaloriesInput}"
+                                   TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Border Background="LightGray" Width="80" Height="auto">
+                        <TextBlock Margin="5" FontSize="15" Text="{x:Bind CarbsInput}"
+                                   TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border Background="LightGray" Width="80" Height="auto">
+                        <TextBlock Margin="5" FontSize="15" Text="{x:Bind FatInput}"
+                                   TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border Background="LightGray" Width="80" Height="auto">
+                        <TextBlock Margin="5" FontSize="15" Text="{x:Bind ProteinInput}"
+                                   TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border Background="LightGray" Width="80" Height="auto">
+                        <TextBlock Margin="5" FontSize="15" Text="{x:Bind SodiumInput}"
+                                   TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border Background="LightGray" Width="80" Height="auto">
+                        <TextBlock Margin="5" FontSize="15" Text="{x:Bind SugarInput}"
+                                   TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Button Name="Delete" Click="Delete_Click" Tag="{x:Bind}" >X</Button>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        
 
         <!-- >>>>>>>>>>>>>>>>>> Format for ItemResource <<<<<<<<<<<<<<<<-->
         <ItemsPanelTemplate x:Key="HorizalFormat">
             <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        <ItemsPanelTemplate x:Key="VerticalFormat">
+            <StackPanel Orientation="Vertical"/>
         </ItemsPanelTemplate>
         <!-- >>>>>>>>>>>>>>>>>> Format for ItemResource <<<<<<<<<<<<<<<<-->
     </Page.Resources>
@@ -146,19 +168,133 @@
                       ItemTemplate="{StaticResource Nutrition_Lable}"
                       ItemsPanel="{StaticResource HorizalFormat}"
                       HorizontalAlignment="Right"
-                      Name="Nutrion_list">
+                      Name="Nutrion_list"
+                      Margin="0 0 30 0">
 
         </ItemsControl>
         
         <!-- Meal information-->
-        <ItemsControl Name="mealInfor"
-                      ItemsSource="{x:Bind nutri.mealList}"
-                      ItemTemplate="{StaticResource meal}">
-                      
-        </ItemsControl>
+        <ScrollView Height="350" Width="auto" IsTabStop="True">
+            <!-- BreakFast-->
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
+                            FontSize="15" FontWeight="Bold"
+                            Text="BreakFast">
+                        </TextBlock>
+
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{x:Bind BreakFastNutri.NutritionData}"
+                                ItemTemplate="{StaticResource DataForm}"
+                                ItemsPanel="{StaticResource VerticalFormat}"
+                                Name="BreakFast_data">
+                    </ItemsControl>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="BreakFast" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
+                        <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
+                        <TextBlock Name="_BreakFast" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
+                            Quick Tools
+                        </TextBlock>
+                    </StackPanel>
+                    <Line Stroke="SteelBlue"
+                        X1="0" Y1="0"
+                        X2="800" Y2="0"
+                        StrokeThickness="2" Margin="0 10 0 10"/>
+                </StackPanel>
+
+                <!-- Lunch-->
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
+                                FontSize="15" FontWeight="Bold"
+                                Text="Lunch">
+                        </TextBlock>
+
+                    </StackPanel>
+
+                    <ItemsControl ItemsSource="{x:Bind LunchNutri.NutritionData}"
+                                ItemTemplate="{StaticResource DataForm}"
+                                ItemsPanel="{StaticResource VerticalFormat}"
+                                Name="Lunch_data">
+                    </ItemsControl>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="Lunch" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
+                        <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
+                        <TextBlock Name="_Lunch" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
+                            Quick Tools
+                        </TextBlock>
+                    </StackPanel>
+                    <Line Stroke="SteelBlue"
+                        X1="0" Y1="0"
+                        X2="800" Y2="0"
+                        StrokeThickness="2" Margin="0 10 0 10"/>
+                </StackPanel>
+
+                <!-- Dinner-->
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
+                            FontSize="15" FontWeight="Bold"
+                            Text="Dinner">
+                        </TextBlock>
+
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{x:Bind DinnerNutri.NutritionData}"
+                        ItemTemplate="{StaticResource DataForm}"
+                        Name="Dinner_data">
+
+                    </ItemsControl>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="Dinner" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
+                        <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
+                        <TextBlock Name="_Dinner" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
+                            Quick Tools
+                        </TextBlock>
+                    </StackPanel>
+                    <Line Stroke="SteelBlue"
+                        X1="0" Y1="0"
+                        X2="800" Y2="0"
+                        StrokeThickness="2" Margin="0 10 0 10"/>
+                </StackPanel>
+
+                <!-- Snacks-->
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="#0000FF" Margin="10 0 10 10"
+                            FontSize="15" FontWeight="Bold"
+                            Text="Snacks">
+                        </TextBlock>
+
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{x:Bind SnackNutri.NutritionData}"
+                        ItemTemplate="{StaticResource DataForm}"
+                        Name="Snacks_data">
+
+                    </ItemsControl>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="Snacks" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_Meal">Add Food</TextBlock>
+                        <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
+                        <TextBlock Name="_Snacks" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
+                            Quick Tools
+                        </TextBlock>
+                    </StackPanel>
+                    <Line Stroke="SteelBlue"
+                        X1="0" Y1="0"
+                        X2="800" Y2="0"
+                        StrokeThickness="2" Margin="0 10 0 10"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollView>
+
         
+
         <!-- Summary Table-->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Margin="0 15 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel Orientation="Vertical" Margin="0 0 20 0">
                 <TextBlock HorizontalAlignment="Right" Text="Total" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
                 <TextBlock Margin="0 10 0 0" HorizontalAlignment="Right" Text="Your Daily Goal" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
