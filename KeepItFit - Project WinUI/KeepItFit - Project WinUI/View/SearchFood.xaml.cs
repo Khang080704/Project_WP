@@ -117,7 +117,7 @@ namespace KeepItFit___Project_WinUI.View
             // parameters to pass to the next page
             var parameters = new NavigationParameters_SearchFood
             {
-                selectedFood = viewModel.SelectedFood, 
+                selectedFood = viewModel.SelectedFood,                
                 selectedMeal = viewModel.SelectedMeal
             };
 

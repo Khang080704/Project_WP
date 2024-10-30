@@ -206,16 +206,28 @@ namespace KeepItFit___Project_WinUI.View
             };
             if (_lastClickedButton == RecentButton)
             {
+                if (foodListRecent_Checked.Count == 0)
+                {
+                    return;
+                }
                 parameters.foodList = foodListRecent_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
             }
             else if (_lastClickedButton == FrequentButton)
             {
+                if (foodListFrequent_Checked.Count == 0)
+                {
+                    return;
+                }
                 parameters.foodList = foodListFrequent_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
             }
             else if (_lastClickedButton == MyFoodButton)
             {
+                if (foodListMyFood_Checked.Count == 0)
+                {
+                    return;
+                }
                 parameters.foodList = foodListMyFood_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
             }
@@ -236,6 +248,7 @@ namespace KeepItFit___Project_WinUI.View
                 {
                     viewModel.foodRecent.Remove(food);
                 }
+                foodListRecent_Checked.Clear();
             }
             else if (_lastClickedButton == FrequentButton)
             {
@@ -243,6 +256,7 @@ namespace KeepItFit___Project_WinUI.View
                 {
                     viewModel.foodFrequent.Remove(food);
                 }
+                foodListFrequent_Checked.Clear();
             }
             else if (_lastClickedButton == MyFoodButton)
             {
@@ -250,6 +264,7 @@ namespace KeepItFit___Project_WinUI.View
                 {
                     viewModel.foodMyFood.Remove(food);
                 }
+                foodListMyFood_Checked.Clear();
             } 
         }
 

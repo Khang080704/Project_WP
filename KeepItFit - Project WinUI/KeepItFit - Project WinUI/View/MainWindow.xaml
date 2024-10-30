@@ -25,10 +25,10 @@
         </NavigationView.PaneHeader>
 
         <NavigationView.MenuItems >
-            <NavigationViewItem  FontWeight="Bold" Icon="Play" Content="Home" Tag="HomePage"/>
-            <NavigationViewItem  FontWeight="Bold" Icon="Save" Content="Food" Tag="FoodDiary" />
-            <NavigationViewItem  FontWeight="Bold" Icon="Refresh" Content="Exercise" Tag="ExercisePage" />
-            <NavigationViewItem  FontWeight="Bold" Icon="Download" Content="Proteins" Tag="ProteinPage" />
+            <NavigationViewItem  FontWeight="Bold" Icon="Home" Content="Home" Tag="HomePage"/>
+            <NavigationViewItem  FontWeight="Bold" Icon="Favorite" Content="Food" Tag="FoodDiary" />
+            <NavigationViewItem  FontWeight="Bold" Icon="Admin" Content="Exercise" Tag="ExercisePage" />
+            <NavigationViewItem  FontWeight="Bold" Icon="Accept" Content="Proteins" Tag="ProteinPage" />
         </NavigationView.MenuItems>
 
         <NavigationView.FooterMenuItems>
