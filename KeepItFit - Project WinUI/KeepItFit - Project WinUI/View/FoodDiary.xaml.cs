@@ -18,6 +18,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Microsoft.Extensions.DependencyInjection;
+using static KeepItFit___Project_WinUI.View.AddFood;
+using static KeepItFit___Project_WinUI.View.SearchFood;
 
 namespace KeepItFit___Project_WinUI
 {
@@ -69,6 +71,20 @@ namespace KeepItFit___Project_WinUI
                     i.Total += list[count++];
                     i.Remain = i.Daily - i.Total;
                 }
+            }
+            else if(e.Parameter is NavigationParameters_AddFood_ToFoodDiary parameters_1)
+            {
+                List<Food> foodList = parameters_1.foodList;
+                string mealName = parameters_1.mealName;
+
+                //?ây là t? AddFood sang FoodDiary
+            }    
+            else if (e.Parameter is NavigationParameters_SearchFood parameters_2)
+            {
+                Food food = parameters_2.selectedFood;
+                string mealName = parameters_2.selectedMeal.mealName;
+
+                //?ây là t? SearchFood sang FoodDiary
             }
         }
 

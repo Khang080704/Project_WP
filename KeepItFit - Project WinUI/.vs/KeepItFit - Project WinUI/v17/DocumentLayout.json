@@ -1,0 +1,107 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|c:\\github\\project_wp_\\keepitfit - project winui\\keepitfit - project winui\\view\\addfood.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|solutionrelative:keepitfit - project winui\\view\\addfood.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|c:\\github\\project_wp_\\keepitfit - project winui\\keepitfit - project winui\\view\\fooddiary.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|solutionrelative:keepitfit - project winui\\view\\fooddiary.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|c:\\github\\project_wp_\\keepitfit - project winui\\keepitfit - project winui\\view\\fooddiary.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|solutionrelative:keepitfit - project winui\\view\\fooddiary.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|c:\\github\\project_wp_\\keepitfit - project winui\\keepitfit - project winui\\view\\searchfood.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|solutionrelative:keepitfit - project winui\\view\\searchfood.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|c:\\github\\project_wp_\\keepitfit - project winui\\keepitfit - project winui\\view\\addfood.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CA0D8D87-5059-4ECC-A836-EE38C1C1BC8E}|KeepItFit - Project WinUI\\KeepItFit - Project WinUI.csproj|solutionrelative:keepitfit - project winui\\view\\addfood.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddFood.xaml.cs",
+              "DocumentMoniker": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\AddFood.xaml.cs",
+              "RelativeDocumentMoniker": "KeepItFit - Project WinUI\\View\\AddFood.xaml.cs",
+              "ToolTip": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\AddFood.xaml.cs",
+              "RelativeToolTip": "KeepItFit - Project WinUI\\View\\AddFood.xaml.cs",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAAwAoBAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T04:56:06.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FoodDiary.xaml",
+              "DocumentMoniker": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\FoodDiary.xaml",
+              "RelativeDocumentMoniker": "KeepItFit - Project WinUI\\View\\FoodDiary.xaml",
+              "ToolTip": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\FoodDiary.xaml",
+              "RelativeToolTip": "KeepItFit - Project WinUI\\View\\FoodDiary.xaml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-30T07:46:55.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FoodDiary.xaml.cs",
+              "DocumentMoniker": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\FoodDiary.xaml.cs",
+              "RelativeDocumentMoniker": "KeepItFit - Project WinUI\\View\\FoodDiary.xaml.cs",
+              "ToolTip": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\FoodDiary.xaml.cs",
+              "RelativeToolTip": "KeepItFit - Project WinUI\\View\\FoodDiary.xaml.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAwwE0AAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T04:55:17.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SearchFood.xaml.cs",
+              "DocumentMoniker": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\SearchFood.xaml.cs",
+              "RelativeDocumentMoniker": "KeepItFit - Project WinUI\\View\\SearchFood.xaml.cs",
+              "ToolTip": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\SearchFood.xaml.cs",
+              "RelativeToolTip": "KeepItFit - Project WinUI\\View\\SearchFood.xaml.cs",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAswHUAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T04:58:48.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddFood.xaml",
+              "DocumentMoniker": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\AddFood.xaml",
+              "RelativeDocumentMoniker": "KeepItFit - Project WinUI\\View\\AddFood.xaml",
+              "ToolTip": "C:\\GitHub\\Project_WP_\\KeepItFit - Project WinUI\\KeepItFit - Project WinUI\\View\\AddFood.xaml",
+              "RelativeToolTip": "KeepItFit - Project WinUI\\View\\AddFood.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-30T04:54:44.609Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
