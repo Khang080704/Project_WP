@@ -21,6 +21,7 @@
     <None Remove="ExercisePage.xaml" />
     <None Remove="FoodDiary.xaml" />
     <None Remove="FoodPage.xaml" />
+    <None Remove="View\HomePage.xaml" />
     <None Remove="View\SearchFood.xaml" />
   </ItemGroup>
 
@@ -57,6 +58,9 @@
     <None Update="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="ExercisePage.xaml">
