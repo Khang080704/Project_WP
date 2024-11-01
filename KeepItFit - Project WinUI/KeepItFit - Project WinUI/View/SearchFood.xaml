@@ -67,9 +67,22 @@
                 <TextBlock Text="{x:Bind foodName, Mode=TwoWay}" TextAlignment="Center" Foreground="#E63838" FontSize="20" FontWeight="Bold" Margin="10,10,10,10" TextWrapping="Wrap"/>
                 <TextBlock Text="How much?" FontSize="20" FontWeight="Bold" Foreground="#2776A1" Margin="10,10,10,10" TextAlignment="Center"/>
                 <TextBox Text="{x:Bind foodQuantity, Mode=TwoWay}" Margin="10,5,10,10" FontSize="15" HorizontalAlignment="Center" TextChanged="FoodQuantity_TextChanged" LostFocus="FoodQuantity_LostFocus"/>
+                
+                <!--Show error if user didn't enter food quantity correctly-->
+                <TextBlock Grid.Column="4" x:Name="foodQuantityError" Foreground="Red" FontSize="12" 
+                    Visibility="{x:Bind foodQuantityErrorVisibility, Mode=TwoWay}" 
+                    Text="Please enter a valid number > 0." 
+                    Margin="10,0,10,10" HorizontalAlignment="Center"/>
+
                 <TextBlock Text="servings of" Margin="10,5,10,10" FontSize="15" TextAlignment="Center" />
                 <ComboBox ItemsSource="{x:Bind foodUnit, Mode=TwoWay}" SelectedItem="{x:Bind selectedFoodUnit, Mode=TwoWay}"
-                          Margin="10,5,10,10" FontSize="15" HorizontalAlignment="Center"/>
+                    Margin="10,5,10,10" FontSize="15" HorizontalAlignment="Center"/>
+
+                <!--Show error if user didn't choose food unit-->
+                <TextBlock x:Name="foodUnitError" Foreground="Red" FontSize="12" 
+                    Visibility="{x:Bind foodUnitErrorVisibility, Mode=TwoWay}" 
+                    Text="Please choose food unit." 
+                    Margin="10,0,10,10" HorizontalAlignment="Center"/>
             </StackPanel>
         </DataTemplate>
 
@@ -130,14 +143,14 @@
                     <ContentControl ContentTemplate="{StaticResource foodChosen_HowMuch}" 
                                     Content="{x:Bind viewModel.SelectedFood, Mode=TwoWay}"
                                     HorizontalAlignment="Center"/>
+
                     <TextBlock Text="Add Food To Which Meal?" FontSize="20" FontWeight="Bold" 
                                Foreground="#2776A1" Margin="10,20,10,10" TextAlignment="Center" TextWrapping="Wrap"/>
+
                     <ComboBox ItemsSource="{x:Bind viewModel.meals, Mode=TwoWay}" 
                               SelectedItem="{x:Bind viewModel.SelectedMeal, Mode=TwoWay}"
                               ItemTemplate="{StaticResource foodChosen_WhichMeal}" 
                               Margin="10,5,10,10" FontSize="15" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="foodQuantityError" Foreground="Red" FontSize="12" Visibility="Collapsed" Text="Please enter a valid number." 
-                               Margin="10,0,10,10" HorizontalAlignment="Center"/>
 
                     <Button Content="Add to food to journal" Foreground="#FFFFFF" FontWeight="Bold" Click="AddToJournal_Click" 
                             Background="#08964F" Margin="10, 10, 10, 10" HorizontalAlignment="Center"/>

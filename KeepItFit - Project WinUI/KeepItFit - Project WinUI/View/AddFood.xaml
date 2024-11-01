@@ -22,9 +22,15 @@
                 </Grid.ColumnDefinitions>
                 <CheckBox Grid.Column="0" x:Name="foodCheckBox" Content="{x:Bind foodName}" Padding="30,5,0,0" Checked="FoodCheckBox_Checked" Unchecked="FoodCheckBox_Unchecked"  Margin="10,5,10,10" FontSize="15"/>
                 <TextBlock Grid.Column="1" Text="Qty" Margin="10,15,10,10" FontWeight="Bold" FontSize="15"/>
-                <TextBox Grid.Column="2" Text="{x:Bind foodQuantity,Mode=TwoWay}" Margin="10,10,10,10" FontSize="15"/>
+                <TextBox Grid.Column="2" Text="{x:Bind foodQuantity,Mode=TwoWay}" Margin="10,10,10,10" FontSize="15" TextChanged="FoodQuantity_TextChanged" LostFocus="FoodQuantity_LostFocus"/>
                 <TextBlock Grid.Column="3" Text="of" Margin="10,15,10,10" FontSize="15"/>
                 <ComboBox Grid.Column="4" ItemsSource="{x:Bind foodUnit}" SelectedItem="{x:Bind selectedFoodUnit, Mode=TwoWay}" Margin="10,10,10,10" FontSize="15"/>
+                
+                <!--Show error if user didn't enter food quantity correctly-->
+                <TextBlock Grid.Column="4" x:Name="foodQuantityError" Foreground="Red" FontSize="12" 
+               Visibility="{x:Bind foodQuantityErrorVisibility, Mode=TwoWay}" 
+               Text="Please enter a valid number > 0." 
+               Margin="10,0,10,10" HorizontalAlignment="Center"/>   
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -104,8 +110,11 @@
              <Run x:Name="secondRunFoodMyFood" 
                  Text=" If you cannot find a food in the database, you can create your own personal food. Foods that you create will appear in this list for easy access."/>
         </TextBlock>
+
         
         
+
+
         <!--Add Checked and Delete Button-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="addCheckedButton" Content="Add Checked" Foreground="#FFFFFF" FontWeight="Bold" 

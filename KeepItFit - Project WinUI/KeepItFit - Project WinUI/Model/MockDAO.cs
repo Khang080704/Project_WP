@@ -24,7 +24,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 74,
                     foodSugar = 0,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "oz", "kilograms" } // Thịt gà thường đo bằng gram, ounce, kilogram
+                    foodUnit = new List<string> { "grams", "oz", "kilograms" }, // Thịt gà thường đo bằng gram, ounce, kilogram
+                    selectedFoodUnit = "grams",
                 },
                 new Food {
                     foodName = "Salmon",
@@ -35,7 +36,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 59,
                     foodSugar = 0,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "oz", "fillet", "kilograms" } // Cá hồi có thể tính theo gram, ounce, miếng fillet, kilogram
+                    foodUnit = new List<string> { "grams", "oz", "fillet", "kilograms" }, // Cá hồi có thể tính theo gram, ounce, miếng fillet, kilogram
+                    selectedFoodUnit = "grams",
                 },
                 new Food {
                     foodName = "Broccoli",
@@ -46,7 +48,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 49,
                     foodSugar = 2.2f,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "cup", "stalk", "kilograms" } // Súp lơ thường đo bằng gram, cốc, hoặc cây (stalk)
+                    foodUnit = new List<string> { "grams", "cup", "stalk", "kilograms" }, // Súp lơ thường đo bằng gram, cốc, hoặc cây (stalk)
+                    selectedFoodUnit = "grams",
                 },
                 new Food {
                     foodName = "Avocado",
@@ -57,7 +60,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 7,
                     foodSugar = 0.7f,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "half", "whole", "kilograms" } // Bơ có thể đo bằng gram, nửa quả, hoặc cả quả
+                    foodUnit = new List<string> { "grams", "half", "whole", "kilograms" }, // Bơ có thể đo bằng gram, nửa quả, hoặc cả quả
+                    selectedFoodUnit = "grams",
                 },
                 new Food {
                     foodName = "Almonds",
@@ -68,7 +72,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 1,
                     foodSugar = 4.4f,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "oz", "handful", "kilograms" } // Hạnh nhân có thể đo bằng gram, ounce, hoặc bằng tay nắm (handful)
+                    foodUnit = new List<string> { "grams", "oz", "handful", "kilograms" }, // Hạnh nhân có thể đo bằng gram, ounce, hoặc bằng tay nắm (handful)
+                    selectedFoodUnit = "grams",
                 },
                 new Food {
                     foodName = "Brown Rice",
@@ -79,7 +84,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 4,
                     foodSugar = 0.4f,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "cup", "kilograms" } // Gạo lứt đo bằng gram, cốc (cup), hoặc kilogram
+                    foodUnit = new List<string> { "grams", "cup", "kilograms" }, // Gạo lứt đo bằng gram, cốc (cup), hoặc kilogram
+                    selectedFoodUnit = "grams",
                 },
                 new Food {
                     foodName = "Eggs",
@@ -90,7 +96,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 124,
                     foodSugar = 1.1f,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "unit", "dozen" } // Trứng thường đo bằng đơn vị quả (unit) hoặc tá (dozen)
+                    foodUnit = new List<string> { "unit", "dozen" }, // Trứng thường đo bằng đơn vị quả (unit) hoặc tá (dozen)
+                    selectedFoodUnit = "unit",
                 },
                 new Food {
                     foodName = "Banana",
@@ -101,7 +108,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 1,
                     foodSugar = 12.2f,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "unit", "grams", "bunch" } // Chuối đo bằng quả, gram, hoặc chùm (bunch)
+                    foodUnit = new List<string> { "unit", "grams", "bunch" }, // Chuối đo bằng quả, gram, hoặc chùm (bunch)
+                    selectedFoodUnit = "unit",
                 },
                 new Food {
                     foodName = "Greek Yogurt",
@@ -112,7 +120,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 36,
                     foodSugar = 3.2f,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "oz", "cup" } // Sữa chua Hy Lạp đo bằng gram, ounce, hoặc cốc
+                    foodUnit = new List<string> { "grams", "oz", "cup" }, // Sữa chua Hy Lạp đo bằng gram, ounce, hoặc cốc
+                    selectedFoodUnit = "grams",
                 },
                 new Food {
                     foodName = "Sweet Potato",
@@ -123,7 +132,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 55,
                     foodSugar = 4.2f,
                     foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "unit", "kilograms" } // Khoai lang có thể đo bằng gram, quả, hoặc kilogram
+                    foodUnit = new List<string> { "grams", "unit", "kilograms" }, // Khoai lang có thể đo bằng gram, quả, hoặc kilogram
+                    selectedFoodUnit = "grams",
                 }
             };
 
@@ -167,29 +177,32 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 74,
                     foodSugar = 0,
                     foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms"}
+                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms"},
+                    selectedFoodUnit = "grams",
                 },
                 new Food() {
                     foodName = "Noodles",
-                    foodCalories = 138,           
-                    foodCarbs = 25,               
-                    foodFat = 1.1f,             
-                    foodProtein = 4.5f,      
-                    foodSodium = 6,           
+                    foodCalories = 138,
+                    foodCarbs = 25,
+                    foodFat = 1.1f,
+                    foodProtein = 4.5f,
+                    foodSodium = 6,
                     foodSugar = 0.9f,
                     foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms" }
+                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms" },
+                    selectedFoodUnit = "grams",
                 },
                 new Food() {
                     foodName = "Potato Salad",
-                    foodCalories = 143,            
-                    foodCarbs = 17,                
-                    foodFat = 7.5f,                
-                    foodProtein = 2.1f,           
-                    foodSodium = 450,              
-                    foodSugar = 2.5f,              
-                    foodQuantity = "1",              
-                    foodUnit = new List<string>{"grams", "cup"}
+                    foodCalories = 143,
+                    foodCarbs = 17,
+                    foodFat = 7.5f,
+                    foodProtein = 2.1f,
+                    foodSodium = 450,
+                    foodSugar = 2.5f,
+                    foodQuantity = "1",
+                    foodUnit = new List<string>{"grams", "cup"},
+                    selectedFoodUnit = "grams",
                 },
                 new Food() {
                     foodName = "Egg",
@@ -200,7 +213,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 62,
                     foodSugar = 0.6f,
                     foodQuantity = "1",
-                    foodUnit = new List<string>{ "piece", "grams", "dozen" }
+                    foodUnit = new List<string>{ "piece", "grams", "dozen" },
+                    selectedFoodUnit = "piece",
                 },
             };
             return result;
@@ -219,7 +233,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 450,
                     foodSugar = 2.5f,
                     foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "cup"}
+                    foodUnit = new List<string>{"grams", "cup"},
+                    selectedFoodUnit = "grams",
                 },
                 new Food() {
                     foodName = "Orange",
@@ -230,7 +245,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 0,               
                     foodSugar = 9,                
                     foodQuantity = "1",          
-                    foodUnit = new List<string>{"piece", "grams"}
+                    foodUnit = new List<string>{"piece", "grams"},
+                    selectedFoodUnit = "piece",
                 },
                 new Food() {
                     foodName = "Egg",
@@ -241,7 +257,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 62,
                     foodSugar = 0.6f,
                     foodQuantity = "1",
-                    foodUnit = new List<string>{ "piece", "grams", "dozen" }
+                    foodUnit = new List<string>{ "piece", "grams", "dozen" },
+                    selectedFoodUnit = "piece",
                 },
                 new Food() {
                     foodName = "Broccoli",
@@ -252,7 +269,8 @@ namespace KeepItFit___Project_WinUI.Model
                     foodSodium = 33,
                     foodSugar = 2.2f,
                     foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms" }
+                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms" },
+                    selectedFoodUnit = "grams",
                 },      
             };
 

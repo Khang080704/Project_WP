@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -119,6 +120,35 @@ namespace KeepItFit___Project_WinUI.ViewModel
             {
                 _selectedFoodUnit = value;
                 OnPropertyChanged(nameof(selectedFoodUnit));
+            }
+        }
+
+        private Visibility _foodQuantityErrorVisibility = Visibility.Collapsed;
+        private Visibility _foodUnitErrorVisibility = Visibility.Collapsed;
+
+        public Visibility foodQuantityErrorVisibility
+        {
+            get => _foodQuantityErrorVisibility;
+            set
+            {
+                if (_foodQuantityErrorVisibility != value)
+                {
+                    _foodQuantityErrorVisibility = value;
+                    OnPropertyChanged(nameof(foodQuantityErrorVisibility));
+                }
+            }
+        }
+
+        public Visibility foodUnitErrorVisibility
+        {
+            get => _foodUnitErrorVisibility;
+            set
+            {
+                if (_foodUnitErrorVisibility != value)
+                {
+                    _foodUnitErrorVisibility = value;
+                    OnPropertyChanged(nameof(foodUnitErrorVisibility));
+                }
             }
         }
 

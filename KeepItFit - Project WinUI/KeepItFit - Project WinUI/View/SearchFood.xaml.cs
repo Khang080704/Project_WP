@@ -94,9 +94,12 @@ namespace KeepItFit___Project_WinUI.View
         //Show the table for user to choose all the nessessary information about the food
         private void FoodSearchListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (foodSearchListView.SelectedItem is Food selectedFood)
+            viewModel.SelectedFood.foodUnitErrorVisibility = Visibility.Collapsed; // Hide Error Default  
+
+            if (foodSearchListView.SelectedItem is Food food)
             {
-                viewModel.SelectedFood = selectedFood;
+                viewModel.SelectedMeal = viewModel.meals.Where(meal => meal.mealName == this.mealName).FirstOrDefault();
+                viewModel.SelectedFood = food;
                 viewModel.IsFoodSelected = true; // Show details
             }
             else
@@ -121,47 +124,47 @@ namespace KeepItFit___Project_WinUI.View
                 selectedMeal = viewModel.SelectedMeal
             };
 
+            if (viewModel.SelectedFood.selectedFoodUnit == null)
+            {
+                viewModel.SelectedFood.foodUnitErrorVisibility = Visibility.Visible;
+                return;
+            }
+
             this.Frame.Navigate(typeof(FoodDiary), parameters);
+
         }
 
         // Check if the input is a number (text changed)
-        private void FoodQuantity_TextChanged(object sender, TextChangedEventArgs e)
+        private void FoodQuantity_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
+            var textBox = sender as TextBox;
+            if (textBox != null && textBox.DataContext is Food food)
             {
-                // check if the input is a number
-                if (!double.TryParse(textBox.Text, out _))
+                if (int.TryParse(textBox.Text, out int quantity) && quantity > 0)
                 {
-                    // If not a number, show error message
-                    foodQuantityError.Visibility = Visibility.Visible;
-                    textBox.Focus(FocusState.Programmatic);
+                    food.foodQuantityErrorVisibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    // if it is a number, hide the error message
-                    foodQuantityError.Visibility = Visibility.Collapsed;
+                    food.foodQuantityErrorVisibility = Visibility.Visible;
+                    textBox.Focus(FocusState.Programmatic);
                 }
             }
         }
 
-        //check if the input is a number (lost focus)
-        private void FoodQuantity_LostFocus(object sender, RoutedEventArgs e)
+        private void FoodQuantity_TextChanged(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
+            var textBox = sender as TextBox;
+            if (textBox != null && textBox.DataContext is Food food)
             {
-                // check if the input is a number
-                if (!double.TryParse(textBox.Text, out _))
+                if (int.TryParse(textBox.Text, out int quantity) && quantity > 0)
                 {
-                    // If not a number, show error message
-                    foodQuantityError.Visibility = Visibility.Visible;
-                    textBox.Focus(FocusState.Programmatic);
+                    food.foodQuantityErrorVisibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    // if it is a number, hide the error message
-                    foodQuantityError.Visibility = Visibility.Collapsed;
+                    food.foodQuantityErrorVisibility = Visibility.Visible;
+                    textBox.Focus(FocusState.Programmatic);
                 }
             }
         }

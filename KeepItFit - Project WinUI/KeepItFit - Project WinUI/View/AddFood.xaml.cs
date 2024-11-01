@@ -268,6 +268,41 @@ namespace KeepItFit___Project_WinUI.View
             } 
         }
 
+        // Check if the input is a number (text changed)
+        private void FoodQuantity_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            if (textBox != null && textBox.DataContext is Food food)
+            {
+                if (int.TryParse(textBox.Text, out int quantity) && quantity > 0)
+                {
+                    food.foodQuantityErrorVisibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    food.foodQuantityErrorVisibility = Visibility.Visible;
+                    textBox.Focus(FocusState.Programmatic);
+                }
+            }
+        }
+
+        private void FoodQuantity_TextChanged(object sender, RoutedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            if (textBox != null && textBox.DataContext is Food food)
+            {
+                if (int.TryParse(textBox.Text, out int quantity) && quantity > 0)
+                {
+                    food.foodQuantityErrorVisibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    food.foodQuantityErrorVisibility = Visibility.Visible;
+                    textBox.Focus(FocusState.Programmatic);
+                }
+            }
+        }
+
         public class NavigationParameters_AddFood
         {
             public string Query { get; set; }
