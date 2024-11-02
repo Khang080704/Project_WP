@@ -16,6 +16,8 @@ Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao 
 4. [Teamwork - Git flow](#Teamwork-GitFlow)
 
 5. [Quality assurance](#QualityAssurance)
+6. [Completed Features](#CompletedFeature)
+7. [Product experience](#ProductExperience)
 
   
   
@@ -137,3 +139,33 @@ Sử dụng mẫu thiết kế MVVM, trong project có các folder:
   
 
 ## Quality assurance
+
+## Completed Features
+### Những tính năng đã hoàn thành:
+
+ | Tên tính năng | Số giờ làm việc | 
+ |---------------|-----------------|
+ | Tính năng tính toán tổng lượng calories, các thành phần dinh dưỡng | 3h |  
+ | Tính năng liệt kê thành phần dinh dưỡng trong từng món ăn | 3h | 
+ | Tính năng chọn món | 3h | 
+ |Tính năng cá nhân hóa|2h|
+
+
+## Product Experience
+Build và chạy Project, giao diện chính của ứng dụng sẽ như hình sau:
+![HomePage](https://i.postimg.cc/qBFNnqsq/image.png)
+### 1. Tính năng đổi ảnh đại diện
+Ấn vào nút **Change your avatar**, chọn ảnh từ máy để thay đổi ảnh đại diện
+### 2. Các tính năng ở phần Food
+Chọn mục Food bên cột trái, giao diện chính của mục food:
+![foodpage-start.png](https://i.postimg.cc/51HR0LGz/foodpage-start.png)
+Ở mỗi phần tên bữa ăn (Breakfast, Lunch, Dinner, Snacks) đều có 2 nút là ***Add Food*** và ***Quick Tools***
++ Chọn ***Quick Tools*** để nhập nhanh số liệu của mỗi chất dinh dưỡng, giao diện của ***Quick Tools*** như sau:
+![quickadd_page](https://i.postimg.cc/sxnSmMd0/QuickAdd.jpg)
++ Chọn Add to Journal để dữ liệu được cập nhật hoặc Cancel để hủy thao tác
++ Chọn ***Add Food*** để chọn các món ăn:
+![AddFodd_page](https://i.postimg.cc/k5x2Yc9f/nh-ch-p-m-n-h-nh-2024-11-01-220536.png)
++ Hệ thống đề xuất 1 vài món ăn cụ thể, người dùng có thể tick vào để thêm vào danh sách hoặc tick để xóa món ăn đó ra khỏi danh sách, nếu danh sách đề xuất không chứa các món ăn người dùng cần thì có thể dùng đến thanh tìm kiếm phía trái góc trên của trang
++ Người dùng gõ vào từ khóa hoặc cả tên đầy đủ của món ăn, hệ thống sẽ tìm và cho ra các kết quả tương ứng với từ khóa vừa nhập, nếu muốn hiện 1 danh sách đầy đủ, người dùng để trống ô tìm kiếm và chọn *Search*
+![SearchFood_page](https://i.postimg.cc/fTmyQqy5/image.png)
++ Chọn một món ăn bất kì, hệ thống sẽ yêu cầu 1 vài thông tin về định lượng cũng như thêm món ăn đó vào bữa ăn nào trong ngày
