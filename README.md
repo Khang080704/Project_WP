@@ -18,6 +18,7 @@ Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao 
 5. [Quality assurance](#QualityAssurance)
 6. [Completed Features](#CompletedFeature)
 7. [Product experience](#ProductExperience)
+8. [Self-assessment](#SelfAssessment)
 
   
   
@@ -169,3 +170,12 @@ Chọn mục Food bên cột trái, giao diện chính của mục food:
 + Người dùng gõ vào từ khóa hoặc cả tên đầy đủ của món ăn, hệ thống sẽ tìm và cho ra các kết quả tương ứng với từ khóa vừa nhập, nếu muốn hiện 1 danh sách đầy đủ, người dùng để trống ô tìm kiếm và chọn *Search*
 ![SearchFood_page](https://i.postimg.cc/fTmyQqy5/image.png)
 + Chọn một món ăn bất kì, hệ thống sẽ yêu cầu 1 vài thông tin về định lượng cũng như thêm món ăn đó vào bữa ăn nào trong ngày
+
+## Self-assessment
+ | Tiêu chí | Tự đánh giá (trên thang 10) | 
+ |---------------|-----------------|
+ | UI/UX | 9 |  
+ | Design Patter/Architecture| 9 | 
+ | Advanced Topics |  | 
+ |Teamwork - Git flow|9.5|
+ |Quality assurance||
