@@ -38,7 +38,7 @@ namespace KeepItFit___Project_WinUI
 
             if (e.Parameter is string mealName && !string.IsNullOrEmpty(mealName))
             {
-                mealList.PlaceholderText = mealName;
+                mealList.Text = mealName;
             }
         }
 
@@ -63,7 +63,7 @@ namespace KeepItFit___Project_WinUI
 
         private void AddJournal_Click(object sender, RoutedEventArgs e)
         {
-            var selectedMeal = mealList.PlaceholderText;
+            var selectedMeal = mealList.Text;
             string meal = "";
             if(selectedMeal != null)
             {
@@ -90,6 +90,5 @@ namespace KeepItFit___Project_WinUI
             }
             
         }
-
     }
 }

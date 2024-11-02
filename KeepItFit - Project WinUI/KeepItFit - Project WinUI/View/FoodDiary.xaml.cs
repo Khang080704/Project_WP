@@ -20,6 +20,7 @@ using Windows.Foundation.Collections;
 using Microsoft.Extensions.DependencyInjection;
 using static KeepItFit___Project_WinUI.View.AddFood;
 using static KeepItFit___Project_WinUI.View.SearchFood;
+using Windows.UI.Core;
 
 namespace KeepItFit___Project_WinUI
 {
@@ -259,6 +260,11 @@ namespace KeepItFit___Project_WinUI
                 i.Total = 0;
             }
             updateTotal();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

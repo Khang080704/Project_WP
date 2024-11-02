@@ -173,5 +173,10 @@ namespace KeepItFit___Project_WinUI.View
         {
 
         }
+
+        private void HyperlinkToAddCaloriesPage_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+
+        }
     }
 }

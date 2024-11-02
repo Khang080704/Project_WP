@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
-        <Page.Resources>
+    <Page.Resources>
         <DataTemplate x:Key="meal" x:DataType="local:Meals">
             <TextBlock Text="{x:Bind mealName}"/>
         </DataTemplate>
@@ -22,10 +22,12 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock FontWeight="Bold" TextAlignment="left" Margin="15"
+                    <TextBlock FontWeight="Bold" TextAlignment="Right" Margin="15"
                                FontSize="20" Text="{x:Bind name}"
                                Grid.Row="0" Grid.Column="0"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1"
@@ -33,9 +35,11 @@
                         <TextBox Background="#084F96" Text="{x:Bind input, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"
                                  Foreground="White" Height="30" PlaceholderText="0"
                                  TextAlignment="left"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
                         <TextBlock Text="{x:Bind unit}" FontWeight="Bold" 
-                                   Foreground="Black" VerticalAlignment="Center"
-                                   Margin="10" HorizontalAlignment="Right"/>
+                                Foreground="Black" VerticalAlignment="Center"
+                                Margin="10" HorizontalAlignment="Right"/>
                     </StackPanel>
                 </Grid>
                     
@@ -61,13 +65,12 @@
                        Meal name
                 </TextBlock>
                 <!-- Button for meal-->
-                <ComboBox PlaceholderText="Breakfast" Width="150" Background="#084F96"
-                  PlaceholderForeground="White" Grid.Column="1" Grid.Row="0"
-                  HorizontalAlignment="Right"
-                  Margin="15" Foreground="White" FontWeight="Bold"
-                  ItemsSource="{x:Bind viewModel.meals}"
-                  ItemTemplate="{StaticResource meal}"
-                  Name="mealList"/>
+                <TextBlock Width="150" Grid.Column="1" Grid.Row="0"
+                        HorizontalAlignment="Right"
+                        Margin="15"  FontWeight="Bold"
+                        Name="mealList"
+                           FontSize="25"
+                        />
             </Grid>
         </Border>
         
