@@ -7,21 +7,29 @@ Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao 
 
 ## Mục lục
 
-1. [UI/UX](#UI/UX)
 
-2. [Design patterns/architecture](#DesignPatterns/Architecture)
+1. [Members's information](#meminfor)
+2. [UI/UX](#UI/UX)
 
-3. [Advanced topics](#AdvancedTopics)
+3. [Design patterns/architecture](#DesignPatterns/Architecture)
 
-4. [Teamwork - Git flow](#Teamwork-GitFlow)
+4. [Advanced topics](#AdvancedTopics)
 
-5. [Quality assurance](#QualityAssurance)
-6. [Completed Features](#CompletedFeature)
-7. [Product experience](#ProductExperience)
-8. [Self-assessment](#SelfAssessment)
+5. [Teamwork - Git flow](#Teamwork-GitFlow)
+
+6. [Quality assurance](#QualityAssurance)
+7. [Completed Features](#CompletedFeature)
+8. [Product experience](#ProductExperience)
+9. [Self-assessment](#SelfAssessment)
 
   
   
+## Members Information
+| MSSV | Tên thành viên | 
+ |---------------|-----------------|
+ | 22120116 | Đoàn Gia Huệ |  
+ | 22120152| Phạm Gia Khang | 
+ | 22120236 | Nguyễn Hoàng Nguyên | 
 
 ## UI/UX
 
