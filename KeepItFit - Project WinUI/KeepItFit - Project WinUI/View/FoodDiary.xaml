@@ -189,9 +189,9 @@
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Name="BreakFast" Margin="5 0 0 0" Foreground="#0000FF" 
-                                   Tapped="TextBlock_Tapped_Meal">
-                                   Add Food
-                                    
+                                       Tapped="TextBlock_Tapped_Meal">
+                            Add Food
+                            
                         </TextBlock>
                         <TextBlock Foreground="#0000FF" Margin="5 0 5 0"> |</TextBlock>
                         <TextBlock Name="_BreakFast" Margin="5 0 0 0" Foreground="#0000FF" Tapped="TextBlock_Tapped_QuickAdd">
