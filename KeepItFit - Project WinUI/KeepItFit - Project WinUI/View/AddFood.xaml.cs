@@ -55,6 +55,9 @@ namespace KeepItFit___Project_WinUI.View
                 this.mealName = mealName;
                 meal.Text = $"Add Food To {this.mealName}";
             }
+
+            viewModel.LoadRecentFood(); // Load the newest recent food items
+            viewModel.LoadFrequentFood(); // Load the newest frequent food items
         }
 
         //Set the default button to "Recent" when the page is loaded

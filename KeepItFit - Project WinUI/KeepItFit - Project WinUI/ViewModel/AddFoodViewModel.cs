@@ -15,15 +15,47 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public ObservableCollection<Food> foodFrequent { get; set; }
         public ObservableCollection<Food> foodMyFood { get; set; } //Update later -> don't understand what its function
 
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        //private IDao sqlDao;
 
         public void init()
         {
-            IDao dao = new MockDAO();
-            foodRecent = dao.GetFoodRecent();
-            foodFrequent = dao.GetFoodFrequent();
+            //sqlDao = new SQLDao();
+            foodRecent = new ObservableCollection<Food>();
+            foodFrequent = new ObservableCollection<Food>();
+            LoadRecentFood();
+            LoadFrequentFood();
         }
-        
+
+        public void LoadRecentFood()
+        {
+            var sqlDao = new SQLDao();
+            foodRecent = sqlDao.GetFoodRecent();
+        }
+
+        public void LoadFrequentFood()
+        {
+            var sqlDao = new SQLDao();
+            foodFrequent = sqlDao.GetFoodFrequent();
+        }
+
+        public void UpdateRecentFood(Food food)
+        {
+            var dao = new SQLDao();
+            dao.UpdateRecentFood(food);
+            LoadRecentFood();
+        }
+
+        public void UpdateFrequentFood(Food food)
+        {
+            var dao = new SQLDao();
+            dao.UpdateFrequentFood(food);
+            LoadFrequentFood();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
