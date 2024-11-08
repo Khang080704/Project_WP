@@ -52,6 +52,12 @@ namespace KeepItFit___Project_WinUI.ViewModel
             LoadFrequentFood();
         }
 
+        public void DeleteFrequentOrRecentFood(Food food)
+        {
+            var dao = new SQLDao();
+            dao.DeleteFrequentOrRecentFood(food);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

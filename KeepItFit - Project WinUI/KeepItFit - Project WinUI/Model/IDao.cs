@@ -23,6 +23,7 @@ namespace KeepItFit___Project_WinUI.Model
         public ObservableCollection<Meals> GetAllMeals(string keyword);
         public void UpdateFrequentFood(Food food);
         public void UpdateRecentFood(Food food);
+        public void DeleteFrequentOrRecentFood(Food food);
     }
 
 }

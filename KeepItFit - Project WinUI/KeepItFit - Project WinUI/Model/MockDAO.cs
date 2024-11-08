@@ -255,6 +255,11 @@ namespace KeepItFit___Project_WinUI.Model
         {
             throw new NotImplementedException();
         }
+
+        public void DeleteFrequentOrRecentFood(Food food)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

@@ -128,6 +128,7 @@ namespace KeepItFit___Project_WinUI.Model
                     {
                         Food food = new Food
                         {
+                            foodId = Convert.ToInt32(reader["ID"]),
                             foodName = reader["FOOD_NAME"].ToString(),
                             foodCalories = Convert.ToSingle(reader["FOOD_CALORIES"]),
                             foodCarbs = Convert.ToSingle(reader["FOOD_CARBS"]),
@@ -172,6 +173,7 @@ namespace KeepItFit___Project_WinUI.Model
                     {
                         Food food = new Food
                         {
+                            foodId = Convert.ToInt32(reader["ID"]),
                             foodName = reader["FOOD_NAME"].ToString(),
                             foodCalories = Convert.ToSingle(reader["FOOD_CALORIES"]),
                             foodCarbs = Convert.ToSingle(reader["FOOD_CARBS"]),
@@ -238,6 +240,36 @@ namespace KeepItFit___Project_WinUI.Model
                 catch (Exception ex)
                 {
                     Debug.WriteLine($"Error updating RECENTFOOD: {ex.Message}");
+                }
+            }
+        }
+
+        // Delete food from Frequent or Recent table
+        public void DeleteFrequentOrRecentFood(Food food)
+        {
+            string queryRecent = "DELETE FROM RecentFood WHERE FOODID = @foodId;";
+            string queryFrequent = "DELETE FROM FrequentFood WHERE FOOD_ID = @foodId;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(queryRecent, connection))
+                    {
+                        command.Parameters.AddWithValue("@foodId", food.foodId);
+                        command.ExecuteNonQuery();
+                    }
+
+                    using (SqlCommand command = new SqlCommand(queryFrequent, connection))
+                    {
+                        command.Parameters.AddWithValue("@foodId", food.foodId);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error deleting food: {ex.Message}");
                 }
             }
         }

@@ -247,28 +247,28 @@ namespace KeepItFit___Project_WinUI.View
         {
             if (_lastClickedButton == RecentButton)
             {
-                foreach (Food food in foodListRecent_Checked)
-                {
-                    viewModel.foodRecent.Remove(food);
-                }
-                foodListRecent_Checked.Clear();
+                RemoveFoodItems(foodListRecent_Checked, viewModel.foodRecent);
             }
             else if (_lastClickedButton == FrequentButton)
             {
-                foreach (Food food in foodListFrequent_Checked)
-                {
-                    viewModel.foodFrequent.Remove(food);
-                }
-                foodListFrequent_Checked.Clear();
+                RemoveFoodItems(foodListFrequent_Checked, viewModel.foodFrequent);
             }
             else if (_lastClickedButton == MyFoodButton)
             {
-                foreach (Food food in foodListMyFood_Checked)
-                {
-                    viewModel.foodMyFood.Remove(food);
-                }
-                foodListMyFood_Checked.Clear();
-            } 
+                RemoveFoodItems(foodListMyFood_Checked, viewModel.foodMyFood);
+            }
+        }
+
+        private void RemoveFoodItems(List<Food> foodListChecked, ObservableCollection<Food> foodCollection)
+        {
+            foreach (Food food in foodListChecked)
+            {
+                foodCollection.Remove(food);
+                viewModel.DeleteFrequentOrRecentFood(food);
+            }
+            foodListChecked.Clear();
+            viewModel.LoadFrequentFood(); // Update the list of frequent food items
+            viewModel.LoadRecentFood(); // Update the list of recent food items
         }
 
         // Check if the input is a number (text changed)
