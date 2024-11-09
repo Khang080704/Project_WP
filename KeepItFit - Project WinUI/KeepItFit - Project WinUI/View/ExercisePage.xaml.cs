@@ -1,3 +1,4 @@
+using KeepItFit___Project_WinUI.View;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,6 +27,30 @@ namespace KeepItFit___Project_WinUI
         public ExercisePage()
         {
             this.InitializeComponent();
+        }
+
+        private void SaveNote_Click(object sender, RoutedEventArgs e)
+        {
+            Notes.IsReadOnly = true;
+            EditNote.Visibility = Visibility.Visible;
+            SaveNote.Visibility = Visibility.Collapsed;
+        }
+
+        private void EditNote_Click(object sender, RoutedEventArgs e)
+        {
+            Notes.IsReadOnly = false;
+            EditNote.Visibility = Visibility.Collapsed;
+            SaveNote.Visibility = Visibility.Visible;
+        }
+
+        private void ViewReport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CardioExercise_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddExercisePage));
         }
     }
 }

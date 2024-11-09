@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeepItFit___Project_WinUI.ViewModel
+namespace KeepItFit___Project_WinUI.Model
 {
     //This class is used to receive nutrition list that is send from another
     //page

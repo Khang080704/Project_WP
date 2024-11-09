@@ -3,7 +3,7 @@
     x:Class="KeepItFit___Project_WinUI.View.SearchFood"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:KeepItFit___Project_WinUI.ViewModel"
+    xmlns:local="using:KeepItFit___Project_WinUI.Model"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -130,7 +130,7 @@
             <TextBlock Grid.Row="0" Grid.Column="0"  x:Name="noResult" Foreground="#FB3F48" 
                        Text="No result found" Visibility="Collapsed" Margin="10,10,10,10"/>
 
-            <!--Food table for choosing "How much", "Which meal"-->
+            <!--Exercise table for choosing "How much", "Which meal"-->
             <Border x:Name="foodDetailsBorder" Grid.Row="0" Grid.Column="1"
             Margin="10"
             Padding="10"

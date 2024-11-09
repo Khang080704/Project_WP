@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KeepItFit___Project_WinUI.ViewModel;
 
 namespace KeepItFit___Project_WinUI.Model
 {
@@ -287,7 +286,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Calories",
                     Total = 0,
                     Daily = 2300,
-                    Remain = 0,
+                    Remain = 2300,
                     unit = "kcal",
                 },
                 new Nutritions()
@@ -295,7 +294,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Carbs",
                     Total = 0,
                     Daily = 300,
-                    Remain = 0,
+                    Remain = 300,
                     unit = "g"
                 },
                 new Nutritions()
@@ -303,7 +302,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Fat",
                     Total = 0,
                     Daily = 60,
-                    Remain = 0,
+                    Remain = 60,
                     unit = "g",
                 },
                 new Nutritions()
@@ -311,7 +310,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Protein",
                     Total = 0,
                     Daily = 60,
-                    Remain = 0,
+                    Remain = 60,
                     unit = "g",
                 },
                 new Nutritions()
@@ -319,7 +318,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Sodium",
                     Total = 0,
                     Daily = 2300,
-                    Remain = 0,
+                    Remain = 2300,
                     unit = "mg"
                 },
                 new Nutritions()
@@ -327,14 +326,90 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Sugar",
                     Total = 0,
                     Daily = 30,
-                    Remain = 0,
+                    Remain = 30,
                     unit = "g"
                 },
             };
             return result;
         }
+
+        public ObservableCollection<CardioExercise> GetAllCardioExercise()
+        {
+            var result = new ObservableCollection<CardioExercise>()
+            {
+                new CardioExercise()
+                {
+                    name = "Aerobic, general",
+                    _time = 0,
+                    caloriesPerMinute = 7.7f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Badminton, competitive",
+                    _time = 0,
+                    caloriesPerMinute = 8.3f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Billiards",
+                    _time = 0,
+                    caloriesPerMinute = 3,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Canoeing, on camping trip",
+                    _time = 0,
+                    caloriesPerMinute = 4.7f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Dancing, general",
+                    _time = 0,
+                    caloriesPerMinute = 5.3f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Fishing from boat, sitting",
+                    _time = 0,
+                    caloriesPerMinute = 3,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Golf, carrying clubs",
+                    _time = 0,
+                    caloriesPerMinute = 5.3f,
+                    CaloriesBurned = 0
+                },
+                new CardioExercise()
+                {
+                    name = "Horseback riding, general",
+                    _time = 0,
+                    caloriesPerMinute = 4.7f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Judo, karate, kick boxing, tae kwan do",
+                    _time = 0,
+                    caloriesPerMinute = 11.8f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Music playing, drums",
+                    _time = 0,
+                    caloriesPerMinute = 4.7f,
+                    CaloriesBurned = 0,
+                }
+            };
+            return result;
+        }
     }
-
-
 
 }

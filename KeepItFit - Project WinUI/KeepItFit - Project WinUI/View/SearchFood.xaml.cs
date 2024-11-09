@@ -1,4 +1,5 @@
-﻿using KeepItFit___Project_WinUI.ViewModel;
+﻿using KeepItFit___Project_WinUI.Model;
+using KeepItFit___Project_WinUI.ViewModel;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;

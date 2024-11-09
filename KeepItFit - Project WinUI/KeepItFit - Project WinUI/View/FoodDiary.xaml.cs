@@ -24,7 +24,7 @@ using Windows.UI.Core;
 
 namespace KeepItFit___Project_WinUI
 {
-    
+
     public sealed partial class FoodDiary : Page
     {
         public NutritionsViewModel nutri { get; set; }
@@ -264,7 +264,9 @@ namespace KeepItFit___Project_WinUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            int result = nutri.nutrition[0].Remain;
+            var screen = new NutritionResult(result);
+            screen.Activate();
         }
     }
 }

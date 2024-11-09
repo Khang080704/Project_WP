@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeepItFit___Project_WinUI.ViewModel
+namespace KeepItFit___Project_WinUI.Model
 {
     public class Meals : INotifyPropertyChanged
     {
