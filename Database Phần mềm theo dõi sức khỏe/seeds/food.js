@@ -3,6 +3,10 @@
  * @returns { Promise<void> } 
  */
 exports.seed = async function(knex) {
+  await knex('BREAKFASTDIARY').del();
+  await knex('SNACKDIARY').del();
+  await knex('DINNERDIARY').del();
+  await knex('LUNCHDIARY').del();
   await knex('RECENTFOOD').del();
   await knex('FREQUENTFOOD').del();
   await knex('FOOD').del(); // Deletes ALL existing entries

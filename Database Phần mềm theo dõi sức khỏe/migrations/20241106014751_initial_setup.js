@@ -6,7 +6,7 @@ exports.up = async function(knex) {
     await knex.raw(`
         CREATE TABLE FOOD(  
             ID INT IDENTITY(1,1) PRIMARY KEY,
-            FOOD_NAME NVARCHAR(255) PRIMARY KEY,
+            FOOD_NAME NVARCHAR(255) NOT NULL,
             FOOD_CALORIES FLOAT NOT NULL,
             FOOD_CARBS FLOAT NOT NULL,
             FOOD_FAT FLOAT NOT NULL,
