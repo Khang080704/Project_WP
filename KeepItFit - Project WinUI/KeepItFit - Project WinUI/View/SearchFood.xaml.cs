@@ -47,7 +47,7 @@ namespace KeepItFit___Project_WinUI.View
                 meal.Text = $"Add Food To {this.mealName}";
 
                 // Filter the food is chosen
-                var filteredList = viewModel.foodDatabase.Where(food => food.foodName.ToLower().Contains(query)).ToList();
+                var filteredList = viewModel.GetFoodDatabase(query.ToLower());
                 foreach (var food in filteredList)
                 {
                     viewModel.foodSearchList.Add(food);
@@ -73,8 +73,8 @@ namespace KeepItFit___Project_WinUI.View
                 return;
             }
             
-            var filteredList = viewModel.foodDatabase.Where(food => food.foodName.ToLower().Contains(query)).ToList();
-            
+            var filteredList = viewModel.GetFoodDatabase(query.ToLower());
+
             if (filteredList.Count == 0)
             {
                 foodSearchListView.Visibility = Visibility.Collapsed;
@@ -130,6 +130,12 @@ namespace KeepItFit___Project_WinUI.View
                 viewModel.SelectedFood.foodUnitErrorVisibility = Visibility.Visible;
                 return;
             }
+
+            // Update the Frequent Food
+            viewModel.UpdateFrequentFood(viewModel.SelectedFood);
+
+            // Update the Recent Food
+            viewModel.UpdateRecentFood(viewModel.SelectedFood);
 
             this.Frame.Navigate(typeof(FoodDiary), parameters);
 

@@ -13,9 +13,17 @@ namespace KeepItFit___Project_WinUI.Model
         public ObservableCollection<Food> GetFoodRecent();
         public ObservableCollection<Food> GetFoodFrequent();
         public List<Nutritions> GetAllNutrtion();
+        public ObservableCollection<CardioExercise> GetAllCardioExercise();
 
         public ObservableCollection<Food> GetFoodDatabase();
-        public ObservableCollection<CardioExercise> GetAllCardioExercise();
+
+
+        // SQLDao
+        public ObservableCollection<Food> GetFoodDatabase(string keyword);
+        public ObservableCollection<Meals> GetAllMeals(string keyword);
+        public void UpdateFrequentFood(Food food);
+        public void UpdateRecentFood(Food food);
+        public void DeleteFrequentOrRecentFood(Food food);
     }
 
 }
