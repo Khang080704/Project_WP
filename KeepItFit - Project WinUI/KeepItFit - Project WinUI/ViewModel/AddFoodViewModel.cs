@@ -41,14 +41,14 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public void UpdateRecentFood(Food food)
         {
             var dao = new SQLDao();
-            dao.UpdateRecentFood(food);
+            dao.UpdateRecentOrFrequentFood(food, "RecentFood");
             LoadRecentFood();
         }
 
         public void UpdateFrequentFood(Food food)
         {
             var dao = new SQLDao();
-            dao.UpdateFrequentFood(food);
+            dao.UpdateRecentOrFrequentFood(food, "FrequentFood");
             LoadFrequentFood();
         }
 

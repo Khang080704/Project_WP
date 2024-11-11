@@ -76,13 +76,13 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public void UpdateFrequentFood(Food food)
         {
             var sqlDao = new SQLDao();
-            sqlDao.UpdateFrequentFood(food);
+            sqlDao.UpdateRecentOrFrequentFood(food, "FrequentFood");
         }
         
         public void UpdateRecentFood(Food food)
         {
             var sqlDao = new SQLDao();
-            sqlDao.UpdateRecentFood(food);
+            sqlDao.UpdateRecentOrFrequentFood(food, "RecentFood");
         }
     }
 }

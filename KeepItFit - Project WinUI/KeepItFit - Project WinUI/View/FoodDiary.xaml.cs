@@ -27,31 +27,21 @@ namespace KeepItFit___Project_WinUI
 
     public sealed partial class FoodDiary : Page
     {
+        public FoodDiaryViewModel viewModel { get; set; }
+
         public NutritionsViewModel nutri { get; set; }
-        //init 4 variables, each variable responsive for a meal zone
-        public InputNutritionViewModel BreakFastNutri { get; set; }
-        public InputNutritionViewModel LunchNutri { get; set; }
-        public InputNutritionViewModel DinnerNutri { get; set; }
-        public InputNutritionViewModel SnackNutri { get; set; }
+        
 
         public FoodDiary()
         {
             this.InitializeComponent();
+            viewModel = new FoodDiaryViewModel();
+
             nutri = new NutritionsViewModel();
             nutri.initNutrition();
             nutri.initMeal();
 
-            BreakFastNutri = new InputNutritionViewModel();
-            LunchNutri = new InputNutritionViewModel();
-            DinnerNutri = new InputNutritionViewModel();
-            SnackNutri = new InputNutritionViewModel();
-
-            BreakFastNutri.NutritionData = BreakFastNutri.init();
-            LunchNutri.NutritionData = LunchNutri.init();
-            DinnerNutri.NutritionData = DinnerNutri.init();
-            SnackNutri.NutritionData = SnackNutri.init();
-
-            
+            updateTotal();
         }
 
         //Navigate to FoodPage button Quick Add
@@ -108,20 +98,20 @@ namespace KeepItFit___Project_WinUI
                 if (name == "BreakFast")
                 {
                     //Add new list into viewModel
-                    BreakFastNutri.update(list);
+                    viewModel.BreakFastNutri.update(list);
                   
                 }
                 else if(name == "Lunch")
                 {
-                    LunchNutri.update(list);
+                    viewModel.LunchNutri.update(list);
                 }
                 else if(name == "Dinner")
                 {
-                    DinnerNutri.update(list);
+                    viewModel.DinnerNutri.update(list);
                 }
                 else
                 {
-                    SnackNutri.update(list);
+                    viewModel.SnackNutri.update(list);
                 }
 
                 //In the table, set all total's value = 0, calcaulate again
@@ -140,20 +130,22 @@ namespace KeepItFit___Project_WinUI
                 //Đây là từ AddFood sang FoodDiary
                 if (mealName == "BreakFast")
                 {
-                    BreakFastNutri.updateWithListFood(foodList);
+                    viewModel.Update_FoodBreakfast(foodList);
                 }
                 else if(mealName == "Lunch")
                 {
-                    LunchNutri.updateWithListFood(foodList);
+                    viewModel.Update_FoodLunch(foodList);
                 }
                 else if(mealName == "Dinner")
                 {
-                    DinnerNutri.updateWithListFood(foodList);
+                    viewModel.Update_FoodDinner(foodList);
                 }
                 else
                 {
-                    SnackNutri.updateWithListFood(foodList);
+                    viewModel.Update_FoodSnack(foodList);
                 }
+
+                viewModel.UpdateDataAllMeals();
 
                 foreach (var i in nutri.nutrition)
                 {
@@ -167,23 +159,27 @@ namespace KeepItFit___Project_WinUI
                 //Search Food to FoodDiary
                 Food food = parameters_2.selectedFood;
                 string mealName = parameters_2.selectedMeal.mealName;
+                List<Food> foodList = new List<Food>();
+                foodList.Add(food);
 
                 if (mealName == "BreakFast")
                 {
-                    BreakFastNutri.updateWithFood(food);
+                    viewModel.Update_FoodBreakfast(foodList);
                 }
                 else if (mealName == "Lunch")
                 {
-                    LunchNutri.updateWithFood(food);
+                    viewModel.Update_FoodLunch(foodList);
                 }
                 else if (mealName == "Dinner")
                 {
-                    DinnerNutri.updateWithFood(food);
+                    viewModel.Update_FoodDinner(foodList);
                 }
                 else
                 {
-                    SnackNutri.updateWithFood(food);
+                    viewModel.Update_FoodSnack(foodList);
                 }
+
+                viewModel.UpdateDataAllMeals();
 
                 foreach (var i in nutri.nutrition)
                 {
@@ -217,10 +213,10 @@ namespace KeepItFit___Project_WinUI
         void updateTotal()
         {
             //Calculate the total's value of all meal
-            updateForMeal(BreakFastNutri);
-            updateForMeal(LunchNutri);
-            updateForMeal(DinnerNutri);
-            updateForMeal(SnackNutri);
+            updateForMeal(viewModel.BreakFastNutri);
+            updateForMeal(viewModel.LunchNutri);
+            updateForMeal(viewModel.DinnerNutri);
+            updateForMeal(viewModel.SnackNutri);
             //Cal the remain
             foreach (var i in nutri.nutrition)
             {
@@ -235,21 +231,21 @@ namespace KeepItFit___Project_WinUI
             var itemToDelete = btn?.Tag as InputNutritionData;
             if (itemToDelete != null)
             {
-                if (BreakFastNutri.NutritionData.Contains(itemToDelete))
+                if (viewModel.BreakFastNutri.NutritionData.Contains(itemToDelete))
                 {
-                    BreakFastNutri.NutritionData.Remove(itemToDelete);
+                    viewModel.Delete_FoodBreakfast(itemToDelete);
                 }
-                else if (LunchNutri.NutritionData.Contains(itemToDelete))
+                else if (viewModel.LunchNutri.NutritionData.Contains(itemToDelete))
                 {
-                    LunchNutri.NutritionData.Remove(itemToDelete);
+                    viewModel.Delete_FoodLunch(itemToDelete);
                 }
-                else if (DinnerNutri.NutritionData.Contains(itemToDelete))
+                else if (viewModel.DinnerNutri.NutritionData.Contains(itemToDelete))
                 {
-                    DinnerNutri.NutritionData.Remove(itemToDelete);
+                    viewModel.Delete_FoodDinner(itemToDelete);
                 }
                 else
                 {
-                    SnackNutri.NutritionData.Remove(itemToDelete);
+                    viewModel.Delete_FoodSnack(itemToDelete);
                 }
                 
             }

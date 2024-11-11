@@ -29,6 +29,7 @@ exports.up = async function(knex) {
         );
     `);
 
+
     await knex.raw(`
         CREATE TABLE SNACKDIARY(
             FOOD_ID INT,
