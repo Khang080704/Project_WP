@@ -16,7 +16,6 @@ exports.up = async function(knex) {
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_UNIT NVARCHAR(MAX) NOT NULL, -- Save the unit of the food using JSON format
             SELECTED_FOOD_UNIT NVARCHAR(50) NOT NULL,
-	    Primary key(ID, FOOD_NAME)
         );
     `);
 };

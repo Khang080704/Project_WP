@@ -305,7 +305,7 @@ namespace KeepItFit___Project_WinUI.Model
 
         public List<Nutritions> GetAllNutrtion()
         {
-            throw new NotImplementedException();
+            return new List<Nutritions>();
         }
     }
 }

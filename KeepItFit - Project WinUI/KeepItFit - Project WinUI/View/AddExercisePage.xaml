@@ -21,7 +21,7 @@
 
         <TextBlock Text="Search our exercise database by name: " FontSize="15"/>
         <StackPanel Orientation="Horizontal">
-            <TextBox Name="SearchText"/>
+            <TextBox Name="SearchText" Width="300" Height="30"/>
             <Button Name="Search" Content="Search" Foreground="#FFFFFF" FontWeight="Bold"
                     Background="#08964F" Margin="10" HorizontalAlignment="Center"
                     Click="Search_Click"/>
@@ -29,9 +29,6 @@
         <TextBlock FontSize="15">
             Or, add your most recently used cardio exercises.
         </TextBlock>
-        
-        
-        
         
     </StackPanel>
 </Page>

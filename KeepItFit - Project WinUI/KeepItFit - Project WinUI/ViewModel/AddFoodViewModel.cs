@@ -28,33 +28,33 @@ namespace KeepItFit___Project_WinUI.ViewModel
 
         public void LoadRecentFood()
         {
-            var sqlDao = new MockDAO();
+            var sqlDao = new SQLDao();
             foodRecent = sqlDao.GetFoodRecent();
         }
 
         public void LoadFrequentFood()
         {
-            var sqlDao = new MockDAO();
+            var sqlDao = new SQLDao();
             foodFrequent = sqlDao.GetFoodFrequent();
         }
 
         public void UpdateRecentFood(Food food)
         {
-            var dao = new MockDAO();
+            var dao = new SQLDao();
             dao.UpdateRecentFood(food);
             LoadRecentFood();
         }
 
         public void UpdateFrequentFood(Food food)
         {
-            var dao = new MockDAO();
+            var dao = new SQLDao();
             dao.UpdateFrequentFood(food);
             LoadFrequentFood();
         }
 
         public void DeleteFrequentOrRecentFood(Food food)
         {
-            var dao = new MockDAO();
+            var dao = new SQLDao();
             dao.DeleteFrequentOrRecentFood(food);
         }
 

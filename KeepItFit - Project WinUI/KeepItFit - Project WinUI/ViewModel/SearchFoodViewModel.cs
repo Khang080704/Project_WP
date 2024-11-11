@@ -60,7 +60,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
 
         public void init()
         {
-            var sqlDao = new MockDAO();
+            var sqlDao = new SQLDao();
             meals = sqlDao.GetAllMeals();
             foodSearchList = new ObservableCollection<Food>();
             SelectedFood = new Food();
@@ -69,19 +69,19 @@ namespace KeepItFit___Project_WinUI.ViewModel
 
         public ObservableCollection<Food> GetFoodDatabase(string keyword)
         {
-            var sqlDao = new MockDAO();
+            var sqlDao = new SQLDao();
             return sqlDao.GetFoodDatabase(keyword);
         }
 
         public void UpdateFrequentFood(Food food)
         {
-            var sqlDao = new MockDAO();
+            var sqlDao = new SQLDao();
             sqlDao.UpdateFrequentFood(food);
         }
         
         public void UpdateRecentFood(Food food)
         {
-            var sqlDao = new MockDAO();
+            var sqlDao = new SQLDao();
             sqlDao.UpdateRecentFood(food);
         }
     }

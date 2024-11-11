@@ -90,7 +90,8 @@ namespace KeepItFit___Project_WinUI.View
 
         private void AddExercise_Click(object sender, RoutedEventArgs e)
         {
-            
+            var selectedCardio = viewModel._selectedCardioExercise;
+            this.Frame.Navigate(typeof(ExercisePage), selectedCardio);
         }
     }
 }
