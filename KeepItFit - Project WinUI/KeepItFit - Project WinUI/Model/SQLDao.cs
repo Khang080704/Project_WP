@@ -368,5 +368,10 @@ namespace KeepItFit___Project_WinUI.Model
         {
             return new List<Nutritions>();
         }
+
+        public ObservableCollection<StrengthTraining> GetAllStrengthTraining()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

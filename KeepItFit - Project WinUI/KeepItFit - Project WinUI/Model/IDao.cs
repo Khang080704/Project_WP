@@ -12,6 +12,7 @@ namespace KeepItFit___Project_WinUI.Model
         
         public List<Nutritions> GetAllNutrtion();
         public ObservableCollection<CardioExercise> GetAllCardioExercise();
+        public ObservableCollection<StrengthTraining> GetAllStrengthTraining();
 
 
         // SQLDao

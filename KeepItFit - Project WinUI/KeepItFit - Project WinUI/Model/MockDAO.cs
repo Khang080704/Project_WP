@@ -243,6 +243,84 @@ namespace KeepItFit___Project_WinUI.Model
         {
             throw new NotImplementedException();
         }
+
+        public ObservableCollection<StrengthTraining> GetAllStrengthTraining()
+        {
+            var result = new ObservableCollection<StrengthTraining>()
+            {
+                new StrengthTraining()
+                {
+                    name = "Abdominal Leg Raise",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Back Extension",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Cable Crossover, High Pulley",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Deadlift, Straight Leg",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Flat Dumbbell Fly",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Hack Squat",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Kickbacks, Bent, 1-Arm, Dumbbell",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Incline Lateral, Dumbbells",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Lat Pulldown",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Machine Squat",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+            };
+            return result;
+        }
     }
 
 }

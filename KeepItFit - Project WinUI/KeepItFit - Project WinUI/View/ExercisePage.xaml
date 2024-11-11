@@ -32,11 +32,51 @@
                         <TextBlock FontSize="15" Text="{x:Bind CaloriesBurned}"
                                    TextAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
+                    <Button Name="DeleteButton" Click="DeleteButton_Click"
+                            Tag="{x:Bind}">
+                        <FontIcon Glyph="&#xE711;"/>
+                    </Button>
+                    
                 </StackPanel>
             </Grid>
         </DataTemplate>
 
-        <ItemsPanelTemplate x:Key="HorizalFormat">
+        <DataTemplate x:Key="StrengthTrainingForm" x:DataType="local:StrengthTraining">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{x:Bind name}" HorizontalAlignment="Left"
+                            Grid.Row="0" Grid.Column="0"
+                            FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"
+                            Grid.Row="0" Grid.Column="1">
+                    <Border Background="LightGray" Width="100" Height="auto" BorderThickness="3">
+                        <TextBlock FontSize="15" Text="{x:Bind Sets}"
+                                    TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border Background="LightGray" Width="100" Height="auto" BorderThickness="3">
+                        <TextBlock FontSize="15" Text="{x:Bind Reps_Set}"
+                                    TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border Background="LightGray" Width="100" Height="auto" BorderThickness="3">
+                        <TextBlock FontSize="15" Text="{x:Bind Weight_Sets}"
+                                TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Button Name="DeleteStrengthButton" Click="DeleteStrengthButton_Click"
+                            Tag="{x:Bind}">
+                        <FontIcon Glyph="&#xE711;"/>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+            <ItemsPanelTemplate x:Key="HorizalFormat">
             <StackPanel Orientation="Horizontal"/>
         </ItemsPanelTemplate>
         <ItemsPanelTemplate x:Key="VerticalFormat">
@@ -65,23 +105,27 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
-                        <TextBlock Foreground="#0000FF" Margin="0 0 0 20"
-                                    FontSize="20" FontWeight="Bold"
-                                    Text="Cardiovascular"/>
-                        <TextBlock Name="CardioExercise" Text="Add Exercise" Foreground="#0000FF"
-                                   Tapped="CardioExercise_Tapped"/>
-                    </StackPanel>
-                    <ItemsControl ItemsSource="{x:Bind Cardio.CardioExerciseData}"
+
+                    <TextBlock Foreground="#0000FF" Margin="0 0 0 20"
+                               FontSize="20" FontWeight="Bold"
+                               Text="Cardiovascular"
+                               Grid.Column="0" Grid.Row="0"/>
+                    <ItemsControl ItemsSource="{x:Bind ViewModel.CardioExerciseData}"
                                   ItemTemplate="{StaticResource CarioForm}"
                                   ItemsPanel="{StaticResource VerticalFormat}"
                                   Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <TextBlock Name="CardioExercise" Text="Add Exercise" Foreground="#0000FF"
+                               Tapped="CardioExercise_Tapped"
+                               Grid.Row="2" Grid.Column="0"/>
+
+                    
 
                     <StackPanel Orientation="Horizontal" Grid.Column="1">
                         <Border Background="#0000FF" Width="150" Height="50" 
@@ -109,6 +153,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -116,57 +162,115 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <TextBlock Text="Daily Total / Goal" HorizontalAlignment="Right"
+                    <TextBlock HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0 0 10 0"
                                FontWeight="Bold"
-                               FontSize="15"/>
+                               FontSize="15">
+                        Daily Total / <Run Text="Goal" Foreground="blue"/>
+                    </TextBlock>
 
 
-                    <TextBlock Text="Weekly Total / Goal" Grid.Row="1" Grid.Column="0"
+                    <TextBlock Grid.Row="1" Grid.Column="0"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0 0 10 0"
                                FontWeight="Bold"
-                               FontSize="15"/>
+                               FontSize="15">
+                        Weekly Total / <Run Text="Goal" Foreground="blue"/>
+                    </TextBlock>
                     
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
                         <Border Background="LightGray" Width="150" Height="50" 
                                     BorderThickness="3">
-                                <TextBlock Text="0/0" TextAlignment="Center" 
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock TextAlignment="Center" 
                                            VerticalAlignment="Center"
-                                           FontWeight="Bold"/>
+                                           FontWeight="Bold"
+                                           Text="0"
+                                           Name="Daily_minutes"/>
+                                <TextBlock TextAlignment="Center" 
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold" Text="/"/>
+                                <TextBlock TextAlignment="Center" 
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold" Text="0"
+                                           Foreground="Blue"/>
+                            </StackPanel>
                         </Border>
+                        
                         <Border Background="LightGray" Width="150" Height="50" 
                                     BorderThickness="3">
-                            <TextBlock Text="0/0" TextAlignment="Center" 
-                                       VerticalAlignment="Center"
-                                       FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock TextAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold"
+                                            Text="0"
+                                           Name="Daily_Calories"/>
+                                <TextBlock TextAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold" Text="/"/>
+                                <TextBlock TextAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold" Text="0"
+                                           Foreground="Blue"/>
+                            </StackPanel>
                         </Border>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
                         <Border Background="LightGray" Width="150" Height="50" 
                                     BorderThickness="3">
-                            <TextBlock Text="0/0" TextAlignment="Center" 
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
-                                       FontWeight="Bold"/>
+                                            FontWeight="Bold"
+                                            Text="0"
+                                            Name="Weekly_Calories"/>
+                                <TextBlock TextAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold" Text="/"/>
+                                <TextBlock TextAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold" Text="0"
+                                            Foreground="Blue"/>
+                            </StackPanel>
                         </Border>
                         <Border Background="LightGray" Width="150" Height="50" 
                                     BorderThickness="3">
-                            <TextBlock Text="0/0" TextAlignment="Center" 
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
-                                       FontWeight="Bold"/>
+                                            FontWeight="Bold"
+                                            Text="0"
+                                            Name="Weekly_minutes"/>
+                                <TextBlock TextAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold" Text="/"/>
+                                <TextBlock TextAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold" Text="0"
+                                            Foreground="Blue"/>
+                            </StackPanel>
                         </Border>
                     </StackPanel>
 
-                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="2"
-                                Margin="0 45 0 0">
-                        <TextBlock Foreground="#0000FF" Margin="0 0 0 20"
-                                   FontSize="20" FontWeight="Bold"
-                                   Text="Strength Training"/>
-                        <TextBlock Text="Add Exercise" Foreground="#0000FF"/>
-                    </StackPanel>
+
+                    <TextBlock Foreground="#0000FF" Margin="0 45 0 20"
+                               FontSize="20" FontWeight="Bold"
+                               Text="Strength Training"
+                               Grid.Row="2" Grid.Column="0"/>
+
+                    <ItemsControl ItemsSource="{x:Bind ViewModel.StrengthTrainingData}"
+                                  ItemTemplate="{StaticResource StrengthTrainingForm}"
+                                  ItemsPanel="{StaticResource VerticalFormat}"
+                                  Grid.Row="3" Grid.ColumnSpan="2"/>
+
+                    <TextBlock Text="Add Exercise" Foreground="#0000FF"
+                               Name="StrengthExercise"
+                               Tapped="StrengthExercise_Tapped"
+                               Grid.Row="4" Grid.Column="0"/>
+
 
                     <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1"
                                 Margin="0 45 0 0">
@@ -218,8 +322,12 @@
             <StackPanel Orientation="Horizontal" Grid.Column="1"
                         HorizontalAlignment="Right">
 
-                <HyperlinkButton Click="EditNote_Click"  Name="EditNote"
-                     Content="Edit Note"/>
+                <HyperlinkButton Click="EditNote_Click"  Name="EditNote">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Edit note"/>
+                        <FontIcon Glyph="&#xE70F;" />
+                    </StackPanel>
+                </HyperlinkButton>
                 <HyperlinkButton Name="SaveNote" Click="SaveNote_Click"
                      Content="Save Note" Visibility="Collapsed"/>
 
@@ -241,5 +349,7 @@
         </Button>
 
     </StackPanel>
+    
+
 
 </Page>

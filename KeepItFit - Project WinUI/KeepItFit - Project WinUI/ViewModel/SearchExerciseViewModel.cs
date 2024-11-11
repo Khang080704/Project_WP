@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 
 namespace KeepItFit___Project_WinUI.ViewModel
 {
-    public class SearchCardioExerciseViewModel : INotifyPropertyChanged
+    public class SearchExerciseViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<CardioExercise> CardioExerciseDatabase { get; set; }
         public ObservableCollection<CardioExercise> CardioExerciseSearchList { get; set; }
-        public ObservableCollection<CardioExercise> RecentCardioExercise {  get; set; }
         public CardioExercise _selectedCardioExercise {  get; set; }
         public bool isCardioExerciseSelected { get; set; }
+
+        public ObservableCollection<StrengthTraining> strengthTrainingDatabase { get; set; }
+        public ObservableCollection<StrengthTraining> strengthTrainingSearchList { get; set; }
+        public StrengthTraining _selectedStrengthTraining { get; set; }
+        public bool isStrengthExerciseSelected { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void init()
@@ -24,7 +28,10 @@ namespace KeepItFit___Project_WinUI.ViewModel
             CardioExerciseDatabase = dao.GetAllCardioExercise();
             CardioExerciseSearchList = new ObservableCollection<CardioExercise>();
             _selectedCardioExercise = new CardioExercise();
-            RecentCardioExercise = new ObservableCollection<CardioExercise>();
+
+            strengthTrainingDatabase = dao.GetAllStrengthTraining();
+            strengthTrainingSearchList = new ObservableCollection<StrengthTraining>();
+            _selectedStrengthTraining = new StrengthTraining();
         }
     }
 }

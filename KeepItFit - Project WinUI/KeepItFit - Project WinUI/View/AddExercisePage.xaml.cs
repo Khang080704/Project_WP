@@ -23,15 +23,32 @@ namespace KeepItFit___Project_WinUI.View
     /// </summary>
     public sealed partial class AddExercisePage : Page
     {
+        string exerciseType {  get; set; }
         public AddExercisePage()
         {
             this.InitializeComponent();
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(e.Parameter is string)
+            {
+                exerciseType = (string)e.Parameter;
+            }
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             string query = SearchText.Text.ToLower();
-            this.Frame.Navigate(typeof(SearchCardioExercise), query);
+            if(exerciseType == "CardioExercise")
+            {
+                this.Frame.Navigate(typeof(SearchCardioExercise), query);
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(SearchStrengthTrainingExercise), query);
+            }
+            
         }
     }
 }

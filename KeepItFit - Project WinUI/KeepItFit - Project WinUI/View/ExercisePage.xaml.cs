@@ -27,12 +27,12 @@ namespace KeepItFit___Project_WinUI
     /// </summary>
     public sealed partial class ExercisePage : Page
     {
-        public InputExerciseViewModel Cardio {  get; set; }
+        public InputExerciseViewModel ViewModel {  get; set; }
         public ExercisePage()
         {
             this.InitializeComponent();
-            Cardio = new InputExerciseViewModel();
-            Cardio.init();
+            ViewModel = new InputExerciseViewModel();
+            ViewModel.init();
         }
 
         private void SaveNote_Click(object sender, RoutedEventArgs e)
@@ -54,9 +54,17 @@ namespace KeepItFit___Project_WinUI
 
         }
 
-        private void CardioExercise_Tapped(object sender, TappedRoutedEventArgs e)
+        void update_Time_And_Calories_Daily()
         {
-            this.Frame.Navigate(typeof(AddExercisePage));
+            var sumDailyCalories = 0;
+            var timeDaily = 0;
+            foreach (var i in ViewModel.CardioExerciseData)
+            {
+                sumDailyCalories += i.CaloriesBurned;
+                timeDaily += i._time;
+            }
+            Daily_Calories.Text = sumDailyCalories.ToString();
+            Daily_minutes.Text = timeDaily.ToString();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -64,8 +72,54 @@ namespace KeepItFit___Project_WinUI
             base.OnNavigatedTo(e);
             if(e.Parameter is CardioExercise cardio)
             {
-                Cardio.updateWithCardio(cardio);
+                ViewModel.updateWithCardio(cardio);
+                update_Time_And_Calories_Daily();
+            }
+            else
+            {
+                if(e.Parameter is StrengthTraining strength)
+                {
+                    ViewModel.updateWithStrength(strength);
+                }
             }
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var itemToDelete = btn?.Tag as CardioExercise;
+            if (itemToDelete != null)
+            {
+                if (ViewModel.CardioExerciseData.Contains(itemToDelete))
+                {
+                    ViewModel.CardioExerciseData.Remove(itemToDelete);
+                    update_Time_And_Calories_Daily();
+                }   
+            }
+        }
+        private void DeleteStrengthButton_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var itemToDelete = btn?.Tag as StrengthTraining;
+            if (itemToDelete != null)
+            {
+                if (ViewModel.StrengthTrainingData.Contains(itemToDelete))
+                {
+                    ViewModel.StrengthTrainingData.Remove(itemToDelete);
+                }
+            }
+        }
+
+        private void StrengthExercise_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddExercisePage), StrengthExercise.Name);
+        }
+
+        private void CardioExercise_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddExercisePage), CardioExercise.Name);
+        }
+
+        
     }
 }

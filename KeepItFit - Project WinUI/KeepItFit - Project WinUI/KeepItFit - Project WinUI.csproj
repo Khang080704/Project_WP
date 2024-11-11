@@ -28,6 +28,7 @@
     <None Remove="View\HomePage.xaml" />
     <None Remove="View\SearchCardioExercise.xaml" />
     <None Remove="View\SearchFood.xaml" />
+    <None Remove="View\SearchStrengthTrainingExercise.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,6 +65,9 @@
     <None Update="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\SearchStrengthTrainingExercise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\AddExercisePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

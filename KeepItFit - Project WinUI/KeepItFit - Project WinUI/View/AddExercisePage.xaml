@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
+    <StackPanel Margin="10">
         <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
                    FontSize="20" FontWeight="Bold">
             Add Exercise

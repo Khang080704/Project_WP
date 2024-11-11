@@ -14,7 +14,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using static KeepItFit___Project_WinUI.View.AddFood;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -24,55 +23,56 @@ namespace KeepItFit___Project_WinUI.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SearchCardioExercise : Page
+    public sealed partial class SearchStrengthTrainingExercise : Page
     {
         public SearchExerciseViewModel viewModel { get; set; }
-        public SearchCardioExercise()
+        public SearchStrengthTrainingExercise()
         {
             this.InitializeComponent();
             viewModel = new SearchExerciseViewModel();
             viewModel.init();
         }
 
-        private void SearchCaridoExercise_Click(object sender, RoutedEventArgs e)
+        private void SearchStrengthExercise_Click(object sender, RoutedEventArgs e)
         {
-            var query = CardioExerciseBox.Text;
-            viewModel.CardioExerciseSearchList.Clear();
+            var query = StrengthExerciseBox.Text;
+            viewModel.strengthTrainingSearchList.Clear();
 
             if (query == null || query == "")
             {
-                CardioExerciseSearch.Visibility = Visibility.Collapsed;
+                StrengthExerciseSearch.Visibility = Visibility.Collapsed;
                 noResult.Visibility = Visibility.Visible;
                 return;
             }
 
-            var filteredList = viewModel.CardioExerciseDatabase.Where(cardio => cardio.name.ToLower().Contains(query)).ToList();
+            var filteredList = viewModel.strengthTrainingDatabase.Where(training => training.name.ToLower().Contains(query)).ToList();
 
             if (filteredList.Count == 0)
             {
-                CardioExerciseSearch.Visibility = Visibility.Collapsed;
+                StrengthExerciseSearch.Visibility = Visibility.Collapsed;
                 noResult.Visibility = Visibility.Visible;
                 return;
             }
 
             noResult.Visibility = Visibility.Collapsed;
-            CardioExerciseSearch.Visibility = Visibility.Visible;
+            StrengthExerciseSearch.Visibility = Visibility.Visible;
 
-            foreach (var cardio in filteredList)
+            foreach (var training in filteredList)
             {
-                viewModel.CardioExerciseSearchList.Add(cardio);
+                viewModel.strengthTrainingSearchList.Add(training);
 
             }
         }
 
-        private void CardioExerciseSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void StrengthExerciseSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(CardioExerciseSearch.SelectedItem is CardioExercise exercise)
+            if (StrengthExerciseSearch.SelectedItem is StrengthTraining exercise)
             {
-                viewModel._selectedCardioExercise = exercise;
-                viewModel.isCardioExerciseSelected = true; // Show details
+                viewModel._selectedStrengthTraining = exercise;
+                viewModel.isStrengthExerciseSelected = true; // Show details
             }
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -80,18 +80,18 @@ namespace KeepItFit___Project_WinUI.View
             {
 
                 // Filter the food is chosen
-                var filteredList = viewModel.CardioExerciseDatabase.Where(exercise => exercise.name.ToLower().Contains(parameters)).ToList();
-                foreach (var cardio in filteredList)
+                var filteredList = viewModel.strengthTrainingDatabase.Where(exercise => exercise.name.ToLower().Contains(parameters)).ToList();
+                foreach (var strength in filteredList)
                 {
-                    viewModel.CardioExerciseSearchList.Add(cardio);
+                    viewModel.strengthTrainingSearchList.Add(strength);
                 }
             }
         }
 
         private void AddExercise_Click(object sender, RoutedEventArgs e)
         {
-            var selectedCardio = viewModel._selectedCardioExercise;
-            this.Frame.Navigate(typeof(ExercisePage), selectedCardio);
+            var selectedStrengthTraining = viewModel._selectedStrengthTraining;
+            this.Frame.Navigate(typeof(ExercisePage), selectedStrengthTraining);
         }
     }
 }
