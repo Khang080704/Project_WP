@@ -1,9 +1,12 @@
-﻿using System;
+﻿using KeepItFit___Project_WinUI.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace KeepItFit___Project_WinUI.ViewModel
 {
@@ -39,6 +42,8 @@ namespace KeepItFit___Project_WinUI.ViewModel
             //Convert to number
             var result = new InputNutritionData()
             {
+                foodId = src.foodId,
+                foodQuantity = src.foodQuantity,
                 name = $"{src.foodName}, {src.foodQuantity} {src.selectedFoodUnit}",
                 CaloriesInput = Convert.ToInt32(src.foodCalories) * Convert.ToInt32(src.foodQuantity),
                 CarbsInput = Convert.ToInt32(src.foodCarbs) * Convert.ToInt32(src.foodQuantity),

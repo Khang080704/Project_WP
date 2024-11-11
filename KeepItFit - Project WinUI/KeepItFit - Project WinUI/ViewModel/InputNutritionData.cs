@@ -15,6 +15,8 @@ namespace KeepItFit___Project_WinUI.ViewModel
         //if page == AddFood, rename it according to the name of dish + nutrition amount
         //. 1 InputNutritionData is 1 line display in FoodDiary
 
+        public int foodId { get; set; }
+        public string foodQuantity { get; set; }
         public string name { get; set; } = "Quick Add, 1 serving";        
         public int CaloriesInput { get; set; }
         public int SodiumInput { get; set; }

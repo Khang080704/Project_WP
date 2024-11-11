@@ -24,8 +24,8 @@ namespace KeepItFit___Project_WinUI.ViewModel
         }
         public void initMeal()
         {
-            IDao dao = new MockDAO();
-            mealList = dao.GetAllMeals();
+            IDao sqldao = new SQLDao();
+            mealList = sqldao.GetAllMeals();
         }
         public Nutritions getNutritions(string name)
         {

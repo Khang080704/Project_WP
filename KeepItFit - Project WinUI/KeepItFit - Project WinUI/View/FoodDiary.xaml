@@ -150,9 +150,10 @@
                     FontSize="15" FontWeight="Bold">
              Your food Daily for
             </TextBlock>
-            
-            <CalendarDatePicker Width="200" PlaceholderText="Pick a date"/>
-           
+
+            <CalendarDatePicker Width="200" PlaceholderText="Pick a date"
+                    Date="{x:Bind viewModel.SelectedDate, Mode=TwoWay}"/>
+
         </StackPanel>
         <Line Stroke="SteelBlue"
            X1="0" Y1="0"
@@ -181,7 +182,7 @@
                         </TextBlock>
 
                     </StackPanel>
-                    <ItemsControl ItemsSource="{x:Bind BreakFastNutri.NutritionData}"
+                    <ItemsControl ItemsSource="{x:Bind viewModel.BreakFastNutri.NutritionData}"
                                 ItemTemplate="{StaticResource DataForm}"
                                 ItemsPanel="{StaticResource VerticalFormat}"
                                 Name="BreakFast_data">
@@ -214,7 +215,7 @@
 
                     </StackPanel>
 
-                    <ItemsControl ItemsSource="{x:Bind LunchNutri.NutritionData}"
+                    <ItemsControl ItemsSource="{x:Bind viewModel.LunchNutri.NutritionData}"
                                 ItemTemplate="{StaticResource DataForm}"
                                 ItemsPanel="{StaticResource VerticalFormat}"
                                 Name="Lunch_data">
@@ -242,7 +243,7 @@
                         </TextBlock>
 
                     </StackPanel>
-                    <ItemsControl ItemsSource="{x:Bind DinnerNutri.NutritionData}"
+                    <ItemsControl ItemsSource="{x:Bind viewModel.DinnerNutri.NutritionData}"
                         ItemTemplate="{StaticResource DataForm}"
                         Name="Dinner_data">
 
@@ -270,7 +271,7 @@
                         </TextBlock>
 
                     </StackPanel>
-                    <ItemsControl ItemsSource="{x:Bind SnackNutri.NutritionData}"
+                    <ItemsControl ItemsSource="{x:Bind viewModel.SnackNutri.NutritionData}"
                         ItemTemplate="{StaticResource DataForm}"
                         Name="Snacks_data">
 
