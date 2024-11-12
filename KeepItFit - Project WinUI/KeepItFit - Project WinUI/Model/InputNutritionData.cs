@@ -17,7 +17,7 @@ namespace KeepItFit___Project_WinUI.Model
 
         public int foodId { get; set; }
         public string foodQuantity { get; set; }
-        public string name { get; set; } = "Quick Add, 1 serving";        
+        public string name { get; set; }        
         public int CaloriesInput { get; set; }
         public int SodiumInput { get; set; }
         public int FatInput { get; set; }

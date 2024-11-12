@@ -29,19 +29,10 @@ namespace KeepItFit___Project_WinUI
     {
         public FoodDiaryViewModel viewModel { get; set; }
 
-        public NutritionsViewModel nutri { get; set; }
-        
-
         public FoodDiary()
         {
             this.InitializeComponent();
             viewModel = new FoodDiaryViewModel();
-
-            nutri = new NutritionsViewModel();
-            nutri.initNutrition();
-            nutri.initMeal();
-
-            updateTotal();
         }
 
         //Navigate to FoodPage button Quick Add
@@ -98,28 +89,28 @@ namespace KeepItFit___Project_WinUI
                 if (name == "BreakFast")
                 {
                     //Add new list into viewModel
-                    viewModel.BreakFastNutri.update(list);
-                  
+                    //viewModel.BreakFastNutri.update(list);
+                    viewModel.Update_QuickAddBreakFast(list);
+
                 }
                 else if(name == "Lunch")
                 {
-                    viewModel.LunchNutri.update(list);
+                    //viewModel.LunchNutri.update(list);
+                    viewModel.Update_QuickAddLunch(list);
                 }
                 else if(name == "Dinner")
                 {
-                    viewModel.DinnerNutri.update(list);
+                    //viewModel.DinnerNutri.update(list);
+                    viewModel.Update_QuickAddDinner(list);
                 }
                 else
                 {
-                    viewModel.SnackNutri.update(list);
+                    //viewModel.SnackNutri.update(list);
+                    viewModel.Update_QuickAddSnack(list);
                 }
 
-                //In the table, set all total's value = 0, calcaulate again
-                foreach (var i in nutri.nutrition)
-                {
-                    i.Total = 0;
-                }
-                updateTotal();
+                viewModel.UpdateDataAllMeals();
+                viewModel.updateTotal();
 
             }
             else if (e.Parameter is NavigationParameters_AddFood_ToFoodDiary parameters_1)
@@ -146,12 +137,7 @@ namespace KeepItFit___Project_WinUI
                 }
 
                 viewModel.UpdateDataAllMeals();
-
-                foreach (var i in nutri.nutrition)
-                {
-                    i.Total = 0;
-                }
-                updateTotal();
+                viewModel.updateTotal();
 
             }
             else if (e.Parameter is NavigationParameters_SearchFood parameters_2)
@@ -180,48 +166,9 @@ namespace KeepItFit___Project_WinUI
                 }
 
                 viewModel.UpdateDataAllMeals();
-
-                foreach (var i in nutri.nutrition)
-                {
-                    i.Total = 0;
-                }
-                updateTotal();
+                viewModel.updateTotal();
             }
             
-        }
-
-        //nutri.nutrition contains list of nutritions in order
-        //[0] : calories
-        //[1]: Carbs
-        //...
-        //When add a new InputNutritionViewModel to list,
-        //update total's value of nutrion by calculate sum 
-        //of all elements in src
-        void updateForMeal(InputNutritionViewModel src)
-        {
-            foreach (var i in src.NutritionData)
-            {
-                nutri.nutrition[0].Total += i.CaloriesInput;
-                nutri.nutrition[1].Total += i.CarbsInput;
-                nutri.nutrition[2].Total += i.FatInput;
-                nutri.nutrition[3].Total += i.ProteinInput;
-                nutri.nutrition[4].Total += i.SodiumInput;
-                nutri.nutrition[5].Total += i.SugarInput;
-            }
-            
-        }
-        void updateTotal()
-        {
-            //Calculate the total's value of all meal
-            updateForMeal(viewModel.BreakFastNutri);
-            updateForMeal(viewModel.LunchNutri);
-            updateForMeal(viewModel.DinnerNutri);
-            updateForMeal(viewModel.SnackNutri);
-            //Cal the remain
-            foreach (var i in nutri.nutrition)
-            {
-                i.Remain = i.Daily - i.Total;
-            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -250,17 +197,12 @@ namespace KeepItFit___Project_WinUI
                 
             }
 
-            //Set value to 0 and calculate from begin
-            foreach (var i in nutri.nutrition)
-            {
-                i.Total = 0;
-            }
-            updateTotal();
+            viewModel.updateTotal();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int result = nutri.nutrition[0].Remain;
+            int result = viewModel.nutri.nutrition[0].Remain;
             var screen = new NutritionResult(result);
             screen.Activate();
         }

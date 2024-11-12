@@ -21,10 +21,16 @@ namespace KeepItFit___Project_WinUI.ViewModel
         public InputNutritionViewModel DinnerNutri { get; set; }
         public InputNutritionViewModel SnackNutri { get; set; }
 
+        public NutritionsViewModel nutri { get; set; }
+
         public FoodDiaryViewModel()
         {
             // initialize the selected date to the current date
             _selectedDate = DateTimeOffset.Now;
+
+            nutri = new NutritionsViewModel();
+            nutri.initNutrition();
+            nutri.initMeal();
 
             BreakFastNutri = new InputNutritionViewModel();
             LunchNutri = new InputNutritionViewModel();
@@ -37,6 +43,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
             SnackNutri.NutritionData = SnackNutri.init();
 
             UpdateDataAllMeals();
+            updateTotal();
         }
 
         public DateTimeOffset SelectedDate
@@ -49,6 +56,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
                     _selectedDate = value;
                     OnPropertyChanged();
                     UpdateDataAllMeals();
+                    updateTotal();
                 }
             }
         }
@@ -72,11 +80,17 @@ namespace KeepItFit___Project_WinUI.ViewModel
             DinnerNutri.NutritionData.Clear();
             SnackNutri.NutritionData.Clear();
 
-            // Update the nutrition data for each meal zone
+            // Update the food data for each meal zone
             BreakFastNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "BreakfastDiary"));
             LunchNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "LunchDiary"));
             DinnerNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "DinnerDiary"));
             SnackNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "SnackDiary"));
+
+            // Update the quick add data for each meal zone
+            BreakFastNutri.updateWithListFood(sqlDao.GeQuickAddForTheDay_FoodDiary(formattedDate, "QuickAdd_Breakfast"));
+            LunchNutri.updateWithListFood(sqlDao.GeQuickAddForTheDay_FoodDiary(formattedDate, "QuickAdd_Lunch"));
+            DinnerNutri.updateWithListFood(sqlDao.GeQuickAddForTheDay_FoodDiary(formattedDate, "QuickAdd_Dinner"));
+            SnackNutri.updateWithListFood(sqlDao.GeQuickAddForTheDay_FoodDiary(formattedDate, "QuickAdd_Snack"));
         }
 
         // Delete food from the meal zone(Breakfast)
@@ -85,7 +99,16 @@ namespace KeepItFit___Project_WinUI.ViewModel
             BreakFastNutri.NutritionData.Remove(itemToDelete);
             IDao sqlDao = new SQLDao();
             string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "BreakfastDiary";
+            string diaryType;
+            if (itemToDelete.name.Contains("Quick Add"))
+            {
+                diaryType = "QuickAdd_Breakfast";
+                Debug.WriteLine(itemToDelete.foodId);
+                sqlDao.DeleteQuickAddForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
+                return;
+            }
+
+            diaryType = "BreakfastDiary";
 
             // Delete the food from the database
             sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
@@ -97,7 +120,16 @@ namespace KeepItFit___Project_WinUI.ViewModel
             LunchNutri.NutritionData.Remove(itemToDelete);
             IDao sqlDao = new SQLDao();
             string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "LunchDiary";
+            string diaryType;
+            if (itemToDelete.name.Contains("Quick Add"))
+            {
+                diaryType = "QuickAdd_Lunch";
+                Debug.WriteLine(itemToDelete.foodId);
+                sqlDao.DeleteQuickAddForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
+                return;
+            }
+
+            diaryType = "LunchDiary";
 
             // Delete the food from the database
             sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
@@ -109,7 +141,16 @@ namespace KeepItFit___Project_WinUI.ViewModel
             DinnerNutri.NutritionData.Remove(itemToDelete);
             IDao sqlDao = new SQLDao();
             string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "DinnerDiary";
+            string diaryType;
+            if (itemToDelete.name.Contains("Quick Add"))
+            {
+                diaryType = "QuickAdd_Dinner";
+
+                sqlDao.DeleteQuickAddForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
+                return;
+            }
+
+            diaryType = "DinnerDiary";
 
             // Delete the food from the database
             sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
@@ -121,7 +162,16 @@ namespace KeepItFit___Project_WinUI.ViewModel
             SnackNutri.NutritionData.Remove(itemToDelete);
             IDao sqlDao = new SQLDao();
             string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "SnackDiary";
+            string diaryType;
+            if (itemToDelete.name.Contains("Quick Add"))
+            {
+                diaryType = "QuickAdd_Snack";
+
+                sqlDao.DeleteQuickAddForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
+                return;
+            }
+
+            diaryType = "SnackDiary";
 
             // Delete the food from the database
             sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
@@ -168,6 +218,77 @@ namespace KeepItFit___Project_WinUI.ViewModel
             foreach (var food in foodList)
             {
                 sqlDao.UpdateFoodForTheDay_FoodDiary(formattedDate, food.foodId, food.foodQuantity, diaryType);
+            }
+        }
+
+        public void Update_QuickAddBreakFast(List<int> src)
+        {
+            IDao sqlDao = new SQLDao();
+            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
+            string diaryType = "QuickAdd_Breakfast";
+            sqlDao.UpdateQuickAddForTheDay_FoodDiary(formattedDate, src, diaryType);
+        }
+
+        public void Update_QuickAddLunch(List<int> src)
+        {
+            IDao sqlDao = new SQLDao();
+            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
+            string diaryType = "QuickAdd_Lunch";
+            sqlDao.UpdateQuickAddForTheDay_FoodDiary(formattedDate, src, diaryType);
+        }
+
+        public void Update_QuickAddDinner(List<int> src)
+        {
+            IDao sqlDao = new SQLDao();
+            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
+            string diaryType = "QuickAdd_Dinner";
+            sqlDao.UpdateQuickAddForTheDay_FoodDiary(formattedDate, src, diaryType);
+        }
+
+        public void Update_QuickAddSnack(List<int> src)
+        {
+            IDao sqlDao = new SQLDao();
+            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
+            string diaryType = "QuickAdd_Snack";
+            sqlDao.UpdateQuickAddForTheDay_FoodDiary(formattedDate, src, diaryType);
+        }
+
+        //nutri.nutrition contains list of nutritions in order
+        //[0] : calories
+        //[1]: Carbs
+        //...
+        //When add a new InputNutritionViewModel to list,
+        //update total's value of nutrion by calculate sum 
+        //of all elements in src
+        public void updateForMeal(InputNutritionViewModel src)
+        {
+            foreach (var i in src.NutritionData)
+            {
+                nutri.nutrition[0].Total += i.CaloriesInput;
+                nutri.nutrition[1].Total += i.CarbsInput;
+                nutri.nutrition[2].Total += i.FatInput;
+                nutri.nutrition[3].Total += i.ProteinInput;
+                nutri.nutrition[4].Total += i.SodiumInput;
+                nutri.nutrition[5].Total += i.SugarInput;
+            }
+
+        }
+        public void updateTotal()
+        {
+            foreach (var i in nutri.nutrition)
+            {
+                i.Total = 0;
+            }
+
+            //Calculate the total's value of all meal
+            updateForMeal(BreakFastNutri);
+            updateForMeal(LunchNutri);
+            updateForMeal(DinnerNutri);
+            updateForMeal(SnackNutri);
+            //Cal the remain
+            foreach (var i in nutri.nutrition)
+            {
+                i.Remain = i.Daily - i.Total;
             }
         }
     }

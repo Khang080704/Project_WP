@@ -235,7 +235,7 @@ namespace KeepItFit___Project_WinUI.Model
         public List<Food> GetFoodForTheDay_FoodDiary(string date, string diaryType)
         {
             List<Food> foods = new List<Food>();
-            string query = $@"
+            string queryFood = $@"
                 SELECT T.*, F.*
                 FROM {diaryType} T
                 JOIN FOOD F ON T.FOOD_ID = F.ID
@@ -243,7 +243,7 @@ namespace KeepItFit___Project_WinUI.Model
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCommand command = new SqlCommand(queryFood, connection);
                 command.Parameters.AddWithValue("@FoodDate", date);
 
                 try
@@ -251,6 +251,48 @@ namespace KeepItFit___Project_WinUI.Model
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     foods = ReadFoodInfo(reader);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error fetching data: {ex.Message}");
+                }
+            }
+
+            return foods;
+        }
+
+        public List<Food> GeQuickAddForTheDay_FoodDiary(string date, string diaryType)
+        {
+            List<Food> foods = new List<Food>();
+            string queryQuickAdd = $@"SELECT * FROM {diaryType} WHERE FOOD_DATE = @FoodDate;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryQuickAdd, connection);
+                command.Parameters.AddWithValue("@FoodDate", date);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Food food = new Food
+                        {
+                            foodId = Convert.ToInt32(reader["ID"]),
+                            foodName = "Quick Add", // Default name is "Quick Add"
+                            foodCalories = Convert.ToSingle(reader["FOOD_CALORIES"]),
+                            foodCarbs = Convert.ToSingle(reader["FOOD_CARBS"]),
+                            foodFat = Convert.ToSingle(reader["FOOD_FAT"]),
+                            foodProtein = Convert.ToSingle(reader["FOOD_PROTEIN"]),
+                            foodSodium = Convert.ToSingle(reader["FOOD_SODIUM"]),
+                            foodSugar = Convert.ToSingle(reader["FOOD_SUGAR"]),
+                            foodQuantity = "1", // Default quantity is "1"
+                            foodUnit = ["serving(s)"],
+                            selectedFoodUnit = "serving(s)"
+                        };
+                        foods.Add(food);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -284,19 +326,16 @@ namespace KeepItFit___Project_WinUI.Model
             }
         }
 
-        // Insert food to the meal zone in the day
-        /*public void InsertFoodForTheDay_FoodDiary(string date, int foodId, string foodQuantity, string diaryType)
+        public void DeleteQuickAddForTheDay_FoodDiary(string date, int quickAddId, string diaryType)
         {
-            string query = $@"INSERT INTO {diaryType} (FOOD_ID, FOOD_QUANTITY, FOOD_DATE) 
-                            VALUES (@FoodID, @FoodQuantity, @FoodDate); ";
+            string query = $@"DELETE FROM {diaryType} WHERE FOOD_DATE = @FoodDate AND ID = @QuickAddID;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@FoodID", foodId);
-                command.Parameters.AddWithValue("@FoodQuantity", foodQuantity);
                 command.Parameters.AddWithValue("@FoodDate", date);
-                
+                command.Parameters.AddWithValue("@QuickAddID", quickAddId);
+
                 try
                 {
                     connection.Open();
@@ -304,10 +343,10 @@ namespace KeepItFit___Project_WinUI.Model
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"Error inserting data: {ex.Message}");
+                    Debug.WriteLine($"Error deleting data: {ex.Message}");
                 }
             }
-        }*/
+        }
 
         public void UpdateFoodForTheDay_FoodDiary(string date, int foodId, string foodQuantity, string diaryType)
         {
@@ -322,6 +361,7 @@ namespace KeepItFit___Project_WinUI.Model
                 WHERE FOOD_DATE = @FoodDate AND FOOD_ID = @FoodID";
 
             string queryInsert = $@"
+                INSERT INTO FOODDIARY (FOOD_DATE) VALUES (@FoodDate);
                 INSERT INTO {diaryType} (FOOD_ID, FOOD_QUANTITY, FOOD_DATE) 
                 VALUES (@FoodID, @FoodQuantity, @FoodDate);";
 
@@ -360,6 +400,35 @@ namespace KeepItFit___Project_WinUI.Model
                 catch (Exception ex)
                 {
                     Debug.WriteLine($"Error updating or inserting data: {ex.Message}");
+                }
+            }
+        }
+
+        public void UpdateQuickAddForTheDay_FoodDiary(string date, List<int> quickAddList, string diaryType)
+        {
+            string queryInsert = $@"
+                INSERT INTO {diaryType} (FOOD_DATE, FOOD_CALORIES, FOOD_CARBS, FOOD_FAT, FOOD_PROTEIN, FOOD_SODIUM, FOOD_SUGAR) 
+                VALUES (@FoodDate, @FoodCalories, @FoodCarbs, @FoodFat, @FoodProtein, @FoodSodium, @FoodSugar);";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
+                commandInsert.Parameters.AddWithValue("@FoodDate", date);
+                commandInsert.Parameters.AddWithValue("@FoodCalories", quickAddList[0]);
+                commandInsert.Parameters.AddWithValue("@FoodCarbs", quickAddList[1]);
+                commandInsert.Parameters.AddWithValue("@FoodFat", quickAddList[2]);
+                commandInsert.Parameters.AddWithValue("@FoodProtein", quickAddList[3]);
+                commandInsert.Parameters.AddWithValue("@FoodSodium", quickAddList[4]);
+                commandInsert.Parameters.AddWithValue("@FoodSugar", quickAddList[5]);
+
+                try
+                {
+                    connection.Open();
+                    commandInsert.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error inserting data: {ex.Message}");
                 }
             }
         }

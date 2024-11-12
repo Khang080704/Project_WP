@@ -215,6 +215,7 @@ namespace KeepItFit___Project_WinUI.View
                 }
                 parameters.foodList = foodListRecent_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
+                foodListRecent_Checked.Clear();
             }
             else if (_lastClickedButton == FrequentButton)
             {
@@ -224,6 +225,7 @@ namespace KeepItFit___Project_WinUI.View
                 }
                 parameters.foodList = foodListFrequent_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
+                foodListFrequent_Checked.Clear();
             }
             else if (_lastClickedButton == MyFoodButton)
             {
@@ -233,6 +235,7 @@ namespace KeepItFit___Project_WinUI.View
                 }
                 parameters.foodList = foodListMyFood_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
+                foodListMyFood_Checked.Clear();
             }
         }
 

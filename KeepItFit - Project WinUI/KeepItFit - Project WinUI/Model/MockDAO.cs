@@ -244,6 +244,21 @@ namespace KeepItFit___Project_WinUI.Model
             throw new NotImplementedException();
         }
 
+        public void UpdateQuickAddForTheDay_FoodDiary(string date, List<int> quickAddList, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GeQuickAddForTheDay_FoodDiary(string date, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteQuickAddForTheDay_FoodDiary(string date, int quickAddId, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
         public ObservableCollection<StrengthTraining> GetAllStrengthTraining()
         {
             var result = new ObservableCollection<StrengthTraining>()
