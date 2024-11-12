@@ -14,7 +14,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
                        FontSize="15" FontWeight="Bold">
-                Your exercise Daily for
+                Your exercise journal for
             </TextBlock>
             <Button>
                 <FontIcon Glyph="&#xE76B;"/>
@@ -24,11 +24,155 @@
                 <FontIcon Glyph="&#xE76C;"/>
             </Button>
         </StackPanel>
+
         <Line Stroke="SteelBlue"
               X1="0" Y1="0"
               X2="800" Y2="0"
-              StrokeThickness="2" Margin="40"/>
+              StrokeThickness="2"  Margin="0 10 0 10"
+        />
 
+
+       
+            <ScrollView Height="250" Width="auto" IsTabStop="True">
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left"  Grid.Row="0" Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Foreground="#0000FF" Margin="10 10 0 10" FontSize="15" FontWeight="Bold" Text="Cardiovascular">
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Name="Cardiovascular" Margin="10 0 0 5" Foreground="#0000FF">Add Exercise
+                                </TextBlock>
+                             </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10">
+                            <Border Background="#0000FF"  Width="150" Height="30" BorderThickness="3">
+                                <TextBlock FontSize="15"  Foreground="white" Width="150" Text="Minutes" TextAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border Background="#0000FF" Width="150" Height="30" BorderThickness="3">
+                                <TextBlock Margin="2"  Foreground="white" FontSize="15" Width="150" Text="Calories Burned" TextAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+
+                    </Grid>
+                    
+                    <Line Stroke="SteelBlue" X1="0" Y1="0"  X2="800" Y2="0"  StrokeThickness="2" Margin="0 10 0 10"  />
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left"   Grid.Row="1" Grid.Column="0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="#0000FF" Margin="10" FontSize="15" FontWeight="Bold" Text="Strength Training">
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="StrengthTraining" Margin="10 0 0 0" Foreground="#0000FF" >Add Exercise
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right"  Grid.Row="0" Grid.Column="0">
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="Black" Margin="10 0 10 10"  FontSize="15" FontWeight="Bold"  Text="Daily Total / Goal">
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="Black" Margin="10 0 10 10"  FontSize="15" FontWeight="Bold" Text="Weekly Total / Goal">
+                            </TextBlock>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center"    Grid.Row="0" Grid.Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="LightGray"  Width="150" Height="30" BorderThickness="3">
+                                <TextBlock FontSize="15"  Foreground="Black" Width="150" Text="0/0" TextAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border Background="LightGray" Width="150" Height="30" BorderThickness="3">
+                                <TextBlock Margin="2"  Foreground="Black" FontSize="15" Width="150" Text="0/0" TextAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="LightGray"  Width="150" Height="30" BorderThickness="3">
+                                <TextBlock FontSize="15"  Foreground="Black" Width="150" Text="0/0" TextAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border Background="LightGray" Width="150" Height="30" BorderThickness="3">
+                                <TextBlock Margin="2"  Foreground="Black" FontSize="15" Width="150" Text="0/0" TextAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"   Grid.Row="1" Grid.Column="1">
+                        <Border Background="#0000FF"  Width="100" Height="30" BorderThickness="3">
+                            <TextBlock FontSize="15"  Foreground="white" Width="100" Text="Sets" TextAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <Border Background="#0000FF" Width="150" Height="30" BorderThickness="3">
+                            <TextBlock Margin="2"  Foreground="white" FontSize="15" Width="120" Text="Reps/Set" TextAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <Border Background="#0000FF" Width="150" Height="30" BorderThickness="3" >
+                            <TextBlock Margin="2"  Foreground="white" FontSize="15" Width="120" Text="Weight/Set" TextAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            </ScrollView>
+
+        <Line Stroke="SteelBlue" X1="0" Y1="0"  X2="800" Y2="0"  StrokeThickness="2" Margin="0 5 0 5"  />
+        <Line Stroke="SteelBlue" X1="0" Y1="0"  X2="800" Y2="0"  StrokeThickness="2" Margin="0 5 0 5"  />
+
+
+        <StackPanel Orientation="Vertical" Margin="10,10,0,0">
+            <!--<TextBlock Text="Today's Exercise Notes" FontSize="15" FontWeight="Bold" Foreground="Black"/>
+            <TextBox PlaceholderText="Enter your notes here..." AcceptsReturn="True" Height="80"  Margin="0,5,0,0"/>-->
+            <TextBlock Text="Today's Exercise Notes" FontSize="15" FontWeight="Bold" Foreground="Black"/>
+
+            <ScrollViewer Height="80" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                <TextBox PlaceholderText="Enter your notes here..." 
+                 AcceptsReturn="True" 
+                 TextWrapping="Wrap"
+                 MaxHeight="80" 
+                 Width="650"
+                 HorizontalAlignment="Left"       />
+
+            </ScrollViewer>
+        </StackPanel>
+
+        <Line Stroke="SteelBlue" X1="0" Y1="0"  X2="800" Y2="0"  StrokeThickness="2" Margin="0 10 0 10"  />
+        
+        <Button Foreground="White" Background="green" Margin="10" HorizontalAlignment="Center" >
+            <TextBlock  FontWeight="Bold">
+           View The Full Report (Printable)
+            </TextBlock>
+        </Button>
     </StackPanel>
-
 </Page>
