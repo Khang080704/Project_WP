@@ -32,7 +32,7 @@
                             Margin="10" 
                             TextAlignment="Center"/>
 
-                    <TextBox Text="{x:Bind Sets}" Margin="10,5,10,10" 
+                    <TextBox Text="{x:Bind Sets, Mode=TwoWay}" Margin="10,5,10,10" 
                         FontSize="15" 
                         HorizontalAlignment="Center"/>
                 </StackPanel>
@@ -44,7 +44,7 @@
                             Margin="10,20,10,10" 
                             TextAlignment="Center" TextWrapping="Wrap"/>
 
-                    <TextBox Text="{x:Bind Reps_Set}"
+                    <TextBox Text="{x:Bind Reps_Set, Mode=TwoWay}"
                          Height="30">
 
                     </TextBox>
@@ -57,7 +57,7 @@
                                 Margin="10,20,10,10" 
                                 TextAlignment="Center" TextWrapping="Wrap"/>
 
-                    <TextBox Text="{x:Bind Weight_Sets}"
+                    <TextBox Text="{x:Bind Weight_Sets, Mode=TwoWay}"
                              Height="30">
                     </TextBox>
                     <TextBlock Text="kg" FontSize="15" 
@@ -68,8 +68,10 @@
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center"
-            Width="auto">
+    <StackPanel Orientation="Vertical" Width="auto" Margin="15">
+        <AppBarButton Click="AppBarButton_Click" Height="50">
+            <FontIcon Glyph="&#xE72B;" VerticalAlignment="Center"/>
+        </AppBarButton>
         <TextBlock Text="Please provide a phrase to search for" Foreground="Red"
                Width="auto" Height="auto"/>
         <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
@@ -101,13 +103,13 @@
         
         <Grid BorderThickness="0.5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollView  Height="350">
-                <StackPanel Orientation="Vertical">
-                    <ListView x:Name="StrengthExerciseSearch"
+
+            <StackPanel Orientation="Vertical" Grid.Column="0">
+                <ListView x:Name="StrengthExerciseSearch"
                           ItemsSource="{x:Bind viewModel.strengthTrainingSearchList, Mode=TwoWay}"
                           ItemTemplate="{StaticResource StrengthExerciseList}"
                           Height="400" Width="600" 
@@ -115,12 +117,12 @@
                           Visibility="Visible"
                           SelectionChanged="StrengthExerciseSearch_SelectionChanged"/>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0"
+                <TextBlock Grid.Row="0" Grid.Column="0"
                            x:Name="noResult" Foreground="#FB3F48" 
                            Text="No result found" 
                            Visibility="Collapsed" Margin="10,10,10,10"/>
-                </StackPanel>
-            </ScrollView>
+            </StackPanel>
+
 
             <Border x:Name="foodDetailsBorder" Grid.Row="0" Grid.Column="1"
                 Margin="10"

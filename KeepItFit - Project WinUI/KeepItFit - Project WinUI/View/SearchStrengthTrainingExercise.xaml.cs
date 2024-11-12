@@ -93,5 +93,10 @@ namespace KeepItFit___Project_WinUI.View
             var selectedStrengthTraining = viewModel._selectedStrengthTraining;
             this.Frame.Navigate(typeof(ExercisePage), selectedStrengthTraining);
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ExercisePage));
+        }
     }
 }

@@ -93,5 +93,10 @@ namespace KeepItFit___Project_WinUI.View
             var selectedCardio = viewModel._selectedCardioExercise;
             this.Frame.Navigate(typeof(ExercisePage), selectedCardio);
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ExercisePage));
+        }
     }
 }

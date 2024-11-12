@@ -10,6 +10,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Margin="10">
+        <AppBarButton Height="50" Click="AppBarButton_Click">
+            <FontIcon Glyph="&#xE72B;" VerticalAlignment="Center"/>
+        </AppBarButton>
         <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
                    FontSize="20" FontWeight="Bold">
             Add Exercise

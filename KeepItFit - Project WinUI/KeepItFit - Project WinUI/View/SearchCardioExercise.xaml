@@ -61,8 +61,10 @@
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center"
-                Width="auto">
+    <StackPanel Orientation="Vertical" Width="auto" Margin="15">
+        <AppBarButton Height="50" Click="AppBarButton_Click">
+            <FontIcon Glyph="&#xE72B;" VerticalAlignment="Center"/>
+        </AppBarButton>
         <TextBlock Text="Please provide a phrase to search for" Foreground="Red"
                    Width="auto" Height="auto"/>
         <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
@@ -93,26 +95,27 @@
         </TextBlock>
         <Grid BorderThickness="0.5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollView  Height="350">
-                <StackPanel Orientation="Vertical">
-                    <ListView x:Name="CardioExerciseSearch"
-                              ItemsSource="{x:Bind viewModel.CardioExerciseSearchList, Mode=TwoWay}"
-                              ItemTemplate="{StaticResource CardioExerciseList}"
-                              Height="400" Width="600" 
-                              HorizontalAlignment="Left" 
-                              Visibility="Visible"
-                              SelectionChanged="CardioExerciseSearch_SelectionChanged"/>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0"
-                               x:Name="noResult" Foreground="#FB3F48" 
-                               Text="No result found" 
-                               Visibility="Collapsed" Margin="10,10,10,10"/>
-                </StackPanel>
-            </ScrollView>
+            <StackPanel Orientation="Vertical" BorderThickness="1"
+                        Grid.Row="0" Grid.Column="0">
+                <ListView x:Name="CardioExerciseSearch"
+                          ItemsSource="{x:Bind viewModel.CardioExerciseSearchList, Mode=TwoWay}"
+                          ItemTemplate="{StaticResource CardioExerciseList}"
+                          Height="400" Width="600" 
+                          HorizontalAlignment="Left" 
+                          Visibility="Visible"
+                          SelectionChanged="CardioExerciseSearch_SelectionChanged"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           x:Name="noResult" Foreground="#FB3F48" 
+                           Text="No result found" 
+                           Visibility="Collapsed" Margin="10,10,10,10"/>
+            </StackPanel>
+
             
             <Border x:Name="foodDetailsBorder" Grid.Row="0" Grid.Column="1"
                     Margin="10"
