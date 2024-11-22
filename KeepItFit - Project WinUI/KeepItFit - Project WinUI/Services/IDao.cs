@@ -12,6 +12,7 @@ namespace KeepItFit___Project_WinUI.Services
     {
 
         public List<Nutritions> GetAllNutrtion();
+        //Exercise part
         public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword);
         public ObservableCollection<StrengthTraining> GetAllStrengthTraining(string keyword);
 

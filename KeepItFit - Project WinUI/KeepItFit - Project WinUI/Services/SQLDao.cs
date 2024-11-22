@@ -436,6 +436,7 @@ namespace KeepItFit___Project_WinUI.Services
             return new List<Nutritions>();
         }
 
+        //------------------------Cardio exercise----------------------
         List<CardioExercise> ReadCardioInfo(SqlDataReader reader)
         {
             List<CardioExercise> cardios = new List<CardioExercise>();
@@ -455,6 +456,7 @@ namespace KeepItFit___Project_WinUI.Services
             return cardios;
         }
 
+        
         public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword)
         {
             ObservableCollection<CardioExercise> cardio = new ObservableCollection<CardioExercise>();
@@ -480,6 +482,7 @@ namespace KeepItFit___Project_WinUI.Services
             return cardio;
         }
 
+        //------------------------Strength Training exercise----------------------
         List<StrengthTraining> ReadTrainingInfo(SqlDataReader reader)
         {
             List<StrengthTraining> data = new List<StrengthTraining>();
