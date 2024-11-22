@@ -1,4 +1,5 @@
-﻿using KeepItFit___Project_WinUI.ViewModel;
+﻿using KeepItFit___Project_WinUI.Model;
+using KeepItFit___Project_WinUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,11 +12,11 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace KeepItFit___Project_WinUI.Model
+namespace KeepItFit___Project_WinUI.Services
 {
-    public class SQLDao: IDao
+    public class SQLDao : IDao
     {
-        private string connectionString;
+        public string connectionString;
 
         // Constructor
         public SQLDao()
@@ -29,13 +30,10 @@ namespace KeepItFit___Project_WinUI.Model
                 IntegratedSecurity = false,
                 TrustServerCertificate = true
             };
-            this.connectionString = builder.ConnectionString;
+            connectionString = builder.ConnectionString;
 
         }
-        public ObservableCollection<CardioExercise> GetAllCardioExercise()
-        {
-            return new ObservableCollection<CardioExercise>();
-        }
+
         // Get all meals from database using query
         public ObservableCollection<Meals> GetAllMeals()
         {
@@ -204,7 +202,7 @@ namespace KeepItFit___Project_WinUI.Model
         // Delete food from Frequent or Recent table
         public void DeleteFrequentOrRecentFood(Food food)
         {
-            string queryRecent = @"DELETE FROM RecentFood WHERE FOODID = @foodId;";
+            string queryRecent = @"DELETE FROM RecentFood WHERE FOOD_ID = @foodId;";
             string queryFrequent = @"DELETE FROM FrequentFood WHERE FOOD_ID = @foodId;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -438,9 +436,92 @@ namespace KeepItFit___Project_WinUI.Model
             return new List<Nutritions>();
         }
 
-        public ObservableCollection<StrengthTraining> GetAllStrengthTraining()
+        List<CardioExercise> ReadCardioInfo(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            List<CardioExercise> cardios = new List<CardioExercise>();
+            while (reader.Read())
+            {
+                CardioExercise cardio = new CardioExercise
+                {
+                    name = reader["Cardio_name"].ToString(),
+                    _time = Convert.ToInt32(reader["TimeHowLong"]),
+                    CaloriesBurned = Convert.ToInt32(reader["CaloriesBurned"]),
+                    caloriesPerMinute = Convert.ToSingle(reader["CaloriesPerMinutes"])
+
+                };
+                cardios.Add(cardio);
+            }
+
+            return cardios;
+        }
+
+        public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword)
+        {
+            ObservableCollection<CardioExercise> cardio = new ObservableCollection<CardioExercise>();
+            string query = @"SELECT * FROM CardioExercise WHERE Cardio_name LIKE @keyword";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<CardioExercise> cardioList = ReadCardioInfo(reader);
+                    cardio = new ObservableCollection<CardioExercise>(cardioList);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            return cardio;
+        }
+
+        List<StrengthTraining> ReadTrainingInfo(SqlDataReader reader)
+        {
+            List<StrengthTraining> data = new List<StrengthTraining>();
+            while (reader.Read())
+            {
+                StrengthTraining item = new StrengthTraining
+                {
+                    name = reader["Strength_name"].ToString(),
+                    Sets = Convert.ToInt32(reader["Sets"]),
+                    Reps_Set = Convert.ToInt32(reader["Reps_Set"]),
+                    Weight_Sets = Convert.ToInt32(reader["Weigth_Set"])
+
+                };
+                data.Add(item);
+            }
+
+            return data;
+        }
+
+        public ObservableCollection<StrengthTraining> GetAllStrengthTraining(string keyword)
+        {
+            ObservableCollection<StrengthTraining> training = new ObservableCollection<StrengthTraining>();
+            string query = @"SELECT * FROM StrengthTraining WHERE Strength_name LIKE @keyword";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<StrengthTraining> strengthList = ReadTrainingInfo(reader);
+                    training = new ObservableCollection<StrengthTraining>(strengthList);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            return training;
         }
     }
 }

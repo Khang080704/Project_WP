@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="KeepItFit___Project_WinUI.View.CreateExercise"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KeepItFit___Project_WinUI.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Width="900">
+        <AppBarButton Click="AppBarButton_Click"  Height="50">
+            <FontIcon Glyph="&#xE72B;" VerticalAlignment="Center"/>
+        </AppBarButton>
+        <TextBlock Text="Create A New Exercise" Foreground="Blue" FontWeight="Bold"
+                   FontSize="20" Margin="20"
+                   VerticalAlignment="Center"/>
+        <TextBlock Text="Please provide an information for this exercise."
+                   Foreground="Red"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Visibility="Collapsed"
+                   Name="Warning"/>
+        <Grid Background="#EEEDE7" Margin="20" Visibility="Collapsed" Name="createCardio"
+              VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Margin="20">
+                <TextBlock Text="Exercise Description" FontWeight="Bold" FontSize="15" />
+                <TextBox PlaceholderText="(e.g. Abdominal Crunches)" Width="200" Margin="0 5 0 25"
+                         Name="CardioName"/>
+
+                <TextBlock Text="How Long?" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+                    <TextBox Margin="0 5 5 0" Name="CardioMinutes"
+                             TextChanging="CardioName_TextChanging"/>
+                    <TextBlock Text="Minutes" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <TextBlock Text="Calories Burned" FontWeight="Bold"/>
+                <TextBox Margin="0 5 0 25"
+                         Name="CardioCalo"
+                         TextChanging="CardioName_TextChanging"/>
+
+                <Button Content="Add " Foreground="#FFFFFF" FontWeight="Bold"
+                        Background="#08964F" Margin="10" HorizontalAlignment="Center"
+                        Name="Cardio"
+                        Click="Cardio_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Creating a New Exercise" Foreground="Blue" FontWeight="Bold"
+                           FontSize="20" Margin="0 10 0 5"/>
+                <TextBlock TextWrapping="Wrap" FontSize="16" Margin="0 0 5 10">
+                    If you can't find an exercise in our database,
+                    you can easily add it yourself.
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" FontSize="16" Margin="0 0 5 10">
+                    For cardio exercises, if you do not know how many calories you burned,
+                    instead of creating a new exercise, it's better to enter an existing 
+                    exercise in our database that is close to the one you performed.
+                    This will at least provide you with a rough estimate of how many 
+                    calories you burned.
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" FontSize="16" Margin="0 0 5 10">
+                    Once you've created an exercise, you will be able to
+                    search for it and add it to your exercise log at any time.
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Background="#EEEDE7" Margin="20" Visibility="Collapsed" Name="createStrength"
+              VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Margin="20">
+                <TextBlock Text="Exercise Description" FontWeight="Bold" FontSize="15" />
+                <TextBox PlaceholderText="(e.g. Abdominal Crunches)" Width="200" Margin="0 5 0 25"
+                         Name="StrengthName"/>
+
+                <TextBlock Text="Sets ?" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+                    <TextBox Margin="0 5 5 0" Name="Sets" TextChanging="CardioName_TextChanging"/>
+                    <TextBlock Text="Sets" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <TextBlock Text="Repetitions/Set: " FontWeight="Bold"/>
+                <TextBox Margin="0 5 0 25"
+                         Name="rep_set"
+                         TextChanging="CardioName_TextChanging"/>
+
+                <TextBlock Text="Weight/Set: " FontWeight="Bold"/>
+                <TextBox Margin="0 5 0 25"
+                         Name="weight_set"
+                         TextChanging="CardioName_TextChanging"/>
+
+                <Button Content="Add " Foreground="#FFFFFF" FontWeight="Bold"
+                        Background="#08964F" Margin="10" HorizontalAlignment="Center"
+                        Name="Strength"
+                        Click="Strength_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Creating a New Exercise" Foreground="Blue" FontWeight="Bold"
+                   FontSize="20" Margin="0 10 0 5"/>
+                <TextBlock TextWrapping="Wrap" FontSize="16" Margin="0 0 5 10">
+            If you can't find an exercise in our database,
+            you can easily add it yourself.
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" FontSize="16" Margin="0 0 5 10">
+            For cardio exercises, if you do not know how many calories you burned,
+            instead of creating a new exercise, it's better to enter an existing 
+            exercise in our database that is close to the one you performed.
+            This will at least provide you with a rough estimate of how many 
+            calories you burned.
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" FontSize="18" Margin="0 0 5 10">
+            Once you've created an exercise, you will be able to
+            search for it and add it to your exercise log at any time.
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+    </StackPanel>
+</Page>

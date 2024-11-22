@@ -4,15 +4,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KeepItFit___Project_WinUI.Model;
 
-namespace KeepItFit___Project_WinUI.Model
+namespace KeepItFit___Project_WinUI.Services
 {
     public interface IDao
     {
-        
+
         public List<Nutritions> GetAllNutrtion();
-        public ObservableCollection<CardioExercise> GetAllCardioExercise();
-        public ObservableCollection<StrengthTraining> GetAllStrengthTraining();
+        public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword);
+        public ObservableCollection<StrengthTraining> GetAllStrengthTraining(string keyword);
 
 
         // SQLDao

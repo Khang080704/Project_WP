@@ -9,9 +9,11 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using static KeepItFit___Project_WinUI.View.AddFood;
@@ -26,6 +28,7 @@ namespace KeepItFit___Project_WinUI.View
     /// </summary>
     public sealed partial class SearchCardioExercise : Page
     {
+        private string type { get; set; } = "Cardio";
         public SearchExerciseViewModel viewModel { get; set; }
         public SearchCardioExercise()
         {
@@ -46,7 +49,7 @@ namespace KeepItFit___Project_WinUI.View
                 return;
             }
 
-            var filteredList = viewModel.CardioExerciseDatabase.Where(cardio => cardio.name.ToLower().Contains(query)).ToList();
+            var filteredList = viewModel.getCardioDatabase(query.ToLower());
 
             if (filteredList.Count == 0)
             {
@@ -80,7 +83,7 @@ namespace KeepItFit___Project_WinUI.View
             {
 
                 // Filter the food is chosen
-                var filteredList = viewModel.CardioExerciseDatabase.Where(exercise => exercise.name.ToLower().Contains(parameters)).ToList();
+                var filteredList = viewModel.getCardioDatabase(parameters);
                 foreach (var cardio in filteredList)
                 {
                     viewModel.CardioExerciseSearchList.Add(cardio);
@@ -91,12 +94,40 @@ namespace KeepItFit___Project_WinUI.View
         private void AddExercise_Click(object sender, RoutedEventArgs e)
         {
             var selectedCardio = viewModel._selectedCardioExercise;
-            this.Frame.Navigate(typeof(ExercisePage), selectedCardio);
+            //Check values not equal to 0
+            if (selectedCardio._time == 0 && selectedCardio.CaloriesBurned==0)
+            {
+                this.Frame.Navigate(typeof(ExercisePage));
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(ExercisePage), selectedCardio);
+            }
+            
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ExercisePage));
+        }
+
+        private void addCardio_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateExercise), type);
+        }
+
+        private void TextBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            var pattern = @"^\d+$"; 
+            Regex regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            int cursorPosition = sender.SelectionStart;
+            var text = sender.Text;
+            if (!regex.IsMatch(text))
+            {
+                text = Regex.Replace(text, @"[^\d]", string.Empty);
+                sender.Text = text;
+                sender.SelectionStart = Math.Min(cursorPosition, text.Length);
+            }
         }
     }
 }

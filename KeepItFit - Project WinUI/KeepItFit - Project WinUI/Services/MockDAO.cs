@@ -4,13 +4,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KeepItFit___Project_WinUI.Model;
 
-namespace KeepItFit___Project_WinUI.Model
+namespace KeepItFit___Project_WinUI.Services
 {
     public class MockDAO : IDao
     {
 
-       public ObservableCollection<Meals> GetAllMeals()
+        public ObservableCollection<Meals> GetAllMeals()
         {
             var result = new ObservableCollection<Meals>()
             {
@@ -335,6 +336,16 @@ namespace KeepItFit___Project_WinUI.Model
                 },
             };
             return result;
+        }
+
+        public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<StrengthTraining> GetAllStrengthTraining(string keyword)
+        {
+            throw new NotImplementedException();
         }
     }
 
