@@ -4,7 +4,8 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('CardioExercise').del()
+  await knex('CardioExercise').del();
+  await knex.raw('DBCC CHECKIDENT (\'CardioExercise\', RESEED, 0)');
   await knex('CardioExercise').insert([
     {Cardio_name: "Aerobic, general", TimeHowLong: 0, CaloriesBurned: 0, CaloriesPerMinutes: 7.7},
     {Cardio_name: "Badminton, competitive", TimeHowLong: 0, CaloriesBurned: 0, CaloriesPerMinutes: 8.3},
