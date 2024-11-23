@@ -190,5 +190,11 @@ namespace KeepItFit___Project_WinUI.View
         {
             this.Frame.Navigate(typeof(AddFood));
         }
+
+        private void CreateFoodButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to the CreateMyFood page
+            this.Frame.Navigate(typeof(CreateMyFood));
+        }
     }
 }

@@ -30,6 +30,10 @@ namespace KeepItFit___Project_WinUI.Services
         public void DeleteQuickAddForTheDay_FoodDiary(string date, int quickAddId, string diaryType);
         public void UpdateFoodForTheDay_FoodDiary(string date, int foodId, string foodQuantity, string diaryType);
         public void UpdateQuickAddForTheDay_FoodDiary(string date, List<int> quickAddList, string diaryType);
+        public void UpdateMyFood(string foodName, float foodCalories, float foodCarbs, float foodFat, float foodProtein, float foodSodium, float foodSugar);
+        public ObservableCollection<Food> GetFoodMyFood();
+        public void DeleteMyFood(Food food);
+
     }
 
 }

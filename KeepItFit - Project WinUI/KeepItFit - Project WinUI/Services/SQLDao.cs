@@ -431,6 +431,84 @@ namespace KeepItFit___Project_WinUI.Services
             }
         }
 
+        public void UpdateMyFood(string foodName, float foodCalories, float foodCarbs, float foodFat, float foodProtein, float foodSodium, float foodSugar)
+        {
+            string query = @"
+                INSERT INTO MyFood (FOOD_NAME, FOOD_CALORIES, FOOD_CARBS, FOOD_FAT, FOOD_PROTEIN, FOOD_SODIUM, FOOD_SUGAR, FOOD_QUANTITY, FOOD_UNIT, SELECTED_FOOD_UNIT) 
+                VALUES (@FoodName, @FoodCalories, @FoodCarbs, @FoodFat, @FoodProtein, @FoodSodium, @FoodSugar, @FoodQuantity, @FoodUnit, @SelectedFoodUnit);";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@FoodName", foodName);
+                command.Parameters.AddWithValue("@FoodCalories", foodCalories);
+                command.Parameters.AddWithValue("@FoodCarbs", foodCarbs);
+                command.Parameters.AddWithValue("@FoodFat", foodFat);
+                command.Parameters.AddWithValue("@FoodProtein", foodProtein);
+                command.Parameters.AddWithValue("@FoodSodium", foodSodium);
+                command.Parameters.AddWithValue("@FoodSugar", foodSugar);
+                command.Parameters.AddWithValue("@FoodQuantity", '1');
+                command.Parameters.AddWithValue("@FoodUnit", JsonSerializer.Serialize(new List<string> { "serving" }));
+                command.Parameters.AddWithValue("@SelectedFoodUnit", "serving");
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error inserting data: {ex.Message}");
+                }
+            }
+        }
+
+        public ObservableCollection<Food> GetFoodMyFood()
+        {
+            ObservableCollection<Food> foods = new ObservableCollection<Food>();
+            string query = "SELECT * FROM MyFood";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<Food> foodList = ReadFoodInfo(reader);
+                    foods = new ObservableCollection<Food>(foodList);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error fetching data: {ex.Message}");
+                }
+            }
+
+            return foods;
+        }
+
+        public void DeleteMyFood(Food food)
+        {
+            string query = @"DELETE FROM MyFood WHERE ID = @foodId;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@foodId", food.foodId);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error deleting food from MyFood: {ex.Message}");
+                }
+            }
+        }
+
         public List<Nutritions> GetAllNutrtion()
         {
             return new List<Nutritions>();

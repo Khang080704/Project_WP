@@ -114,6 +114,10 @@
         <TextBlock Text="Matching Food:" FontWeight="Bold" FontSize="20" Margin="10, 30, 0, 0" Foreground="#0958A7"/>
 
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="0.5*"/>
@@ -133,7 +137,13 @@
             <TextBlock Grid.Row="0" Grid.Column="0"  x:Name="noResult" Foreground="#FB3F48" 
                        Text="No result found" Visibility="Collapsed" Margin="10,10,10,10"/>
 
-            <!--Exercise table for choosing "How much", "Which meal"-->
+            <!-- New StackPanel for "Can't find what you looking for" and "Create your food" button -->
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="10,10,10,10" HorizontalAlignment="Center">
+                <TextBlock Text="Can't find what you looking for?" FontWeight="Bold" FontSize="15" Margin="0,0,10,0" Foreground="#000000"/>
+                <Button Content="Create your food" Foreground="#FFFFFF" FontWeight="Bold" Click="CreateFoodButton_Click" Background="#08964F"/>
+            </StackPanel>
+
+            <!--Table for choosing "How much", "Which meal"-->
             <Border x:Name="foodDetailsBorder" Grid.Row="0" Grid.Column="1"
             Margin="10"
             Padding="10"
@@ -160,6 +170,8 @@
                 </StackPanel>
             </Border>
         </Grid>
+
         
+
     </StackPanel>
 </Page>

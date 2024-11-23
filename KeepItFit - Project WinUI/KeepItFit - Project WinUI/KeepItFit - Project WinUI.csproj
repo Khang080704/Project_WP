@@ -26,6 +26,7 @@
     <None Remove="NutritionResult.xaml" />
     <None Remove="View\AddExercisePage.xaml" />
     <None Remove="View\CreateExercise.xaml" />
+    <None Remove="View\CreateMyFood.xaml" />
     <None Remove="View\HomePage.xaml" />
     <None Remove="View\SearchCardioExercise.xaml" />
     <None Remove="View\SearchStrengthTrainingExercise.xaml" />
@@ -66,6 +67,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Page Update="View\CreateExercise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\CreateMyFood.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="View\SearchStrengthTrainingExercise.xaml">

@@ -347,6 +347,21 @@ namespace KeepItFit___Project_WinUI.Services
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateMyFood(string foodName, float foodCalories, float foodCarbs, float foodFat, float foodProtein, float foodSodium, float foodSugar)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Food> GetFoodMyFood()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteMyFood(Food food)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

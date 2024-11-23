@@ -25,6 +25,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
             foodFrequent = new ObservableCollection<Food>();
             LoadRecentFood();
             LoadFrequentFood();
+            LoadMyFood();
         }
 
         public void LoadRecentFood()
@@ -39,18 +40,17 @@ namespace KeepItFit___Project_WinUI.ViewModel
             foodFrequent = sqlDao.GetFoodFrequent();
         }
 
-        public void UpdateRecentFood(Food food)
+        public void LoadMyFood()
         {
-            var dao = new SQLDao();
-            dao.UpdateRecentOrFrequentFood(food, "RecentFood");
-            LoadRecentFood();
+            var sqlDao = new SQLDao();
+            foodMyFood = sqlDao.GetFoodMyFood();
         }
 
-        public void UpdateFrequentFood(Food food)
+        public void DeleteMyFood(Food food)
         {
             var dao = new SQLDao();
-            dao.UpdateRecentOrFrequentFood(food, "FrequentFood");
-            LoadFrequentFood();
+            dao.DeleteMyFood(food);
+            LoadMyFood();
         }
 
         public void DeleteFrequentOrRecentFood(Food food)

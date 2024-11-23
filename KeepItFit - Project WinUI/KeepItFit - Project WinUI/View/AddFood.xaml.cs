@@ -20,6 +20,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using Windows.Gaming.Input.ForceFeedback;
 
 namespace KeepItFit___Project_WinUI.View
 {
@@ -58,6 +59,7 @@ namespace KeepItFit___Project_WinUI.View
 
             viewModel.LoadRecentFood(); // Load the newest recent food items
             viewModel.LoadFrequentFood(); // Load the newest frequent food items
+            viewModel.LoadMyFood(); // Load the newest my food items
         }
 
         //Set the default button to "Recent" when the page is loaded
@@ -229,6 +231,7 @@ namespace KeepItFit___Project_WinUI.View
             }
             else if (_lastClickedButton == MyFoodButton)
             {
+                Debug.WriteLine("MyFoodButton");
                 if (foodListMyFood_Checked.Count == 0)
                 {
                     return;
@@ -264,14 +267,28 @@ namespace KeepItFit___Project_WinUI.View
 
         private void RemoveFoodItems(List<Food> foodListChecked, ObservableCollection<Food> foodCollection)
         {
-            foreach (Food food in foodListChecked)
+            if (foodListChecked == foodListMyFood_Checked)
             {
-                foodCollection.Remove(food);
-                viewModel.DeleteFrequentOrRecentFood(food);
+                // Remove the food items from the MyFood list
+                foreach (Food food in foodListChecked)
+                {
+                    foodCollection.Remove(food);
+                    viewModel.DeleteMyFood(food);
+                }
+                viewModel.LoadMyFood(); // Update the list of my food items
+            }
+            else
+            {
+                // Remove the food items from the FreqentFood or RecentFood list
+                foreach (Food food in foodListChecked)
+                {
+                    foodCollection.Remove(food);
+                    viewModel.DeleteFrequentOrRecentFood(food);
+                }
+                viewModel.LoadFrequentFood(); // Update the list of frequent food items
+                viewModel.LoadRecentFood(); // Update the list of recent food items
             }
             foodListChecked.Clear();
-            viewModel.LoadFrequentFood(); // Update the list of frequent food items
-            viewModel.LoadRecentFood(); // Update the list of recent food items
         }
 
         // Check if the input is a number (text changed)
