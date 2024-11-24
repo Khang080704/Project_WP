@@ -82,16 +82,22 @@ namespace KeepItFit___Project_WinUI.ViewModel
             SnackNutri.NutritionData.Clear();
 
             // Update the food data for each meal zone
-            BreakFastNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "BreakfastDiary"));
-            LunchNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "LunchDiary"));
-            DinnerNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "DinnerDiary"));
-            SnackNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "SnackDiary"));
+            BreakFastNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "BreakfastDiary", "FOOD"));
+            LunchNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "LunchDiary", "FOOD"));
+            DinnerNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "DinnerDiary", "FOOD"));
+            SnackNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "SnackDiary", "FOOD"));
 
             // Update the quick add data for each meal zone
             BreakFastNutri.updateWithListFood(sqlDao.GeQuickAddForTheDay_FoodDiary(formattedDate, "QuickAdd_Breakfast"));
             LunchNutri.updateWithListFood(sqlDao.GeQuickAddForTheDay_FoodDiary(formattedDate, "QuickAdd_Lunch"));
             DinnerNutri.updateWithListFood(sqlDao.GeQuickAddForTheDay_FoodDiary(formattedDate, "QuickAdd_Dinner"));
             SnackNutri.updateWithListFood(sqlDao.GeQuickAddForTheDay_FoodDiary(formattedDate, "QuickAdd_Snack"));
+
+            // Update MyFood data for each meal zone
+            BreakFastNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "MyFood_Breakfast", "MyFood"));
+            LunchNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "MyFood_Lunch", "MyFood"));
+            DinnerNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "MyFood_Dinner", "MyFood"));
+            SnackNutri.updateWithListFood(sqlDao.GetFoodForTheDay_FoodDiary(formattedDate, "MyFood_Snack", "MyFood"));
         }
 
         // Delete food from the meal zone(Breakfast)
@@ -106,6 +112,12 @@ namespace KeepItFit___Project_WinUI.ViewModel
                 diaryType = "QuickAdd_Breakfast";
                 Debug.WriteLine(itemToDelete.foodId);
                 sqlDao.DeleteQuickAddForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
+                return;
+            }
+            else if (itemToDelete.name.Contains("My Food"))
+            {
+                diaryType = "MyFood_Breakfast";
+                sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
                 return;
             }
 
@@ -129,6 +141,13 @@ namespace KeepItFit___Project_WinUI.ViewModel
                 sqlDao.DeleteQuickAddForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
                 return;
             }
+            else if (itemToDelete.name.Contains("My Food"))
+            {
+                diaryType = "MyFood_Lunch";
+                Debug.WriteLine(itemToDelete.foodId);
+                sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
+                return;
+            }
 
             diaryType = "LunchDiary";
 
@@ -150,6 +169,12 @@ namespace KeepItFit___Project_WinUI.ViewModel
                 sqlDao.DeleteQuickAddForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
                 return;
             }
+            else if (itemToDelete.name.Contains("My Food"))
+            {
+                diaryType = "MyFood_Dinner";
+                sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
+                return;
+            }
 
             diaryType = "DinnerDiary";
 
@@ -167,8 +192,13 @@ namespace KeepItFit___Project_WinUI.ViewModel
             if (itemToDelete.name.Contains("Quick Add"))
             {
                 diaryType = "QuickAdd_Snack";
-
                 sqlDao.DeleteQuickAddForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
+                return;
+            }
+            else if (itemToDelete.name.Contains("My Food"))
+            {
+                diaryType = "MyFood_Snack";
+                sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
                 return;
             }
 
@@ -178,79 +208,20 @@ namespace KeepItFit___Project_WinUI.ViewModel
             sqlDao.DeleteFoodForTheDay_FoodDiary(formattedDate, itemToDelete.foodId, diaryType);
         }
 
-        public void Update_FoodBreakfast(List<Food> foodList)
+        public void Update_Food(List<Food> foodList, string diaryType)
         {
             IDao sqlDao = new SQLDao();
             string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "BreakfastDiary";
             foreach (var food in foodList)
             {
                 sqlDao.UpdateFoodForTheDay_FoodDiary(formattedDate, food.foodId, food.foodQuantity, diaryType);
             }
         }
 
-        public void Update_FoodLunch(List<Food> foodList)
+        public void Update_QuickAdd(List<int> src, string diaryType)
         {
             IDao sqlDao = new SQLDao();
             string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "LunchDiary";
-            foreach (var food in foodList)
-            {
-                sqlDao.UpdateFoodForTheDay_FoodDiary(formattedDate, food.foodId, food.foodQuantity, diaryType);
-            }
-        }
-
-        public void Update_FoodDinner(List<Food> foodList)
-        {
-            IDao sqlDao = new SQLDao();
-            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "DinnerDiary";
-            foreach (var food in foodList)
-            {
-                sqlDao.UpdateFoodForTheDay_FoodDiary(formattedDate, food.foodId, food.foodQuantity, diaryType);
-            }
-        }
-
-        public void Update_FoodSnack(List<Food> foodList)
-        {
-            IDao sqlDao = new SQLDao();
-            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "SnackDiary";
-            foreach (var food in foodList)
-            {
-                sqlDao.UpdateFoodForTheDay_FoodDiary(formattedDate, food.foodId, food.foodQuantity, diaryType);
-            }
-        }
-
-        public void Update_QuickAddBreakFast(List<int> src)
-        {
-            IDao sqlDao = new SQLDao();
-            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "QuickAdd_Breakfast";
-            sqlDao.UpdateQuickAddForTheDay_FoodDiary(formattedDate, src, diaryType);
-        }
-
-        public void Update_QuickAddLunch(List<int> src)
-        {
-            IDao sqlDao = new SQLDao();
-            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "QuickAdd_Lunch";
-            sqlDao.UpdateQuickAddForTheDay_FoodDiary(formattedDate, src, diaryType);
-        }
-
-        public void Update_QuickAddDinner(List<int> src)
-        {
-            IDao sqlDao = new SQLDao();
-            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "QuickAdd_Dinner";
-            sqlDao.UpdateQuickAddForTheDay_FoodDiary(formattedDate, src, diaryType);
-        }
-
-        public void Update_QuickAddSnack(List<int> src)
-        {
-            IDao sqlDao = new SQLDao();
-            string formattedDate = _selectedDate.ToString("yyyy-MM-dd");
-            string diaryType = "QuickAdd_Snack";
             sqlDao.UpdateQuickAddForTheDay_FoodDiary(formattedDate, src, diaryType);
         }
 

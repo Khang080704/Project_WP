@@ -230,13 +230,13 @@ namespace KeepItFit___Project_WinUI.Services
         }
 
         //Get all foods from the meal zone in the day
-        public List<Food> GetFoodForTheDay_FoodDiary(string date, string diaryType)
+        public List<Food> GetFoodForTheDay_FoodDiary(string date, string diaryType, string table)
         {
             List<Food> foods = new List<Food>();
             string queryFood = $@"
                 SELECT T.*, F.*
                 FROM {diaryType} T
-                JOIN FOOD F ON T.FOOD_ID = F.ID
+                JOIN {table} F ON T.FOOD_ID = F.ID
                 WHERE T.FOOD_DATE = @FoodDate;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))

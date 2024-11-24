@@ -18,6 +18,47 @@ exports.up = async function(knex) {
             SELECTED_FOOD_UNIT NVARCHAR(50) NOT NULL,
         );
     `);
+
+    await knex.raw(`
+        CREATE TABLE MyFood_Lunch(
+            FOOD_ID INT,
+            FOOD_QUANTITY NVARCHAR(50) NOT NULL,
+            FOOD_DATE DATE,
+            FOREIGN KEY (FOOD_ID) REFERENCES MyFood(ID),
+            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+        );
+    `);
+
+    await knex.raw(`
+        CREATE TABLE MyFood_Dinner(
+            FOOD_ID INT,
+            FOOD_QUANTITY NVARCHAR(50) NOT NULL,
+            FOOD_DATE DATE,
+            FOREIGN KEY (FOOD_ID) REFERENCES MyFood(ID),
+            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+        );
+    `);
+
+
+    await knex.raw(`
+        CREATE TABLE MyFood_Snack(
+            FOOD_ID INT,
+            FOOD_QUANTITY NVARCHAR(50) NOT NULL,
+            FOOD_DATE DATE,
+            FOREIGN KEY (FOOD_ID) REFERENCES MyFood(ID),
+            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+        );
+    `);
+
+    await knex.raw(`
+        CREATE TABLE MyFood_Breakfast(
+            FOOD_ID INT,
+            FOOD_QUANTITY NVARCHAR(50) NOT NULL,
+            FOOD_DATE DATE,
+            FOREIGN KEY (FOOD_ID) REFERENCES MyFood(ID),
+            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+        );
+    `);
 };
 
 /**

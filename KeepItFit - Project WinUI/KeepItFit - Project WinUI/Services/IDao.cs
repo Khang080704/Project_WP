@@ -24,7 +24,7 @@ namespace KeepItFit___Project_WinUI.Services
         public ObservableCollection<Food> GetFoodDatabase(string keyword);
         public void UpdateRecentOrFrequentFood(Food food, string type);
         public void DeleteFrequentOrRecentFood(Food food);
-        public List<Food> GetFoodForTheDay_FoodDiary(string date, string diaryType);
+        public List<Food> GetFoodForTheDay_FoodDiary(string date, string diaryType, string table);
         public List<Food> GeQuickAddForTheDay_FoodDiary(string date, string diaryType);
         public void DeleteFoodForTheDay_FoodDiary(string date, int foodId, string diaryType);
         public void DeleteQuickAddForTheDay_FoodDiary(string date, int quickAddId, string diaryType);

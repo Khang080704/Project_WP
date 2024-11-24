@@ -39,7 +39,7 @@ namespace KeepItFit___Project_WinUI.View
             base.OnNavigatedTo(e);
 
             //Get the parameter passed from the previous page
-            if (e.Parameter is NavigationParameters_AddFood parameters)
+            if (e.Parameter is NavigationParameters_AddFood_ToSearchFood parameters)
             {
                 string query = parameters.Query;
 

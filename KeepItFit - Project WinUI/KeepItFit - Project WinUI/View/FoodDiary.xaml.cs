@@ -88,81 +88,102 @@ namespace KeepItFit___Project_WinUI
                 //Check meal's name, call the InputNutritionViewModel respectively
                 if (name == "BreakFast")
                 {
-                    //Add new list into viewModel
-                    //viewModel.BreakFastNutri.update(list);
-                    viewModel.Update_QuickAddBreakFast(list);
+                    viewModel.Update_QuickAdd(list, "QuickAdd_Breakfast");
 
                 }
                 else if(name == "Lunch")
                 {
-                    //viewModel.LunchNutri.update(list);
-                    viewModel.Update_QuickAddLunch(list);
+                    viewModel.Update_QuickAdd(list, "QuickAdd_Lunch");
                 }
                 else if(name == "Dinner")
                 {
-                    //viewModel.DinnerNutri.update(list);
-                    viewModel.Update_QuickAddDinner(list);
+                    viewModel.Update_QuickAdd(list, "QuickAdd_Dinner");
                 }
                 else
                 {
-                    //viewModel.SnackNutri.update(list);
-                    viewModel.Update_QuickAddSnack(list);
+                    viewModel.Update_QuickAdd(list, "QuickAdd_Snack");
                 }
 
                 viewModel.UpdateDataAllMeals();
                 viewModel.updateTotal();
 
             }
-            else if (e.Parameter is NavigationParameters_AddFood_ToFoodDiary parameters_1)
+            else if (e.Parameter is NavigationParameters_AddFood_RecentOrFrequent_ToFoodDiary parameters_1)
             {
+                //AddFood with RecentFood or FrequentFood to FoodDiary
                 List<Food> foodList = parameters_1.foodList;
                 string mealName = parameters_1.mealName;
 
-                //Đây là từ AddFood sang FoodDiary
                 if (mealName == "BreakFast")
                 {
-                    viewModel.Update_FoodBreakfast(foodList);
+                    viewModel.Update_Food(foodList, "BreakfastDiary");
                 }
                 else if(mealName == "Lunch")
                 {
-                    viewModel.Update_FoodLunch(foodList);
+                    viewModel.Update_Food(foodList, "LunchDiary");
                 }
                 else if(mealName == "Dinner")
                 {
-                    viewModel.Update_FoodDinner(foodList);
+                    viewModel.Update_Food(foodList, "DinnerDiary");
                 }
                 else
                 {
-                    viewModel.Update_FoodSnack(foodList);
+                    viewModel.Update_Food(foodList, "SnackDiary");
                 }
 
                 viewModel.UpdateDataAllMeals();
                 viewModel.updateTotal();
 
             }
-            else if (e.Parameter is NavigationParameters_SearchFood parameters_2)
+            else if(e.Parameter is NavigationParameters_AddFood_MyFood_ToSearchFood paramaters_2)
+            {
+                //AddFood with MyFood to FoodDiary
+                List<Food> foodList = paramaters_2.foodList;
+                string mealName = paramaters_2.mealName;
+
+                if (mealName == "BreakFast")
+                {
+                    viewModel.Update_Food(foodList, "MyFood_Breakfast");
+                }
+                else if (mealName == "Lunch")
+                {
+                    viewModel.Update_Food(foodList, "MyFood_Lunch");
+                }
+                else if (mealName == "Dinner")
+                {
+                    viewModel.Update_Food(foodList, "MyFood_Dinner");
+                }
+                else
+                {
+                    viewModel.Update_Food(foodList, "MyFood_Snack");
+                }
+
+                viewModel.UpdateDataAllMeals();
+                viewModel.updateTotal();
+            }
+            else if (e.Parameter is NavigationParameters_SearchFood parameters_3)
             {
                 //Search Food to FoodDiary
-                Food food = parameters_2.selectedFood;
-                string mealName = parameters_2.selectedMeal.mealName;
+                Food food = parameters_3.selectedFood;
+                string mealName = parameters_3.selectedMeal.mealName;
                 List<Food> foodList = new List<Food>();
                 foodList.Add(food);
 
                 if (mealName == "BreakFast")
                 {
-                    viewModel.Update_FoodBreakfast(foodList);
+                    viewModel.Update_Food(foodList, "BreakfastDiary");
                 }
                 else if (mealName == "Lunch")
                 {
-                    viewModel.Update_FoodLunch(foodList);
+                    viewModel.Update_Food(foodList, "LunchDiary");
                 }
                 else if (mealName == "Dinner")
                 {
-                    viewModel.Update_FoodDinner(foodList);
+                    viewModel.Update_Food(foodList, "DinnerDiary");
                 }
                 else
                 {
-                    viewModel.Update_FoodSnack(foodList);
+                    viewModel.Update_Food(foodList, "SnackDiary");
                 }
 
                 viewModel.UpdateDataAllMeals();

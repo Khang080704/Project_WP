@@ -44,6 +44,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
             float sodium = float.Parse(nutritions[4].input);
             float sugar = float.Parse(nutritions[5].input);
 
+            string foodName = this.foodName + " (My Food)";
             sqlDao.UpdateMyFood(foodName, calories, carbs, fat, protein, sodium, sugar);
 
         }

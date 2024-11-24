@@ -362,6 +362,11 @@ namespace KeepItFit___Project_WinUI.Services
         {
             throw new NotImplementedException();
         }
+
+        public List<Food> GetFoodForTheDay_FoodDiary(string date, string diaryType, string table)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
