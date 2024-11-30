@@ -57,7 +57,7 @@
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <FontIcon Glyph="&#xE7F8;" FontSize="16" Foreground="Orange" />
                     <TextBlock Text="Exercise" FontSize="16" Margin="10,0,0,0" />
-                    <TextBlock Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
+                    <TextBlock Name="exercise" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
                 </StackPanel>
             </StackPanel>
         </Grid>

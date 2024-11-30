@@ -118,11 +118,46 @@ namespace KeepItFit___Project_WinUI.View
             return value;
         }
 
+        int getTotalCaloFromExercise(string day)
+        {
+            var sql = new SQLDao();
+            string query = $@"
+                Select CaloriesBurned
+                from CardioExerciseDiary
+                where exercise_date = @day
+                ";
+            int value = 0;
+            using (SqlConnection connection = new SqlConnection(sql.connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@day", day);
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int tmpcalo = Convert.ToInt32(reader["CaloriesBurned"]);
+                        value += tmpcalo;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+
+            return value;
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             food.Text = (getTotalCaloriesOfQuickAdd(today) + getTotalCaloriesOfAddFood(today)).ToString();
-            Remain.Text = (Convert.ToInt32(goal.Text) - Convert.ToInt32(food.Text)).ToString();
+            exercise.Text = getTotalCaloFromExercise(today).ToString();
+            Remain.Text = (Convert.ToInt32(goal.Text) - Convert.ToInt32(food.Text) +
+                Convert.ToInt32(exercise.Text)).ToString();
         }
     }
 }
