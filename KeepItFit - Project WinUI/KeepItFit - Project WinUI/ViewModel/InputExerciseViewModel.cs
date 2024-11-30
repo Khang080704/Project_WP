@@ -25,5 +25,23 @@ namespace KeepItFit___Project_WinUI.ViewModel
         {
             StrengthTrainingData.Add(strengthTraining);
         }
+
+        // Update the data with a list of cardio exercises to be displayed in the UI
+        public void updateWithList_Cardio(List<CardioExercise> cardioExercises)
+        {
+            foreach (CardioExercise cardioExercise in cardioExercises)
+            {
+                updateWithCardio(cardioExercise);
+            }
+        }
+
+        // Update the data with a list of strength training exercises to be displayed in the UI
+        public void updateWithList_Strength(List<StrengthTraining> strengthTrainings)
+        {
+            foreach (StrengthTraining strengthTraining in strengthTrainings)
+            {
+                updateWithStrength(strengthTraining);
+            }
+        }
     }
 }

@@ -367,6 +367,56 @@ namespace KeepItFit___Project_WinUI.Services
         {
             throw new NotImplementedException();
         }
+
+        public List<CardioExercise> GetCardioExerciseForTheDay_ExerciseDiary(string date, string diaryType, string table)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<StrengthTraining> GetStrengthExerciseForTheDay_ExerciseDiary(string date, string diaryType, string table)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CardioExercise> GetCardioExerciseForTheDay_ExerciseDiary(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<StrengthTraining> GetStrengthExerciseForTheDay_ExerciseDiary(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCardioExercise_ExerciseDiary(string date, int exerciseId, int howLong, int caloriesPerMinute, float caloriesBurned)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCardioExercise_ExerciseDiary(string date, int exerciseId, int howLong, float caloriesPerMinute, int caloriesBurned)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateStrengthExercise_ExerciseDiary(string date, int exerciseId, int sets, int reps_set, int weight_set)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteExerciseForTheDay_ExerciseDiary(string date, int exerciseId, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetNotesForTheDay_ExerciseDiary(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateNotesForTheDay_ExerciseDiary(string date, string notes)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

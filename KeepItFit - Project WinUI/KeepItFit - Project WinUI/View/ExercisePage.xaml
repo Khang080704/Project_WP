@@ -32,7 +32,7 @@
                         <TextBlock FontSize="15" Text="{x:Bind CaloriesBurned}"
                                    TextAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-                    <Button Name="DeleteButton" Click="DeleteButton_Click"
+                    <Button Name="DeleteButton" Click="DeleteCardioButton_Click"
                             Tag="{x:Bind}">
                         <FontIcon Glyph="&#xE711;"/>
                     </Button>
@@ -92,7 +92,8 @@
                 Your exercise Daily for
             </TextBlock>
 
-            <CalendarDatePicker Width="200" PlaceholderText="Pick a date"/>
+            <CalendarDatePicker Width="200" PlaceholderText="Pick a date"
+                    Date="{x:Bind viewModel.SelectedDate, Mode=TwoWay}"/>
 
         </StackPanel>
         <Line Stroke="SteelBlue"
@@ -117,7 +118,7 @@
                                FontSize="20" FontWeight="Bold"
                                Text="Cardiovascular"
                                Grid.Column="0" Grid.Row="0"/>
-                    <ItemsControl ItemsSource="{x:Bind ViewModel.CardioExerciseData}"
+                    <ItemsControl ItemsSource="{x:Bind viewModel.ExerciseInput.CardioExerciseData}"
                                   ItemTemplate="{StaticResource CarioForm}"
                                   ItemsPanel="{StaticResource VerticalFormat}"
                                   Grid.Row="1" Grid.ColumnSpan="2"/>
@@ -261,7 +262,7 @@
                                Text="Strength Training"
                                Grid.Row="2" Grid.Column="0"/>
 
-                    <ItemsControl ItemsSource="{x:Bind ViewModel.StrengthTrainingData}"
+                    <ItemsControl ItemsSource="{x:Bind viewModel.ExerciseInput.StrengthTrainingData}"
                                   ItemTemplate="{StaticResource StrengthTrainingForm}"
                                   ItemsPanel="{StaticResource VerticalFormat}"
                                   Grid.Row="3" Grid.ColumnSpan="2"/>
@@ -338,7 +339,8 @@
         <TextBox Name="Notes"
                  IsReadOnly="True"
                  Width="auto"
-                 Height="100"/>
+                 Height="100"
+                Text="{x:Bind viewModel.Notes, Mode=TwoWay}"/>
 
         <Button Foreground="White" Background="green" Margin="10" HorizontalAlignment="Center"
                 Name="ViewReport"

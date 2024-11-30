@@ -15,6 +15,13 @@ namespace KeepItFit___Project_WinUI.Services
         //Exercise part
         public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword);
         public ObservableCollection<StrengthTraining> GetAllStrengthTraining(string keyword);
+        public List<CardioExercise> GetCardioExerciseForTheDay_ExerciseDiary(string date);
+        public List<StrengthTraining> GetStrengthExerciseForTheDay_ExerciseDiary(string date);
+        public void UpdateCardioExercise_ExerciseDiary(string date, int exerciseId, int howLong, float caloriesPerMinute, int caloriesBurned);
+        public void UpdateStrengthExercise_ExerciseDiary(string date, int exerciseId, int sets, int reps_set, int weight_set);
+        public void DeleteExerciseForTheDay_ExerciseDiary(string date, int exerciseId, string diaryType);
+        public string GetNotesForTheDay_ExerciseDiary(string date);
+        public void UpdateNotesForTheDay_ExerciseDiary(string date, string notes);
 
 
         // SQLDao

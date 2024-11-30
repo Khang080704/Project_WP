@@ -4,6 +4,9 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
+  await knex('StrengthTrainingExerciseDiary').del();
+  await knex('CardioExerciseDiary').del();
+  await knex('EXERCISEDIARY').del();
   await knex('StrengthTraining').del();
   await knex.raw('DBCC CHECKIDENT (\'StrengthTraining\', RESEED, 0)');
   await knex('StrengthTraining').insert([

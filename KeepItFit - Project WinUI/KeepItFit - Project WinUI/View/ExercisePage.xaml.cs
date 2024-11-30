@@ -1,4 +1,5 @@
 using KeepItFit___Project_WinUI.Model;
+using KeepItFit___Project_WinUI.Services;
 using KeepItFit___Project_WinUI.View;
 using KeepItFit___Project_WinUI.ViewModel;
 using Microsoft.UI.Xaml;
@@ -27,12 +28,13 @@ namespace KeepItFit___Project_WinUI
     /// </summary>
     public sealed partial class ExercisePage : Page
     {
-        public InputExerciseViewModel ViewModel {  get; set; }
+        //public InputExerciseViewModel ViewModel {  get; set; }
+        public ExercisePageViewModel viewModel { get; set; }
+
         public ExercisePage()
         {
             this.InitializeComponent();
-            ViewModel = new InputExerciseViewModel();
-            ViewModel.init();
+            viewModel = new ExercisePageViewModel();
         }
 
         private void SaveNote_Click(object sender, RoutedEventArgs e)
@@ -40,6 +42,8 @@ namespace KeepItFit___Project_WinUI
             Notes.IsReadOnly = true;
             EditNote.Visibility = Visibility.Visible;
             SaveNote.Visibility = Visibility.Collapsed;
+            
+            viewModel.UpdateNotesForTheDay();
         }
 
         private void EditNote_Click(object sender, RoutedEventArgs e)
@@ -58,7 +62,7 @@ namespace KeepItFit___Project_WinUI
         {
             var sumDailyCalories = 0;
             var timeDaily = 0;
-            foreach (var i in ViewModel.CardioExerciseData)
+            foreach (var i in viewModel.ExerciseInput.CardioExerciseData)
             {
                 sumDailyCalories += i.CaloriesBurned;
                 timeDaily += i._time;
@@ -70,29 +74,28 @@ namespace KeepItFit___Project_WinUI
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if(e.Parameter is CardioExercise cardio)
+            if (e.Parameter is CardioExercise cardio)
             {
-                ViewModel.updateWithCardio(cardio);
+                viewModel.UpdateCardioExercise(cardio);
+                viewModel.UpdateDataExercises();
                 update_Time_And_Calories_Daily();
             }
-            else
+            else if (e.Parameter is StrengthTraining strength)
             {
-                if(e.Parameter is StrengthTraining strength)
-                {
-                    ViewModel.updateWithStrength(strength);
-                }
+                viewModel.UpdateStrengthExercise(strength);
+                viewModel.UpdateDataExercises();
             }
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteCardioButton_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
             var itemToDelete = btn?.Tag as CardioExercise;
             if (itemToDelete != null)
             {
-                if (ViewModel.CardioExerciseData.Contains(itemToDelete))
+                if (viewModel.ExerciseInput.CardioExerciseData.Contains(itemToDelete))
                 {
-                    ViewModel.CardioExerciseData.Remove(itemToDelete);
+                    viewModel.DeleteExercise(itemToDelete);
                     update_Time_And_Calories_Daily();
                 }   
             }
@@ -103,9 +106,9 @@ namespace KeepItFit___Project_WinUI
             var itemToDelete = btn?.Tag as StrengthTraining;
             if (itemToDelete != null)
             {
-                if (ViewModel.StrengthTrainingData.Contains(itemToDelete))
+                if (viewModel.ExerciseInput.StrengthTrainingData.Contains(itemToDelete))
                 {
-                    ViewModel.StrengthTrainingData.Remove(itemToDelete);
+                    viewModel.DeleteExercise(itemToDelete);
                 }
             }
         }
@@ -120,6 +123,6 @@ namespace KeepItFit___Project_WinUI
             this.Frame.Navigate(typeof(AddExercisePage), CardioExercise.Name);
         }
 
-        
+
     }
 }
