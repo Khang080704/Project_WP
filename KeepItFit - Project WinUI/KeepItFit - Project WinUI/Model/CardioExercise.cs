@@ -10,6 +10,7 @@ namespace KeepItFit___Project_WinUI.Model
 {
     public class CardioExercise : INotifyPropertyChanged
     {
+        public int exerciseId { get; set; }
         public string name {  get; set; }
         private int time;
         public int _time {

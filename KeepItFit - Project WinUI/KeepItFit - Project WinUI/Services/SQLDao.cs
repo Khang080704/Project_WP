@@ -514,6 +514,7 @@ namespace KeepItFit___Project_WinUI.Services
             return new List<Nutritions>();
         }
 
+
         //------------------------Cardio exercise----------------------
         List<CardioExercise> ReadCardioInfo(SqlDataReader reader)
         {
@@ -522,6 +523,7 @@ namespace KeepItFit___Project_WinUI.Services
             {
                 CardioExercise cardio = new CardioExercise
                 {
+                    exerciseId = Convert.ToInt32(reader["ID"]),
                     name = reader["Cardio_name"].ToString(),
                     _time = Convert.ToInt32(reader["TimeHowLong"]),
                     CaloriesBurned = Convert.ToInt32(reader["CaloriesBurned"]),
@@ -534,7 +536,7 @@ namespace KeepItFit___Project_WinUI.Services
             return cardios;
         }
 
-        
+
         public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword)
         {
             ObservableCollection<CardioExercise> cardio = new ObservableCollection<CardioExercise>();
@@ -560,6 +562,98 @@ namespace KeepItFit___Project_WinUI.Services
             return cardio;
         }
 
+        // Get all Cardio Exercises for the day
+        public List<CardioExercise> GetCardioExerciseForTheDay_ExerciseDiary(string date)
+        {
+            List<CardioExercise> cardioExercises = new List<CardioExercise>();
+            string queryCardioExercise = $@"
+                SELECT T.*, C.*
+                FROM CardioExerciseDiary T
+                JOIN CardioExercise C ON C.Id = T.Exercise_Id
+                WHERE T.EXERCISE_DATE = @ExerciseDate;  
+            ";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryCardioExercise, connection);
+                command.Parameters.AddWithValue("@ExerciseDate", date);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    cardioExercises = ReadCardioInfo(reader);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error fetching data: {ex.Message}");
+                }
+            }
+
+            return cardioExercises;
+        }
+
+        public void UpdateCardioExercise_ExerciseDiary(string date, int exerciseId, int howLong, float caloriesPerMinute, int caloriesBurned)
+        {
+            string queryCheckExistence = $@"
+                SELECT COUNT(*) 
+                FROM CardioExerciseDiary
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id;";
+
+            string queryUpdate = $@"
+                UPDATE CardioExerciseDiary 
+                SET TimeHowLong = @HowLong, CaloriesPerMinutes = @CaloriesPerMinute, CaloriesBurned = @CaloriesBurned
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_ID = @Exercise_Id;";
+            
+            string queryInsert = $@"
+                INSERT INTO ExerciseDiary (EXERCISE_DATE)  VALUES (@ExerciseDate);
+                INSERT INTO CardioExerciseDiary (EXERCISE_DATE, Exercise_Id, TimeHowLong, CaloriesPerMinutes, CaloriesBurned) 
+                VALUES (@ExerciseDate, @Exercise_Id, @HowLong, @CaloriesPerMinute, @CaloriesBurned);";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
+                commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
+                commandCheckExistence.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+
+                SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
+                commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
+                commandUpdate.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                commandUpdate.Parameters.AddWithValue("@HowLong", howLong);
+                commandUpdate.Parameters.AddWithValue("@CaloriesPerMinute", caloriesPerMinute);
+                commandUpdate.Parameters.AddWithValue("@CaloriesBurned", caloriesBurned);
+
+                SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
+                commandInsert.Parameters.AddWithValue("@ExerciseDate", date);
+                commandInsert.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                commandInsert.Parameters.AddWithValue("@HowLong", howLong);
+                commandInsert.Parameters.AddWithValue("@CaloriesPerMinute", caloriesPerMinute);
+                commandInsert.Parameters.AddWithValue("@CaloriesBurned", caloriesBurned);
+
+                try
+                {
+                    connection.Open();
+                    int count = (int)commandCheckExistence.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        // Update the cardio exercise if it already exists in the diary
+                        commandUpdate.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // Insert the cardio exercise to the diary if it does not exist
+                        commandInsert.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error updating or inserting data: {ex.Message}");
+                }
+            }
+        }
+
+
         //------------------------Strength Training exercise----------------------
         List<StrengthTraining> ReadTrainingInfo(SqlDataReader reader)
         {
@@ -568,6 +662,7 @@ namespace KeepItFit___Project_WinUI.Services
             {
                 StrengthTraining item = new StrengthTraining
                 {
+                    exerciseId = Convert.ToInt32(reader["ID"]),
                     name = reader["Strength_name"].ToString(),
                     Sets = Convert.ToInt32(reader["Sets"]),
                     Reps_Set = Convert.ToInt32(reader["Reps_Set"]),
@@ -604,5 +699,205 @@ namespace KeepItFit___Project_WinUI.Services
             }
             return training;
         }
+
+        public List<StrengthTraining> GetStrengthExerciseForTheDay_ExerciseDiary(string date)
+        {
+            List<StrengthTraining> strengthExercises = new List<StrengthTraining>();
+            string queryStrengthExercise = $@"
+                SELECT T.*, C.*
+                FROM StrengthTrainingExerciseDiary T
+                JOIN StrengthTraining C ON C.Id = T.Exercise_Id
+                WHERE T.EXERCISE_DATE = @ExerciseDate;  
+            ";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryStrengthExercise, connection);
+                command.Parameters.AddWithValue("@ExerciseDate", date);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    strengthExercises = ReadTrainingInfo(reader);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error fetching data: {ex.Message}");
+                }
+            }
+
+            return strengthExercises;
+        }
+
+        public void UpdateStrengthExercise_ExerciseDiary(string date, int exerciseId, int sets, int reps_set, int weight_set)
+        {
+            string queryCheckExistence = $@"
+                SELECT COUNT(*) 
+                FROM StrengthTrainingExerciseDiary
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id;";
+
+            string queryUpdate = $@"
+                UPDATE StrengthTrainingExerciseDiary 
+                SET Sets = @Sets, Reps_Set = @Reps_Set, Weigth_Set = @Weight_Set
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id;";
+            
+            string queryInsert = $@"
+                INSERT INTO ExerciseDiary (EXERCISE_DATE)  VALUES (@ExerciseDate);
+                INSERT INTO StrengthTrainingExerciseDiary (EXERCISE_DATE, Exercise_Id, Sets, Reps_Set, Weigth_Set) 
+                VALUES (@ExerciseDate, @Exercise_Id, @Sets, @Reps_Set, @Weight_Set);";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
+                commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
+                commandCheckExistence.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+
+                SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
+                commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
+                commandUpdate.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                commandUpdate.Parameters.AddWithValue("@Sets", sets);
+                commandUpdate.Parameters.AddWithValue("@Reps_Set", reps_set);
+                commandUpdate.Parameters.AddWithValue("@Weight_Set", weight_set);
+
+                SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
+                commandInsert.Parameters.AddWithValue("@ExerciseDate", date);
+                commandInsert.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                commandInsert.Parameters.AddWithValue("@Sets", sets);
+                commandInsert.Parameters.AddWithValue("@Reps_Set", reps_set);
+                commandInsert.Parameters.AddWithValue("@Weight_Set", weight_set);
+
+                try
+                {
+                    connection.Open();
+                    int count = (int)commandCheckExistence.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        // Update the strength exercise if it already exists in the diary
+                        commandUpdate.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // Insert the strength exercise to the diary if it does not exist
+                        commandInsert.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error updating or inserting data: {ex.Message}");
+                }
+            }
+        }
+
+
+        // Delete exercise (Cardio or Strength) from the diary
+        public void DeleteExerciseForTheDay_ExerciseDiary(string date, int exerciseId, string diaryType)
+        {
+            string queryDelete = $@"
+                                    DELETE FROM {diaryType}
+                                    WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand commandDelete = new SqlCommand(queryDelete, connection);
+                commandDelete.Parameters.AddWithValue("@ExerciseDate", date);
+                commandDelete.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+
+                try
+                {
+                    connection.Open();
+                    commandDelete.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error deleting data: {ex.Message}");
+                }
+            }
+        }
+
+        // Get the "Notes" for the exercise Day
+        public string GetNotesForTheDay_ExerciseDiary(string date)
+        {
+            string notes = "";
+            string query = $@"SELECT NOTE FROM ExerciseDiary WHERE EXERCISE_DATE = @ExerciseDate;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ExerciseDate", date);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        notes = reader["NOTE"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error fetching data: {ex.Message}");
+                }
+            }
+            //Debug.WriteLine(notes);
+            return notes;
+        }
+
+        //Update the "Notes" for the exercise Day
+        public void UpdateNotesForTheDay_ExerciseDiary(string date, string notes)
+        {
+            string queryCheckExistence = $@"
+                    SELECT COUNT(*) 
+                    FROM ExerciseDiary
+                    WHERE EXERCISE_DATE = @ExerciseDate;";
+
+            string queryUpdate = $@"
+                    UPDATE ExerciseDiary 
+                    SET NOTE = @Notes
+                    WHERE EXERCISE_DATE = @ExerciseDate;";
+
+            string queryInsert = $@"
+                    INSERT INTO ExerciseDiary (EXERCISE_DATE, NOTE) 
+                    VALUES (@ExerciseDate, @Notes);";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
+                commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
+
+                SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
+                commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
+                commandUpdate.Parameters.AddWithValue("@Notes", notes);
+
+                SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
+                commandInsert.Parameters.AddWithValue("@ExerciseDate", date);
+                commandInsert.Parameters.AddWithValue("@Notes", notes);
+
+                try
+                {
+                    connection.Open();
+                    int count = (int)commandCheckExistence.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        // Update the notes if the entry already exists
+                        commandUpdate.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // Insert the notes if the entry does not exist
+                        commandInsert.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error updating or inserting data: {ex.Message}");
+                }
+            }
+        }
+
+
     }
 }
