@@ -72,14 +72,15 @@ namespace KeepItFit___Project_WinUI
             List<int> nutritionAmount = new List<int>();
             foreach(var i in viewModel.nutritions)
             {
-                if (int.TryParse(i.input, out int result))
-                {
-                    nutritionAmount.Add(result);
-                }
-                else
-                {
-                    Console.WriteLine("Conversion failed.");
-                }
+                nutritionAmount.Add(Convert.ToInt32(i.input));
+                //if (int.TryParse(i.input, out int result))
+                //{
+                //    nutritionAmount.Add(result);
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Conversion failed.");
+                //}
                 
             }
 

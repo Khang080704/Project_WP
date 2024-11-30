@@ -21,6 +21,10 @@ using Microsoft.Extensions.DependencyInjection;
 using static KeepItFit___Project_WinUI.View.AddFood;
 using static KeepItFit___Project_WinUI.View.SearchFood;
 using Windows.UI.Core;
+using KeepItFit___Project_WinUI.Services;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Collections;
+using System.Data.SqlClient;
 
 namespace KeepItFit___Project_WinUI
 {

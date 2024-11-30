@@ -35,7 +35,7 @@
             <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Ellipse Width="150" Height="150" Stroke="LightGray" StrokeThickness="5" />
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock Text="1800" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" />
+                    <TextBlock Name="Remain" Text="1800" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" />
                     <TextBlock Text="Remaining" FontSize="16" Foreground="Gray" HorizontalAlignment="Center" />
                 </StackPanel>
             </Grid>
@@ -45,13 +45,13 @@
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <SymbolIcon Symbol="Flag" />
                     <TextBlock Text="Base Goal" FontSize="16" Margin="10,0,0,0" />
-                    <TextBlock Text="1800" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
+                    <TextBlock Name="goal" Text="1800" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <FontIcon Glyph="&#xE20D;" FontSize="16" Foreground="Blue" />
-                    <TextBlock Text="Food" FontSize="16" Margin="10,0,0,0" />
-                    <TextBlock Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
+                    <TextBlock  Text="Food" FontSize="16" Margin="10,0,0,0" />
+                    <TextBlock Name="food" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">

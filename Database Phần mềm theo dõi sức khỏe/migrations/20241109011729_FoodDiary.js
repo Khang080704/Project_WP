@@ -5,7 +5,8 @@
 exports.up = async function(knex) {
     await knex.raw(`
         CREATE TABLE FOODDIARY(
-            FOOD_DATE DATE PRIMARY KEY
+            FOOD_DATE DATE PRIMARY KEY,
+            TOTALCALO INT
         );
     `);
 
