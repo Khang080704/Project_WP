@@ -1,4 +1,5 @@
 
+
 # Tên Dự Án
 
 Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao hằng ngày.
@@ -31,7 +32,7 @@ Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao 
  | 22120152| Phạm Gia Khang | 
  | 22120236 | Nguyễn Hoàng Nguyên | 
 
-## UI/UX
+## A. UI/UX
 
 ### I. Giao diện chính trang Food Page
 #### 1. UI
@@ -97,17 +98,30 @@ Thêm, Xóa món ăn dễ dàng: Bằng cách chọn các món ăn cần thêm v
 
 Tùy chỉnh linh hoạt số lượng và đơn vị: Người dùng có thể điều chỉnh số lượng thực phẩm theo nhu cầu và chọn đơn vị mong muốn. Điều này giúp người dùng dễ dàng theo dõi chính xác lượng dinh dưỡng mà họ tiêu thụ.
 
-  
+### **Bổ sung cho milestone 2:**
+-- --
+#### IV. Trang HomePage
+##### 1. UI
+
+![HomePage_1](https://i.postimg.cc/mDHppmDs/image.png)
+UI hiển thị rõ 3 chỉ số nổi trội là **Base Goal**, **Food** và **Exercise** trong đó:
++ **Base Goal**: Lượng Calo mục tiêu do người dùng thiết lập, người dùng có thể thay đổi mục Base Goal này
++ **Food**: Tổng lượng Calo nạp vào cơ thể ở mục Food, người dùng có thể theo dõi chỉ số tổng này bên page Food
++ **Exercise**: Tổng lượng Calo tiêu thụ ở mục Exercise, người dùng có thể theo dõi lượng Calo bên page Exercise ở phần *Calories Burned*, chỉ số sẽ được cập nhật ở Home Page
++ **Remaining**: Được tính bằng  **Base Goal** + **Food** - **Exercise**, mỗi khi có thay đổi bên phần kia, chỉ số này sẽ được cập nhật lại để người dùng có thể theo dõi tiến độ của mình trong ngày hôm đó
+![](https://i.postimg.cc/52GYTBkB/image.png)
+  _Chỉ số được cập nhật_
 
 
 ## Design patterns/architecture
 
-### MVVM Design patterns
+### MVVM Design patterns ( Cập nhật milestone 2)
 
 Sử dụng mẫu thiết kế MVVM, trong project có các folder:
 - **Model**: Chứa các lớp
 	+  **IDao**: Lớp giao diện chứa các phương thức lấy thông tin từ cơ sở dữ liệu thông qua các hàm GetAll()
 	+ **MockDao**: Cài đặt chi tiết các hàm lấy thông tin, trả về 1 danh sách dữ liệu
+	
 - **ViewModel**: Chứa các lớp
 	+ **Meal**: chứa thông tin 1 bữa ăn (tên bữa ăn)
 	
@@ -123,8 +137,26 @@ Sử dụng mẫu thiết kế MVVM, trong project có các folder:
 	+ **MainWindow.xaml**: cửa sổ chính của ứng dụng, dẫn đến các page khác 
 	+ **FoodPage.xaml**, **AddFood.xaml**, **SearchFood.xaml**, **FoodDiary.xaml**: là các trang chính trong giao diện phần Food của ứng dụng, là nơi người dùng tương tác với ứng dung. Người dùng có thể chọn *QuickAdd* để nhập nhanh lượng dinh dưỡng hoặc *AddFood* để chọn các món ăn cho mình, hệ thống sẽ tính toán lượng dinh dưỡng của các món ăn đó
 	+ Trong phần Food, lượng dinh dưỡng nạp vào của mỗi chất dựa trên 1 cơ thể khỏe mạnh, người dùng có thể dựa vào đó để đánh giá 1 ngày ăn uống của mình như vậy đã hợp lí chưa
- 
+	
+### **Bổ sung cho milestone 2:**
+-- --
+- **Model**: Chứa các lớp:
+	+ **CardioExercise**: Chứa dữ liệu về các bài tập Cardio, bao gồm tên bài tập, thời gian tập và lượng calo tiêu thụ
+	+ **StrengthTrainingExercise**: Chứa thông tin các bài tập thể lực
+- **Service:** Chứa các lớp:
+	+ **IDAO**: Lớp giao diện chứa các phương thức lấy thông tin từ cơ sở dữ liệu thông qua các hàm GetAll()
+	+ **MockDao**: Cài đặt chi tiết các hàm lấy thông tin, trả về 1 danh sách dữ liệu
+	+ **SqlDao**: Kết nối đến cơ sở dữ liệu để lấy thông tin từ cơ sở dữ liệu lên, dữ liệu lúc này được đưa xuống database mà không còn là dữ liệu tạm thời nữa
+- **ViewModel:** Chứa các lớp:	
+	 + **SearchExerciseViewModel**: Có nhiệm vụ trả về kết quả khi người dùng tra cứu tên bài tập thể dục. Lớp sẽ kết nối cơ sở dữ liệu, dựa trên từ khóa mà người dùng nhập vào để thực hiện truy vấn trả ra 1 hoặc nhiều kết quả có liên quan đến từ khóa người dùng nhập
+	 +  **FoodDiaryViewModel, ExercisePageViewModel**: Các lớp giúp lưu các kết quả người dùng đã nhập theo từng ngày. *Chẳng hạn*, ngày hôm nay người dùng đã nhập các thông tin cho bữa ăn cũng như là các bài tập thể thao. Qua ngày hôm sau, các trang sẽ được làm mới và người sẽ tiếp tục cập nhật hoạt động cho ngày hôm nay của mình. Đồng thời, người dùng cũng có thể chọn lịch vào ngày cũ để xem thông tin mình đã thao tác và chỉnh sửa ngày đó (thêm/ xóa các món ăn, bài tập) 
+	
+- **View:** Chứa các lớp:	
+	+ **CreateExercise, ExercisePage, SearchCardioExercise, SearchStrengthTrainingExercise**: Các lớp giao diện hiển thị và tương tác với người dùng ở phần chọn bài tập thể dục. Người dùng có thể tìm kiếm và chọn các bài tập thể dục ở 2 thể loại (Cardio/ Strength) để thêm các bài tập vào hoạt động hằng ngày của mình tương tự như bên phần *Food*. Đồng thời, người dùng có thể tự tạo bài thể dục riêng cho mình nếu không tìm thấy kết quả mong muốn thông qua giao diện ở của **CreateExercise**
 
+	+ **CreateMyFood**: Giao diện giúp người dùng tự tạo riêng món ăn cho cho mình bằng cách điền các thông tin cụ thể như tên món ăn, lượng dinh dưỡng ước tính cho món ăn đó
+	+ **NutrionResult**: Trang kết quả thông báo về tình trạng sức khỏe cho người dùng vào ngày hôm đó.
+	+ **HomePage**: Trang chủ của ứng dụng, hiển thị các thông tin về chỉ số tổng thể bao gồm tổng lượng Calo đã nạp vào ở phần **Food** và tổng Calo đã tiêu thụ ở phần **Exercise**. Chỉ số *Remaining* được tính tự động thể hiện chỉ số Calo còn lại trong ngày hôm đó của người dùng 
 ## Advanced topics
 
  ### 1. MVVM design pattern
@@ -212,6 +244,11 @@ _Chọn ảnh từ hệ thống_
  | Tính năng liệt kê thành phần dinh dưỡng trong từng món ăn | 3h | 
  | Tính năng chọn món | 3h | 
  |Tính năng chọn ảnh đại diện|2h|
+ |Tính năng chọn bài tập thể dục|3h|
+|Tính năng ghi lại lịch sử|2h|
+|Tính năng ghi chú|2h|
+|Tính năng tạo bài tập mới|1h|
+|Tính năng tạo món ăn mới|1h|
 
 
 ## Product Experience
@@ -241,4 +278,12 @@ Chọn mục Food bên cột trái, giao diện chính của mục food:
  | Advanced Topics | 10 | 
  |Teamwork - Git flow|9.5|
  |Quality assurance|9.5|
+### Bổ sung cho milestone 2
+ | Tiêu chí | Tự đánh giá (trên thang 10) | 
+ |---------------|-----------------|
+ | UI/UX | 9 |  
+ | Design Patter/Architecture| 10 | 
+ | Advanced Topics | 10 | 
+ |Teamwork - Git flow|9|
+ |Quality assurance|10|
  
