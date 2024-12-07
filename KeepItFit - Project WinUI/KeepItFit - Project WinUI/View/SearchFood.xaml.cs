@@ -1,4 +1,5 @@
-﻿using KeepItFit___Project_WinUI.ViewModel;
+﻿using KeepItFit___Project_WinUI.Model;
+using KeepItFit___Project_WinUI.ViewModel;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -46,7 +47,7 @@ namespace KeepItFit___Project_WinUI.View
                 meal.Text = $"Add Food To {this.mealName}";
 
                 // Filter the food is chosen
-                var filteredList = viewModel.foodDatabase.Where(food => food.foodName.ToLower().Contains(query)).ToList();
+                var filteredList = viewModel.GetFoodDatabase(query.ToLower());
                 foreach (var food in filteredList)
                 {
                     viewModel.foodSearchList.Add(food);
@@ -72,8 +73,8 @@ namespace KeepItFit___Project_WinUI.View
                 return;
             }
             
-            var filteredList = viewModel.foodDatabase.Where(food => food.foodName.ToLower().Contains(query)).ToList();
-            
+            var filteredList = viewModel.GetFoodDatabase(query.ToLower());
+
             if (filteredList.Count == 0)
             {
                 foodSearchListView.Visibility = Visibility.Collapsed;
@@ -130,6 +131,12 @@ namespace KeepItFit___Project_WinUI.View
                 return;
             }
 
+            // Update the Frequent Food
+            viewModel.UpdateFrequentFood(viewModel.SelectedFood);
+
+            // Update the Recent Food
+            viewModel.UpdateRecentFood(viewModel.SelectedFood);
+
             this.Frame.Navigate(typeof(FoodDiary), parameters);
 
         }
@@ -177,6 +184,11 @@ namespace KeepItFit___Project_WinUI.View
         private void HyperlinkToAddCaloriesPage_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddFood));
         }
     }
 }

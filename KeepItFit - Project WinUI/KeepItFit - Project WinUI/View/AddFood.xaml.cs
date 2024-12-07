@@ -55,6 +55,9 @@ namespace KeepItFit___Project_WinUI.View
                 this.mealName = mealName;
                 meal.Text = $"Add Food To {this.mealName}";
             }
+
+            viewModel.LoadRecentFood(); // Load the newest recent food items
+            viewModel.LoadFrequentFood(); // Load the newest frequent food items
         }
 
         //Set the default button to "Recent" when the page is loaded
@@ -212,6 +215,7 @@ namespace KeepItFit___Project_WinUI.View
                 }
                 parameters.foodList = foodListRecent_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
+                foodListRecent_Checked.Clear();
             }
             else if (_lastClickedButton == FrequentButton)
             {
@@ -221,6 +225,7 @@ namespace KeepItFit___Project_WinUI.View
                 }
                 parameters.foodList = foodListFrequent_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
+                foodListFrequent_Checked.Clear();
             }
             else if (_lastClickedButton == MyFoodButton)
             {
@@ -230,6 +235,7 @@ namespace KeepItFit___Project_WinUI.View
                 }
                 parameters.foodList = foodListMyFood_Checked;
                 this.Frame.Navigate(typeof(FoodDiary), parameters);
+                foodListMyFood_Checked.Clear();
             }
         }
 
@@ -244,28 +250,28 @@ namespace KeepItFit___Project_WinUI.View
         {
             if (_lastClickedButton == RecentButton)
             {
-                foreach (Food food in foodListRecent_Checked)
-                {
-                    viewModel.foodRecent.Remove(food);
-                }
-                foodListRecent_Checked.Clear();
+                RemoveFoodItems(foodListRecent_Checked, viewModel.foodRecent);
             }
             else if (_lastClickedButton == FrequentButton)
             {
-                foreach (Food food in foodListFrequent_Checked)
-                {
-                    viewModel.foodFrequent.Remove(food);
-                }
-                foodListFrequent_Checked.Clear();
+                RemoveFoodItems(foodListFrequent_Checked, viewModel.foodFrequent);
             }
             else if (_lastClickedButton == MyFoodButton)
             {
-                foreach (Food food in foodListMyFood_Checked)
-                {
-                    viewModel.foodMyFood.Remove(food);
-                }
-                foodListMyFood_Checked.Clear();
-            } 
+                RemoveFoodItems(foodListMyFood_Checked, viewModel.foodMyFood);
+            }
+        }
+
+        private void RemoveFoodItems(List<Food> foodListChecked, ObservableCollection<Food> foodCollection)
+        {
+            foreach (Food food in foodListChecked)
+            {
+                foodCollection.Remove(food);
+                viewModel.DeleteFrequentOrRecentFood(food);
+            }
+            foodListChecked.Clear();
+            viewModel.LoadFrequentFood(); // Update the list of frequent food items
+            viewModel.LoadRecentFood(); // Update the list of recent food items
         }
 
         // Check if the input is a number (text changed)
@@ -324,6 +330,11 @@ namespace KeepItFit___Project_WinUI.View
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(FoodDiary));
         }
     }
 }

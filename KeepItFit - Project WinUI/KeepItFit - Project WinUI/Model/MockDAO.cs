@@ -4,143 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KeepItFit___Project_WinUI.ViewModel;
 
 namespace KeepItFit___Project_WinUI.Model
 {
     public class MockDAO : IDao
     {
-        //Database of food
-        public ObservableCollection<Food> GetFoodDatabase()
-        {
-            var result = new ObservableCollection<Food>()
-            {
-                new Food {
-                    foodName = "Chicken Breast",
-                    foodCalories = 165,
-                    foodCarbs = 0,
-                    foodFat = 3.6f,
-                    foodProtein = 31,
-                    foodSodium = 74,
-                    foodSugar = 0,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "oz", "kilograms" }, // Thịt gà thường đo bằng gram, ounce, kilogram
-                    selectedFoodUnit = "grams",
-                },
-                new Food {
-                    foodName = "Salmon",
-                    foodCalories = 208,
-                    foodCarbs = 0,
-                    foodFat = 13f,
-                    foodProtein = 20,
-                    foodSodium = 59,
-                    foodSugar = 0,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "oz", "fillet", "kilograms" }, // Cá hồi có thể tính theo gram, ounce, miếng fillet, kilogram
-                    selectedFoodUnit = "grams",
-                },
-                new Food {
-                    foodName = "Broccoli",
-                    foodCalories = 55,
-                    foodCarbs = 11.2f,
-                    foodFat = 0.6f,
-                    foodProtein = 3.7f,
-                    foodSodium = 49,
-                    foodSugar = 2.2f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "cup", "stalk", "kilograms" }, // Súp lơ thường đo bằng gram, cốc, hoặc cây (stalk)
-                    selectedFoodUnit = "grams",
-                },
-                new Food {
-                    foodName = "Avocado",
-                    foodCalories = 160,
-                    foodCarbs = 8.5f,
-                    foodFat = 14.7f,
-                    foodProtein = 2,
-                    foodSodium = 7,
-                    foodSugar = 0.7f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "half", "whole", "kilograms" }, // Bơ có thể đo bằng gram, nửa quả, hoặc cả quả
-                    selectedFoodUnit = "grams",
-                },
-                new Food {
-                    foodName = "Almonds",
-                    foodCalories = 579,
-                    foodCarbs = 21.6f,
-                    foodFat = 49.9f,
-                    foodProtein = 21.2f,
-                    foodSodium = 1,
-                    foodSugar = 4.4f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "oz", "handful", "kilograms" }, // Hạnh nhân có thể đo bằng gram, ounce, hoặc bằng tay nắm (handful)
-                    selectedFoodUnit = "grams",
-                },
-                new Food {
-                    foodName = "Brown Rice",
-                    foodCalories = 123,
-                    foodCarbs = 25.6f,
-                    foodFat = 1.0f,
-                    foodProtein = 2.7f,
-                    foodSodium = 4,
-                    foodSugar = 0.4f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "cup", "kilograms" }, // Gạo lứt đo bằng gram, cốc (cup), hoặc kilogram
-                    selectedFoodUnit = "grams",
-                },
-                new Food {
-                    foodName = "Eggs",
-                    foodCalories = 155,
-                    foodCarbs = 1.1f,
-                    foodFat = 10.6f,
-                    foodProtein = 13,
-                    foodSodium = 124,
-                    foodSugar = 1.1f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "unit", "dozen" }, // Trứng thường đo bằng đơn vị quả (unit) hoặc tá (dozen)
-                    selectedFoodUnit = "unit",
-                },
-                new Food {
-                    foodName = "Banana",
-                    foodCalories = 89,
-                    foodCarbs = 22.8f,
-                    foodFat = 0.3f,
-                    foodProtein = 1.1f,
-                    foodSodium = 1,
-                    foodSugar = 12.2f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "unit", "grams", "bunch" }, // Chuối đo bằng quả, gram, hoặc chùm (bunch)
-                    selectedFoodUnit = "unit",
-                },
-                new Food {
-                    foodName = "Greek Yogurt",
-                    foodCalories = 59,
-                    foodCarbs = 3.6f,
-                    foodFat = 0.4f,
-                    foodProtein = 10,
-                    foodSodium = 36,
-                    foodSugar = 3.2f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "oz", "cup" }, // Sữa chua Hy Lạp đo bằng gram, ounce, hoặc cốc
-                    selectedFoodUnit = "grams",
-                },
-                new Food {
-                    foodName = "Sweet Potato",
-                    foodCalories = 86,
-                    foodCarbs = 20.1f,
-                    foodFat = 0.1f,
-                    foodProtein = 1.6f,
-                    foodSodium = 55,
-                    foodSugar = 4.2f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string> { "grams", "unit", "kilograms" }, // Khoai lang có thể đo bằng gram, quả, hoặc kilogram
-                    selectedFoodUnit = "grams",
-                }
-            };
 
-            return result;
-        }
-
-        public ObservableCollection<Meals> GetAllMeals()
+       public ObservableCollection<Meals> GetAllMeals()
         {
             var result = new ObservableCollection<Meals>()
             {
@@ -164,119 +34,6 @@ namespace KeepItFit___Project_WinUI.Model
             return result;
         }
 
-        public ObservableCollection<Food> GetFoodRecent()
-        {
-            var result = new ObservableCollection<Food>()
-            {
-                new Food() {
-                    foodName = "Chicken Breast",
-                    foodCalories = 165,
-                    foodCarbs = 0,
-                    foodFat = 3.6f,
-                    foodProtein = 31,
-                    foodSodium = 74,
-                    foodSugar = 0,
-                    foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms"},
-                    selectedFoodUnit = "grams",
-                },
-                new Food() {
-                    foodName = "Noodles",
-                    foodCalories = 138,
-                    foodCarbs = 25,
-                    foodFat = 1.1f,
-                    foodProtein = 4.5f,
-                    foodSodium = 6,
-                    foodSugar = 0.9f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms" },
-                    selectedFoodUnit = "grams",
-                },
-                new Food() {
-                    foodName = "Potato Salad",
-                    foodCalories = 143,
-                    foodCarbs = 17,
-                    foodFat = 7.5f,
-                    foodProtein = 2.1f,
-                    foodSodium = 450,
-                    foodSugar = 2.5f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "cup"},
-                    selectedFoodUnit = "grams",
-                },
-                new Food() {
-                    foodName = "Egg",
-                    foodCalories = 78,
-                    foodCarbs = 0.6f,
-                    foodFat = 5.3f,
-                    foodProtein = 6.3f,
-                    foodSodium = 62,
-                    foodSugar = 0.6f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string>{ "piece", "grams", "dozen" },
-                    selectedFoodUnit = "piece",
-                },
-            };
-            return result;
-        }
-
-        public ObservableCollection<Food> GetFoodFrequent()
-        {
-            var result = new ObservableCollection<Food>()
-            {
-                new Food() {
-                    foodName = "Potato Salad",
-                    foodCalories = 143,
-                    foodCarbs = 17,
-                    foodFat = 7.5f,
-                    foodProtein = 2.1f,
-                    foodSodium = 450,
-                    foodSugar = 2.5f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "cup"},
-                    selectedFoodUnit = "grams",
-                },
-                new Food() {
-                    foodName = "Orange",
-                    foodCalories = 47,            
-                    foodCarbs = 12,               
-                    foodFat = 0.1f,               
-                    foodProtein = 0.9f,           
-                    foodSodium = 0,               
-                    foodSugar = 9,                
-                    foodQuantity = "1",          
-                    foodUnit = new List<string>{"piece", "grams"},
-                    selectedFoodUnit = "piece",
-                },
-                new Food() {
-                    foodName = "Egg",
-                    foodCalories = 78,
-                    foodCarbs = 0.6f,
-                    foodFat = 5.3f,
-                    foodProtein = 6.3f,
-                    foodSodium = 62,
-                    foodSugar = 0.6f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string>{ "piece", "grams", "dozen" },
-                    selectedFoodUnit = "piece",
-                },
-                new Food() {
-                    foodName = "Broccoli",
-                    foodCalories = 55,
-                    foodCarbs = 11,
-                    foodFat = 0.6f,
-                    foodProtein = 3.7f,
-                    foodSodium = 33,
-                    foodSugar = 2.2f,
-                    foodQuantity = "1",
-                    foodUnit = new List<string>{"grams", "oz", "lb", "kilograms" },
-                    selectedFoodUnit = "grams",
-                },      
-            };
-
-            return result;
-        }
-
         public List<Nutritions> GetAllNutrtion()
         {
             var result = new List<Nutritions>()
@@ -287,7 +44,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Calories",
                     Total = 0,
                     Daily = 2300,
-                    Remain = 0,
+                    Remain = 2300,
                     unit = "kcal",
                 },
                 new Nutritions()
@@ -295,7 +52,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Carbs",
                     Total = 0,
                     Daily = 300,
-                    Remain = 0,
+                    Remain = 300,
                     unit = "g"
                 },
                 new Nutritions()
@@ -303,7 +60,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Fat",
                     Total = 0,
                     Daily = 60,
-                    Remain = 0,
+                    Remain = 60,
                     unit = "g",
                 },
                 new Nutritions()
@@ -311,7 +68,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Protein",
                     Total = 0,
                     Daily = 60,
-                    Remain = 0,
+                    Remain = 60,
                     unit = "g",
                 },
                 new Nutritions()
@@ -319,7 +76,7 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Sodium",
                     Total = 0,
                     Daily = 2300,
-                    Remain = 0,
+                    Remain = 2300,
                     unit = "mg"
                 },
                 new Nutritions()
@@ -327,14 +84,263 @@ namespace KeepItFit___Project_WinUI.Model
                     name = "Sugar",
                     Total = 0,
                     Daily = 30,
-                    Remain = 0,
+                    Remain = 30,
                     unit = "g"
                 },
             };
             return result;
         }
+
+        public ObservableCollection<CardioExercise> GetAllCardioExercise()
+        {
+            var result = new ObservableCollection<CardioExercise>()
+            {
+                new CardioExercise()
+                {
+                    name = "Aerobic, general",
+                    _time = 0,
+                    caloriesPerMinute = 7.7f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Badminton, competitive",
+                    _time = 0,
+                    caloriesPerMinute = 8.3f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Billiards",
+                    _time = 0,
+                    caloriesPerMinute = 3,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Canoeing, on camping trip",
+                    _time = 0,
+                    caloriesPerMinute = 4.7f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Dancing, general",
+                    _time = 0,
+                    caloriesPerMinute = 5.3f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Fishing from boat, sitting",
+                    _time = 0,
+                    caloriesPerMinute = 3,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Golf, carrying clubs",
+                    _time = 0,
+                    caloriesPerMinute = 5.3f,
+                    CaloriesBurned = 0
+                },
+                new CardioExercise()
+                {
+                    name = "Horseback riding, general",
+                    _time = 0,
+                    caloriesPerMinute = 4.7f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Judo, karate, kick boxing, tae kwan do",
+                    _time = 0,
+                    caloriesPerMinute = 11.8f,
+                    CaloriesBurned = 0,
+                },
+                new CardioExercise()
+                {
+                    name = "Music playing, drums",
+                    _time = 0,
+                    caloriesPerMinute = 4.7f,
+                    CaloriesBurned = 0,
+                }
+            };
+            return result;
+        }
+
+        public ObservableCollection<Food> GetFoodDatabase(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Food> GetFoodRecent()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Food> GetFoodFrequent()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateFrequentTable(Food food)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateFrequentFood(Food food)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateRecentFood(Food food)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteFrequentOrRecentFood(Food food)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GetBreakfastFoodForTheDay(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GetLunchFoodForTheDay(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GetDinnerFoodForTheDay(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GetSnackFoodForTheDay(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteFoodForTheDay_FoodDiary(string date, int foodId, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GetFoodForTheDay_FoodDiary(string date, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateRecentOrFrequentFood(Food food, string type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateFoodForTheDay_FoodDiary(string date, int foodId, string foodQuantity, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateQuickAddForTheDay_FoodDiary(string date, List<int> quickAddList, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GeQuickAddForTheDay_FoodDiary(string date, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteQuickAddForTheDay_FoodDiary(string date, int quickAddId, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<StrengthTraining> GetAllStrengthTraining()
+        {
+            var result = new ObservableCollection<StrengthTraining>()
+            {
+                new StrengthTraining()
+                {
+                    name = "Abdominal Leg Raise",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Back Extension",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Cable Crossover, High Pulley",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Deadlift, Straight Leg",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Flat Dumbbell Fly",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Hack Squat",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Kickbacks, Bent, 1-Arm, Dumbbell",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Incline Lateral, Dumbbells",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Lat Pulldown",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+                new StrengthTraining()
+                {
+                    name = "Machine Squat",
+                    Sets = 0,
+                    Reps_Set = 0,
+                    Weight_Sets = 0,
+                },
+            };
+            return result;
+        }
+
+        public ObservableCollection<Food> GetFoodDatabase()
+        {
+            throw new NotImplementedException();
+        }
     }
-
-
 
 }

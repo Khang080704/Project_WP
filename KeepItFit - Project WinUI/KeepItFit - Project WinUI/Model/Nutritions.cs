@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeepItFit___Project_WinUI.ViewModel
+namespace KeepItFit___Project_WinUI.Model
 {
     public class Nutritions : INotifyPropertyChanged
     {
-        public string name {  get; set; }
+        public string name { get; set; }
         public string unit { get; set; }
         public int Total { get; set; }
         public int Daily { get; set; }

@@ -11,14 +11,15 @@ using System.Threading.Tasks;
 namespace KeepItFit___Project_WinUI.ViewModel
 {
     public class SearchFoodViewModel : INotifyPropertyChanged
-    {
-        public ObservableCollection<Food> foodDatabase { get; set; }
-        
+    {   
         public ObservableCollection<Food> foodSearchList;
         public ObservableCollection<Meals> meals { get; set; }
 
+        //private IDao sqlDao;
+
         private Food _selectedFood;
         private Meals _selectedMeal;
+
         public Meals SelectedMeal
         {
             get => _selectedMeal;
@@ -59,12 +60,29 @@ namespace KeepItFit___Project_WinUI.ViewModel
 
         public void init()
         {
-            IDao dao = new MockDAO();
-            foodDatabase = dao.GetFoodDatabase();
-            meals = dao.GetAllMeals();
+            var sqlDao = new SQLDao();
+            meals = sqlDao.GetAllMeals();
             foodSearchList = new ObservableCollection<Food>();
             SelectedFood = new Food();
             SelectedMeal = new Meals();
+        }
+
+        public ObservableCollection<Food> GetFoodDatabase(string keyword)
+        {
+            var sqlDao = new SQLDao();
+            return sqlDao.GetFoodDatabase(keyword);
+        }
+
+        public void UpdateFrequentFood(Food food)
+        {
+            var sqlDao = new SQLDao();
+            sqlDao.UpdateRecentOrFrequentFood(food, "FrequentFood");
+        }
+        
+        public void UpdateRecentFood(Food food)
+        {
+            var sqlDao = new SQLDao();
+            sqlDao.UpdateRecentOrFrequentFood(food, "RecentFood");
         }
     }
 }

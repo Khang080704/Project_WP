@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeepItFit___Project_WinUI.ViewModel
+namespace KeepItFit___Project_WinUI.Model
 {
     //This class is used to receive nutrition list that is send from another
     //page
@@ -15,7 +15,9 @@ namespace KeepItFit___Project_WinUI.ViewModel
         //if page == AddFood, rename it according to the name of dish + nutrition amount
         //. 1 InputNutritionData is 1 line display in FoodDiary
 
-        public string name { get; set; } = "Quick Add, 1 serving";        
+        public int foodId { get; set; }
+        public string foodQuantity { get; set; }
+        public string name { get; set; }        
         public int CaloriesInput { get; set; }
         public int SodiumInput { get; set; }
         public int FatInput { get; set; }

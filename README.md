@@ -7,21 +7,29 @@ Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao 
 
 ## Mục lục
 
-1. [UI/UX](#UI/UX)
 
-2. [Design patterns/architecture](#DesignPatterns/Architecture)
+1. [Members's information](#meminfor)
+2. [UI/UX](#UI/UX)
 
-3. [Advanced topics](#AdvancedTopics)
+3. [Design patterns/architecture](#DesignPatterns/Architecture)
 
-4. [Teamwork - Git flow](#Teamwork-GitFlow)
+4. [Advanced topics](#AdvancedTopics)
 
-5. [Quality assurance](#QualityAssurance)
-6. [Completed Features](#CompletedFeature)
-7. [Product experience](#ProductExperience)
-8. [Self-assessment](#SelfAssessment)
+5. [Teamwork - Git flow](#Teamwork-GitFlow)
+
+6. [Quality assurance](#QualityAssurance)
+7. [Completed Features](#CompletedFeature)
+8. [Product experience](#ProductExperience)
+9. [Self-assessment](#SelfAssessment)
 
   
   
+## Members Information
+| MSSV | Tên thành viên | 
+ |---------------|-----------------|
+ | 22120116 | Đoàn Gia Huệ |  
+ | 22120152| Phạm Gia Khang | 
+ | 22120236 | Nguyễn Hoàng Nguyên | 
 
 ## UI/UX
 
@@ -117,15 +125,36 @@ Sử dụng mẫu thiết kế MVVM, trong project có các folder:
 	+ Trong phần Food, lượng dinh dưỡng nạp vào của mỗi chất dựa trên 1 cơ thể khỏe mạnh, người dùng có thể dựa vào đó để đánh giá 1 ngày ăn uống của mình như vậy đã hợp lí chưa
  
 
-
- 
-
-
-  
-
 ## Advanced topics
 
-  
+ ### 1. MVVM design pattern
+ - Nhóm đã tìm hiểu và triển khai mô hình MVVM. Mô hình này nhóm đã tự tìm hiểu và triển khai một cách hợp lí nhất khi phân tách ra các lớp chính là View, Model, và để đảm bảo rằng tầng giao diện chỉ phục vụ cho việc hiển thị dữ liệu lên, còn dữ liệu hiển thị đó là gì thì sẽ thông qua lớp thứ 3 là ViewModel.
+ 
+ - Chỉ tiết về triển khai mô hình này đã thầy có thể xem ở mục Design patterns/architecture
+ ### 2. WindowHandle
+ - Để có thể phóng to của sổ lập tức khi người dùng chạy chương trình, nhóm đã sử dụng WindowHandle để thực hiện việc phóng to cửa sổ Phần mềm khi chạy mới chạy
+ - Ứng dụng khi chạy sẽ phóng to full màn hình 
+![foodpage-start.png](https://i.postimg.cc/51HR0LGz/foodpage-start.png)
+
+- Code behind:
+![code_behind](https://i.postimg.cc/3w604NXH/image.png)
+### 3. Xử lí khi dữ liệu nhập sai
+- Nếu người dùng nhập dữ liệu bị sai mà bạn muốn người dùng phải Focus vào TextBox đang nhập đến khi nhập đúng? Nhóm đã tìm hiểu và sử dụng thêm 2 thuộc tính là Textchanged và LostFocus. Khi người dùng nhập sai thì hệ thống sẽ báo lỗi và ép người dùng phải nhập đúng thì mới thả Focus. Minh họa cho trường hợp này nằm ở mục Quality assurance
+- Code behind:
+![code_behind](https://i.postimg.cc/sgHvqx0Z/image.png)
+### 4. Bất đồng bộ trong C# và dùng fileOpenPicker để tương tác với file ảnh trong window
+- Tính năng chọn ảnh đại diện trong ứng dụng sử dụng bất đồng bộ,  cho phép người dùng thao tác tải ảnh từ hệ thống của máy lên mà không làm treo các tác vụ khác của ứng dụng bởi vì các thao tác đọc tệp thường mất rất nhiều thời gian
+
+- **FileOpenPicker**: Sử dụng FileOpenPicker từ Windows Runtime API để chọn tệp từ thư viện ảnh, hỗ trợ đọc các tệp ảnh **.jpg**, **.png**, **.jpeg**
+
+
+![choose_avatar](https://i.postimg.cc/5006Kfxy/image.png)
+_Chọn ảnh từ hệ thống_
+
+![update_avatar](https://i.postimg.cc/6q1vmLfY/image.png)_Ảnh được cập nhật_
+
+
+
 
 ## Teamwork - Git flow
 + Sử dụng **github**, 1 branch **main**
@@ -141,6 +170,39 @@ Sử dụng mẫu thiết kế MVVM, trong project có các folder:
 
 ## Quality assurance
 
+### 1. Quy trình commit và kiểm duyệt code:
+
+- Các thành viên trong nhóm làm việc trên từng chức năng hoặc nhiệm vụ được giao và commit mã nguồn lên kho lưu trữ chung.
+- Trước khi bất kỳ mã nguồn nào được tích hợp vào nhánh chính (main), sẽ có một thành viên được chỉ định tiến hành kiểm duyệt mã. Người được phân sẽ xem xét mã nguồn để đảm bảo rằng chương trình tuân theo các tiêu chuẩn mã hóa và không gây ảnh hưởng đến các phần khác của hệ thống.
+- Việc kiểm duyệt giúp phát hiện sớm các lỗi tiềm ẩn hoặc các phần mã có thể tối ưu hóa tốt hơn.
+
+### 2. Chạy thử và kiểm tra mã nguồn:
+
+- Sau khi kiểm duyệt mã nguồn, người kiểm duyệt sẽ chạy mã trên môi trường thử nghiệm để đảm bảo rằng nó hoạt động đúng chức năng như yêu cầu. Tại đây, nhóm sử dụng dụng phương pháp  kiểm tra thủ công để phát hiện các lỗi có thể xảy ra như tìm kiếm với từ khóa có trong cơ sở dữ liệu, tìm kiếm với từ khóa không có trong cơ sở dữ liệu, kiểm thử với từ khóa không hợp lệ hoặc bỏ trống,...
+
+- Ví dụ cụ thể: Phần bắt lỗi người dùng trong chức năng AddFood và SearchFood:
+	+ Trong chức năng AddFood, nhóm đã tích hợp một cơ chế kiểm tra lỗi khi người dùng nhập số lượng (FoodQuantity). Cơ chế này có chức năng kiểm tra giá trị mà người dùng nhập vào:
+		+ Giá trị phải lớn hơn hoặc bằng 1: Nếu người dùng nhập số lượng nhỏ hơn 1 (ví dụ: -12 như trong ảnh), hệ thống sẽ hiển thị thông báo lỗi yêu cầu người dùng nhập một giá trị hợp lệ lớn hơn 0. Điều này giúp ngăn chặn các giá trị không phù hợp ảnh hưởng đến dữ liệu dinh dưỡng hoặc tính toán trong hệ thống.
+		![addFodd_error](https://i.postimg.cc/W1y2KYZB/addfood.png)
+		
+		+ Chỉ chấp nhận số hợp lệ: Nếu người dùng nhập ký tự không phải là số (như chữ cái hoặc ký tự đặc biệt), hệ thống cũng sẽ hiển thị thông báo lỗi để yêu cầu người dùng nhập một giá trị hợp lệ.
+		![addFood_error2](https://i.postimg.cc/y84djY8h/addfood2.png)
+		+ Khi lỗi xuất hiện, hệ thống không cho phép người dùng tiếp tục thao tác cho đến khi nhập đúng giá trị. Điều này giúp đảm bảo tính chính xác của dữ liệu và ngăn ngừa sai sót có thể ảnh hưởng đến tính toán hoặc báo cáo của ứng dụng.
+	+ Trong quá trình kiểm thử chức năng SearchFood, nhóm đã tích hợp một cơ chế kiểm tra lỗi và hiển thị thông báo như sau:
+	
+		+ Khi không tìm thấy kết quả: Nếu người dùng nhập một từ khóa mà không có thực phẩm nào trong cơ sở dữ liệu trùng khớp, hệ thống sẽ hiển thị thông báo "No result found" như trong hình 1. Thông báo này giúp người dùng dễ dàng hiểu rằng từ khóa họ vừa nhập không có trong cơ sở dữ liệu, giúp tránh sự nhầm lẫn.
+		![search_error](https://i.postimg.cc/4dS7cdpg/searchfood.png)
+		+ Bắt lỗi khi người dùng nhập sai định dạng hoặc ký tự đặc biệt: Để đảm bảo rằng chức năng tìm kiếm hoạt động chính xác và tránh các lỗi phát sinh do nhập liệu không đúng, thiết lập giới hạn cho phép nhập chỉ các ký tự chữ và số. Nếu người dùng nhập các ký tự không phù hợp (ví dụ: ký tự đặc biệt), hệ thống sẽ hiển thị thông báo "No result found".
+		![search_error2](https://i.postimg.cc/DZpVygQB/searchfood2.png)
+		
+		+ Yêu cầu nhập từ khóa khi bỏ trống: Nếu người dùng bấm nút “Search” mà không nhập từ khóa, hệ thống sẽ hiển thị thông báo "No result found" như trong hình . Điều này giúp đảm bảo tính nhất quán và tránh việc người dùng vô tình thực hiện tìm kiếm mà không có từ khóa.
+- Việc kiểm thử kỹ lưỡng giúp đảm bảo rằng mã mới không gây ra lỗi và hoạt động ổn định trên các trường hợp sử dụng khác nhau.
+### 3. Merge vào nhánh chính (main)
+- Sau khi mã nguồn đã được kiểm thử và đạt tiêu chuẩn chất lượng, người kiểm duyệt sẽ phê duyệt cho phép merge vào nhánh chính.
+- Quy trình này giúp duy trì tính ổn định và chất lượng của mã nguồn chính, giảm thiểu khả năng xảy ra lỗi khi sản phẩm được đưa vào sử dụng thực tế.
+
+
+
 ## Completed Features
 ### Những tính năng đã hoàn thành:
 
@@ -149,7 +211,7 @@ Sử dụng mẫu thiết kế MVVM, trong project có các folder:
  | Tính năng tính toán tổng lượng calories, các thành phần dinh dưỡng | 3h |  
  | Tính năng liệt kê thành phần dinh dưỡng trong từng món ăn | 3h | 
  | Tính năng chọn món | 3h | 
- |Tính năng cá nhân hóa|2h|
+ |Tính năng chọn ảnh đại diện|2h|
 
 
 ## Product Experience
@@ -175,7 +237,8 @@ Chọn mục Food bên cột trái, giao diện chính của mục food:
  | Tiêu chí | Tự đánh giá (trên thang 10) | 
  |---------------|-----------------|
  | UI/UX | 9 |  
- | Design Patter/Architecture| 9 | 
- | Advanced Topics |  | 
+ | Design Patter/Architecture| 9.5 | 
+ | Advanced Topics | 10 | 
  |Teamwork - Git flow|9.5|
- |Quality assurance||
+ |Quality assurance|9.5|
+ 

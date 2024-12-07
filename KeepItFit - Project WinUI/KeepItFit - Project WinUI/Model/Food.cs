@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeepItFit___Project_WinUI.ViewModel
+namespace KeepItFit___Project_WinUI.Model
 {
     public class Food : INotifyPropertyChanged
     {
+        private int _foodId;
         private string _foodName;
         private float _foodCalories;
         private float _foodCarbs;
@@ -21,6 +22,16 @@ namespace KeepItFit___Project_WinUI.ViewModel
         private string _foodQuantity;
         private List<string> _foodUnit;
         private string _selectedFoodUnit;
+
+        public int foodId
+        {
+            get => _foodId;
+            set
+            {
+                _foodId = value;
+                OnPropertyChanged(nameof(foodId));
+            }
+        }
 
         public string foodName
         {
