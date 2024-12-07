@@ -1,1 +1,0 @@
-<WindowsSdkPackageVersion>10.0.26100.47</WindowsSdkPackageVersion>

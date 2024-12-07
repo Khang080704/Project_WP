@@ -31,12 +31,18 @@ namespace KeepItFit___Project_WinUI
 
     public sealed partial class FoodDiary : Page
     {
+        public static FoodDiaryViewModel viewModelInstance { get; set; }
         public FoodDiaryViewModel viewModel { get; set; }
 
         public FoodDiary()
         {
             this.InitializeComponent();
-            viewModel = new FoodDiaryViewModel();
+            if (viewModelInstance == null)
+            {
+                viewModelInstance = new FoodDiaryViewModel();
+            }
+
+            viewModel = viewModelInstance;
         }
 
         //Navigate to FoodPage button Quick Add

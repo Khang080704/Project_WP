@@ -9,19 +9,19 @@ Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao 
 ## Mục lục
 
 
-1. [Members's information](#meminfor)
-2. [UI/UX](#UI/UX)
+1. [Members's information](#members-information)
+2. [UI/UX](#a-uiux)
+3. [Design patterns/architecture](#design-patternsarchitecture)
 
-3. [Design patterns/architecture](#DesignPatterns/Architecture)
+4. [Advanced topics](#advanced-topics)
 
-4. [Advanced topics](#AdvancedTopics)
+5. [Teamwork - Git flow](#teamwork---git-flow)
 
-5. [Teamwork - Git flow](#Teamwork-GitFlow)
-
-6. [Quality assurance](#QualityAssurance)
-7. [Completed Features](#CompletedFeature)
-8. [Product experience](#ProductExperience)
-9. [Self-assessment](#SelfAssessment)
+6. [Quality assurance](#quality-assurance)
+7. [Completed Features](#completed-features)
+8. [Product experience](#product-experience)
+9. [Work assignment](#work-assignment-bảng-phân-công-công-việc-từ-đầu-dự-án-cho-đến-nay)
+9. [Self-assessment](#self-assessment)
 
   
   
@@ -184,6 +184,10 @@ Sử dụng mẫu thiết kế MVVM, trong project có các folder:
 _Chọn ảnh từ hệ thống_
 
 ![update_avatar](https://i.postimg.cc/6q1vmLfY/image.png)_Ảnh được cập nhật_
+### 5. Áp dụng mẫu Singleton Pattern 
+- Khi chương trình chạy, để đảm bảo rằng người dùng khi thay đổi Calendar của ngày chọn Food hay Exercise thì hệ thống sẽ **nhớ** được ngày của người dùng đang chọn mà không cần phải **lưu** lại xuống Database. Nhóm sử dụng Singleton Pattern để tạo một đối tượng duy nhất quản lí trạng thái Calendar trong vòng đời của ứng dụng (đến khi ứng dụng bị tắt đi).
+
+![singleton_pattern](https://i.ibb.co/LQWbfSM/Untitled.png)
 
 
 
@@ -196,7 +200,8 @@ _Chọn ảnh từ hệ thống_
 ![commit_history](https://i.postimg.cc/QCxQQz22/image.png)
 ![commit_history](https://i.postimg.cc/bvwMpgny/image.png)
 
-
++ Sử dụng **Jira** cho việc phân chia công việc và theo dõi tiến độ dự án
+![Imgur](https://i.ibb.co/hmVYJ2J/Untitled.png)
   
   
 
@@ -243,12 +248,15 @@ _Chọn ảnh từ hệ thống_
  | Tính năng tính toán tổng lượng calories, các thành phần dinh dưỡng | 3h |  
  | Tính năng liệt kê thành phần dinh dưỡng trong từng món ăn | 3h | 
  | Tính năng chọn món | 3h | 
- |Tính năng chọn ảnh đại diện|2h|
+ |Tính năng chọn ảnh đại diện|1h|
  |Tính năng chọn bài tập thể dục|3h|
-|Tính năng ghi lại lịch sử|2h|
-|Tính năng ghi chú|2h|
+ |Tính năng lưu lại các món ăn Recent và Frequent|1.5h|
+|Tính năng ghi lại lịch sử khi chuyển đổi ngày|1.5h|
+|Tính năng ghi chú|1h|
+|Tính năng hiển thị thông tin calories còn lại trong ngày trong phần Home dựa vào dữ liệu của Food và Exercise|1h|
 |Tính năng tạo bài tập mới|1h|
 |Tính năng tạo món ăn mới|1h|
+|**Tổng giờ làm việc**|**20h**|
 
 
 ## Product Experience
@@ -270,20 +278,19 @@ Chọn mục Food bên cột trái, giao diện chính của mục food:
 ![SearchFood_page](https://i.postimg.cc/fTmyQqy5/image.png)
 + Chọn một món ăn bất kì, hệ thống sẽ yêu cầu 1 vài thông tin về định lượng cũng như thêm món ăn đó vào bữa ăn nào trong ngày
 
+## Work assignment (Bảng phân công công việc từ đầu dự án cho đến nay)
+|Thành viên|Công việc|
+|---------------|-----------------|
+|Nguyễn Hoàng Nguyên|Thiết kế tính năng tạo món ăn mới.<br>Thiết kế tính năng ghi lại lịch sử khi chuyển đổi ngày. <br> Thiết kế tính năng lưu lại các món ăn Recent và Frequent. <br> Thiết kế tính năng chọn món|
+|Đoàn Gia Huệ|Thiết kế tính năng tính toán tổng lượng calories, các thành phần dinh dưỡng.<br> Thiết kế tính năng ghi chú. <br> Thiết kế tính năng hiển thị thông tin calories còn lại trong ngày trong phần Home dựa vào dữ liệu của Food và Exercise. <br> Thiết kế tính năng chọn bài tập thể dục|
+|Phạm Gia Khang|Thiết kế tính năng liệt kê thành phần dinh dưỡng trong từng món ăn. <br> Thiết kế tính năng chọn ảnh đại diện.<br> Thiết kế tính năng tạo bài tập mới . <br> Kiểm duyệt code trước khi merge vào nhánh main|
+
 ## Self-assessment
  | Tiêu chí | Tự đánh giá (trên thang 10) | 
  |---------------|-----------------|
- | UI/UX | 9 |  
- | Design Patter/Architecture| 9.5 | 
- | Advanced Topics | 10 | 
- |Teamwork - Git flow|9.5|
- |Quality assurance|9.5|
-### Bổ sung cho milestone 2
- | Tiêu chí | Tự đánh giá (trên thang 10) | 
- |---------------|-----------------|
- | UI/UX | 9 |  
+ | UI/UX | 10|  
  | Design Patter/Architecture| 10 | 
  | Advanced Topics | 10 | 
- |Teamwork - Git flow|9|
+ |Teamwork - Git flow|10|
  |Quality assurance|10|
  

@@ -28,13 +28,18 @@ namespace KeepItFit___Project_WinUI
     /// </summary>
     public sealed partial class ExercisePage : Page
     {
-        //public InputExerciseViewModel ViewModel {  get; set; }
+        // Using Singleton Pattern to keep the same instance of the view model
+        public static ExercisePageViewModel viewModelInstance { get; set; }
         public ExercisePageViewModel viewModel { get; set; }
 
         public ExercisePage()
         {
             this.InitializeComponent();
-            viewModel = new ExercisePageViewModel();
+            if (viewModelInstance == null)
+            {
+                viewModelInstance = new ExercisePageViewModel();
+            }
+            viewModel = viewModelInstance;
         }
 
         private void SaveNote_Click(object sender, RoutedEventArgs e)
