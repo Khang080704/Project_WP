@@ -65,23 +65,25 @@ namespace KeepItFit___Project_WinUI.View
         private void Cardio_Click(object sender, RoutedEventArgs e)
         {
             TextBox[] info = { CardioName, CardioCalo, CardioMinutes };
-            if(checkIsNull(info))
+            if (checkIsNull(info))
             {
                 Warning.Visibility = Visibility.Visible;
                 return;
             }
             CardioExercise data = new CardioExercise()
             {
-                name = CardioName.Text,                
-                caloriesPerMinute =  (1.0f * Convert.ToInt32(CardioCalo.Text) / (1.0f * Convert.ToInt32(CardioMinutes.Text))),
+                name = CardioName.Text,
+                caloriesPerMinute = (1.0f * Convert.ToInt32(CardioCalo.Text) / (1.0f * Convert.ToInt32(CardioMinutes.Text))),
                 CaloriesBurned = Convert.ToInt32(CardioCalo.Text),
                 _time = Convert.ToInt32(CardioMinutes.Text),
             };
+
             var sql = new SQLDao();
             string query = """
                 Insert into CardioExercise (Cardio_name, TimeHowLong,CaloriesBurned, CaloriesPerminutes) 
                 values (@name, @time, @caloBurned, @caloPerMinutes) 
                 """;
+
             using (SqlConnection connection = new SqlConnection(sql.connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -101,6 +103,28 @@ namespace KeepItFit___Project_WinUI.View
                     Debug.WriteLine(ex.Message);
                 }
             }
+
+            //query to get id for new exercise
+            string getIDquery = @"
+                SELECT max(id)
+                FROM CardioExercise
+                ";
+            using (SqlConnection connection = new SqlConnection(sql.connectionString))
+            {
+                SqlCommand command = new SqlCommand(getIDquery, connection);
+
+                try
+                {
+                    connection.Open();
+                    data.exerciseId = (int)command.ExecuteScalar();
+                    
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+
             this.Frame.Navigate(typeof(ExercisePage), data);
         }
 
@@ -144,6 +168,29 @@ namespace KeepItFit___Project_WinUI.View
                     Debug.WriteLine(ex.Message);
                 }
             }
+
+            //query to get id for new exercise
+            string getIDquery = @"
+                SELECT max(id)
+                FROM StrengthTraining
+                ";
+            using (SqlConnection connection = new SqlConnection(sql.connectionString))
+            {
+                SqlCommand command = new SqlCommand(getIDquery, connection);
+
+                try
+                {
+                    connection.Open();
+                    data.exerciseId = (int)command.ExecuteScalar();
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+
+
             this.Frame.Navigate(typeof(ExercisePage), data);
         }
 

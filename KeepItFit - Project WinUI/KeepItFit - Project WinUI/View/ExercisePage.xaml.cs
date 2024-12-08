@@ -83,13 +83,14 @@ namespace KeepItFit___Project_WinUI
             {
                 viewModel.UpdateCardioExercise(cardio);
                 viewModel.UpdateDataExercises();
-                update_Time_And_Calories_Daily();
             }
             else if (e.Parameter is StrengthTraining strength)
             {
                 viewModel.UpdateStrengthExercise(strength);
                 viewModel.UpdateDataExercises();
             }
+            //Whenever navigate to this page, update the total calo
+            update_Time_And_Calories_Daily();
         }
 
         private void DeleteCardioButton_Click(object sender, RoutedEventArgs e)
