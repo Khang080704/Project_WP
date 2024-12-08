@@ -178,7 +178,10 @@ Dòng chữ hướng dẫn **"Or, add your most recently used cardio exercises"*
 ##### b. UX
 - Phản hồi ngay lập tức:
 Khi không có kết quả tìm kiếm phù hợp, giao diện nhanh chóng cung cấp trạng thái rõ ràng, không để người dùng bị lạc lõng.
-ví dụ: add cardio 1a
+ví dụ: 
+
+![addcar1a](./ImageForReport/add%20cardio%201a.png)
+*Giao diện chính của trang tìm kiếm*
  
 - Hỗ trợ hành động tiếp theo:
 Giao diện gợi ý rõ ràng những lựa chọn tiếp theo: thử tìm kiếm lại hoặc chọn bài tập cardio gần đây nhất. Điều này đảm bảo người dùng luôn biết mình cần làm gì.Trong trường hợp trên, sau khi chỉ nhập chữ "r" thì giao diện sẽ hiển thị thông báo hướng dẫn người dùng nhập lại cho đúng ( chi tiết mô tả ở phần II.2)
@@ -187,6 +190,8 @@ Thiết kế không chứa yếu tố dư thừa, khiến người dùng chỉ c
 #### 2. Thêm bài tập CARDIO Exercise
 ##### a. UI
 ![Cardio2](./ImageForReport/add%20cardio%202.png)
+*Tìm kiếm bài tập*
+
 - Bố cục rõ ràng và trực quan:
 Giao diện được chia thành hai phần chính, giúp người dùng dễ dàng xác định các khu vực chức năng:
 Khu vực danh sách bài tập: Danh sách bài tập hiển thị rõ ràng, sắp xếp theo chiều dọc, thuận tiện cho việc duyệt nhanh.
@@ -234,6 +239,7 @@ Kết quả sau khi vào mục tìm kiếm như sau
 #### 1. Tìm kiếm
 ##### a. UI
 ![Str1](./ImageForReport/add%20streight1.png)
+*Giao diện chính của trang tìm kiếm*
 - Thiết kế tối giản:
 Giao diện không có quá nhiều chi tiết phức tạp, tập trung duy nhất vào thanh tìm kiếm và hướng dẫn, giúp người dùng dễ dàng nhận biết bước tiếp theo.
 
@@ -249,12 +255,14 @@ Dòng chữ hướng dẫn "**Or, add your most recently used cardio exercises**
 Khi không có kết quả tìm kiếm phù hợp, giao diện nhanh chóng cung cấp trạng thái rõ ràng, không để người dùng bị lạc lõng.
  
 - Hỗ trợ hành động tiếp theo:
-Giao diện gợi ý rõ ràng những lựa chọn tiếp theo: thử tìm kiếm lại hoặc chọn bài tập cardio gần đây nhất. Điều này đảm bảo người dùng luôn biết mình cần làm gì.Trong trường hợp trên, sau khi chỉ nhập chữ "r" thì giao diện sẽ hiển thị thông báo hướng dẫn người dùng nhập lại cho đúng ( chi tiết mô tả ở phần **III.2**)
+Giao diện gợi ý rõ ràng những lựa chọn tiếp theo: thử tìm kiếm lại hoặc chọn bài tập cardio gần đây nhất. Điều này đảm bảo người dùng luôn biết mình cần làm gì.Trong trường hợp trên, sau khi chỉ nhập chữ "r" thì giao diện sẽ hiển thị thông báo hướng dẫn người dùng nhập lại cho đúng ( chi tiết mô tả ở phần **VII.2**)
 Thiết kế không chứa yếu tố dư thừa, khiến người dùng chỉ cần tập trung vào một hành động duy nhất: nhập lại từ khóa hoặc chọn bài tập khác.
 
 #### 2. Thêm bài tập Strength Training Exercise
 ##### a. UI
 ![AddStr2](./ImageForReport/add%20streight2.png)
+*Chọn bài tập*
+
 - Bố cục rõ ràng và trực quan:
 Giao diện được chia thành hai phần chính, giúp người dùng dễ dàng xác định các khu vực chức năng:
 Khu vực danh sách bài tập: Danh sách bài tập hiển thị rõ ràng, sắp xếp theo chiều dọc, thuận tiện cho việc duyệt nhanh.
@@ -287,10 +295,10 @@ Phần nhập liệu được chia thành các trường nhỏ gọn (**Number o
 Các trường nhập không có yếu tố dư thừa, tập trung vào các thông số quan trọng nhất đối với Strength Training.
 => Người dùng không phải suy nghĩ nhiều về cách điền thông tin, giảm áp lực trong quá trình sử dụng.
 
+
+- Mở rộng chức năng: Cho phép người dùng góp phần làm phong phú thêm cơ sở dữ liệu của ứng dụng. Người dùng tự thêm vào database một bài tập mới và có thể ước lượng qui định và nhập dữ liệu vào các trường (***exercise description***, ***sets***, ***repetition/sets***, ***weight/sets***). Hỗ trợ tương tự như đã mô tả ở phần mở rộng chức năng **VII.2.b**
 ![AddStr3](./ImageForReport/add%20streight%203.png)
 *Tạo bài tập mới*
-- Mở rộng chức năng: Cho phép người dùng góp phần làm phong phú thêm cơ sở dữ liệu của ứng dụng. Người dùng tự thêm vào database một bài tập mới và có thể ước lượng qui định và nhập dữ liệu vào các trường (***exercise description***, ***sets***, ***repetition/sets***, ***weight/sets***). Hỗ trợ tương tự như đã mô tả ở phần mở rộng chức năng **II.2.b**
-
 - Tập trung vào hành động chính:
 Nút hành động nổi bật ("**Add Exercise**") ngay dưới phần nhập thông tin, dễ nhận biết, giúp người dùng nhanh chóng hoàn thành mục tiêu của mình.
 Không có các yếu tố gây nhiễu hoặc không cần thiết trên màn hình.
