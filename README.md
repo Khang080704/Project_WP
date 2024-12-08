@@ -569,7 +569,7 @@ module.exports = {
 ### 2. Các tính năng ở phần Exercise
 Chọn mục Exercise bên cột trái, giao diện chính của mục Exercise:
 
-![ExercisePage](../Project_WP/ImageForReport/z6106076541751_5c433d97d37fe3f01d09f20b1efc8cf1.jpg)
+![ExercisePage](./ImageForReport/z6106076541751_5c433d97d37fe3f01d09f20b1efc8cf1.jpg)
 
 - Tại đây người dùng có thể chọn thêm các bài tập Cardio hoặc Strength bằng cách click vào nút Add Exercise
 
