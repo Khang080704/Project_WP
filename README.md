@@ -165,7 +165,8 @@ Màu xanh lá cây cho nút <span style="color: green"> "View Full Report (Print
 ### VII. Add cardiovation
 #### 1. Tìm kiếm
 ##### a. UI
-![AddCar](./ImageForReport/add%20cardio%201a.png)
+![AddCar](./ImageForReport/add%20cardivo1.png)
+*Giao diện chính*
 - Thiết kế tối giản:
 Giao diện không có quá nhiều chi tiết phức tạp, tập trung duy nhất vào thanh tìm kiếm và hướng dẫn, giúp người dùng dễ dàng nhận biết bước tiếp theo.
 
@@ -181,16 +182,16 @@ Khi không có kết quả tìm kiếm phù hợp, giao diện nhanh chóng cung
 ví dụ: 
 
 ![addcar1a](./ImageForReport/add%20cardio%201a.png)
-*Giao diện chính của trang tìm kiếm*
+*Hệ thống nhắc nhở người dùng nhập sai*
  
 - Hỗ trợ hành động tiếp theo:
-Giao diện gợi ý rõ ràng những lựa chọn tiếp theo: thử tìm kiếm lại hoặc chọn bài tập cardio gần đây nhất. Điều này đảm bảo người dùng luôn biết mình cần làm gì.Trong trường hợp trên, sau khi chỉ nhập chữ "r" thì giao diện sẽ hiển thị thông báo hướng dẫn người dùng nhập lại cho đúng ( chi tiết mô tả ở phần II.2)
+Giao diện gợi ý rõ ràng những lựa chọn tiếp theo: thử tìm kiếm lại hoặc chọn bài tập cardio gần đây nhất. Điều này đảm bảo người dùng luôn biết mình cần làm gì.Trong trường hợp trên, sau khi chỉ nhập chữ "r" thì giao diện sẽ hiển thị thông báo hướng dẫn người dùng nhập lại cho đúng ( chi tiết mô tả ở phần VII.2)
 Thiết kế không chứa yếu tố dư thừa, khiến người dùng chỉ cần tập trung vào một hành động duy nhất: nhập lại từ khóa hoặc chọn bài tập khác.
 
 #### 2. Thêm bài tập CARDIO Exercise
 ##### a. UI
 ![Cardio2](./ImageForReport/add%20cardio%202.png)
-*Tìm kiếm bài tập*
+*Giao diện chính trang tìm kiếm*
 
 - Bố cục rõ ràng và trực quan:
 Giao diện được chia thành hai phần chính, giúp người dùng dễ dàng xác định các khu vực chức năng:
@@ -296,7 +297,7 @@ Các trường nhập không có yếu tố dư thừa, tập trung vào các th
 => Người dùng không phải suy nghĩ nhiều về cách điền thông tin, giảm áp lực trong quá trình sử dụng.
 
 
-- Mở rộng chức năng: Cho phép người dùng góp phần làm phong phú thêm cơ sở dữ liệu của ứng dụng. Người dùng tự thêm vào database một bài tập mới và có thể ước lượng qui định và nhập dữ liệu vào các trường (***exercise description***, ***sets***, ***repetition/sets***, ***weight/sets***). Hỗ trợ tương tự như đã mô tả ở phần mở rộng chức năng **VII.2.b**
+- Mở rộng chức năng: Cho phép người dùng góp phần làm phong phú thêm cơ sở dữ liệu của ứng dụng. Người dùng tự thêm vào database một bài tập mới và có thể ước lượng qui định và nhập dữ liệu vào các trường (***exercise description***, ***sets***, ***repetition/sets***, ***weight/sets***). Hỗ trợ tương tự như đã mô tả ở phần mở rộng chức năng **VIII.2.b**
 ![AddStr3](./ImageForReport/add%20streight%203.png)
 *Tạo bài tập mới*
 - Tập trung vào hành động chính:
