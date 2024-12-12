@@ -5,7 +5,7 @@
 exports.up = async function(knex) {
     await knex.raw(`
         CREATE TABLE MyFood(  
-            ID INT IDENTITY(1,1) PRIMARY KEY,
+            ID INT IDENTITY(1,1),
             FOOD_NAME NVARCHAR(255) NOT NULL,
             FOOD_CALORIES FLOAT NOT NULL,
             FOOD_CARBS FLOAT NOT NULL,
@@ -16,6 +16,9 @@ exports.up = async function(knex) {
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_UNIT NVARCHAR(MAX) NOT NULL, -- Save the unit of the food
             SELECTED_FOOD_UNIT NVARCHAR(50) NOT NULL,
+            USER_EMAIL NVARCHAR(50),
+            PRIMARY KEY (ID, USER_EMAIL),
+            FOREIGN KEY (USER_EMAIL) REFERENCES [User](Email)
         );
     `);
 
@@ -24,8 +27,9 @@ exports.up = async function(knex) {
             FOOD_ID INT,
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_DATE DATE,
-            FOREIGN KEY (FOOD_ID) REFERENCES MyFood(ID),
-            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+            USER_EMAIL NVARCHAR(50),
+            FOREIGN KEY (FOOD_ID, USER_EMAIL) REFERENCES MyFood(ID, USER_EMAIL),
+            FOREIGN KEY (FOOD_DATE, USER_EMAIL) REFERENCES FOODDIARY(FOOD_DATE, USER_EMAIL)
         );
     `);
 
@@ -34,8 +38,9 @@ exports.up = async function(knex) {
             FOOD_ID INT,
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_DATE DATE,
-            FOREIGN KEY (FOOD_ID) REFERENCES MyFood(ID),
-            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+            USER_EMAIL NVARCHAR(50),
+            FOREIGN KEY (FOOD_ID, USER_EMAIL) REFERENCES MyFood(ID, USER_EMAIL),
+            FOREIGN KEY (FOOD_DATE, USER_EMAIL) REFERENCES FOODDIARY(FOOD_DATE, USER_EMAIL)
         );
     `);
 
@@ -45,8 +50,9 @@ exports.up = async function(knex) {
             FOOD_ID INT,
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_DATE DATE,
-            FOREIGN KEY (FOOD_ID) REFERENCES MyFood(ID),
-            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+            USER_EMAIL NVARCHAR(50),
+            FOREIGN KEY (FOOD_ID, USER_EMAIL) REFERENCES MyFood(ID, USER_EMAIL),
+            FOREIGN KEY (FOOD_DATE, USER_EMAIL) REFERENCES FOODDIARY(FOOD_DATE, USER_EMAIL)
         );
     `);
 
@@ -55,8 +61,9 @@ exports.up = async function(knex) {
             FOOD_ID INT,
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_DATE DATE,
-            FOREIGN KEY (FOOD_ID) REFERENCES MyFood(ID),
-            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+            USER_EMAIL NVARCHAR(50),
+            FOREIGN KEY (FOOD_ID, USER_EMAIL) REFERENCES MyFood(ID, USER_EMAIL),
+            FOREIGN KEY (FOOD_DATE, USER_EMAIL) REFERENCES FOODDIARY(FOOD_DATE, USER_EMAIL)
         );
     `);
 };

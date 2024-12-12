@@ -19,15 +19,19 @@ using Windows.Storage.Streams;
 using Windows.Storage;
 using System.Threading.Tasks;
 using KeepItFit___Project_WinUI.View;
+using System.Diagnostics;
+using KeepItFit___Project_WinUI.Services;
 
 namespace KeepItFit___Project_WinUI
 {
     public sealed partial class MainWindow : Window
     {
+        public string userEmail { get; set; }
+
         public MainWindow()
         {
             this.InitializeComponent();
-      
+            userEmail = UserSessionService.Instance.UserEmail;
         }
 
         private void nvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

@@ -417,6 +417,16 @@ namespace KeepItFit___Project_WinUI.Services
         {
             throw new NotImplementedException();
         }
+
+        public void SaveDataSignUp(string Email, string hashedPassword, string FirstName, string LastName, string DateOfBirth)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void VerifyDataSignIn(string email, string hashedPassword)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

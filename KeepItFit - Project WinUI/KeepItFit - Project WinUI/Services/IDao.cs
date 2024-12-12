@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KeepItFit___Project_WinUI.Model;
+using Windows.Networking;
 
 namespace KeepItFit___Project_WinUI.Services
 {
@@ -40,7 +41,8 @@ namespace KeepItFit___Project_WinUI.Services
         public void UpdateMyFood(string foodName, float foodCalories, float foodCarbs, float foodFat, float foodProtein, float foodSodium, float foodSugar);
         public ObservableCollection<Food> GetFoodMyFood();
         public void DeleteMyFood(Food food);
-
+        public void SaveDataSignUp(string Email, string hashedPassword, string FirstName, string LastName, string DateOfBirth);
+        public void VerifyDataSignIn(string email, string hashedPassword);
     }
 
 }
