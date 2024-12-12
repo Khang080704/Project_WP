@@ -21,6 +21,7 @@ using Windows.Foundation.Collections;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Windowing;
 using Microsoft.UI;
+using KeepItFit___Project_WinUI.View.IntroToApp;
 
 namespace KeepItFit___Project_WinUI
 {
@@ -38,7 +39,7 @@ namespace KeepItFit___Project_WinUI
         }
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow();
+            m_window = new Intro();
             // Lấy AppWindow từ WindowHandle
             var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
             var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);

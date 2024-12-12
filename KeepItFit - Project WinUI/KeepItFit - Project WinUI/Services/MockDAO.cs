@@ -92,6 +92,63 @@ namespace KeepItFit___Project_WinUI.Services
             return result;
         }
 
+        public List<Nutritions> GetAllNutrtion(UserInfo info)
+        {
+            var result = new List<Nutritions>()
+            {
+
+                new Nutritions()
+                {
+                    name = "Calories",
+                    Total = 0,
+                    Daily = info.Calo,
+                    Remain = info.Calo,
+                    unit = "kcal",
+                },
+                new Nutritions()
+                {
+                    name = "Carbs",
+                    Total = 0,
+                    Daily = info.Carb,
+                    Remain = info.Carb,
+                    unit = "g"
+                },
+                new Nutritions()
+                {
+                    name = "Fat",
+                    Total = 0,
+                    Daily = info.Fat,
+                    Remain = info.Fat,
+                    unit = "g",
+                },
+                new Nutritions()
+                {
+                    name = "Protein",
+                    Total = 0,
+                    Daily = info.Protein,
+                    Remain = info.Protein,
+                    unit = "g",
+                },
+                new Nutritions()
+                {
+                    name = "Sodium",
+                    Total = 0,
+                    Daily = info.Sodium,
+                    Remain = info.Sodium,
+                    unit = "mg"
+                },
+                new Nutritions()
+                {
+                    name = "Sugar",
+                    Total = 0,
+                    Daily = info.Sugar,
+                    Remain = info.Sugar,
+                    unit = "g"
+                },
+            };
+            return result;
+        }
+
         public ObservableCollection<CardioExercise> GetAllCardioExercise()
         {
             var result = new ObservableCollection<CardioExercise>()

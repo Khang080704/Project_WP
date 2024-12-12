@@ -17,10 +17,10 @@ namespace KeepItFit___Project_WinUI.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void initNutrition()
+        public void initNutrition(UserInfo info)
         {
             IDao dao = new MockDAO();
-            nutrition = dao.GetAllNutrtion();
+            nutrition = dao.GetAllNutrtion(info);
 
         }
         public void initMeal()

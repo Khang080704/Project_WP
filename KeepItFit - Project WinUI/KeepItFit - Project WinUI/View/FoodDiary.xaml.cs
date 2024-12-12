@@ -195,11 +195,16 @@ namespace KeepItFit___Project_WinUI
                 {
                     viewModel.Update_Food(foodList, "SnackDiary");
                 }
-
-                viewModel.UpdateDataAllMeals();
-                viewModel.updateTotal();
             }
-            
+            else if(e.Parameter is UserInfo)
+            {
+                viewModel.UserInfo = (UserInfo)e.Parameter;
+                viewModel.nutri.initNutrition(viewModel.UserInfo);
+            }
+
+            viewModel.UpdateDataAllMeals();
+            viewModel.updateTotal();
+
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -237,5 +242,7 @@ namespace KeepItFit___Project_WinUI
             var screen = new NutritionResult(result);
             screen.Activate();
         }
+
+
     }
 }

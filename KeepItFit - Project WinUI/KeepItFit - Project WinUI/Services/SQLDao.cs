@@ -898,6 +898,9 @@ namespace KeepItFit___Project_WinUI.Services
             }
         }
 
-
+        public List<Nutritions> GetAllNutrtion(UserInfo info)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

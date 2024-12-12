@@ -8,9 +8,15 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="View\IntroToApp\UserSurvey.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\IntroToApp\Intro.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CreateExercise.xaml">
-		<SubType>Designer</SubType>
-	</Page>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CreateMyFood.xaml">
       <SubType>Designer</SubType>
     </Page>

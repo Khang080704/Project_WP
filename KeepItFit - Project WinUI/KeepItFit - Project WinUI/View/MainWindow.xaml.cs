@@ -19,15 +19,47 @@ using Windows.Storage.Streams;
 using Windows.Storage;
 using System.Threading.Tasks;
 using KeepItFit___Project_WinUI.View;
+using Microsoft.UI.Windowing;
+using Microsoft.UI;
+using KeepItFit___Project_WinUI.Model;
 
 namespace KeepItFit___Project_WinUI
 {
+    
     public sealed partial class MainWindow : Window
     {
+        public UserInfo UserInfo { get; set; }
         public MainWindow()
         {
             this.InitializeComponent();
-      
+            // Lấy AppWindow từ WindowHandle
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
+
+            // Sử dụng OverlappedPresenter để chỉnh trạng thái cửa sổ
+            var presenter = appWindow.Presenter as OverlappedPresenter;
+            if (presenter != null)
+            {
+                presenter.Maximize();  // Phóng to cửa sổ
+            }
+        }
+
+        public MainWindow(UserInfo data)
+        {
+            this.InitializeComponent();
+            UserInfo = data;
+            // Lấy AppWindow từ WindowHandle
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
+
+            // Sử dụng OverlappedPresenter để chỉnh trạng thái cửa sổ
+            var presenter = appWindow.Presenter as OverlappedPresenter;
+            if (presenter != null)
+            {
+                presenter.Maximize();  // Phóng to cửa sổ
+            }
         }
 
         private void nvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -36,7 +68,7 @@ namespace KeepItFit___Project_WinUI
             string selectedTag = selectionItem.Tag as string;
             if (selectedTag == "FoodDiary")
             {
-                contentFrame.Navigate(typeof(FoodDiary));
+                contentFrame.Navigate(typeof(FoodDiary), UserInfo);
             }
             else if (selectedTag == "ExercisePage")
             {

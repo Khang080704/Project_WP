@@ -16,7 +16,9 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\BackGround.png" />
     <Content Remove="Assets\logo_app.jpg" />
+    <Content Remove="Assets\mainWindowBG.png" />
     <Content Remove="Assets\user.png" />
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +30,8 @@
     <None Remove="View\CreateExercise.xaml" />
     <None Remove="View\CreateMyFood.xaml" />
     <None Remove="View\HomePage.xaml" />
+    <None Remove="View\IntroToApp\Intro.xaml" />
+    <None Remove="View\IntroToApp\UserSurvey.xaml" />
     <None Remove="View\SearchCardioExercise.xaml" />
     <None Remove="View\SearchStrengthTrainingExercise.xaml" />
   </ItemGroup>
@@ -60,12 +64,24 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Assets\BackGround.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\logo_app.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\mainWindowBG.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\IntroToApp\UserSurvey.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\IntroToApp\Intro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\CreateExercise.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

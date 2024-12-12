@@ -1,0 +1,16 @@
+App.xbf
+View\AddExercisePage.xbf
+View\AddFood.xbf
+View\CreateExercise.xbf
+View\CreateMyFood.xbf
+View\ExercisePage.xbf
+View\FoodDiary.xbf
+View\FoodPage.xbf
+View\HomePage.xbf
+View\IntroToApp\Intro.xbf
+View\IntroToApp\UserSurvey.xbf
+View\MainWindow.xbf
+View\NutritionResult.xbf
+View\SearchCardioExercise.xbf
+View\SearchFood.xbf
+View\SearchStrengthTrainingExercise.xbf
