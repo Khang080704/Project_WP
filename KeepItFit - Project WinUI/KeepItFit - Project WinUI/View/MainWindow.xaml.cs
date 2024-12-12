@@ -19,19 +19,25 @@ using Windows.Storage.Streams;
 using Windows.Storage;
 using System.Threading.Tasks;
 using KeepItFit___Project_WinUI.View;
+using System.Diagnostics;
+using KeepItFit___Project_WinUI.Services;
 using Microsoft.UI.Windowing;
 using Microsoft.UI;
 using KeepItFit___Project_WinUI.Model;
+using KeepItFit___Project_WinUI.ViewModel;
 
 namespace KeepItFit___Project_WinUI
 {
     
     public sealed partial class MainWindow : Window
     {
-        public UserInfo UserInfo { get; set; }
+        public string userEmail { get; set; }
+
+        public SignInViewModel UserInfo { get; set; }
         public MainWindow()
         {
             this.InitializeComponent();
+            userEmail = UserSessionService.Instance.UserEmail;
             // Lấy AppWindow từ WindowHandle
             var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
@@ -45,7 +51,7 @@ namespace KeepItFit___Project_WinUI
             }
         }
 
-        public MainWindow(UserInfo data)
+        public MainWindow(SignInViewModel data)
         {
             this.InitializeComponent();
             UserInfo = data;

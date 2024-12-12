@@ -5,8 +5,11 @@
 exports.up = async function(knex) {
     await knex.raw(`
         CREATE TABLE FOODDIARY(
-            FOOD_DATE DATE PRIMARY KEY,
-            TOTALCALO INT
+            FOOD_DATE DATE,
+            TOTALCALO INT,
+            USER_EMAIL NVARCHAR(50),
+            PRIMARY KEY (FOOD_DATE, USER_EMAIL),
+            FOREIGN KEY (USER_EMAIL) REFERENCES [User](Email)
         );
     `);
 
@@ -15,39 +18,42 @@ exports.up = async function(knex) {
             FOOD_ID INT,
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_DATE DATE,
+            USER_EMAIL NVARCHAR(50),
             FOREIGN KEY (FOOD_ID) REFERENCES FOOD(ID),
-            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+            FOREIGN KEY (FOOD_DATE, USER_EMAIL) REFERENCES FOODDIARY(FOOD_DATE, USER_EMAIL)
         );
     `);
-
+    
     await knex.raw(`
         CREATE TABLE DINNERDIARY(
             FOOD_ID INT,
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_DATE DATE,
+            USER_EMAIL NVARCHAR(50),
             FOREIGN KEY (FOOD_ID) REFERENCES FOOD(ID),
-            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+            FOREIGN KEY (FOOD_DATE, USER_EMAIL) REFERENCES FOODDIARY(FOOD_DATE, USER_EMAIL)
         );
     `);
-
-
+    
     await knex.raw(`
         CREATE TABLE SNACKDIARY(
             FOOD_ID INT,
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_DATE DATE,
+            USER_EMAIL NVARCHAR(50),
             FOREIGN KEY (FOOD_ID) REFERENCES FOOD(ID),
-            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+            FOREIGN KEY (FOOD_DATE, USER_EMAIL) REFERENCES FOODDIARY(FOOD_DATE, USER_EMAIL)
         );
     `);
-
+    
     await knex.raw(`
         CREATE TABLE BREAKFASTDIARY(
             FOOD_ID INT,
             FOOD_QUANTITY NVARCHAR(50) NOT NULL,
             FOOD_DATE DATE,
+            USER_EMAIL NVARCHAR(50),
             FOREIGN KEY (FOOD_ID) REFERENCES FOOD(ID),
-            FOREIGN KEY (FOOD_DATE) REFERENCES FOODDIARY(FOOD_DATE)
+            FOREIGN KEY (FOOD_DATE, USER_EMAIL) REFERENCES FOODDIARY(FOOD_DATE, USER_EMAIL)
         );
     `);
 };

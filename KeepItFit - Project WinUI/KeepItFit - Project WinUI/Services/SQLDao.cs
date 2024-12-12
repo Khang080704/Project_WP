@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -122,14 +123,16 @@ namespace KeepItFit___Project_WinUI.Services
         {
             ObservableCollection<Food> foods = new ObservableCollection<Food>();
             string query = @"
-                    SELECT TOP 5 f.*
-                    FROM FrequentFood ff
-                    JOIN FOOD f ON ff.FOOD_ID = f.ID
-                    ORDER BY ff.NUMBER_EAT DESC;"; //Select all food from FrequentTable table
+            SELECT TOP 5 f.*
+            FROM FrequentFood ff
+            JOIN FOOD f ON ff.FOOD_ID = f.ID
+            WHERE ff.USER_EMAIL = @UserEmail
+            ORDER BY ff.NUMBER_EAT DESC;"; // Select all food from FrequentTable table
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -151,14 +154,16 @@ namespace KeepItFit___Project_WinUI.Services
         {
             ObservableCollection<Food> foods = new ObservableCollection<Food>();
             string query = @"
-                    SELECT f.*
-                    FROM RecentFood rf
-                    JOIN FOOD f ON rf.FOOD_ID = f.ID
-                    ORDER BY rf.ID DESC"; //Select all food from RecentFood table
+            SELECT f.*
+            FROM RecentFood rf
+            JOIN FOOD f ON rf.FOOD_ID = f.ID
+            WHERE rf.USER_EMAIL = @UserEmail
+            ORDER BY rf.ID DESC"; // Select all food from RecentFood table
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -179,13 +184,14 @@ namespace KeepItFit___Project_WinUI.Services
         // Update food to FrequentFood or RecentFood table
         public void UpdateRecentOrFrequentFood(Food food, string type)
         {
-            string query = $@"INSERT INTO {type} (FOOD_ID) VALUES (@foodId);";
+            string query = $@"INSERT INTO {type} (FOOD_ID, USER_EMAIL) VALUES (@foodId, @UserEmail);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 Debug.WriteLine(food.foodId);
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@foodId", food.foodId);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -194,7 +200,7 @@ namespace KeepItFit___Project_WinUI.Services
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"Error updating RECENTFOOD: {ex.Message}");
+                    Debug.WriteLine($"Error updating {type}: {ex.Message}");
                 }
             }
         }
@@ -202,8 +208,9 @@ namespace KeepItFit___Project_WinUI.Services
         // Delete food from Frequent or Recent table
         public void DeleteFrequentOrRecentFood(Food food)
         {
-            string queryRecent = @"DELETE FROM RecentFood WHERE FOOD_ID = @foodId;";
-            string queryFrequent = @"DELETE FROM FrequentFood WHERE FOOD_ID = @foodId;";
+            string queryRecent = @"DELETE FROM RecentFood WHERE FOOD_ID = @foodId AND USER_EMAIL = @UserEmail;";
+            string queryFrequent = @"DELETE FROM FrequentFood WHERE FOOD_ID = @foodId AND USER_EMAIL = @UserEmail;";
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -213,12 +220,14 @@ namespace KeepItFit___Project_WinUI.Services
                     using (SqlCommand command = new SqlCommand(queryRecent, connection))
                     {
                         command.Parameters.AddWithValue("@foodId", food.foodId);
+                        command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
                         command.ExecuteNonQuery();
                     }
 
                     using (SqlCommand command = new SqlCommand(queryFrequent, connection))
                     {
                         command.Parameters.AddWithValue("@foodId", food.foodId);
+                        command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -237,12 +246,13 @@ namespace KeepItFit___Project_WinUI.Services
                 SELECT T.*, F.*
                 FROM {diaryType} T
                 JOIN {table} F ON T.FOOD_ID = F.ID
-                WHERE T.FOOD_DATE = @FoodDate;";
+                WHERE T.FOOD_DATE = @FoodDate AND T.USER_EMAIL = @UserEmail;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryFood, connection);
                 command.Parameters.AddWithValue("@FoodDate", date);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -262,12 +272,13 @@ namespace KeepItFit___Project_WinUI.Services
         public List<Food> GeQuickAddForTheDay_FoodDiary(string date, string diaryType)
         {
             List<Food> foods = new List<Food>();
-            string queryQuickAdd = $@"SELECT * FROM {diaryType} WHERE FOOD_DATE = @FoodDate;";
+            string queryQuickAdd = $@"SELECT * FROM {diaryType} WHERE FOOD_DATE = @FoodDate AND USER_EMAIL = @UserEmail;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryQuickAdd, connection);
                 command.Parameters.AddWithValue("@FoodDate", date);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -286,7 +297,7 @@ namespace KeepItFit___Project_WinUI.Services
                             foodSodium = Convert.ToSingle(reader["FOOD_SODIUM"]),
                             foodSugar = Convert.ToSingle(reader["FOOD_SUGAR"]),
                             foodQuantity = "1", // Default quantity is "1"
-                            foodUnit = ["serving(s)"],
+                            foodUnit = new List<string> { "serving(s)" },
                             selectedFoodUnit = "serving(s)"
                         };
                         foods.Add(food);
@@ -304,13 +315,14 @@ namespace KeepItFit___Project_WinUI.Services
         // Delete food from the meal zone in the day
         public void DeleteFoodForTheDay_FoodDiary(string date, int foodId, string diaryType)
         {
-            string query = $@"DELETE FROM {diaryType} WHERE FOOD_DATE = @FoodDate AND FOOD_ID = @FoodID;";
+            string query = $@"DELETE FROM {diaryType} WHERE FOOD_DATE = @FoodDate AND FOOD_ID = @FoodID AND USER_EMAIL = @UserEmail;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@FoodDate", date);
                 command.Parameters.AddWithValue("@FoodID", foodId);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -326,13 +338,14 @@ namespace KeepItFit___Project_WinUI.Services
 
         public void DeleteQuickAddForTheDay_FoodDiary(string date, int quickAddId, string diaryType)
         {
-            string query = $@"DELETE FROM {diaryType} WHERE FOOD_DATE = @FoodDate AND ID = @QuickAddID;";
+            string query = $@"DELETE FROM {diaryType} WHERE FOOD_DATE = @FoodDate AND ID = @QuickAddID AND USER_EMAIL = @UserEmail;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@FoodDate", date);
                 command.Parameters.AddWithValue("@QuickAddID", quickAddId);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -351,33 +364,36 @@ namespace KeepItFit___Project_WinUI.Services
             string queryCheckExistence = $@"
                 SELECT COUNT(*) 
                 FROM {diaryType} 
-                WHERE FOOD_DATE = @FoodDate AND FOOD_ID = @FoodID;";
+                WHERE FOOD_DATE = @FoodDate AND FOOD_ID = @FoodID AND USER_EMAIL = @UserEmail;";
 
             string queryUpdate = $@"
                 UPDATE {diaryType} 
                 SET FOOD_QUANTITY = @FoodQuantity
-                WHERE FOOD_DATE = @FoodDate AND FOOD_ID = @FoodID";
+                WHERE FOOD_DATE = @FoodDate AND FOOD_ID = @FoodID AND USER_EMAIL = @UserEmail;";
 
             string queryInsert = $@"
-                INSERT INTO FOODDIARY (FOOD_DATE) VALUES (@FoodDate);
-                INSERT INTO {diaryType} (FOOD_ID, FOOD_QUANTITY, FOOD_DATE) 
-                VALUES (@FoodID, @FoodQuantity, @FoodDate);";
+                INSERT INTO FOODDIARY (FOOD_DATE, USER_EMAIL) VALUES (@FoodDate, @UserEmail);
+                INSERT INTO {diaryType} (FOOD_ID, FOOD_QUANTITY, FOOD_DATE, USER_EMAIL) 
+                VALUES (@FoodID, @FoodQuantity, @FoodDate, @UserEmail);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
                 commandCheckExistence.Parameters.AddWithValue("@FoodDate", date);
                 commandCheckExistence.Parameters.AddWithValue("@FoodID", foodId);
+                commandCheckExistence.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
                 commandUpdate.Parameters.AddWithValue("@FoodDate", date);
                 commandUpdate.Parameters.AddWithValue("@FoodID", foodId);
                 commandUpdate.Parameters.AddWithValue("@FoodQuantity", foodQuantity);
+                commandUpdate.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
                 commandInsert.Parameters.AddWithValue("@FoodDate", date);
                 commandInsert.Parameters.AddWithValue("@FoodID", foodId);
                 commandInsert.Parameters.AddWithValue("@FoodQuantity", foodQuantity);
+                commandInsert.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -405,8 +421,8 @@ namespace KeepItFit___Project_WinUI.Services
         public void UpdateQuickAddForTheDay_FoodDiary(string date, List<int> quickAddList, string diaryType)
         {
             string queryInsert = $@"
-                INSERT INTO {diaryType} (FOOD_DATE, FOOD_CALORIES, FOOD_CARBS, FOOD_FAT, FOOD_PROTEIN, FOOD_SODIUM, FOOD_SUGAR) 
-                VALUES (@FoodDate, @FoodCalories, @FoodCarbs, @FoodFat, @FoodProtein, @FoodSodium, @FoodSugar);";
+                INSERT INTO {diaryType} (FOOD_DATE, FOOD_CALORIES, FOOD_CARBS, FOOD_FAT, FOOD_PROTEIN, FOOD_SODIUM, FOOD_SUGAR, USER_EMAIL) 
+                VALUES (@FoodDate, @FoodCalories, @FoodCarbs, @FoodFat, @FoodProtein, @FoodSodium, @FoodSugar, @UserEmail);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -418,6 +434,7 @@ namespace KeepItFit___Project_WinUI.Services
                 commandInsert.Parameters.AddWithValue("@FoodProtein", quickAddList[3]);
                 commandInsert.Parameters.AddWithValue("@FoodSodium", quickAddList[4]);
                 commandInsert.Parameters.AddWithValue("@FoodSugar", quickAddList[5]);
+                commandInsert.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -434,8 +451,8 @@ namespace KeepItFit___Project_WinUI.Services
         public void UpdateMyFood(string foodName, float foodCalories, float foodCarbs, float foodFat, float foodProtein, float foodSodium, float foodSugar)
         {
             string query = @"
-                INSERT INTO MyFood (FOOD_NAME, FOOD_CALORIES, FOOD_CARBS, FOOD_FAT, FOOD_PROTEIN, FOOD_SODIUM, FOOD_SUGAR, FOOD_QUANTITY, FOOD_UNIT, SELECTED_FOOD_UNIT) 
-                VALUES (@FoodName, @FoodCalories, @FoodCarbs, @FoodFat, @FoodProtein, @FoodSodium, @FoodSugar, @FoodQuantity, @FoodUnit, @SelectedFoodUnit);";
+                INSERT INTO MyFood (FOOD_NAME, FOOD_CALORIES, FOOD_CARBS, FOOD_FAT, FOOD_PROTEIN, FOOD_SODIUM, FOOD_SUGAR, FOOD_QUANTITY, FOOD_UNIT, SELECTED_FOOD_UNIT, USER_EMAIL) 
+                VALUES (@FoodName, @FoodCalories, @FoodCarbs, @FoodFat, @FoodProtein, @FoodSodium, @FoodSugar, @FoodQuantity, @FoodUnit, @SelectedFoodUnit, @UserEmail);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -450,6 +467,7 @@ namespace KeepItFit___Project_WinUI.Services
                 command.Parameters.AddWithValue("@FoodQuantity", '1');
                 command.Parameters.AddWithValue("@FoodUnit", JsonSerializer.Serialize(new List<string> { "serving" }));
                 command.Parameters.AddWithValue("@SelectedFoodUnit", "serving");
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -466,11 +484,12 @@ namespace KeepItFit___Project_WinUI.Services
         public ObservableCollection<Food> GetFoodMyFood()
         {
             ObservableCollection<Food> foods = new ObservableCollection<Food>();
-            string query = "SELECT * FROM MyFood";
+            string query = "SELECT * FROM MyFood WHERE USER_EMAIL = @UserEmail";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -490,12 +509,13 @@ namespace KeepItFit___Project_WinUI.Services
 
         public void DeleteMyFood(Food food)
         {
-            string query = @"DELETE FROM MyFood WHERE ID = @foodId;";
+            string query = @"DELETE FROM MyFood WHERE ID = @foodId AND USER_EMAIL = @UserEmail;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@foodId", food.foodId);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -570,13 +590,14 @@ namespace KeepItFit___Project_WinUI.Services
                 SELECT T.*, C.*
                 FROM CardioExerciseDiary T
                 JOIN CardioExercise C ON C.Id = T.Exercise_Id
-                WHERE T.EXERCISE_DATE = @ExerciseDate;  
+                WHERE T.EXERCISE_DATE = @ExerciseDate AND T.USER_EMAIL = @UserEmail;  
             ";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryCardioExercise, connection);
                 command.Parameters.AddWithValue("@ExerciseDate", date);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -598,23 +619,24 @@ namespace KeepItFit___Project_WinUI.Services
             string queryCheckExistence = $@"
                 SELECT COUNT(*) 
                 FROM CardioExerciseDiary
-                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id;";
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id AND USER_EMAIL = @UserEmail;";
 
             string queryUpdate = $@"
                 UPDATE CardioExerciseDiary 
                 SET TimeHowLong = @HowLong, CaloriesPerMinutes = @CaloriesPerMinute, CaloriesBurned = @CaloriesBurned
-                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_ID = @Exercise_Id;";
-            
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_ID = @Exercise_Id AND USER_EMAIL = @UserEmail;";
+
             string queryInsert = $@"
-                INSERT INTO ExerciseDiary (EXERCISE_DATE)  VALUES (@ExerciseDate);
-                INSERT INTO CardioExerciseDiary (EXERCISE_DATE, Exercise_Id, TimeHowLong, CaloriesPerMinutes, CaloriesBurned) 
-                VALUES (@ExerciseDate, @Exercise_Id, @HowLong, @CaloriesPerMinute, @CaloriesBurned);";
+                INSERT INTO ExerciseDiary (EXERCISE_DATE, USER_EMAIL) VALUES (@ExerciseDate, @UserEmail);
+                INSERT INTO CardioExerciseDiary (EXERCISE_DATE, Exercise_Id, TimeHowLong, CaloriesPerMinutes, CaloriesBurned, USER_EMAIL) 
+                VALUES (@ExerciseDate, @Exercise_Id, @HowLong, @CaloriesPerMinute, @CaloriesBurned, @UserEmail);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
                 commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
                 commandCheckExistence.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                commandCheckExistence.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
                 commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
@@ -622,6 +644,7 @@ namespace KeepItFit___Project_WinUI.Services
                 commandUpdate.Parameters.AddWithValue("@HowLong", howLong);
                 commandUpdate.Parameters.AddWithValue("@CaloriesPerMinute", caloriesPerMinute);
                 commandUpdate.Parameters.AddWithValue("@CaloriesBurned", caloriesBurned);
+                commandUpdate.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
                 commandInsert.Parameters.AddWithValue("@ExerciseDate", date);
@@ -629,6 +652,7 @@ namespace KeepItFit___Project_WinUI.Services
                 commandInsert.Parameters.AddWithValue("@HowLong", howLong);
                 commandInsert.Parameters.AddWithValue("@CaloriesPerMinute", caloriesPerMinute);
                 commandInsert.Parameters.AddWithValue("@CaloriesBurned", caloriesBurned);
+                commandInsert.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -707,13 +731,14 @@ namespace KeepItFit___Project_WinUI.Services
                 SELECT T.*, C.*
                 FROM StrengthTrainingExerciseDiary T
                 JOIN StrengthTraining C ON C.Id = T.Exercise_Id
-                WHERE T.EXERCISE_DATE = @ExerciseDate;  
+                WHERE T.EXERCISE_DATE = @ExerciseDate AND T.USER_EMAIL = @UserEmail;  
             ";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryStrengthExercise, connection);
                 command.Parameters.AddWithValue("@ExerciseDate", date);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -735,23 +760,24 @@ namespace KeepItFit___Project_WinUI.Services
             string queryCheckExistence = $@"
                 SELECT COUNT(*) 
                 FROM StrengthTrainingExerciseDiary
-                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id;";
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id AND USER_EMAIL = @UserEmail;";
 
             string queryUpdate = $@"
                 UPDATE StrengthTrainingExerciseDiary 
-                SET Sets = @Sets, Reps_Set = @Reps_Set, Weigth_Set = @Weight_Set
-                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id;";
-            
+                SET Sets = @Sets, Reps_Set = @Reps_Set, Weight_Set = @Weight_Set
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id AND USER_EMAIL = @UserEmail;";
+
             string queryInsert = $@"
-                INSERT INTO ExerciseDiary (EXERCISE_DATE)  VALUES (@ExerciseDate);
-                INSERT INTO StrengthTrainingExerciseDiary (EXERCISE_DATE, Exercise_Id, Sets, Reps_Set, Weigth_Set) 
-                VALUES (@ExerciseDate, @Exercise_Id, @Sets, @Reps_Set, @Weight_Set);";
+                INSERT INTO ExerciseDiary (EXERCISE_DATE, USER_EMAIL) VALUES (@ExerciseDate, @UserEmail);
+                INSERT INTO StrengthTrainingExerciseDiary (EXERCISE_DATE, Exercise_Id, Sets, Reps_Set, Weight_Set, USER_EMAIL) 
+                VALUES (@ExerciseDate, @Exercise_Id, @Sets, @Reps_Set, @Weight_Set, @UserEmail);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
                 commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
                 commandCheckExistence.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                commandCheckExistence.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
                 commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
@@ -759,6 +785,7 @@ namespace KeepItFit___Project_WinUI.Services
                 commandUpdate.Parameters.AddWithValue("@Sets", sets);
                 commandUpdate.Parameters.AddWithValue("@Reps_Set", reps_set);
                 commandUpdate.Parameters.AddWithValue("@Weight_Set", weight_set);
+                commandUpdate.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
                 commandInsert.Parameters.AddWithValue("@ExerciseDate", date);
@@ -766,6 +793,7 @@ namespace KeepItFit___Project_WinUI.Services
                 commandInsert.Parameters.AddWithValue("@Sets", sets);
                 commandInsert.Parameters.AddWithValue("@Reps_Set", reps_set);
                 commandInsert.Parameters.AddWithValue("@Weight_Set", weight_set);
+                commandInsert.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -795,14 +823,15 @@ namespace KeepItFit___Project_WinUI.Services
         public void DeleteExerciseForTheDay_ExerciseDiary(string date, int exerciseId, string diaryType)
         {
             string queryDelete = $@"
-                                    DELETE FROM {diaryType}
-                                    WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id;";
+                DELETE FROM {diaryType}
+                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id AND USER_EMAIL = @UserEmail;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand commandDelete = new SqlCommand(queryDelete, connection);
                 commandDelete.Parameters.AddWithValue("@ExerciseDate", date);
                 commandDelete.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                commandDelete.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -820,12 +849,13 @@ namespace KeepItFit___Project_WinUI.Services
         public string GetNotesForTheDay_ExerciseDiary(string date)
         {
             string notes = "";
-            string query = $@"SELECT NOTE FROM ExerciseDiary WHERE EXERCISE_DATE = @ExerciseDate;";
+            string query = $@"SELECT NOTE FROM ExerciseDiary WHERE EXERCISE_DATE = @ExerciseDate AND USER_EMAIL = @UserEmail;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ExerciseDate", date);
+                command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -841,7 +871,6 @@ namespace KeepItFit___Project_WinUI.Services
                     Debug.WriteLine($"Error fetching data: {ex.Message}");
                 }
             }
-            //Debug.WriteLine(notes);
             return notes;
         }
 
@@ -849,31 +878,34 @@ namespace KeepItFit___Project_WinUI.Services
         public void UpdateNotesForTheDay_ExerciseDiary(string date, string notes)
         {
             string queryCheckExistence = $@"
-                    SELECT COUNT(*) 
-                    FROM ExerciseDiary
-                    WHERE EXERCISE_DATE = @ExerciseDate;";
+                SELECT COUNT(*) 
+                FROM ExerciseDiary
+                WHERE EXERCISE_DATE = @ExerciseDate AND USER_EMAIL = @UserEmail;";
 
             string queryUpdate = $@"
-                    UPDATE ExerciseDiary 
-                    SET NOTE = @Notes
-                    WHERE EXERCISE_DATE = @ExerciseDate;";
+                UPDATE ExerciseDiary 
+                SET NOTE = @Notes
+                WHERE EXERCISE_DATE = @ExerciseDate AND USER_EMAIL = @UserEmail;";
 
             string queryInsert = $@"
-                    INSERT INTO ExerciseDiary (EXERCISE_DATE, NOTE) 
-                    VALUES (@ExerciseDate, @Notes);";
+                INSERT INTO ExerciseDiary (EXERCISE_DATE, NOTE, USER_EMAIL) 
+                VALUES (@ExerciseDate, @Notes, @UserEmail);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
                 commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
+                commandCheckExistence.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
                 commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
                 commandUpdate.Parameters.AddWithValue("@Notes", notes);
+                commandUpdate.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
                 commandInsert.Parameters.AddWithValue("@ExerciseDate", date);
                 commandInsert.Parameters.AddWithValue("@Notes", notes);
+                commandInsert.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 try
                 {
@@ -898,7 +930,73 @@ namespace KeepItFit___Project_WinUI.Services
             }
         }
 
-        public List<Nutritions> GetAllNutrtion(UserInfo info)
+        //----------------------------------------Sign Up And Sign In----------------------------------------
+        public void SaveDataSignUp(string Email, string hashedPassword, string FirstName, string LastName, string DateOfBirth)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Check if the email already exists
+                string checkEmailQuery = "SELECT COUNT(*) FROM [User] WHERE Email = @Email";
+                using (SqlCommand checkEmailCommand = new SqlCommand(checkEmailQuery, connection))
+                {
+                    checkEmailCommand.Parameters.AddWithValue("@Email", Email);
+                    int emailCount = (int)checkEmailCommand.ExecuteScalar();
+
+                    if (emailCount > 0)
+                    {
+                        throw new Exception("Email for signing up already exists.");
+                    }
+                }
+
+                // Insert new user data
+                string insertQuery = "INSERT INTO [User] (Email, Password, FirstName, LastName, DateOfBirth, DailyCaloriesGoal) VALUES (@Email, @Password, @FirstName, @LastName, @DateOfBirth, @DailyCaloriesGoal)";
+                using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@Email", Email);
+                    insertCommand.Parameters.AddWithValue("@Password", hashedPassword);
+                    insertCommand.Parameters.AddWithValue("@FirstName", FirstName);
+                    insertCommand.Parameters.AddWithValue("@LastName", LastName);
+                    insertCommand.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
+                    insertCommand.Parameters.AddWithValue("@DailyCaloriesGoal", 0); // Hard code, update later
+
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+
+        }
+        public void VerifyDataSignIn(string email, string hashedPassword)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Check if the email exists
+                string checkEmailQuery = "SELECT Password FROM [User] WHERE Email = @Email";
+                using (SqlCommand checkEmailCommand = new SqlCommand(checkEmailQuery, connection))
+                {
+                    checkEmailCommand.Parameters.AddWithValue("@Email", email);
+                    var result = checkEmailCommand.ExecuteScalar();
+
+                    if (result == null)
+                    {
+                        // Email does not exist
+                        throw new Exception("Email does not exist.");
+                    }
+
+                    string storedHashedPassword = result.ToString();
+
+                    // Verify the password
+                    if (storedHashedPassword != hashedPassword)
+                    {
+                        // Password is incorrect
+                        throw new Exception("Incorrect password.");
+                    }
+                }
+            }
+        }
+        public List<Nutritions> GetAllNutrtion(SignInViewModel info)
         {
             throw new NotImplementedException();
         }

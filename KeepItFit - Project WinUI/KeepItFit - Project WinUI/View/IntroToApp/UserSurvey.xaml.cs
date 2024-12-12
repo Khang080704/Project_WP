@@ -20,6 +20,7 @@ using Microsoft.UI;
 using KeepItFit___Project_WinUI.Services;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
+using KeepItFit___Project_WinUI.ViewModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -33,11 +34,13 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
     
     public sealed partial class UserSurvey : Window
     {
-        public UserInfo data { get; set; }
-        public UserSurvey()
+        public SignInViewModel data { get; set; }
+        public UserSurvey(SignInViewModel user)
         {
             this.InitializeComponent();
-            data = new UserInfo();
+            data = new SignInViewModel();
+            data.Email = user.Email;
+
             // Lấy AppWindow từ WindowHandle
             var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
@@ -106,18 +109,18 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
                 return;
             }
 
-            data.Birthdate = (DateTime)Birthdate.Date.Value.Date;
-            data.Gender = gender;
-            data.Height = Convert.ToInt32(height);
-            data.Weight = Convert.ToInt32(weight);
-            data.ActivityLevel = activityLevel;
-            data.MealsPerDay = Convert.ToInt32(mealsPerDay[0]);
-            data.NightEating = (nightEating.ToLower() == "yes") ? true : false;
-            data.NutritionGoal = nutritionGoals;
+            data.user.Birthdate = (DateTime)Birthdate.Date.Value.Date;
+            data.user.Gender = gender;
+            data.user.Height = Convert.ToInt32(height);
+            data.user.Weight = Convert.ToInt32(weight);
+            data.user.ActivityLevel = activityLevel;
+            data.user.MealsPerDay = Convert.ToInt32(mealsPerDay[0]);
+            data.user.NightEating = (nightEating.ToLower() == "yes") ? true : false;
+            data.user.NutritionGoal = nutritionGoals;
 
             //Calculate nutrition
-            data.CalculateTDEE();
-            data.calculateNutritionNeed();
+            data.user.CalculateTDEE();
+            data.user.calculateNutritionNeed();
 
             passToDataBase(data);
 
@@ -143,17 +146,21 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
         }
 
         //Pass user data to Database
-        void passToDataBase(UserInfo data)
+        void passToDataBase(SignInViewModel data)
         {
             var sql = new SQLDao();
             var query = $"""
-                         Insert into UserInFor(Calo, Carbs, Fat, Sodium, Sugar, Protein)
-                         values ({data.Calo}, {data.Carb}, {data.Fat}, {data.Sodium},{data.Sugar}, {data.Protein}) 
+                         Update [User]
+                         set Calo = {data.user.Calo}, carbs = {data.user.Carb},
+                             protein = {data.user.Protein}, Fat = {data.user.Fat},
+                             Sodium = {data.user.Sodium}, Sugar = {data.user.Sugar}
+                         where email = @Email
                          """;
 
             using (SqlConnection connection = new SqlConnection(sql.connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Email", data.Email);
 
                 try
                 {

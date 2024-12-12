@@ -17,14 +17,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace KeepItFit___Project_WinUI.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class HomePage : Page
     {
         string today = (DateTime.Today).ToString("yyyy-MM-dd");

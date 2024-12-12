@@ -16,6 +16,7 @@ using KeepItFit___Project_WinUI.Services;
 using KeepItFit___Project_WinUI.Model;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using KeepItFit___Project_WinUI.ViewModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -27,11 +28,11 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
     /// </summary>
     public sealed partial class Intro : Window
     {
-        public UserInfo user;
-        public Intro()
+        public SignInViewModel user;
+        public Intro(SignInViewModel data)
         {
             this.InitializeComponent();
-            user = LoadData();
+            user = LoadData(data);
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(3); // Set thời gian chờ 3 giây
@@ -44,7 +45,8 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
                 timer.Stop();
 
                 // Chuyển trang mới
-                if (user == null)
+                if (user.user.Protein == 0 && user.user.Carb == 0 && user.user.Calo == 0
+                        && user.user.Sodium == 0 && user.user.Fat == 0)
                 {
                     FirstAttemp.Visibility = Visibility.Visible;
                 }
@@ -60,36 +62,33 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
             timer.Start();
         }
 
-        UserInfo LoadData()
+        SignInViewModel LoadData(SignInViewModel data)
         {
-            user = new UserInfo();
+            user = new SignInViewModel();
             var sql = new SQLDao();
-            var query = "Select * from UserInfor";
-            int count = 0;
+            var query = $"Select email, calo, carbs, fat, sodium, sugar, protein from [User] where Email = @email";
 
             using (SqlConnection connection = new SqlConnection(sql.connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-
+                command.Parameters.AddWithValue("@email", data.Email);
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        user.Protein = Convert.ToInt32(reader["Protein"]);
-                        user.Fat = Convert.ToInt32(reader["Fat"]);
-                        user.Calo = Convert.ToInt32(reader["Calo"]);
-                        user.Sodium = Convert.ToInt32(reader["Sodium"]);
-                        user.Sugar = Convert.ToInt32(reader["Sugar"]);
-                        user.Carb = Convert.ToInt32(reader["Carbs"]);
-                        count++;
+                        user.Email = reader["Email"].ToString();
+                        user.user.Protein = Convert.ToInt32(reader["Protein"]);
+                        user.user.Fat = Convert.ToInt32(reader["Fat"]);
+                        user.user.Calo = Convert.ToInt32(reader["Calo"]);
+                        user.user.Sodium = Convert.ToInt32(reader["Sodium"]);
+                        user.user.Sugar = Convert.ToInt32(reader["Sugar"]);
+                        user.user.Carb = Convert.ToInt32(reader["Carbs"]);
                     }
 
-                    if(count == 0)
-                    {
-                        return null;
-                    }
+                    
+
                 }
                 catch (Exception ex)
                 {
@@ -101,7 +100,7 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new UserSurvey();
+            var screen = new UserSurvey(user);
             screen.Activate();
             this.Close();
         }

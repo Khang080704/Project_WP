@@ -57,11 +57,11 @@ namespace KeepItFit___Project_WinUI.Model
             // Tính TDEE dựa trên mức độ hoạt động
             double activityFactor = ActivityLevel switch
             {
-                "Rất ít vận động" => 1.2,
-                "Vận động nhẹ" => 1.375,
-                "Vận động vừa phải" => 1.55,
-                "Vận động cao" => 1.725,
-                "Vận động rất cao" => 1.9,
+                "Very sedentary" => 1.2,
+                "Lightly active" => 1.375,
+                "Moderately active" => 1.55,
+                "Highly active" => 1.725,
+                "Very highly active" => 1.9,
                 _ => 1.2,
             };
 

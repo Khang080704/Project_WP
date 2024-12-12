@@ -196,9 +196,9 @@ namespace KeepItFit___Project_WinUI
                     viewModel.Update_Food(foodList, "SnackDiary");
                 }
             }
-            else if(e.Parameter is UserInfo)
+            else if(e.Parameter is SignInViewModel)
             {
-                viewModel.UserInfo = (UserInfo)e.Parameter;
+                viewModel.UserInfo = (SignInViewModel)e.Parameter;
                 viewModel.nutri.initNutrition(viewModel.UserInfo);
             }
 

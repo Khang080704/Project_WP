@@ -34,6 +34,8 @@
     <None Remove="View\IntroToApp\UserSurvey.xaml" />
     <None Remove="View\SearchCardioExercise.xaml" />
     <None Remove="View\SearchStrengthTrainingExercise.xaml" />
+    <None Remove="View\SignIn.xaml" />
+    <None Remove="View\SignUp.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,6 +78,12 @@
     <None Update="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\SignUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\SignIn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\IntroToApp\UserSurvey.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

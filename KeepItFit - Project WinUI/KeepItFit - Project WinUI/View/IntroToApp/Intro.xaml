@@ -20,8 +20,11 @@
                 WELCOME TO KEEP IT FIT
             </TextBlock>
 
-            <ProgressRing IsActive="True" Background="LightGray"
-              Name="process"/>
+            <StackPanel Name="process">
+                <TextBlock Text="We are setting up for you, this may take a few seconds"/>
+                <ProgressRing IsActive="True" Background="LightGray"/>
+            </StackPanel>
+            
 
             <StackPanel Visibility="Collapsed" Name="FirstAttemp">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center" Margin="10" FontSize="20">

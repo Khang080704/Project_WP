@@ -17,7 +17,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void initNutrition(UserInfo info)
+        public void initNutrition(SignInViewModel info)
         {
             IDao dao = new MockDAO();
             nutrition = dao.GetAllNutrtion(info);

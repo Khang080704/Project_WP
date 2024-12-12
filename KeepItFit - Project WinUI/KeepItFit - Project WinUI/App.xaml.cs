@@ -22,15 +22,12 @@ using Windows.UI.ViewManagement;
 using Microsoft.UI.Windowing;
 using Microsoft.UI;
 using KeepItFit___Project_WinUI.View.IntroToApp;
+using KeepItFit___Project_WinUI.View;
 
 namespace KeepItFit___Project_WinUI
 {
     public partial class App : Application
     {
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
         public App()
         {
             
@@ -39,22 +36,12 @@ namespace KeepItFit___Project_WinUI
         }
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new Intro();
-            // Lấy AppWindow từ WindowHandle
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
-            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
-            var appWindow = AppWindow.GetFromWindowId(windowId);
+            signIn = new SignIn();
 
-            // Sử dụng OverlappedPresenter để chỉnh trạng thái cửa sổ
-            var presenter = appWindow.Presenter as OverlappedPresenter;
-            if (presenter != null)
-            {
-                presenter.Maximize();  // Phóng to cửa sổ
-            }
-
-            m_window.Activate();
+            signIn.Activate();
         }        
 
-        private Window m_window;
+        public static Window signIn;
+
     }
 }

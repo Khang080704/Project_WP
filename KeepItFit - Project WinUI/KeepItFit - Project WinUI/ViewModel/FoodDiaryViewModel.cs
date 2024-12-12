@@ -14,7 +14,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
 {
     public class FoodDiaryViewModel: INotifyPropertyChanged
     {
-        public UserInfo UserInfo { get; set; }
+        public SignInViewModel UserInfo { get; set; }
         private DateTimeOffset _selectedDate;
 
         //init 4 variables, each variable responsive for a meal zone
@@ -30,7 +30,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
             // initialize the selected date to the current date
             _selectedDate = DateTimeOffset.Now;
 
-            UserInfo = new UserInfo();
+            UserInfo = new SignInViewModel();
             nutri = new NutritionsViewModel();
             nutri.initNutrition(UserInfo);
             nutri.initMeal();

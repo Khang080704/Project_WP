@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KeepItFit___Project_WinUI.Model;
+using KeepItFit___Project_WinUI.ViewModel;
 
 namespace KeepItFit___Project_WinUI.Services
 {
@@ -92,7 +93,7 @@ namespace KeepItFit___Project_WinUI.Services
             return result;
         }
 
-        public List<Nutritions> GetAllNutrtion(UserInfo info)
+        public List<Nutritions> GetAllNutrtion(SignInViewModel info)
         {
             var result = new List<Nutritions>()
             {
@@ -101,48 +102,48 @@ namespace KeepItFit___Project_WinUI.Services
                 {
                     name = "Calories",
                     Total = 0,
-                    Daily = info.Calo,
-                    Remain = info.Calo,
+                    Daily = info.user.Calo,
+                    Remain = info.user.Calo,
                     unit = "kcal",
                 },
                 new Nutritions()
                 {
                     name = "Carbs",
                     Total = 0,
-                    Daily = info.Carb,
-                    Remain = info.Carb,
+                    Daily = info.user.Carb,
+                    Remain = info.user.Carb,
                     unit = "g"
                 },
                 new Nutritions()
                 {
                     name = "Fat",
                     Total = 0,
-                    Daily = info.Fat,
-                    Remain = info.Fat,
+                    Daily = info.user.Fat,
+                    Remain = info.user.Fat,
                     unit = "g",
                 },
                 new Nutritions()
                 {
                     name = "Protein",
                     Total = 0,
-                    Daily = info.Protein,
-                    Remain = info.Protein,
+                    Daily = info.user.Protein,
+                    Remain = info.user.Protein,
                     unit = "g",
                 },
                 new Nutritions()
                 {
                     name = "Sodium",
                     Total = 0,
-                    Daily = info.Sodium,
-                    Remain = info.Sodium,
+                    Daily = info.user.Sodium,
+                    Remain = info.user.Sodium,
                     unit = "mg"
                 },
                 new Nutritions()
                 {
                     name = "Sugar",
                     Total = 0,
-                    Daily = info.Sugar,
-                    Remain = info.Sugar,
+                    Daily = info.user.Sugar,
+                    Remain = info.user.Sugar,
                     unit = "g"
                 },
             };
@@ -471,6 +472,16 @@ namespace KeepItFit___Project_WinUI.Services
         }
 
         public void UpdateNotesForTheDay_ExerciseDiary(string date, string notes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveDataSignUp(string Email, string hashedPassword, string FirstName, string LastName, string DateOfBirth)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void VerifyDataSignIn(string email, string hashedPassword)
         {
             throw new NotImplementedException();
         }
