@@ -84,6 +84,10 @@ namespace KeepItFit___Project_WinUI
             {
                 contentFrame.Navigate(typeof(HomePage));
             }
+            else if (args.IsSettingsSelected)
+            {
+                contentFrame.Navigate(typeof(SettingsPage));
+            }
 
         }
 

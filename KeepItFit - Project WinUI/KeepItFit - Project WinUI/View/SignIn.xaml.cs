@@ -74,7 +74,6 @@ namespace KeepItFit___Project_WinUI.View
 
         public void CloseSignInWindow()
         {
-            Debug.WriteLine("dsd");
             this.Close();
         }
     }
