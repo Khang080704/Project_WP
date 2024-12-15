@@ -122,7 +122,8 @@
 
             <!-- Submit Button -->
             <Button Content="Submit" Background="#3498DB" Foreground="White" Margin="0,20,0,0" Click="Button_Click"
-                    HorizontalAlignment="Center"/>
+                    HorizontalAlignment="Center"
+                    Name="submit"/>
             <ProgressRing IsActive="True" Background="LightGray" Visibility="Collapsed"
                           Name="process"/>
         </StackPanel>

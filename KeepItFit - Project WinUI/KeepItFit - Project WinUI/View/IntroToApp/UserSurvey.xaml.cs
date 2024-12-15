@@ -143,6 +143,7 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
 
             // Bắt đầu Timer
             timer.Start();
+            submit.IsEnabled = false;
         }
 
         //Pass user data to Database

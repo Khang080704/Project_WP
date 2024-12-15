@@ -238,7 +238,18 @@ namespace KeepItFit___Project_WinUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int result = viewModel.nutri.nutrition[0].Remain;
+            Nutritions[] result = new Nutritions[]
+            {
+                viewModel.nutri.nutrition[0],
+                viewModel.nutri.nutrition[0],
+                viewModel.nutri.nutrition[1],    
+                viewModel.nutri.nutrition[2],
+                viewModel.nutri.nutrition[3],
+                viewModel.nutri.nutrition[4],
+                viewModel.nutri.nutrition[5],
+            };
+                
+            //int result = viewModel.nutri.nutrition[0].Remain;
             var screen = new NutritionResult(result);
             screen.Activate();
         }

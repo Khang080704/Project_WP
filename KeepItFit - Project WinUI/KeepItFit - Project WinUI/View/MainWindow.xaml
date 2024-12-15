@@ -28,14 +28,9 @@
             <NavigationViewItem  FontWeight="Bold" Icon="Home" Content="Home" Tag="HomePage"/>
             <NavigationViewItem  FontWeight="Bold" Icon="Favorite" Content="Food" Tag="FoodDiary" />
             <NavigationViewItem  FontWeight="Bold" Icon="Admin" Content="Exercise" Tag="ExercisePage" />
-            <NavigationViewItem  FontWeight="Bold" Icon="Accept" Content="Proteins" Tag="ProteinPage" />
+            
         </NavigationView.MenuItems>
 
-        <NavigationView.FooterMenuItems>
-            <StackPanel>
-
-            </StackPanel>
-        </NavigationView.FooterMenuItems>
         <Frame x:Name="contentFrame"/>
     </NavigationView>
 
