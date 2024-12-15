@@ -65,10 +65,10 @@ namespace KeepItFit___Project_WinUI.View
                 await congratulationDialog.ShowAsync();
 
                 // After the user presses "Ok", navigate to the SignIn page
+
                 Window signIn = new SignIn();
                 signIn.Activate();
-                // Close the current window
-                App.signIn?.Close();
+                
             }
         }
 
