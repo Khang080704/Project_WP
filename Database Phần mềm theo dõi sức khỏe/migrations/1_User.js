@@ -17,6 +17,7 @@ exports.up = async function(knex) {
             Sodium int default 0,
             Sugar int default 0,
             Protein int default 0,
+            Avatar VARBINARY(MAX),
         );
     `);
 };

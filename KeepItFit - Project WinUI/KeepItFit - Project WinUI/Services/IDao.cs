@@ -43,8 +43,16 @@ namespace KeepItFit___Project_WinUI.Services
         public void UpdateMyFood(string foodName, float foodCalories, float foodCarbs, float foodFat, float foodProtein, float foodSodium, float foodSugar);
         public ObservableCollection<Food> GetFoodMyFood();
         public void DeleteMyFood(Food food);
+
+        // Sign In/Sign Up
         public void SaveDataSignUp(string Email, string hashedPassword, string FirstName, string LastName, string DateOfBirth);
         public void VerifyDataSignIn(string email, string hashedPassword);
+        public string GetStoredHashedPassword(string email);
+        public void UpdateNewPasswordForUser(string email, string hashedPassword);
+        public void DeleteAccount(string email);
+
+        public Task SaveAvatarToDatabase(byte[] imageBytes);
+        public Task<byte[]> GetAvatarFromDatabase();
     }
 
 }

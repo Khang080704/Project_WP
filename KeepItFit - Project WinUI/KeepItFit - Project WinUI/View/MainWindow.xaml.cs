@@ -31,6 +31,8 @@ namespace KeepItFit___Project_WinUI
     
     public sealed partial class MainWindow : Window
     {
+        public AvatarViewModel avatarViewModel = new AvatarViewModel();
+
         public string userEmail { get; set; }
 
         public SignInViewModel UserInfo { get; set; }
@@ -49,11 +51,14 @@ namespace KeepItFit___Project_WinUI
             {
                 presenter.Maximize();  // Phóng to cửa sổ
             }
+
+            LoadAvatar();
         }
 
         public MainWindow(SignInViewModel data)
         {
             this.InitializeComponent();
+            userEmail = UserSessionService.Instance.UserEmail;
             UserInfo = data;
             // Lấy AppWindow từ WindowHandle
             var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
@@ -66,6 +71,8 @@ namespace KeepItFit___Project_WinUI
             {
                 presenter.Maximize();  // Phóng to cửa sổ
             }
+
+            LoadAvatar();
         }
 
         private void nvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -88,11 +95,6 @@ namespace KeepItFit___Project_WinUI
             {
                 contentFrame.Navigate(typeof(SettingsPage));
             }
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
         }
 
@@ -139,40 +141,74 @@ namespace KeepItFit___Project_WinUI
                     }
 
                     userAvatar.Source = imageSource;
-                }
 
-                await SaveAvatar(file);
+                    // Convert SoftwareBitmap to byte array and save to database
+                    avatarViewModel.imageBytes = await ConvertSoftwareBitmapToByteArray(softwareBitmap);
+                    await avatarViewModel.SaveAvatarAsync();
+                }
             }
         }
 
-        private async Task SaveAvatar(StorageFile file)
+        private async Task<byte[]> ConvertSoftwareBitmapToByteArray(SoftwareBitmap softwareBitmap)
         {
-            var localFolder = ApplicationData.Current.LocalFolder;
-            await file.CopyAsync(localFolder, "user_avatar.png", NameCollisionOption.ReplaceExisting);
+            using (var stream = new InMemoryRandomAccessStream())
+            {
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
+                encoder.SetSoftwareBitmap(softwareBitmap);
+                await encoder.FlushAsync();
+
+                using (var reader = new DataReader(stream.GetInputStreamAt(0)))
+                {
+                    var bytes = new byte[stream.Size];
+                    await reader.LoadAsync((uint)stream.Size);
+                    reader.ReadBytes(bytes);
+                    return bytes;
+                }
+            }
+        }
+
+        private async Task<SoftwareBitmap> ConvertByteArrayToSoftwareBitmap(byte[] imageBytes)
+        {
+            using (var stream = new InMemoryRandomAccessStream())
+            {
+                await stream.WriteAsync(imageBytes.AsBuffer());
+                stream.Seek(0);
+
+                BitmapDecoder decoder = await BitmapDecoder.CreateAsync(stream);
+                SoftwareBitmap softwareBitmap = await decoder.GetSoftwareBitmapAsync();
+
+                // Convert to Bgra8 and Premultiplied if necessary
+                if (softwareBitmap.BitmapPixelFormat != BitmapPixelFormat.Bgra8 ||
+                    softwareBitmap.BitmapAlphaMode != BitmapAlphaMode.Premultiplied)
+                {
+                    softwareBitmap = SoftwareBitmap.Convert(softwareBitmap, BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+                }
+
+                return softwareBitmap;
+            }
         }
 
         private async void LoadAvatar()
         {
-            var localFolder = ApplicationData.Current.LocalFolder;
-            try
+            byte[] imageBytes = await avatarViewModel.GetAvatarAsync();
+            if (imageBytes != null)
             {
-                var file = await localFolder.GetFileAsync("user_avatar.png");
-                if (file != null)
+                SoftwareBitmap softwareBitmap = await ConvertByteArrayToSoftwareBitmap(imageBytes);
+
+                // Check properties
+                if (softwareBitmap.PixelWidth > 0 && softwareBitmap.PixelHeight > 0 &&
+                    softwareBitmap.BitmapPixelFormat == BitmapPixelFormat.Bgra8 &&
+                    (softwareBitmap.BitmapAlphaMode == BitmapAlphaMode.Premultiplied || softwareBitmap.BitmapAlphaMode == BitmapAlphaMode.Ignore))
                 {
-                    using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
-                    {
-                        BitmapDecoder decoder = await BitmapDecoder.CreateAsync(fileStream);
-                        SoftwareBitmap softwareBitmap = await decoder.GetSoftwareBitmapAsync();
-
-                        var imageSource = new SoftwareBitmapSource();
-                        await imageSource.SetBitmapAsync(softwareBitmap);
-
-                        userAvatar.Source = imageSource;
-                    }
+                    var imageSource = new SoftwareBitmapSource();
+                    await imageSource.SetBitmapAsync(softwareBitmap);
+                    userAvatar.Source = imageSource;
                 }
-            }
-            catch (FileNotFoundException)
-            {
+                else
+                {
+                    // Handle invalid SoftwareBitmap
+                    Debug.WriteLine("Invalid SoftwareBitmap properties");
+                }
             }
         }
     }
