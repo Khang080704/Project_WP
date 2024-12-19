@@ -36,6 +36,7 @@ namespace KeepItFit___Project_WinUI.Model
         public int Fat { get; set; }
         public int Sugar { get; set; }
         public int Carb { get; set; }
+        public int CaloGoal { get; set; }
 
         // Phương thức khởi tạo (constructor)
         public UserInfo()
@@ -66,6 +67,13 @@ namespace KeepItFit___Project_WinUI.Model
             };
 
             Calo = Convert.ToInt32(BMR * activityFactor);
+            CaloGoal = NutritionGoal switch
+            {
+                "Lose weight" => Calo + 700,
+                "Gain weight" => Calo - 700,
+                "Maintain weight" => Calo,
+                _ => Calo,
+            };
             return Convert.ToInt32(BMR * activityFactor);
         }
 

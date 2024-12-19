@@ -32,6 +32,7 @@
     <None Remove="View\HomePage.xaml" />
     <None Remove="View\IntroToApp\Intro.xaml" />
     <None Remove="View\IntroToApp\UserSurvey.xaml" />
+    <None Remove="View\ReportPage.xaml" />
     <None Remove="View\SearchCardioExercise.xaml" />
     <None Remove="View\SearchStrengthTrainingExercise.xaml" />
     <None Remove="View\SettingsPage.xaml" />
@@ -80,6 +81,9 @@
     <None Update="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\ReportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,6 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\Flag.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\streak.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

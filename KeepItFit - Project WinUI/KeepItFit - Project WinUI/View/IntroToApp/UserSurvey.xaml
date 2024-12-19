@@ -77,7 +77,6 @@
                 <ComboBoxItem Content="1 meal" />
                 <ComboBoxItem Content="2 meals" />
                 <ComboBoxItem Content="3 meals" />
-                <ComboBoxItem Content="Other" />
             </ComboBox>
 
             <!-- Question 7 -->

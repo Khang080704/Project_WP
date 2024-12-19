@@ -154,7 +154,8 @@ namespace KeepItFit___Project_WinUI.View.IntroToApp
                          Update [User]
                          set Calo = {data.user.Calo}, carbs = {data.user.Carb},
                              protein = {data.user.Protein}, Fat = {data.user.Fat},
-                             Sodium = {data.user.Sodium}, Sugar = {data.user.Sugar}
+                             Sodium = {data.user.Sodium}, Sugar = {data.user.Sugar},
+                             DailyCaloriesGoal = {data.user.CaloGoal}
                          where email = @Email
                          """;
 

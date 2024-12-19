@@ -27,7 +27,7 @@
             Close
         </Button>
 
-        <lvc:PieChart Name="NutriChart" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
+        <lvc:PieChart x:Name="NutriChart" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
 
 
     </Grid>
