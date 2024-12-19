@@ -17,14 +17,9 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using KeepItFit___Project_WinUI.Model;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace KeepItFit___Project_WinUI
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class NutritionResult : Window
     {
         int _result;

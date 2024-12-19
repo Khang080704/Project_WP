@@ -27,6 +27,7 @@
     <None Remove="FoodPage.xaml" />
     <None Remove="NutritionResult.xaml" />
     <None Remove="View\AddExercisePage.xaml" />
+    <None Remove="View\ChangePasswordPage.xaml" />
     <None Remove="View\CreateExercise.xaml" />
     <None Remove="View\CreateMyFood.xaml" />
     <None Remove="View\HomePage.xaml" />
@@ -81,6 +82,9 @@
     <None Update="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\ChangePasswordPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\ReportPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

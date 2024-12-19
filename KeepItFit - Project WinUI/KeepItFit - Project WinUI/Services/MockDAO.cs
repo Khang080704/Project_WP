@@ -485,6 +485,31 @@ namespace KeepItFit___Project_WinUI.Services
         {
             throw new NotImplementedException();
         }
+
+        public string GetStoredHashedPassword(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateNewPasswordForUser(string email, string hashedPassword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteAccount(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveAvatarToDatabase(byte[] imageBytes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<byte[]> GetAvatarFromDatabase()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

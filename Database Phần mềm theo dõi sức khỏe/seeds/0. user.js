@@ -22,10 +22,12 @@ exports.seed = async function(knex) {
     await knex('User').del();
     
     // Insert data into User table
-    await knex('User').insert([
-      { Email: '123@example.com', Password: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', FirstName: 'harry', LastName: 'Potter', DateOfBirth: '2024-12-10', DailyCaloriesGoal: 1800 },
-      { Email: '456@example.com', Password: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', FirstName: 'john', LastName: 'wick', DateOfBirth: '2024-12-10', DailyCaloriesGoal: 2000 },
-      { Email: '789@example.com', Password: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', FirstName: 'Tom', LastName: 'Jerry', DateOfBirth: '2024-12-17', DailyCaloriesGoal: 2000 },
-      { Email: 'dsds@dsd.com', Password: '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', FirstName: 'hello', LastName: 'dds', DateOfBirth: '2024-12-10', DailyCaloriesGoal: 1500 }
-    ]);
+    await knex.raw(`
+      INSERT INTO [User] (Email, Password, FirstName, LastName, DateOfBirth, DailyCaloriesGoal, Avatar)
+      VALUES 
+      ('123@example.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'harry', 'Potter', '2024-12-10', 1800, CONVERT(VARBINARY(MAX), NULL)),
+      ('456@example.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'john', 'wick', '2024-12-10', 2000, CONVERT(VARBINARY(MAX), NULL)),
+      ('789@example.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Tom', 'Jerry', '2024-12-17', 2000, CONVERT(VARBINARY(MAX), NULL)),
+      ('dsds@dsd.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'hello', 'dds', '2024-12-10', 1500, CONVERT(VARBINARY(MAX), NULL))
+  `);
 };

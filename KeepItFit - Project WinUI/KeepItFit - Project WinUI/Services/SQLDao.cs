@@ -951,7 +951,7 @@ namespace KeepItFit___Project_WinUI.Services
                 }
 
                 // Insert new user data
-                string insertQuery = "INSERT INTO [User] (Email, Password, FirstName, LastName, DateOfBirth, DailyCaloriesGoal) VALUES (@Email, @Password, @FirstName, @LastName, @DateOfBirth, @DailyCaloriesGoal)";
+                string insertQuery = "INSERT INTO [User] (Email, Password, FirstName, LastName, DateOfBirth, DailyCaloriesGoal, Avatar) VALUES (@Email, @Password, @FirstName, @LastName, @DateOfBirth, @DailyCaloriesGoal, CONVERT(VARBINARY(MAX), NULL))";
                 using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
                 {
                     insertCommand.Parameters.AddWithValue("@Email", Email);
@@ -964,7 +964,6 @@ namespace KeepItFit___Project_WinUI.Services
                     insertCommand.ExecuteNonQuery();
                 }
             }
-
         }
         public void VerifyDataSignIn(string email, string hashedPassword)
         {
@@ -996,9 +995,163 @@ namespace KeepItFit___Project_WinUI.Services
                 }
             }
         }
+
+        public string GetStoredHashedPassword(string email)
+        {
+            string storedHashedPassword = null;
+            string query = "SELECT Password FROM [User] WHERE Email = @Email";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Email", email);
+
+                try
+                {
+                    connection.Open();
+                    var result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        storedHashedPassword = result.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error fetching password: {ex.Message}");
+                }
+            }
+
+            return storedHashedPassword;
+        }
+
+        public void UpdateNewPasswordForUser(string email, string hashedPassword)
+        {
+            string query = "UPDATE [User] SET Password = @Password WHERE Email = @Email";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Password", hashedPassword);
+                command.Parameters.AddWithValue("@Email", email);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error updating password: {ex.Message}");
+                }
+            }
+        }
+
+        public void DeleteAccount(string email)
+        {
+            string[] relatedTables = new string[]
+            {
+                "StrengthTrainingExerciseDiary",
+                "CardioExerciseDiary",
+                "EXERCISEDIARY",
+                "BREAKFASTDIARY",
+                "SNACKDIARY",
+                "DINNERDIARY",
+                "LUNCHDIARY",
+                "RECENTFOOD",
+                "FREQUENTFOOD",
+                "FOODDIARY",
+                "QUICKADD_BREAKFAST",
+                "QUICKADD_LUNCH",
+                "QUICKADD_DINNER",
+                "QUICKADD_SNACK"
+            };
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    foreach (string table in relatedTables)
+                    {
+                        string deleteQuery = $"DELETE FROM {table} WHERE USER_EMAIL = @Email";
+                        using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Email", email);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    string deleteUserQuery = "DELETE FROM [User] WHERE Email = @Email";
+                    using (SqlCommand command = new SqlCommand(deleteUserQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Email", email);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Error deleting account, try again later");
+                }
+            }
+        }
+
+        public async Task SaveAvatarToDatabase(byte[] imageBytes)
+        {
+            string query = "UPDATE [User] SET Avatar = @Avatar WHERE Email = @Email";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Avatar", imageBytes);
+                command.Parameters.AddWithValue("@Email", UserSessionService.Instance.UserEmail);
+
+                try
+                {
+                    connection.Open();
+                    await command.ExecuteNonQueryAsync();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error saving avatar to database: {ex.Message}");
+                }
+            }
+        }
+
+        public async Task<byte[]> GetAvatarFromDatabase()
+        {
+            string query = "SELECT Avatar FROM [User] WHERE Email = @Email";
+            byte[] imageBytes = null;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Email", UserSessionService.Instance.UserEmail);
+
+                try
+                {
+                    connection.Open();
+                    var result = await command.ExecuteScalarAsync();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        imageBytes = (byte[])result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error fetching avatar from database: {ex.Message}");
+                }
+            }
+
+            return imageBytes;
+        }
+
         public List<Nutritions> GetAllNutrtion(SignInViewModel info)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }
