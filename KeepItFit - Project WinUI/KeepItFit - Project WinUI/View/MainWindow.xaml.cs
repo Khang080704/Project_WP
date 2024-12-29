@@ -134,7 +134,7 @@ namespace KeepItFit___Project_WinUI
             }
             else if (selectedTag == "ExercisePage")
             {
-                contentFrame.Navigate(typeof(ExercisePage));
+                contentFrame.Navigate(typeof(ExercisePage), UserInfo);
             }
             else if (selectedTag == "HomePage")
             {

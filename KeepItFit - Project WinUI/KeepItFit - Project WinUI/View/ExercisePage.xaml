@@ -100,7 +100,7 @@
               X1="0" Y1="0"
               X2="800" Y2="0"
               StrokeThickness="2" Margin="0 10 0 10"/>
-        <ScrollView>
+        <ScrollView Height="400">
             <StackPanel Orientation="Vertical">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -168,7 +168,7 @@
                                Margin="0 0 10 0"
                                FontWeight="Bold"
                                FontSize="15">
-                        Daily Total / <Run Text="Goal" Foreground="blue"/>
+                        Daily Total <!--/ <Run Text="Goal" Foreground="blue"/>-->
                     </TextBlock>
 
 
@@ -178,7 +178,7 @@
                                Margin="0 0 10 0"
                                FontWeight="Bold"
                                FontSize="15">
-                        Weekly Total / <Run Text="Goal" Foreground="blue"/>
+                        Weekly Total <!--/ <Run Text="Goal" Foreground="blue"/>-->
                     </TextBlock>
                     
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
@@ -188,15 +188,16 @@
                                 <TextBlock TextAlignment="Center" 
                                            VerticalAlignment="Center"
                                            FontWeight="Bold"
-                                           Text="0"
-                                           Name="Daily_minutes"/>
-                                <TextBlock TextAlignment="Center" 
+                                           Text="{x:Bind viewModel.dailyMinutes, Mode=TwoWay}"
+                                           Name="Daily_minutes"
+                                           Foreground="Blue"/>
+                                <!--<TextBlock TextAlignment="Center" 
                                            VerticalAlignment="Center"
                                            FontWeight="Bold" Text="/"/>
                                 <TextBlock TextAlignment="Center" 
                                            VerticalAlignment="Center"
                                            FontWeight="Bold" Text="0"
-                                           Foreground="Blue"/>
+                                           Foreground="Blue"/>-->
                             </StackPanel>
                         </Border>
                         
@@ -206,15 +207,16 @@
                                 <TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
                                             FontWeight="Bold"
-                                            Text="0"
-                                           Name="Daily_Calories"/>
-                                <TextBlock TextAlignment="Center" 
+                                            Text="{x:Bind viewModel.dailyCalo, Mode=TwoWay}"
+                                           Name="Daily_Calories"
+                                           Foreground="Blue"/>
+                                <!--<TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
                                             FontWeight="Bold" Text="/"/>
                                 <TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
                                             FontWeight="Bold" Text="0"
-                                           Foreground="Blue"/>
+                                           Foreground="Blue"/>-->
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -228,13 +230,13 @@
                                             FontWeight="Bold"
                                             Text="0"
                                             Name="Weekly_Calories"/>
-                                <TextBlock TextAlignment="Center" 
+                                <!--<TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
                                             FontWeight="Bold" Text="/"/>
                                 <TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
                                             FontWeight="Bold" Text="0"
-                                            Foreground="Blue"/>
+                                            Foreground="Blue"/>-->
                             </StackPanel>
                         </Border>
                         <Border Background="LightGray" Width="150" Height="50" 
@@ -245,13 +247,13 @@
                                             FontWeight="Bold"
                                             Text="0"
                                             Name="Weekly_minutes"/>
-                                <TextBlock TextAlignment="Center" 
+                                <!--<TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
                                             FontWeight="Bold" Text="/"/>
                                 <TextBlock TextAlignment="Center" 
                                             VerticalAlignment="Center"
                                             FontWeight="Bold" Text="0"
-                                            Foreground="Blue"/>
+                                            Foreground="Blue"/>-->
                             </StackPanel>
                         </Border>
                     </StackPanel>

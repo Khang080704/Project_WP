@@ -19,6 +19,10 @@ using System.Xml.Linq;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using static KeepItFit___Project_WinUI.ExercisePage;
+using KeepItFit___Project_WinUI.ViewModel;
+using static KeepItFit___Project_WinUI.View.SearchCardioExercise;
+using static KeepItFit___Project_WinUI.View.SearchStrengthTrainingExercise;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,6 +35,8 @@ namespace KeepItFit___Project_WinUI.View
     public sealed partial class CreateExercise : Page
     {
         string type {  get; set; } //Type of exercise
+        SignInViewModel user {  get; set; }
+
         public CreateExercise()
         {
             this.InitializeComponent();
@@ -38,16 +44,26 @@ namespace KeepItFit___Project_WinUI.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if(e.Parameter is string parameter && parameter == "Cardio")
+            
+            if(e.Parameter is CardioCreation p)
             {
-                type = "Cardio";
+                type = p.Title;
+                user = p.user;
+            }
+            else if(e.Parameter is StrengthCreation strengthParams)
+            {
+                type = strengthParams.Title;
+                user = strengthParams.user;
+            }
+            if (type == "Cardio")
+            {
                 createCardio.Visibility = Visibility.Visible;
             }
             else
             {
-                type = "Strength";
                 createStrength.Visibility = Visibility.Visible;
             }
+            Debug.WriteLine(user.Email);
         }
 
         bool checkIsNull(TextBox[] value)
@@ -78,46 +94,44 @@ namespace KeepItFit___Project_WinUI.View
                 _time = Convert.ToInt32(CardioMinutes.Text),
             };
 
+            //Insert into UserCardio table
             var sql = new SQLDao();
             string query = """
-                Insert into CardioExercise (Cardio_name, TimeHowLong,CaloriesBurned, CaloriesPerminutes) 
-                values (@name, @time, @caloBurned, @caloPerMinutes) 
+                Insert into UserCardio (ID ,Email ,CardioName, TimeHowLong,CaloriesBurned, CaloriesPerminutes) 
+                values (@id ,@email ,@name, @time, @caloBurned, @caloPerMinutes) 
+                """;
+
+            string totalCardio = """
+                Select count(*)
+                from CardioExercise
+                """;
+            string totalFromUser = """
+                Select count(*)
+                from UserCardio
                 """;
 
             using (SqlConnection connection = new SqlConnection(sql.connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@email", user.Email);
                 command.Parameters.AddWithValue("@name", data.name);
                 command.Parameters.AddWithValue("@time", 0);
                 command.Parameters.AddWithValue("@caloBurned", 0);
                 command.Parameters.AddWithValue("@caloPerMinutes", data.caloriesPerMinute);
 
+                SqlCommand getTotalCommand = new SqlCommand(totalCardio, connection);
+                SqlCommand getTotalFromUser = new SqlCommand(totalFromUser, connection);
                 try
                 {
                     connection.Open();
+                    int totalCardioCount = (int)getTotalCommand.ExecuteScalar();
+                    int totalUserCardioCount = (int)getTotalFromUser.ExecuteScalar();
+                    int totalExercise = totalCardioCount + totalUserCardioCount;
+
+                    data.exerciseId = totalExercise + 1;
+                    command.Parameters.AddWithValue("@id", data.exerciseId);
                     SqlDataReader reader = command.ExecuteReader();
 
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                }
-            }
-
-            //query to get id for new exercise
-            string getIDquery = @"
-                SELECT max(id)
-                FROM CardioExercise
-                ";
-            using (SqlConnection connection = new SqlConnection(sql.connectionString))
-            {
-                SqlCommand command = new SqlCommand(getIDquery, connection);
-
-                try
-                {
-                    connection.Open();
-                    data.exerciseId = (int)command.ExecuteScalar();
-                    
                 }
                 catch (Exception ex)
                 {
@@ -146,20 +160,39 @@ namespace KeepItFit___Project_WinUI.View
 
             var sql = new SQLDao();
             string query = """
-                Insert into StrengthTraining (Strength_name, Sets, Reps_Set, Weigth_Set) 
-                values (@name, @sets, @rep_set, @weigth) 
+                Insert into UserStrength (ID, Email, StrengthName, Sets, Reps_Set, Weight_Set) 
+                values (@id, @email ,@name, @sets, @rep_set, @weigth) 
                 """;
+            string totalStrength = """
+                Select count(*)
+                from StrengthTraining
+                """;
+            string totalFromUser = """
+                Select count(*)
+                from UserStrength
+                """;
+
             using (SqlConnection connection = new SqlConnection(sql.connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@email", user.Email);
                 command.Parameters.AddWithValue("@name", data.name);
                 command.Parameters.AddWithValue("@sets", 0);
                 command.Parameters.AddWithValue("@rep_set", 0);
                 command.Parameters.AddWithValue("@weigth", 0);
 
+                SqlCommand getTotalCommand = new SqlCommand(totalStrength, connection);
+                SqlCommand getTotalFromUser = new SqlCommand(totalFromUser, connection);
+
                 try
                 {
                     connection.Open();
+                    int totalCardioCount = (int)getTotalCommand.ExecuteScalar();
+                    int totalUserCardioCount = (int)getTotalFromUser.ExecuteScalar();
+                    int totalExercise = totalCardioCount + totalUserCardioCount;
+                    data.exerciseId = totalExercise + 1;
+                    command.Parameters.AddWithValue("@id", data.exerciseId);
+
                     SqlDataReader reader = command.ExecuteReader();
 
                 }
@@ -168,28 +201,6 @@ namespace KeepItFit___Project_WinUI.View
                     Debug.WriteLine(ex.Message);
                 }
             }
-
-            //query to get id for new exercise
-            string getIDquery = @"
-                SELECT max(id)
-                FROM StrengthTraining
-                ";
-            using (SqlConnection connection = new SqlConnection(sql.connectionString))
-            {
-                SqlCommand command = new SqlCommand(getIDquery, connection);
-
-                try
-                {
-                    connection.Open();
-                    data.exerciseId = (int)command.ExecuteScalar();
-
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                }
-            }
-
 
             this.Frame.Navigate(typeof(ExercisePage), data);
         }
@@ -212,11 +223,11 @@ namespace KeepItFit___Project_WinUI.View
         {
             if(type == "Cardio")
             {
-                this.Frame.Navigate(typeof(SearchCardioExercise));
+                this.Frame.Navigate(typeof(SearchCardioExercise), user);
             }
             else
             {
-                this.Frame.Navigate(typeof(SearchStrengthTrainingExercise));
+                this.Frame.Navigate(typeof(SearchStrengthTrainingExercise), user);
             }
         }
     }

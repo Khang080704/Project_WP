@@ -11,16 +11,20 @@
     <Grid Background="#F3EFEF">
         <Frame x:Name="ContentFrame" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Frame.Content>
-                <StackPanel Background="White" Width="400" CornerRadius="20" Height="300">
-                    <TextBlock Text="Member Login" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,20"/>
-                    <TextBox x:Name="EmailTextBox" Margin="10,0,10,10" Text="{x:Bind viewModel.Email, Mode=TwoWay}" PlaceholderText="Email"/>
-                    <PasswordBox x:Name="PasswordBox" Margin="10,30,10,20" Password="{x:Bind viewModel.Password, Mode=TwoWay}" PlaceholderText="Password"/>
-                    <TextBlock Text="{x:Bind viewModel.ErrorMessage, Mode=TwoWay}" Foreground="Red" Visibility="{x:Bind viewModel.IsErrorMessageVisible, Mode=TwoWay}" Margin="10,0,0,10"/>
-                    <Button Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" Background="#426BFF" Content="Sign In" Click="SignInButton_Click"/>
-                    <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0">
-                        <Run Text="Not a member? "/>
-                        <Hyperlink Click="SignUpButton_Click">Sign Up now</Hyperlink>
-                    </TextBlock>
+                <StackPanel>
+                    <TextBlock Text="KEEP IT FIT" HorizontalAlignment="Center" FontSize="70" FontWeight="Bold"
+                               Foreground="blue"/>
+                    <StackPanel Background="White" Width="400" CornerRadius="20" Height="300">
+                        <TextBlock Text="Member Login" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+                        <TextBox x:Name="EmailTextBox" Margin="10,0,10,10" Text="{x:Bind viewModel.Email, Mode=TwoWay}" PlaceholderText="Email"/>
+                        <PasswordBox x:Name="PasswordBox" Margin="10,30,10,20" Password="{x:Bind viewModel.Password, Mode=TwoWay}" PlaceholderText="Password"/>
+                        <TextBlock Text="{x:Bind viewModel.ErrorMessage, Mode=TwoWay}" Foreground="Red" Visibility="{x:Bind viewModel.IsErrorMessageVisible, Mode=TwoWay}" Margin="10,0,0,10"/>
+                        <Button Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" Background="#426BFF" Content="Sign In" Click="SignInButton_Click"/>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0">
+                                <Run Text="Not a member? "/>
+                                <Hyperlink Click="SignUpButton_Click">Sign Up now</Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
                 </StackPanel>
             </Frame.Content>
         </Frame>

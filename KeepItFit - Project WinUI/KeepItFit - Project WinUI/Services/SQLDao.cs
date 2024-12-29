@@ -573,6 +573,7 @@ namespace KeepItFit___Project_WinUI.Services
                     SqlDataReader reader = command.ExecuteReader();
                     List<CardioExercise> cardioList = ReadCardioInfo(reader);
                     cardio = new ObservableCollection<CardioExercise>(cardioList);
+                    
                 }
                 catch (Exception ex)
                 {
@@ -586,10 +587,18 @@ namespace KeepItFit___Project_WinUI.Services
         public List<CardioExercise> GetCardioExerciseForTheDay_ExerciseDiary(string date)
         {
             List<CardioExercise> cardioExercises = new List<CardioExercise>();
+            List<CardioExercise> result = new List<CardioExercise>();
             string queryCardioExercise = $@"
                 SELECT T.*, C.*
                 FROM CardioExerciseDiary T
                 JOIN CardioExercise C ON C.Id = T.Exercise_Id
+                WHERE T.EXERCISE_DATE = @ExerciseDate AND T.USER_EMAIL = @UserEmail;  
+            ";
+
+            string queryUserCardio = $@"
+                SELECT T.*, U.*
+                FROM CardioExerciseDiary T
+                JOIN UserCardio U ON U.Id = T.Exercise_Id
                 WHERE T.EXERCISE_DATE = @ExerciseDate AND T.USER_EMAIL = @UserEmail;  
             ";
 
@@ -599,11 +608,34 @@ namespace KeepItFit___Project_WinUI.Services
                 command.Parameters.AddWithValue("@ExerciseDate", date);
                 command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
+                SqlCommand userCommand = new SqlCommand(queryUserCardio, connection);
+                userCommand.Parameters.AddWithValue("@ExerciseDate", date);
+                userCommand.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
+                
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     cardioExercises = ReadCardioInfo(reader);
+                    reader.Close();
+
+                    reader = userCommand.ExecuteReader();
+                    List<CardioExercise> userCardio = new List<CardioExercise>();
+                    while (reader.Read())
+                    {
+                        CardioExercise cardio = new CardioExercise
+                        {
+                            exerciseId = Convert.ToInt32(reader["ID"]),
+                            name = reader["CardioName"].ToString(),
+                            _time = Convert.ToInt32(reader["TimeHowLong"]),
+                            CaloriesBurned = Convert.ToInt32(reader["CaloriesBurned"]),
+                            caloriesPerMinute = Convert.ToSingle(reader["CaloriesPerMinutes"])
+
+                        };
+                        userCardio.Add(cardio);
+                    }
+                    
+                    result = cardioExercises.Concat(userCardio).ToList();
                 }
                 catch (Exception ex)
                 {
@@ -611,7 +643,7 @@ namespace KeepItFit___Project_WinUI.Services
                 }
             }
 
-            return cardioExercises;
+            return result;
         }
 
         public void UpdateCardioExercise_ExerciseDiary(string date, int exerciseId, int howLong, float caloriesPerMinute, int caloriesBurned)
@@ -633,18 +665,18 @@ namespace KeepItFit___Project_WinUI.Services
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
-                commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
-                commandCheckExistence.Parameters.AddWithValue("@Exercise_Id", exerciseId);
-                commandCheckExistence.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
+                //SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
+                //commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
+                //commandCheckExistence.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                //commandCheckExistence.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
-                SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
-                commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
-                commandUpdate.Parameters.AddWithValue("@Exercise_Id", exerciseId);
-                commandUpdate.Parameters.AddWithValue("@HowLong", howLong);
-                commandUpdate.Parameters.AddWithValue("@CaloriesPerMinute", caloriesPerMinute);
-                commandUpdate.Parameters.AddWithValue("@CaloriesBurned", caloriesBurned);
-                commandUpdate.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
+                //SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
+                //commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
+                //commandUpdate.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                //commandUpdate.Parameters.AddWithValue("@HowLong", howLong);
+                //commandUpdate.Parameters.AddWithValue("@CaloriesPerMinute", caloriesPerMinute);
+                //commandUpdate.Parameters.AddWithValue("@CaloriesBurned", caloriesBurned);
+                //commandUpdate.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
                 commandInsert.Parameters.AddWithValue("@ExerciseDate", date);
@@ -657,18 +689,20 @@ namespace KeepItFit___Project_WinUI.Services
                 try
                 {
                     connection.Open();
-                    int count = (int)commandCheckExistence.ExecuteScalar();
+                    commandInsert.ExecuteNonQuery();
+                    //connection.Open();
+                    //int count = (int)commandCheckExistence.ExecuteScalar();
 
-                    if (count > 0)
-                    {
-                        // Update the cardio exercise if it already exists in the diary
-                        commandUpdate.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        // Insert the cardio exercise to the diary if it does not exist
-                        commandInsert.ExecuteNonQuery();
-                    }
+                    //if (count > 0)
+                    //{
+                    //    // Update the cardio exercise if it already exists in the diary
+                    //    commandUpdate.ExecuteNonQuery();
+                    //}
+                    //else
+                    //{
+                    //    // Insert the cardio exercise to the diary if it does not exist
+                    //    commandInsert.ExecuteNonQuery();
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -690,7 +724,7 @@ namespace KeepItFit___Project_WinUI.Services
                     name = reader["Strength_name"].ToString(),
                     Sets = Convert.ToInt32(reader["Sets"]),
                     Reps_Set = Convert.ToInt32(reader["Reps_Set"]),
-                    Weight_Sets = Convert.ToInt32(reader["Weigth_Set"])
+                    Weight_Sets = Convert.ToInt32(reader["Weight_Set"])
 
                 };
                 data.Add(item);
@@ -734,17 +768,47 @@ namespace KeepItFit___Project_WinUI.Services
                 WHERE T.EXERCISE_DATE = @ExerciseDate AND T.USER_EMAIL = @UserEmail;  
             ";
 
+            string queryUserStrength = $@"
+                SELECT T.*, U.*
+                FROM StrengthTrainingExerciseDiary T
+                JOIN UserStrength U ON U.Id = T.Exercise_Id
+                WHERE T.EXERCISE_DATE = @ExerciseDate AND T.USER_EMAIL = @UserEmail;  
+            ";
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryStrengthExercise, connection);
                 command.Parameters.AddWithValue("@ExerciseDate", date);
                 command.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
+                SqlCommand userCommand = new SqlCommand(queryUserStrength, connection);
+                userCommand.Parameters.AddWithValue("@ExerciseDate", date);
+                userCommand.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
+
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     strengthExercises = ReadTrainingInfo(reader);
+                    reader.Close();
+
+                    reader = userCommand.ExecuteReader();
+                    List<StrengthTraining> data = new List<StrengthTraining>();
+                    while (reader.Read())
+                    {
+                        StrengthTraining item = new StrengthTraining
+                        {
+                            exerciseId = Convert.ToInt32(reader["ID"]),
+                            name = reader["StrengthName"].ToString(),
+                            Sets = Convert.ToInt32(reader["Sets"]),
+                            Reps_Set = Convert.ToInt32(reader["Reps_Set"]),
+                            Weight_Sets = Convert.ToInt32(reader["Weight_Set"])
+
+                        };
+                        data.Add(item);
+                    }
+                    strengthExercises = strengthExercises.Concat(data).ToList();
+
                 }
                 catch (Exception ex)
                 {
@@ -757,15 +821,15 @@ namespace KeepItFit___Project_WinUI.Services
 
         public void UpdateStrengthExercise_ExerciseDiary(string date, int exerciseId, int sets, int reps_set, int weight_set)
         {
-            string queryCheckExistence = $@"
-                SELECT COUNT(*) 
-                FROM StrengthTrainingExerciseDiary
-                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id AND USER_EMAIL = @UserEmail;";
+            //string queryCheckExistence = $@"
+            //    SELECT COUNT(*) 
+            //    FROM StrengthTrainingExerciseDiary
+            //    WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id AND USER_EMAIL = @UserEmail;";
 
-            string queryUpdate = $@"
-                UPDATE StrengthTrainingExerciseDiary 
-                SET Sets = @Sets, Reps_Set = @Reps_Set, Weight_Set = @Weight_Set
-                WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id AND USER_EMAIL = @UserEmail;";
+            //string queryUpdate = $@"
+            //    UPDATE StrengthTrainingExerciseDiary 
+            //    SET Sets = @Sets, Reps_Set = @Reps_Set, Weight_Set = @Weight_Set
+            //    WHERE EXERCISE_DATE = @ExerciseDate AND Exercise_Id = @Exercise_Id AND USER_EMAIL = @UserEmail;";
 
             string queryInsert = $@"
                 INSERT INTO ExerciseDiary (EXERCISE_DATE, USER_EMAIL) VALUES (@ExerciseDate, @UserEmail);
@@ -774,18 +838,18 @@ namespace KeepItFit___Project_WinUI.Services
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
-                commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
-                commandCheckExistence.Parameters.AddWithValue("@Exercise_Id", exerciseId);
-                commandCheckExistence.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
+                //SqlCommand commandCheckExistence = new SqlCommand(queryCheckExistence, connection);
+                //commandCheckExistence.Parameters.AddWithValue("@ExerciseDate", date);
+                //commandCheckExistence.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                //commandCheckExistence.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
-                SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
-                commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
-                commandUpdate.Parameters.AddWithValue("@Exercise_Id", exerciseId);
-                commandUpdate.Parameters.AddWithValue("@Sets", sets);
-                commandUpdate.Parameters.AddWithValue("@Reps_Set", reps_set);
-                commandUpdate.Parameters.AddWithValue("@Weight_Set", weight_set);
-                commandUpdate.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
+                //SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection);
+                //commandUpdate.Parameters.AddWithValue("@ExerciseDate", date);
+                //commandUpdate.Parameters.AddWithValue("@Exercise_Id", exerciseId);
+                //commandUpdate.Parameters.AddWithValue("@Sets", sets);
+                //commandUpdate.Parameters.AddWithValue("@Reps_Set", reps_set);
+                //commandUpdate.Parameters.AddWithValue("@Weight_Set", weight_set);
+                //commandUpdate.Parameters.AddWithValue("@UserEmail", UserSessionService.Instance.UserEmail);
 
                 SqlCommand commandInsert = new SqlCommand(queryInsert, connection);
                 commandInsert.Parameters.AddWithValue("@ExerciseDate", date);
@@ -798,18 +862,19 @@ namespace KeepItFit___Project_WinUI.Services
                 try
                 {
                     connection.Open();
-                    int count = (int)commandCheckExistence.ExecuteScalar();
+                    commandInsert.ExecuteNonQuery();
+                    //int count = (int)commandCheckExistence.ExecuteScalar();
 
-                    if (count > 0)
-                    {
-                        // Update the strength exercise if it already exists in the diary
-                        commandUpdate.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        // Insert the strength exercise to the diary if it does not exist
-                        commandInsert.ExecuteNonQuery();
-                    }
+                    //if (count > 0)
+                    //{
+                    //    // Update the strength exercise if it already exists in the diary
+                    //    commandUpdate.ExecuteNonQuery();
+                    //}
+                    //else
+                    //{
+                    //    // Insert the strength exercise to the diary if it does not exist
+                    //    commandInsert.ExecuteNonQuery();
+                    //}
                 }
                 catch (Exception ex)
                 {

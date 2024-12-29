@@ -21,7 +21,6 @@ exports.up = async function(knex) {
             TimeHowLong INT,
             CaloriesBurned INT,
             CaloriesPerMinutes FLOAT,
-            FOREIGN KEY (Exercise_ID) REFERENCES CardioExercise(ID),
             FOREIGN KEY (EXERCISE_DATE, USER_EMAIL) REFERENCES ExerciseDiary(EXERCISE_DATE, USER_EMAIL)
         );
     `);
@@ -34,7 +33,6 @@ exports.up = async function(knex) {
             Sets INT,
             Reps_Set INT,
             Weight_Set INT,
-            FOREIGN KEY (Exercise_ID) REFERENCES StrengthTraining(ID),
             FOREIGN KEY (EXERCISE_DATE, USER_EMAIL) REFERENCES ExerciseDiary(EXERCISE_DATE, USER_EMAIL)
         ); 
     `);

@@ -4,13 +4,14 @@
  */
 exports.up = async function(knex) {
     await knex.raw(`
-        create table StrengthTraining(
-	        ID INT IDENTITY(1,1) not null PRIMARY KEY,
-	        Strength_name nvarchar(255) not null,
-	        Sets int,
+        CREATE TABLE UserStrength(  
+            ID INT not null PRIMARY KEY,
+            Email NVARCHAR(50),
+            StrengthName NVARCHAR(255),
+            Sets int,
 	        Reps_Set int,
 	        Weight_Set int,
-)
+        );
     `);
 };
 
@@ -20,6 +21,6 @@ exports.up = async function(knex) {
  */
 exports.down = async function(knex) {
     await knex.raw(`
-        DROP TABLE StrengthTraining;
+        DROP TABLE UserStrength;
     `);
 };

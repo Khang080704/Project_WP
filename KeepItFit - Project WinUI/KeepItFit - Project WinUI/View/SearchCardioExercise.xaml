@@ -140,14 +140,14 @@
                 </StackPanel>
             </Border>
         </Grid>
-        <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock FontSize="20" FontWeight="Bold" Text="Can't find what you're looking for? (It's not available now)"
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="Can't find what you're looking for?"
                        VerticalAlignment="Center"/>
-            <HyperlinkButton Content=" Add an exercise to the database (It's not available now)"
+            <HyperlinkButton Content=" Add an exercise to the database"
                              Click="addCardio_Click"
                              Name="addCardio"
                              FontSize="20"/>
-        </StackPanel>-->
+        </StackPanel>
         
 
     </StackPanel>
