@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KeepItFit___Project_WinUI.Model;
+using KeepItFit___Project_WinUI.ViewModel;
+using Windows.Networking;
 
 namespace KeepItFit___Project_WinUI.Services
 {
@@ -12,6 +14,7 @@ namespace KeepItFit___Project_WinUI.Services
     {
 
         public List<Nutritions> GetAllNutrtion();
+        public List<Nutritions> GetAllNutrtion(SignInViewModel info);
         //Exercise part
         public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword);
         public ObservableCollection<StrengthTraining> GetAllStrengthTraining(string keyword);
@@ -41,6 +44,15 @@ namespace KeepItFit___Project_WinUI.Services
         public ObservableCollection<Food> GetFoodMyFood();
         public void DeleteMyFood(Food food);
 
+        // Sign In/Sign Up
+        public void SaveDataSignUp(string Email, string hashedPassword, string FirstName, string LastName, string DateOfBirth);
+        public void VerifyDataSignIn(string email, string hashedPassword);
+        public string GetStoredHashedPassword(string email);
+        public void UpdateNewPasswordForUser(string email, string hashedPassword);
+        public void DeleteAccount(string email);
+
+        public Task SaveAvatarToDatabase(byte[] imageBytes);
+        public Task<byte[]> GetAvatarFromDatabase();
     }
 
 }

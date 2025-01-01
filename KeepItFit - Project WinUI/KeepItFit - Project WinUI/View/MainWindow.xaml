@@ -19,8 +19,8 @@
                     Change your avatar
                 </Button>
                 <!-- annoucment-->
-                <TextBlock Foreground="White" HorizontalAlignment="Center">Hi</TextBlock>
-                <TextBlock HorizontalAlignment="Center" Foreground="Green">User@gmail.com</TextBlock>
+                <TextBlock Foreground="Black" HorizontalAlignment="Center">Hi</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Foreground="Green" Text="{x:Bind userEmail}"/>
             </StackPanel>
         </NavigationView.PaneHeader>
 
@@ -28,14 +28,9 @@
             <NavigationViewItem  FontWeight="Bold" Icon="Home" Content="Home" Tag="HomePage"/>
             <NavigationViewItem  FontWeight="Bold" Icon="Favorite" Content="Food" Tag="FoodDiary" />
             <NavigationViewItem  FontWeight="Bold" Icon="Admin" Content="Exercise" Tag="ExercisePage" />
-            <NavigationViewItem  FontWeight="Bold" Icon="Accept" Content="Proteins" Tag="ProteinPage" />
+            <NavigationViewItem  FontWeight="Bold" Icon="ReportHacked" Content="Report" Tag="ReportPage" />
         </NavigationView.MenuItems>
 
-        <NavigationView.FooterMenuItems>
-            <StackPanel>
-
-            </StackPanel>
-        </NavigationView.FooterMenuItems>
         <Frame x:Name="contentFrame"/>
     </NavigationView>
 

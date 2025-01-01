@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="KeepItFit___Project_WinUI.View.IntroToApp.UserSurvey"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KeepItFit___Project_WinUI.View.IntroToApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <ScrollViewer.Background>
+            <ImageBrush ImageSource="../../Assets/BackGround.png"/>
+        </ScrollViewer.Background>
+        <StackPanel Margin="20" HorizontalAlignment="Center" Background="AliceBlue" CornerRadius="10"
+                    Width="500">
+
+            <!-- Title -->
+            <TextBlock Text="Health Questionnaire" FontSize="28" FontWeight="Bold" Foreground="#002147" Margin="20" HorizontalAlignment="Center" />
+
+            <!-- Question 1 -->
+            <TextBlock Text="What is your gender?" Margin="0,10,0,0" FontSize="18" Foreground="#50C878"
+                       FontWeight="Bold" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="GenderComboBox" Background="#ECF0F1" Margin="0,5,0,10"
+                      HorizontalAlignment="Center" Width="200">
+                <ComboBoxItem Content="Male" />
+                <ComboBoxItem Content="Female" />
+                <ComboBoxItem Content="Other" />
+            </ComboBox>
+
+            <!-- Question 2 -->
+            <TextBlock Text="What is your date of birth? (DD/MM/YYYY)" Margin="0,10,0,0" FontSize="18" Foreground="#50C878"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+            <CalendarDatePicker x:Name="Birthdate" PlaceholderText="DD/MM/YYYY" Background="#ECF0F1" Margin="0,5,0,10"
+                                HorizontalAlignment="Center" Width="200"/>
+
+            <!-- Question 3 -->
+            <TextBlock Text="What is your height? (cm)" Margin="0,10,0,0" 
+                       FontSize="18"
+                       HorizontalAlignment="Center"
+                       Foreground="#50C878" FontWeight="Bold"/>
+            <TextBox x:Name="HeightTextBox" PlaceholderText="cm" 
+                     Background="#ECF0F1" Margin="0,5,0,10"
+                     Width="200"
+                     TextChanging="HeightTextBox_TextChanging"/>
+
+            <!-- Question 4 -->
+            <TextBlock Text="What is your weight? (kg)" Margin="0,10,0,0" FontSize="18"
+                       HorizontalAlignment="Center"
+                       Foreground="#50C878" FontWeight="Bold"/>
+            <TextBox x:Name="WeightTextBox" PlaceholderText="kg" 
+                     Background="#ECF0F1" Margin="0,5,0,10" 
+                     Width="200"
+                     TextChanging="HeightTextBox_TextChanging"/>
+
+            <!-- Question 5 -->
+            <TextBlock Text="What is your daily physical activity level?"
+                       Margin="0,10,0,0" FontSize="18"
+                       HorizontalAlignment="Center"
+                       Foreground="#50C878" FontWeight="Bold"/>
+            <ComboBox x:Name="ActivityLevelComboBox" Background="#ECF0F1" Margin="0,5,0,10"
+                      HorizontalAlignment="Center" Width="200">
+                <ComboBoxItem Content="Very sedentary" />
+                <ComboBoxItem Content="Lightly active" />
+                <ComboBoxItem Content="Moderately active" />
+                <ComboBoxItem Content="Highly active" />
+                <ComboBoxItem Content="Very highly active" />
+            </ComboBox>
+
+            <!-- Question 6 -->
+            <TextBlock Text="How many main meals do you have each day?" Margin="0,10,0,0" FontSize="18"
+                       Foreground="#50C878" FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+            <ComboBox x:Name="MealsPerDayComboBox" Background="#ECF0F1" Margin="0,5,0,10"
+                      HorizontalAlignment="Center" Width="200">
+                <ComboBoxItem Content="1 meal" />
+                <ComboBoxItem Content="2 meals" />
+                <ComboBoxItem Content="3 meals" />
+            </ComboBox>
+
+            <!-- Question 7 -->
+            <TextBlock Text="Do you have a habit of eating at night?" Margin="0,10,0,0" FontSize="18"
+                       Foreground="#50C878" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="NightEatingComboBox" Background="#ECF0F1" Margin="0,5,0,10"
+                      HorizontalAlignment="Center" Width="200">
+                <ComboBoxItem Content="Yes" />
+                <ComboBoxItem Content="No" />
+            </ComboBox>
+
+            <!-- Question 8 -->
+            <TextBlock Text="Do you have any chronic diseases?" Margin="0,10,0,0" FontSize="18"
+                       Foreground="#50C878" FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+            <ComboBox x:Name="ChronicDiseasesComboBox" Background="#ECF0F1" Margin="0,5,0,10"
+                      HorizontalAlignment="Center" Width="200">
+                <ComboBoxItem Content="Yes" />
+                <ComboBoxItem Content="No" />
+            </ComboBox>
+
+            <!-- Question 9 -->
+            <TextBlock Text="Do you have any food allergies?" Margin="0,10,0,0" FontSize="18"
+                       Foreground="#50C878" FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+            <ComboBox x:Name="FoodAllergiesComboBox" Background="#ECF0F1" Margin="0,5,0,10"
+                      HorizontalAlignment="Center" Width="200">
+                <ComboBoxItem Content="Yes" />
+                <ComboBoxItem Content="No" />
+            </ComboBox>
+
+            <!-- Question 10 -->
+            <TextBlock Text="Do you have any specific nutrition goals?" Margin="0,10,0,0" FontSize="18"
+                       Foreground="#50C878" FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+            <ComboBox x:Name="NutritionGoalsComboBox" Background="#ECF0F1" Margin="0,5,0,10"
+                      HorizontalAlignment="Center" Width="200">
+                <ComboBoxItem Content="Lose weight" />
+                <ComboBoxItem Content="Gain weight" />
+                <ComboBoxItem Content="Maintain weight" />
+            </ComboBox>
+
+            <!-- Submit Button -->
+            <Button Content="Submit" Background="#3498DB" Foreground="White" Margin="0,20,0,0" Click="Button_Click"
+                    HorizontalAlignment="Center"
+                    Name="submit"/>
+            <ProgressRing IsActive="True" Background="LightGray" Visibility="Collapsed"
+                          Name="process"/>
+        </StackPanel>
+
+    </ScrollViewer>
+
+</Window>

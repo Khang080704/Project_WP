@@ -12,6 +12,8 @@ namespace KeepItFit___Project_WinUI.ViewModel
 {
     public class SearchExerciseViewModel : INotifyPropertyChanged
     {
+        public SignInViewModel SignInViewModel { get; set; }
+
         public ObservableCollection<CardioExercise> CardioExerciseDatabase { get; set; }
         public ObservableCollection<CardioExercise> CardioExerciseSearchList { get; set; }
         public CardioExercise _selectedCardioExercise {  get; set; }
@@ -32,6 +34,8 @@ namespace KeepItFit___Project_WinUI.ViewModel
             strengthTrainingDatabase = new ObservableCollection<StrengthTraining>();
             strengthTrainingSearchList = new ObservableCollection<StrengthTraining>();
             _selectedStrengthTraining = new StrengthTraining();
+
+            SignInViewModel = new SignInViewModel();
         }
 
         public ObservableCollection<CardioExercise> getCardioDatabase(string keyword)

@@ -16,7 +16,9 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\BackGround.png" />
     <Content Remove="Assets\logo_app.jpg" />
+    <Content Remove="Assets\mainWindowBG.png" />
     <Content Remove="Assets\user.png" />
   </ItemGroup>
   <ItemGroup>
@@ -25,11 +27,18 @@
     <None Remove="FoodPage.xaml" />
     <None Remove="NutritionResult.xaml" />
     <None Remove="View\AddExercisePage.xaml" />
+    <None Remove="View\ChangePasswordPage.xaml" />
     <None Remove="View\CreateExercise.xaml" />
     <None Remove="View\CreateMyFood.xaml" />
     <None Remove="View\HomePage.xaml" />
+    <None Remove="View\IntroToApp\Intro.xaml" />
+    <None Remove="View\IntroToApp\UserSurvey.xaml" />
+    <None Remove="View\ReportPage.xaml" />
     <None Remove="View\SearchCardioExercise.xaml" />
     <None Remove="View\SearchStrengthTrainingExercise.xaml" />
+    <None Remove="View\SettingsPage.xaml" />
+    <None Remove="View\SignIn.xaml" />
+    <None Remove="View\SignUp.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WinUI" Version="2.0.0-rc4.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
@@ -60,12 +70,39 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Assets\BackGround.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\logo_app.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\mainWindowBG.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\ChangePasswordPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\ReportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\SignUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\SignIn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\IntroToApp\UserSurvey.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\IntroToApp\Intro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\CreateExercise.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\Flag.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\streak.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

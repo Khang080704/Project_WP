@@ -21,39 +21,36 @@ using Windows.Foundation.Collections;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Windowing;
 using Microsoft.UI;
+using KeepItFit___Project_WinUI.View.IntroToApp;
+using KeepItFit___Project_WinUI.View;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace KeepItFit___Project_WinUI
 {
     public partial class App : Application
     {
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
+        public static Window signIn;
+
         public App()
         {
-            
             this.InitializeComponent();
-            
         }
+
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow();
-            // Lấy AppWindow từ WindowHandle
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
-            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
-            var appWindow = AppWindow.GetFromWindowId(windowId);
+            OpenSignInWindow();
+        }
 
-            // Sử dụng OverlappedPresenter để chỉnh trạng thái cửa sổ
-            var presenter = appWindow.Presenter as OverlappedPresenter;
-            if (presenter != null)
+        public static void OpenSignInWindow()
+        {
+            if (signIn == null)
             {
-                presenter.Maximize();  // Phóng to cửa sổ
+                signIn = new SignIn();
             }
-
-            m_window.Activate();
-        }        
-
-        private Window m_window;
+            signIn.Activate();
+        }
     }
+
 }

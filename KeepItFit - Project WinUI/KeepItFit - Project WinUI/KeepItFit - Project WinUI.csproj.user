@@ -8,9 +8,30 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="View\ChangePasswordPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ReportPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SignUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SignIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\IntroToApp\UserSurvey.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\IntroToApp\Intro.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CreateExercise.xaml">
-		<SubType>Designer</SubType>
-	</Page>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CreateMyFood.xaml">
       <SubType>Designer</SubType>
     </Page>

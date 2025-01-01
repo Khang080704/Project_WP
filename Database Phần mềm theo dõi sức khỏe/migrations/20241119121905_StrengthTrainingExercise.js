@@ -9,7 +9,7 @@ exports.up = async function(knex) {
 	        Strength_name nvarchar(255) not null,
 	        Sets int,
 	        Reps_Set int,
-	        Weigth_Set int,
+	        Weight_Set int,
 )
     `);
 };

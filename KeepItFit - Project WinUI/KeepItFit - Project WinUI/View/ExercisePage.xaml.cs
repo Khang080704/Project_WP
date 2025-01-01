@@ -31,6 +31,7 @@ namespace KeepItFit___Project_WinUI
         // Using Singleton Pattern to keep the same instance of the view model
         public static ExercisePageViewModel viewModelInstance { get; set; }
         public ExercisePageViewModel viewModel { get; set; }
+        public SignInViewModel user {  get; set; }
 
         public ExercisePage()
         {
@@ -48,7 +49,6 @@ namespace KeepItFit___Project_WinUI
             EditNote.Visibility = Visibility.Visible;
             SaveNote.Visibility = Visibility.Collapsed;
             
-            viewModel.UpdateNotesForTheDay();
         }
 
         private void EditNote_Click(object sender, RoutedEventArgs e)
@@ -79,16 +79,36 @@ namespace KeepItFit___Project_WinUI
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            if(e.Parameter is SignInViewModel)
+            {
+                user = e.Parameter as SignInViewModel;
+            }
+
             if (e.Parameter is CardioExercise cardio)
             {
                 viewModel.UpdateCardioExercise(cardio);
                 viewModel.UpdateDataExercises();
-                update_Time_And_Calories_Daily();
             }
             else if (e.Parameter is StrengthTraining strength)
             {
                 viewModel.UpdateStrengthExercise(strength);
                 viewModel.UpdateDataExercises();
+            }
+            else if(e.Parameter is List<CardioExercise> list)
+            {
+                foreach(var item in  list)
+                {
+                    viewModel.UpdateCardioExercise(item);
+                    viewModel.UpdateDataExercises();
+                }
+            }
+            else if(e.Parameter is List<StrengthTraining> strList)
+            {
+                foreach(var item in strList)
+                {
+                    viewModel.UpdateStrengthExercise(item);
+                    viewModel.UpdateDataExercises();
+                }
             }
         }
 
@@ -118,16 +138,32 @@ namespace KeepItFit___Project_WinUI
             }
         }
 
+        public class Navigations
+        {
+            public string Name { get; set; }
+            public SignInViewModel navigateUser { get; set; }
+        }
+
         private void StrengthExercise_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AddExercisePage), StrengthExercise.Name);
+            var navigateParams = new Navigations()
+            {
+                Name = StrengthExercise.Name,
+                navigateUser = user
+            };
+            this.Frame.Navigate(typeof(AddExercisePage), navigateParams);
         }
 
+        
         private void CardioExercise_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AddExercisePage), CardioExercise.Name);
+            var navigateParams = new Navigations()
+            {
+                Name = CardioExercise.Name,
+                navigateUser = user
+            };
+            this.Frame.Navigate(typeof(AddExercisePage), navigateParams);
         }
-
 
     }
 }

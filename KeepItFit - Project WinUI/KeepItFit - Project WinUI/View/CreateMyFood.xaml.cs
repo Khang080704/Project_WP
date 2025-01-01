@@ -71,6 +71,8 @@ namespace KeepItFit___Project_WinUI.View
                 };
 
                 await successDialog.ShowAsync();
+
+                Frame.Navigate(typeof(AddFood));
             }
         }
     }

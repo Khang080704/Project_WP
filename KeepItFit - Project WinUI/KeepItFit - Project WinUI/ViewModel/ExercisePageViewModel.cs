@@ -8,6 +8,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static KeepItFit___Project_WinUI.NutritionResult;
+using static KeepItFit___Project_WinUI.ExercisePage;
 
 namespace KeepItFit___Project_WinUI.ViewModel
 {
@@ -16,6 +18,9 @@ namespace KeepItFit___Project_WinUI.ViewModel
         private DateTimeOffset _selectedDate;
         public InputExerciseViewModel ExerciseInput { get; set; }
         public string Notes { get; set; }
+
+        public int dailyCalo {  get; set; }
+        public int dailyMinutes { get; set; }
 
         public ExercisePageViewModel()
         {
@@ -26,6 +31,7 @@ namespace KeepItFit___Project_WinUI.ViewModel
 
             UpdateDataExercises();
             GetNotesForTheDay();
+
         }
 
         public DateTimeOffset SelectedDate
@@ -63,6 +69,16 @@ namespace KeepItFit___Project_WinUI.ViewModel
             // Get the exercise data from the database
             ExerciseInput.updateWithList_Cardio(sqlDao.GetCardioExerciseForTheDay_ExerciseDiary(formattedDate));
             ExerciseInput.updateWithList_Strength(sqlDao.GetStrengthExerciseForTheDay_ExerciseDiary(formattedDate));
+
+            var sumDailyCalories = 0;
+            var timeDaily = 0;
+            foreach (var i in ExerciseInput.CardioExerciseData)
+            {
+                sumDailyCalories += i.CaloriesBurned;
+                timeDaily += i._time;
+            }
+            dailyCalo = sumDailyCalories;
+            dailyMinutes = timeDaily;
         }
 
         // Logic to add a new Cardio exercise

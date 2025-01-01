@@ -5,8 +5,11 @@
 exports.up = async function(knex) {
     await knex.raw(`
         CREATE TABLE ExerciseDiary(
-            EXERCISE_DATE DATE PRIMARY KEY,
-            NOTE TEXT
+            EXERCISE_DATE DATE,
+            NOTE TEXT,
+            USER_EMAIL NVARCHAR(50),
+            PRIMARY KEY (EXERCISE_DATE, USER_EMAIL),
+            FOREIGN KEY (USER_EMAIL) REFERENCES [User](Email)
         );
     `);
 
@@ -14,11 +17,11 @@ exports.up = async function(knex) {
         CREATE TABLE CardioExerciseDiary(
             Exercise_ID INT,
             EXERCISE_DATE DATE,
-            TimeHowLong int,
-	        CaloriesBurned int,
-	        CaloriesPerMinutes float,
-            FOREIGN KEY (Exercise_ID) REFERENCES CardioExercise(ID),
-            FOREIGN KEY (EXERCISE_DATE) REFERENCES ExerciseDiary(EXERCISE_DATE)
+            USER_EMAIL NVARCHAR(50),
+            TimeHowLong INT,
+            CaloriesBurned INT,
+            CaloriesPerMinutes FLOAT,
+            FOREIGN KEY (EXERCISE_DATE, USER_EMAIL) REFERENCES ExerciseDiary(EXERCISE_DATE, USER_EMAIL)
         );
     `);
 
@@ -26,12 +29,12 @@ exports.up = async function(knex) {
         CREATE TABLE StrengthTrainingExerciseDiary(
             Exercise_ID INT,
             EXERCISE_DATE DATE,
-            Sets int,
-            Reps_Set int,
-            Weigth_Set int,
-            FOREIGN KEY (Exercise_ID) REFERENCES StrengthTraining(ID),
-            FOREIGN KEY (EXERCISE_DATE) REFERENCES ExerciseDiary(EXERCISE_DATE)
-        );    
+            USER_EMAIL NVARCHAR(50),
+            Sets INT,
+            Reps_Set INT,
+            Weight_Set INT,
+            FOREIGN KEY (EXERCISE_DATE, USER_EMAIL) REFERENCES ExerciseDiary(EXERCISE_DATE, USER_EMAIL)
+        ); 
     `);
 };
 
