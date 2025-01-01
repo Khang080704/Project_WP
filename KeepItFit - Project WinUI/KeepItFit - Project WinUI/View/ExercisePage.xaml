@@ -89,7 +89,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
                        FontSize="15" FontWeight="Bold">
-                Your exercise Daily for
+                Your exercise journal for
             </TextBlock>
 
             <CalendarDatePicker Width="200" PlaceholderText="Pick a date"
@@ -130,13 +130,13 @@
 
                     <StackPanel Orientation="Horizontal" Grid.Column="1">
                         <Border Background="#0000FF" Width="150" Height="50" 
-                                BorderThickness="3" HorizontalAlignment="Right">
+                                BorderThickness="1" HorizontalAlignment="Right">
                             <TextBlock Text="Minutes" Foreground="White"
                                        TextAlignment="Center" 
                                        VerticalAlignment="Center"/>
                         </Border>
                         <Border Background="#0000FF" Width="150" Height="50" 
-                                BorderThickness="3">
+                                BorderThickness="1">
                             <TextBlock Text="Calories Burned" Foreground="White"
                                        TextAlignment="Center" 
                                        VerticalAlignment="Center"/>
