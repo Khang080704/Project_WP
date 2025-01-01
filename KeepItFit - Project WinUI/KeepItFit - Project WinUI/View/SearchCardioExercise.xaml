@@ -37,7 +37,8 @@
 
                     <TextBox Text="{x:Bind _time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,5,10,10" 
                             FontSize="15" 
-                            HorizontalAlignment="Center"/>
+                            HorizontalAlignment="Center"
+                             TextChanging="TextBox_TextChanging"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -50,7 +51,8 @@
                     <TextBox Text="{x:Bind CaloriesBurned,
                                     Mode=TwoWay,
                                     UpdateSourceTrigger=PropertyChanged}"
-                             Height="30">
+                             Height="30"
+                             TextChanging="TextBox_TextChanging">
 
                     </TextBox>
                 </StackPanel>
@@ -105,7 +107,7 @@
                 <ListView x:Name="CardioExerciseSearch"
                           ItemsSource="{x:Bind viewModel.CardioExerciseSearchList, Mode=TwoWay}"
                           ItemTemplate="{StaticResource CardioExerciseList}"
-                          Height="400" Width="600" 
+                          Height="300" Width="600" 
                           HorizontalAlignment="Left" 
                           Visibility="Visible"
                           SelectionChanged="CardioExerciseSearch_SelectionChanged"/>
@@ -116,7 +118,7 @@
                            Visibility="Collapsed" Margin="10,10,10,10"/>
             </StackPanel>
 
-            
+
             <Border x:Name="foodDetailsBorder" Grid.Row="0" Grid.Column="1"
                     Margin="10"
                     Padding="10"
@@ -130,16 +132,23 @@
                         Content="{x:Bind viewModel._selectedCardioExercise, Mode=TwoWay}"
                         HorizontalAlignment="Center"/>
 
-                    
+
                     <Button Content="Add Exercise" Foreground="#FFFFFF" FontWeight="Bold"
                             Background="#08964F" Margin="10" HorizontalAlignment="Center"
                             Name="AddExercise"
                             Click="AddExercise_Click"/>
                 </StackPanel>
             </Border>
-
         </Grid>
-
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="Can't find what you're looking for?"
+                       VerticalAlignment="Center"/>
+            <HyperlinkButton Content=" Add an exercise to the database"
+                             Click="addCardio_Click"
+                             Name="addCardio"
+                             FontSize="20"/>
+        </StackPanel>
+        
 
     </StackPanel>
 </Page>

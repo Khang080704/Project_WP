@@ -1,4 +1,5 @@
 
+
 # Tên Dự Án
 
 Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao hằng ngày.
@@ -8,19 +9,19 @@ Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao 
 ## Mục lục
 
 
-1. [Members's information](#meminfor)
-2. [UI/UX](#UI/UX)
+1. [Members's information](#members-information)
+2. [UI/UX](#a-uiux)
+3. [Design patterns/architecture](#design-patternsarchitecture)
 
-3. [Design patterns/architecture](#DesignPatterns/Architecture)
+4. [Advanced topics](#advanced-topics)
 
-4. [Advanced topics](#AdvancedTopics)
+5. [Teamwork - Git flow](#teamwork---git-flow)
 
-5. [Teamwork - Git flow](#Teamwork-GitFlow)
-
-6. [Quality assurance](#QualityAssurance)
-7. [Completed Features](#CompletedFeature)
-8. [Product experience](#ProductExperience)
-9. [Self-assessment](#SelfAssessment)
+6. [Quality assurance](#quality-assurance)
+7. [Completed Features](#completed-features)
+8. [Product experience](#product-experience)
+9. [Work assignment](#work-assignment-bảng-phân-công-công-việc-từ-đầu-dự-án-cho-đến-nay)
+9. [Self-assessment](#self-assessment)
 
   
   
@@ -31,7 +32,7 @@ Phần mềm theo theo dõi sức khỏe thông qua lượng calories tiêu hao 
  | 22120152| Phạm Gia Khang | 
  | 22120236 | Nguyễn Hoàng Nguyên | 
 
-## UI/UX
+## A. UI/UX
 
 ### I. Giao diện chính trang Food Page
 #### 1. UI
@@ -97,17 +98,30 @@ Thêm, Xóa món ăn dễ dàng: Bằng cách chọn các món ăn cần thêm v
 
 Tùy chỉnh linh hoạt số lượng và đơn vị: Người dùng có thể điều chỉnh số lượng thực phẩm theo nhu cầu và chọn đơn vị mong muốn. Điều này giúp người dùng dễ dàng theo dõi chính xác lượng dinh dưỡng mà họ tiêu thụ.
 
-  
+### **Bổ sung cho milestone 2:**
+-- --
+#### IV. Trang HomePage
+##### 1. UI
+
+![HomePage_1](https://i.postimg.cc/mDHppmDs/image.png)
+UI hiển thị rõ 3 chỉ số nổi trội là **Base Goal**, **Food** và **Exercise** trong đó:
++ **Base Goal**: Lượng Calo mục tiêu do người dùng thiết lập, người dùng có thể thay đổi mục Base Goal này
++ **Food**: Tổng lượng Calo nạp vào cơ thể ở mục Food, người dùng có thể theo dõi chỉ số tổng này bên page Food
++ **Exercise**: Tổng lượng Calo tiêu thụ ở mục Exercise, người dùng có thể theo dõi lượng Calo bên page Exercise ở phần *Calories Burned*, chỉ số sẽ được cập nhật ở Home Page
++ **Remaining**: Được tính bằng  **Base Goal** + **Food** - **Exercise**, mỗi khi có thay đổi bên phần kia, chỉ số này sẽ được cập nhật lại để người dùng có thể theo dõi tiến độ của mình trong ngày hôm đó
+![](https://i.postimg.cc/52GYTBkB/image.png)
+  _Chỉ số được cập nhật_
 
 
 ## Design patterns/architecture
 
-### MVVM Design patterns
+### MVVM Design patterns ( Cập nhật milestone 2)
 
 Sử dụng mẫu thiết kế MVVM, trong project có các folder:
 - **Model**: Chứa các lớp
 	+  **IDao**: Lớp giao diện chứa các phương thức lấy thông tin từ cơ sở dữ liệu thông qua các hàm GetAll()
 	+ **MockDao**: Cài đặt chi tiết các hàm lấy thông tin, trả về 1 danh sách dữ liệu
+	
 - **ViewModel**: Chứa các lớp
 	+ **Meal**: chứa thông tin 1 bữa ăn (tên bữa ăn)
 	
@@ -123,8 +137,26 @@ Sử dụng mẫu thiết kế MVVM, trong project có các folder:
 	+ **MainWindow.xaml**: cửa sổ chính của ứng dụng, dẫn đến các page khác 
 	+ **FoodPage.xaml**, **AddFood.xaml**, **SearchFood.xaml**, **FoodDiary.xaml**: là các trang chính trong giao diện phần Food của ứng dụng, là nơi người dùng tương tác với ứng dung. Người dùng có thể chọn *QuickAdd* để nhập nhanh lượng dinh dưỡng hoặc *AddFood* để chọn các món ăn cho mình, hệ thống sẽ tính toán lượng dinh dưỡng của các món ăn đó
 	+ Trong phần Food, lượng dinh dưỡng nạp vào của mỗi chất dựa trên 1 cơ thể khỏe mạnh, người dùng có thể dựa vào đó để đánh giá 1 ngày ăn uống của mình như vậy đã hợp lí chưa
- 
+	
+### **Bổ sung cho milestone 2:**
+-- --
+- **Model**: Chứa các lớp:
+	+ **CardioExercise**: Chứa dữ liệu về các bài tập Cardio, bao gồm tên bài tập, thời gian tập và lượng calo tiêu thụ
+	+ **StrengthTrainingExercise**: Chứa thông tin các bài tập thể lực
+- **Service:** Chứa các lớp:
+	+ **IDAO**: Lớp giao diện chứa các phương thức lấy thông tin từ cơ sở dữ liệu thông qua các hàm GetAll()
+	+ **MockDao**: Cài đặt chi tiết các hàm lấy thông tin, trả về 1 danh sách dữ liệu
+	+ **SqlDao**: Kết nối đến cơ sở dữ liệu để lấy thông tin từ cơ sở dữ liệu lên, dữ liệu lúc này được đưa xuống database mà không còn là dữ liệu tạm thời nữa
+- **ViewModel:** Chứa các lớp:	
+	 + **SearchExerciseViewModel**: Có nhiệm vụ trả về kết quả khi người dùng tra cứu tên bài tập thể dục. Lớp sẽ kết nối cơ sở dữ liệu, dựa trên từ khóa mà người dùng nhập vào để thực hiện truy vấn trả ra 1 hoặc nhiều kết quả có liên quan đến từ khóa người dùng nhập
+	 +  **FoodDiaryViewModel, ExercisePageViewModel**: Các lớp giúp lưu các kết quả người dùng đã nhập theo từng ngày. *Chẳng hạn*, ngày hôm nay người dùng đã nhập các thông tin cho bữa ăn cũng như là các bài tập thể thao. Qua ngày hôm sau, các trang sẽ được làm mới và người sẽ tiếp tục cập nhật hoạt động cho ngày hôm nay của mình. Đồng thời, người dùng cũng có thể chọn lịch vào ngày cũ để xem thông tin mình đã thao tác và chỉnh sửa ngày đó (thêm/ xóa các món ăn, bài tập) 
+	
+- **View:** Chứa các lớp:	
+	+ **CreateExercise, ExercisePage, SearchCardioExercise, SearchStrengthTrainingExercise**: Các lớp giao diện hiển thị và tương tác với người dùng ở phần chọn bài tập thể dục. Người dùng có thể tìm kiếm và chọn các bài tập thể dục ở 2 thể loại (Cardio/ Strength) để thêm các bài tập vào hoạt động hằng ngày của mình tương tự như bên phần *Food*. Đồng thời, người dùng có thể tự tạo bài thể dục riêng cho mình nếu không tìm thấy kết quả mong muốn thông qua giao diện ở của **CreateExercise**
 
+	+ **CreateMyFood**: Giao diện giúp người dùng tự tạo riêng món ăn cho cho mình bằng cách điền các thông tin cụ thể như tên món ăn, lượng dinh dưỡng ước tính cho món ăn đó
+	+ **NutrionResult**: Trang kết quả thông báo về tình trạng sức khỏe cho người dùng vào ngày hôm đó.
+	+ **HomePage**: Trang chủ của ứng dụng, hiển thị các thông tin về chỉ số tổng thể bao gồm tổng lượng Calo đã nạp vào ở phần **Food** và tổng Calo đã tiêu thụ ở phần **Exercise**. Chỉ số *Remaining* được tính tự động thể hiện chỉ số Calo còn lại trong ngày hôm đó của người dùng 
 ## Advanced topics
 
  ### 1. MVVM design pattern
@@ -152,6 +184,10 @@ Sử dụng mẫu thiết kế MVVM, trong project có các folder:
 _Chọn ảnh từ hệ thống_
 
 ![update_avatar](https://i.postimg.cc/6q1vmLfY/image.png)_Ảnh được cập nhật_
+### 5. Áp dụng mẫu Singleton Pattern 
+- Khi chương trình chạy, để đảm bảo rằng người dùng khi thay đổi Calendar của ngày chọn Food hay Exercise thì hệ thống sẽ **nhớ** được ngày của người dùng đang chọn mà không cần phải **lưu** lại xuống Database. Nhóm sử dụng Singleton Pattern để tạo một đối tượng duy nhất quản lí trạng thái Calendar trong vòng đời của ứng dụng (đến khi ứng dụng bị tắt đi).
+
+![singleton_pattern](https://i.ibb.co/LQWbfSM/Untitled.png)
 
 
 
@@ -164,7 +200,8 @@ _Chọn ảnh từ hệ thống_
 ![commit_history](https://i.postimg.cc/QCxQQz22/image.png)
 ![commit_history](https://i.postimg.cc/bvwMpgny/image.png)
 
-
++ Sử dụng **Jira** cho việc phân chia công việc và theo dõi tiến độ dự án
+![Imgur](https://i.ibb.co/hmVYJ2J/Untitled.png)
   
   
 
@@ -211,7 +248,15 @@ _Chọn ảnh từ hệ thống_
  | Tính năng tính toán tổng lượng calories, các thành phần dinh dưỡng | 3h |  
  | Tính năng liệt kê thành phần dinh dưỡng trong từng món ăn | 3h | 
  | Tính năng chọn món | 3h | 
- |Tính năng chọn ảnh đại diện|2h|
+ |Tính năng chọn ảnh đại diện|1h|
+ |Tính năng chọn bài tập thể dục|3h|
+ |Tính năng lưu lại các món ăn Recent và Frequent|1.5h|
+|Tính năng ghi lại lịch sử khi chuyển đổi ngày|1.5h|
+|Tính năng ghi chú|1h|
+|Tính năng hiển thị thông tin calories còn lại trong ngày trong phần Home dựa vào dữ liệu của Food và Exercise|1h|
+|Tính năng tạo bài tập mới|1h|
+|Tính năng tạo món ăn mới|1h|
+|**Tổng giờ làm việc**|**20h**|
 
 
 ## Product Experience
@@ -233,12 +278,19 @@ Chọn mục Food bên cột trái, giao diện chính của mục food:
 ![SearchFood_page](https://i.postimg.cc/fTmyQqy5/image.png)
 + Chọn một món ăn bất kì, hệ thống sẽ yêu cầu 1 vài thông tin về định lượng cũng như thêm món ăn đó vào bữa ăn nào trong ngày
 
+## Work assignment (Bảng phân công công việc từ đầu dự án cho đến nay)
+|Thành viên|Công việc|
+|---------------|-----------------|
+|Nguyễn Hoàng Nguyên|Thiết kế tính năng tạo món ăn mới.<br>Thiết kế tính năng ghi lại lịch sử khi chuyển đổi ngày. <br> Thiết kế tính năng lưu lại các món ăn Recent và Frequent. <br> Thiết kế tính năng chọn món|
+|Đoàn Gia Huệ|Thiết kế tính năng tính toán tổng lượng calories, các thành phần dinh dưỡng.<br> Thiết kế tính năng ghi chú. <br> Thiết kế tính năng hiển thị thông tin calories còn lại trong ngày trong phần Home dựa vào dữ liệu của Food và Exercise. <br> Thiết kế tính năng chọn bài tập thể dục|
+|Phạm Gia Khang|Thiết kế tính năng liệt kê thành phần dinh dưỡng trong từng món ăn. <br> Thiết kế tính năng chọn ảnh đại diện.<br> Thiết kế tính năng tạo bài tập mới . <br> Kiểm duyệt code trước khi merge vào nhánh main|
+
 ## Self-assessment
  | Tiêu chí | Tự đánh giá (trên thang 10) | 
  |---------------|-----------------|
- | UI/UX | 9 |  
- | Design Patter/Architecture| 9.5 | 
+ | UI/UX | 10|  
+ | Design Patter/Architecture| 10 | 
  | Advanced Topics | 10 | 
- |Teamwork - Git flow|9.5|
- |Quality assurance|9.5|
+ |Teamwork - Git flow|10|
+ |Quality assurance|10|
  

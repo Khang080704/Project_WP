@@ -34,7 +34,8 @@
 
                     <TextBox Text="{x:Bind Sets, Mode=TwoWay}" Margin="10,5,10,10" 
                         FontSize="15" 
-                        HorizontalAlignment="Center"/>
+                        HorizontalAlignment="Center"
+                             TextChanging="TextBox_TextChanging"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -45,9 +46,10 @@
                             TextAlignment="Center" TextWrapping="Wrap"/>
 
                     <TextBox Text="{x:Bind Reps_Set, Mode=TwoWay}"
-                         Height="30">
+                             Height="30"
+                             TextChanging="TextBox_TextChanging"/>
 
-                    </TextBox>
+
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -58,8 +60,9 @@
                                 TextAlignment="Center" TextWrapping="Wrap"/>
 
                     <TextBox Text="{x:Bind Weight_Sets, Mode=TwoWay}"
-                             Height="30">
-                    </TextBox>
+                             Height="30"
+                             TextChanging="TextBox_TextChanging"/>
+
                     <TextBlock Text="kg" FontSize="15" 
                                 Margin="10,20,10,10" 
                                 TextAlignment="Center"/>
@@ -146,6 +149,15 @@
             </Border>
 
         </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="Can't find what you're looking for?"
+                       VerticalAlignment="Center"/>
+            <HyperlinkButton Content=" Add an exercise to the database"
+                            Click="addStrength_Click"
+                            Name="addStrength"
+                            FontSize="20"/>
+        </StackPanel>
 
 
     </StackPanel>

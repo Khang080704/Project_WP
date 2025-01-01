@@ -9,9 +9,58 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock> 
-            This is home page.
-        </TextBlock>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                Width="800" CornerRadius="20">
+        <TextBlock Text="Today" FontWeight="Bold" FontSize="30"/>
+        <Grid Padding="20" Background="#FBE7FA" Height="400">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Tiêu đề và công thức -->
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,20">
+                <TextBlock Text="Calories" FontSize="24" FontWeight="Bold" />
+                <TextBlock Text="Remaining = Goal - Food + Exercise"
+                   FontSize="16"
+                   Foreground="Gray" />
+            </StackPanel>
+
+            <!-- Vòng tròn chính -->
+            <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Ellipse Width="150" Height="150" Stroke="LightGray" StrokeThickness="5" />
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Name="Remain" Text="1800" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" />
+                    <TextBlock Text="Remaining" FontSize="16" Foreground="Gray" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+
+            <!-- Chi tiết thông tin -->
+            <StackPanel Grid.Row="1" Grid.Column="1" Spacing="10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <SymbolIcon Symbol="Flag" />
+                    <TextBlock Text="Base Goal" FontSize="16" Margin="10,0,0,0" />
+                    <TextBlock Name="goal" Text="1800" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <FontIcon Glyph="&#xE20D;" FontSize="16" Foreground="Blue" />
+                    <TextBlock  Text="Food" FontSize="16" Margin="10,0,0,0" />
+                    <TextBlock Name="food" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <FontIcon Glyph="&#xE7F8;" FontSize="16" Foreground="Orange" />
+                    <TextBlock Text="Exercise" FontSize="16" Margin="10,0,0,0" />
+                    <TextBlock Name="exercise" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" />
+                </StackPanel>
+            </StackPanel>
         </Grid>
+
+    </StackPanel>
 </Page>

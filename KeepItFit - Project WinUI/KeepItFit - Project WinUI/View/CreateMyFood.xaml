@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="KeepItFit___Project_WinUI.View.CreateMyFood"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KeepItFit___Project_WinUI.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <DataTemplate x:Key="nutrionList" x:DataType="local:Nutritions">
+            <Border BorderBrush="Black" BorderThickness="0 0 0 1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock FontWeight="Bold" TextAlignment="Right" Margin="15"
+                           FontSize="20" Text="{x:Bind name}"
+                           Grid.Row="0" Grid.Column="0"/>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1"
+                            HorizontalAlignment="Right">
+                        
+                        <!--Print Error if input didn't meet the quality-->
+                        <TextBlock  Text="Invalid input" VerticalAlignment="Center" Foreground="Red" Visibility="{x:Bind ErrorVisibility, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"/>
+                        
+                        <TextBox Background="#084F96" Text="{x:Bind input, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"
+                             Foreground="White" Height="30" PlaceholderText="0"
+                             TextAlignment="left"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+                        <TextBlock Text="{x:Bind unit}" FontWeight="Bold" 
+                            Foreground="Black" VerticalAlignment="Center"
+                            Margin="10" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </Grid>
+
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <StackPanel>
+        <TextBlock Foreground="#0000FF" Margin="10 10 10 10"
+               FontSize="20" FontWeight="Bold">
+        Create My Food
+        </TextBlock>
+        <Line Stroke="SteelBlue"
+            X1="0" Y1="0"
+            X2="800" Y2="0"
+            StrokeThickness="2" Margin="0 10 0 15"/>
+
+        <Border BorderBrush="Black" BorderThickness="0 0 0 1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.3*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock FontWeight="Bold" TextAlignment="Right" Margin="15"
+                   FontSize="20" Text="Food Name"
+                   Grid.Row="0" Grid.Column="0"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1"
+                    HorizontalAlignment="Right">
+                    <!--Print Error if Name didn't meet the quality-->
+                    <TextBlock x:Name="FoodNameError" VerticalAlignment="Center" Text="Please enter a valid food name." Foreground="Red" Visibility="Collapsed" Grid.Row="1" Grid.Column="1"/>
+                    <TextBox Background="#084F96" Text="{x:Bind viewModel.foodName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"
+                     Foreground="White" Width="400"  Height="30" PlaceholderText="Your Name"
+                     TextAlignment="left"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ItemsControl ItemsSource="{x:Bind viewModel.nutritions}"
+              ItemTemplate="{StaticResource nutrionList}"/>
+
+        <Button Name="Create" Content="Create" Foreground="#FFFFFF" FontWeight="Bold"
+                Background="#08964F" Margin="10" HorizontalAlignment="Center"
+                Click="Create_Click"/>
+    </StackPanel>
+</Page>

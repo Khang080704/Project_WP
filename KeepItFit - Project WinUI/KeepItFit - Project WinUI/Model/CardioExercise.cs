@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace KeepItFit___Project_WinUI.Model
 {
     public class CardioExercise : INotifyPropertyChanged
     {
+        public int exerciseId { get; set; }
         public string name {  get; set; }
         private int time;
         public int _time {

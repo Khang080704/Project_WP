@@ -4,13 +4,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KeepItFit___Project_WinUI.Model;
 
-namespace KeepItFit___Project_WinUI.Model
+namespace KeepItFit___Project_WinUI.Services
 {
     public class MockDAO : IDao
     {
 
-       public ObservableCollection<Meals> GetAllMeals()
+        public ObservableCollection<Meals> GetAllMeals()
         {
             var result = new ObservableCollection<Meals>()
             {
@@ -337,7 +338,82 @@ namespace KeepItFit___Project_WinUI.Model
             return result;
         }
 
-        public ObservableCollection<Food> GetFoodDatabase()
+        public ObservableCollection<CardioExercise> GetAllCardioExercise(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<StrengthTraining> GetAllStrengthTraining(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateMyFood(string foodName, float foodCalories, float foodCarbs, float foodFat, float foodProtein, float foodSodium, float foodSugar)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Food> GetFoodMyFood()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteMyFood(Food food)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Food> GetFoodForTheDay_FoodDiary(string date, string diaryType, string table)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CardioExercise> GetCardioExerciseForTheDay_ExerciseDiary(string date, string diaryType, string table)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<StrengthTraining> GetStrengthExerciseForTheDay_ExerciseDiary(string date, string diaryType, string table)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CardioExercise> GetCardioExerciseForTheDay_ExerciseDiary(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<StrengthTraining> GetStrengthExerciseForTheDay_ExerciseDiary(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCardioExercise_ExerciseDiary(string date, int exerciseId, int howLong, int caloriesPerMinute, float caloriesBurned)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCardioExercise_ExerciseDiary(string date, int exerciseId, int howLong, float caloriesPerMinute, int caloriesBurned)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateStrengthExercise_ExerciseDiary(string date, int exerciseId, int sets, int reps_set, int weight_set)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteExerciseForTheDay_ExerciseDiary(string date, int exerciseId, string diaryType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetNotesForTheDay_ExerciseDiary(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateNotesForTheDay_ExerciseDiary(string date, string notes)
         {
             throw new NotImplementedException();
         }

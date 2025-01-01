@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -25,6 +26,7 @@ namespace KeepItFit___Project_WinUI.View
     /// </summary>
     public sealed partial class SearchStrengthTrainingExercise : Page
     {
+        private string type { get; set; } = "StrengthTraining";
         public SearchExerciseViewModel viewModel { get; set; }
         public SearchStrengthTrainingExercise()
         {
@@ -45,7 +47,7 @@ namespace KeepItFit___Project_WinUI.View
                 return;
             }
 
-            var filteredList = viewModel.strengthTrainingDatabase.Where(training => training.name.ToLower().Contains(query)).ToList();
+            var filteredList = viewModel.getStrengthTrainDatabase(query.ToLower());
 
             if (filteredList.Count == 0)
             {
@@ -78,9 +80,8 @@ namespace KeepItFit___Project_WinUI.View
             base.OnNavigatedTo(e);
             if (e.Parameter is string parameters)
             {
-
                 // Filter the food is chosen
-                var filteredList = viewModel.strengthTrainingDatabase.Where(exercise => exercise.name.ToLower().Contains(parameters)).ToList();
+                var filteredList = viewModel.getStrengthTrainDatabase(parameters);
                 foreach (var strength in filteredList)
                 {
                     viewModel.strengthTrainingSearchList.Add(strength);
@@ -91,12 +92,41 @@ namespace KeepItFit___Project_WinUI.View
         private void AddExercise_Click(object sender, RoutedEventArgs e)
         {
             var selectedStrengthTraining = viewModel._selectedStrengthTraining;
-            this.Frame.Navigate(typeof(ExercisePage), selectedStrengthTraining);
+            //Check value not equal to 0
+            if (selectedStrengthTraining.Sets == 0 && selectedStrengthTraining.Weight_Sets == 0
+                && selectedStrengthTraining.Reps_Set == 0)
+            {
+                this.Frame.Navigate(typeof(ExercisePage));
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(ExercisePage), selectedStrengthTraining);
+            }
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ExercisePage));
         }
+
+        private void addStrength_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateExercise), type);
+        }
+
+        private void TextBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            var pattern = @"^\d+$";
+            Regex regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            int cursorPosition = sender.SelectionStart;
+            var text = sender.Text;
+            if (!regex.IsMatch(text))
+            {
+                text = Regex.Replace(text, @"[^\d]", string.Empty);
+                sender.Text = text;
+                sender.SelectionStart = Math.Min(cursorPosition, text.Length);
+            }
+        }
+
     }
 }

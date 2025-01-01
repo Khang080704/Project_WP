@@ -8,6 +8,7 @@ namespace KeepItFit___Project_WinUI.Model
 {
     public class StrengthTraining
     {
+        public int exerciseId { get; set; }
         public string name { get; set; }
         public int Sets { get; set; }
         public int Reps_Set { get; set; }
