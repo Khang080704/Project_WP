@@ -27,6 +27,8 @@ namespace KeepItFit___Project_WinUI.ViewModel
         {
             IsErrorMessageVisible = Visibility.Collapsed;
             user = new UserInfo();
+            Email = "";
+            Password = "";
         }
 
         public bool VerifyDataSignIn()
