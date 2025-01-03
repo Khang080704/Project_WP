@@ -672,6 +672,12 @@ _Chọn ảnh từ hệ thống_
 ![ExErr](./ImageForReport/ExerciseError.jpg)
 *Kiểm tra lỗi ở phần tạo mới Exercise*
 
+# Tài liệu kiểm thử
+### Bổ sung cho milestone 3
+
+Sau khi phần mềm được hoàn thành xong, nhóm sẽ liệt kê ra các test case và tiến hành đánh giá phần mềm dựa trên các test case.
+[Link test-document (file Test document - Lap Trinh Window.xlsx)](./Test%20document%20-%20Lap%20Trinh%20Window.xlsx)
+
 ## Completed Features
 ### Những tính năng đã hoàn thành:
 
@@ -683,12 +689,18 @@ _Chọn ảnh từ hệ thống_
  |Tính năng chọn ảnh đại diện|1h|
  |Tính năng chọn bài tập thể dục|3h|
  |Tính năng lưu lại các món ăn Recent và Frequent|1.5h|
+  |Tính năng lưu lại các bài tập thể dục Recent và Frequent|1h|
 |Tính năng ghi lại lịch sử khi chuyển đổi ngày|1.5h|
 |Tính năng ghi chú|1h|
 |Tính năng hiển thị thông tin calories còn lại trong ngày trong phần Home dựa vào dữ liệu của Food và Exercise|1h|
-|Tính năng tạo bài tập mới|1h|
-|Tính năng tạo món ăn mới|1h|
-|**Tổng giờ làm việc**|**20h**|
+|Tính năng tạo bài tập mới theo nhu cầu của người dùng|1.5h|
+|Tính năng tạo món ăn mới theo nhu cầu của người dùng|1.5h|
+|Tính năng vẽ chart thông tin các dinh dưỡng chiếm tỉ lệ bao nhiêu % trong một ngày|1h|
+|Tính năng report thay đổi lượng calories theo các khung ngày khác nhau|2h|
+|Tính năng Login, SigUp, Delete Account, Change Password|1.5h|
+|Tính năng khảo sát sức khỏe đầu vào cho lần đầu tiên đăng kí|1.5h|
+|Tính năng tạo động lực mỗi ngày|2h|
+|**Tổng giờ làm việc**|**30h**|
 
 
 ## Product Experience
@@ -803,9 +815,9 @@ Chọn mục Exercise bên cột trái, giao diện chính của mục Exercise:
 ## Work assignment (Bảng phân công công việc từ đầu dự án cho đến nay)
 |Thành viên|Công việc|
 |---------------|-----------------|
-|Nguyễn Hoàng Nguyên|Thiết kế tính năng tạo món ăn mới.<br>Thiết kế tính năng ghi lại lịch sử khi chuyển đổi ngày. <br> Thiết kế tính năng lưu lại các món ăn Recent và Frequent. <br> Thiết kế tính năng chọn món|
-|Đoàn Gia Huệ|Thiết kế tính năng tính toán tổng lượng calories, các thành phần dinh dưỡng.<br> Thiết kế tính năng ghi chú. <br> Thiết kế tính năng hiển thị thông tin calories còn lại trong ngày trong phần Home dựa vào dữ liệu của Food và Exercise. <br> Thiết kế tính năng chọn bài tập thể dục|
-|Phạm Gia Khang|Thiết kế tính năng liệt kê thành phần dinh dưỡng trong từng món ăn. <br> Thiết kế tính năng chọn ảnh đại diện.<br> Thiết kế tính năng tạo bài tập mới . <br> Kiểm duyệt code trước khi merge vào nhánh main|
+|Nguyễn Hoàng Nguyên|Thiết kế tính năng tạo món ăn mới.<br>Thiết kế tính năng ghi lại lịch sử khi chuyển đổi ngày. <br> Thiết kế tính năng lưu lại các món ăn Recent và Frequent. <br> Thiết kế tính năng chọn món. <br> Thiết kế tính năng Login, SigUp, Delete Account, Change Password. <br> |
+|Đoàn Gia Huệ|Thiết kế tính năng tính toán tổng lượng calories, các thành phần dinh dưỡng.<br> Thiết kế tính năng ghi chú. <br> Thiết kế tính năng hiển thị thông tin calories còn lại trong ngày trong phần Home dựa vào dữ liệu của Food và Exercise. <br> Thiết kế tính năng chọn bài tập thể dục <br> Thiết kế tính năng tạo động lực mỗi ngày|
+|Phạm Gia Khang|Thiết kế tính năng liệt kê thành phần dinh dưỡng trong từng món ăn. <br> Thiết kế tính năng chọn ảnh đại diện.<br> Thiết kế tính năng tạo bài tập mới . <br> Thiết kế tính năng khảo sát sức khỏe đầu vào cho lần đầu tiên đăng kí <br> Thiết kế tính năng lưu lại các bài tập thể dục Recent và Frequent|
 
 ## Self-assessment
  | Tiêu chí | Tự đánh giá (trên thang 10) | 
