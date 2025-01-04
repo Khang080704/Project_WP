@@ -1,0 +1,115 @@
+\doxysection{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao Interface Reference}
+\hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}\index{KeepItFit\_\_\_Project\_WinUI.Services.IDao@{KeepItFit\_\_\_Project\_WinUI.Services.IDao}}
+Inheritance diagram for Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.958042cm]{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a3406003b896d594e829f77308f2390b3}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a3406003b896d594e829f77308f2390b3} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_nutritions}{Nutritions}} $>$ {\bfseries Get\+All\+Nutrtion} ()
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_aae68fc62228149c7878ef4b73b4f2535}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_aae68fc62228149c7878ef4b73b4f2535} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_nutritions}{Nutritions}} $>$ {\bfseries Get\+All\+Nutrtion} (\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_view_model_1_1_sign_in_view_model}{Sign\+In\+View\+Model}} info)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a2f48f5b04997a7d425e2a31003271a0d}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a2f48f5b04997a7d425e2a31003271a0d} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_cardio_exercise}{Cardio\+Exercise}} $>$ {\bfseries Get\+All\+Cardio\+Exercise} (string keyword)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_ae486a571f222205cb602a5f7271e2cde}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_ae486a571f222205cb602a5f7271e2cde} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_strength_training}{Strength\+Training}} $>$ {\bfseries Get\+All\+Strength\+Training} (string keyword)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a042767ed40d1a64f8242b4cf7439222e}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a042767ed40d1a64f8242b4cf7439222e} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_cardio_exercise}{Cardio\+Exercise}} $>$ {\bfseries Get\+Cardio\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary} (string date)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_ad8e61b697b05bf74c878efcc90057d9c}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_ad8e61b697b05bf74c878efcc90057d9c} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_strength_training}{Strength\+Training}} $>$ {\bfseries Get\+Strength\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary} (string date)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a4d63ee60de1fd8ed5cb76ca8a6f2a6c0}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a4d63ee60de1fd8ed5cb76ca8a6f2a6c0} 
+void {\bfseries Update\+Cardio\+Exercise\+\_\+\+Exercise\+Diary} (string date, int exercise\+Id, int how\+Long, float calories\+Per\+Minute, int calories\+Burned)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a97c3a25ab6e2f152d31ffdf0dc334dc1}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a97c3a25ab6e2f152d31ffdf0dc334dc1} 
+void {\bfseries Update\+Strength\+Exercise\+\_\+\+Exercise\+Diary} (string date, int exercise\+Id, int sets, int reps\+\_\+set, int weight\+\_\+set)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a1e0f611834c5096cff0545508a6f013c}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a1e0f611834c5096cff0545508a6f013c} 
+void {\bfseries Delete\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary} (string date, int exercise\+Id, string diary\+Type)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a089ac27f1fa8103039fd29909f41d6c6}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a089ac27f1fa8103039fd29909f41d6c6} 
+string {\bfseries Get\+Notes\+For\+The\+Day\+\_\+\+Exercise\+Diary} (string date)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_ad538e7f7d68b40c91bf9775ade05a070}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_ad538e7f7d68b40c91bf9775ade05a070} 
+void {\bfseries Update\+Notes\+For\+The\+Day\+\_\+\+Exercise\+Diary} (string date, string notes)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_acc1015d3f05ddbcc42b562d14d9ace1d}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_acc1015d3f05ddbcc42b562d14d9ace1d} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_meals}{Meals}} $>$ {\bfseries Get\+All\+Meals} ()
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_acb416121d5f84a951f3cf255cd1e4d8a}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_acb416121d5f84a951f3cf255cd1e4d8a} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ {\bfseries Get\+Food\+Recent} ()
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_af9f8e39de6228a32a5084cfa4850be9a}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_af9f8e39de6228a32a5084cfa4850be9a} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ {\bfseries Get\+Food\+Frequent} ()
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a21e620b435ad6e65d75ccc899514322a}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a21e620b435ad6e65d75ccc899514322a} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ {\bfseries Get\+Food\+Database} (string keyword)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a1ada7ce5ee2b31f318aaa51321a38e5d}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a1ada7ce5ee2b31f318aaa51321a38e5d} 
+void {\bfseries Update\+Recent\+Or\+Frequent\+Food} (\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} food, string type)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a32d64728667c11549555d8918442bb82}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a32d64728667c11549555d8918442bb82} 
+void {\bfseries Delete\+Frequent\+Or\+Recent\+Food} (\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} food)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a7dbe0a6fc710cd38ae18a35aa465a05d}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a7dbe0a6fc710cd38ae18a35aa465a05d} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ {\bfseries Get\+Food\+For\+The\+Day\+\_\+\+Food\+Diary} (string date, string diary\+Type, string table)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_abf6be2a6411defce09692bfa1b5ff903}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_abf6be2a6411defce09692bfa1b5ff903} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ {\bfseries Ge\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary} (string date, string diary\+Type)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a82cda871398a3e3baa7d1b8b4c4faa52}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a82cda871398a3e3baa7d1b8b4c4faa52} 
+void {\bfseries Delete\+Food\+For\+The\+Day\+\_\+\+Food\+Diary} (string date, int food\+Id, string diary\+Type)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a8b4c00cf1525fd2d1b220fda02b8468a}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a8b4c00cf1525fd2d1b220fda02b8468a} 
+void {\bfseries Delete\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary} (string date, int quick\+Add\+Id, string diary\+Type)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a300ca292bb767b0ff09022d72b00c388}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a300ca292bb767b0ff09022d72b00c388} 
+void {\bfseries Update\+Food\+For\+The\+Day\+\_\+\+Food\+Diary} (string date, int food\+Id, string food\+Quantity, string diary\+Type)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_ace52e3729285728c28b7bd429379db30}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_ace52e3729285728c28b7bd429379db30} 
+void {\bfseries Update\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary} (string date, List$<$ int $>$ quick\+Add\+List, string diary\+Type)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a05e8aa3f87c3f16c311bcc5269edbbdc}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a05e8aa3f87c3f16c311bcc5269edbbdc} 
+void {\bfseries Update\+My\+Food} (string food\+Name, float food\+Calories, float food\+Carbs, float food\+Fat, float food\+Protein, float food\+Sodium, float food\+Sugar)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a855cfb776633c714fba7182296d144a4}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a855cfb776633c714fba7182296d144a4} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ {\bfseries Get\+Food\+My\+Food} ()
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_aec772452f55ff63a33871eb3dc9ceb5f}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_aec772452f55ff63a33871eb3dc9ceb5f} 
+void {\bfseries Delete\+My\+Food} (\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} food)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_aca3f41c2b39fbc6b577efd032536575a}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_aca3f41c2b39fbc6b577efd032536575a} 
+void {\bfseries Save\+Data\+Sign\+Up} (string Email, string hashed\+Password, string First\+Name, string Last\+Name, string Date\+Of\+Birth)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a4e8f477eab6e50ab681858ecdef0c237}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a4e8f477eab6e50ab681858ecdef0c237} 
+void {\bfseries Verify\+Data\+Sign\+In} (string email, string hashed\+Password)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a651e3724d761427d3e6c1e804ff2b4f7}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a651e3724d761427d3e6c1e804ff2b4f7} 
+string {\bfseries Get\+Stored\+Hashed\+Password} (string email)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a8bb6038776cd40d1e9b18eb243e15905}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a8bb6038776cd40d1e9b18eb243e15905} 
+void {\bfseries Update\+New\+Password\+For\+User} (string email, string hashed\+Password)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a58a4ce826802b29974d287d13b71c6b1}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a58a4ce826802b29974d287d13b71c6b1} 
+void {\bfseries Delete\+Account} (string email)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a7b32d17773d0df6c09958815bbaca33d}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_a7b32d17773d0df6c09958815bbaca33d} 
+Task {\bfseries Save\+Avatar\+To\+Database} (byte\mbox{[}$\,$\mbox{]} image\+Bytes)
+\item 
+\Hypertarget{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_aa9084af39507266216f238da7819920b}\label{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao_aa9084af39507266216f238da7819920b} 
+Task$<$ byte\mbox{[}$\,$\mbox{]}$>$ {\bfseries Get\+Avatar\+From\+Database} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Services/IDao.\+cs\end{DoxyCompactItemize}

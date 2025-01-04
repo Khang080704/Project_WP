@@ -25,23 +25,44 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Charts and Report" FontWeight="Bold" FontSize="25" Margin="20"
-                   Grid.Row="0"/>
-        <TextBlock Text="Reporting period:" Foreground="Blue" FontSize="20" Grid.Row="1" Margin="20"/>
+        <!-- Tiêu đề -->
+        <TextBlock Text="Charts and Report" FontWeight="Bold" FontSize="28" Margin="20" 
+               HorizontalAlignment="Center" Grid.Row="0" Foreground="#2D2D2D"/>
 
-        <TextBlock Name="_7Days" Text="Last 7 days" Tapped="_7Days_Tapped" Grid.Row="2"
-                    Grid.Column="0" Margin="20 0 0 0" FontSize="20"/>
-        <TextBlock Name="_14Days" Text="Last 14 days" Tapped="_14Days_Tapped"
-                    Grid.Row="2" Grid.Column="1" FontSize="20" />
-        <TextBlock Name="_21Days" Text="Last 21 days" Tapped="_21Days_Tapped"
-                    Grid.Row="2" Grid.Column="2" FontSize="20" />
-        <TextBlock Name="_30Days" Text="Last 30 days" Tapped="_30Days_Tapped"
-                    Grid.Row="2" Grid.Column="3" FontSize="20" />
+        <!-- Mô tả -->
+        <TextBlock Text="Select a reporting period:" Foreground="#007ACC" FontSize="20" 
+               Margin="10 20" HorizontalAlignment="Center" Grid.Row="1"/>
 
-        <lvc:CartesianChart Visibility="Collapsed" x:Name="_7DayReport" Grid.Row="3" Grid.ColumnSpan="4" />
-        <lvc:CartesianChart Visibility="Collapsed" x:Name="_14DayReport" Grid.Row="3" Grid.ColumnSpan="4"/>
+        <!-- Các nút chọn -->
+        <!--<StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Spacing="20">-->
+            <Border Background="#E6F7FF"  CornerRadius="8" Grid.Row="2" Grid.Column="0" Width="200" Height="50"
+                BorderBrush="#007ACC" BorderThickness="1">
+                <TextBlock Name="_7Days" Text="Last 7 days" Tapped="_7Days_Tapped" VerticalAlignment="Center"
+                       FontSize="18" Foreground="#007ACC" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Background="#E6F7FF" Padding="10" CornerRadius="8" Grid.Row="2" Grid.Column="1" Width="200" Height="50"
+                BorderBrush="#007ACC" BorderThickness="1">
+                <TextBlock Name="_14Days" Text="Last 14 days" Tapped="_14Days_Tapped" VerticalAlignment="Center"
+                       FontSize="18" Foreground="#007ACC" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Background="#E6F7FF" Padding="10" CornerRadius="8"  Grid.Row="2" Grid.Column="2" Width="200" Height="50"
+                BorderBrush="#007ACC" BorderThickness="1">
+                <TextBlock Name="_21Days" Text="Last 21 days" Tapped="_21Days_Tapped" VerticalAlignment="Center"
+                       FontSize="18" Foreground="#007ACC" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Background="#E6F7FF" Padding="10" CornerRadius="8" Grid.Row="2" Grid.Column="3" Width="200" Height="50"
+                BorderBrush="#007ACC" BorderThickness="1">
+                <TextBlock Name="_30Days" Text="Last 30 days" Tapped="_30Days_Tapped" VerticalAlignment="Center"
+                       FontSize="18" Foreground="#007ACC" HorizontalAlignment="Center"/>
+            </Border>
+        <!--</StackPanel>-->
+
+        <!-- Biểu đồ -->
+        <lvc:CartesianChart Visibility="Collapsed" x:Name="_7DayReport"  Grid.Row="3" Grid.ColumnSpan="4"/>
+        <lvc:CartesianChart Visibility="Collapsed" x:Name="_14DayReport" Grid.Row="3" Grid.ColumnSpan="4" />
         <lvc:CartesianChart Visibility="Collapsed" x:Name="_21DayReport" Grid.Row="3" Grid.ColumnSpan="4"/>
-        <lvc:CartesianChart Visibility="Collapsed" x:Name="_30DayReport" Grid.Row="3" Grid.ColumnSpan="4"/>
+        <lvc:CartesianChart Visibility="Collapsed" x:Name="_30DayReport" Grid.Row="3" Grid.ColumnSpan="4" />
 
     </Grid>
+
 </Page>

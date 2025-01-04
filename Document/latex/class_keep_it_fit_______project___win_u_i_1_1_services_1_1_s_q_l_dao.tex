@@ -1,0 +1,433 @@
+\doxysection{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao Class Reference}
+\hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao}{}\label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+Inheritance diagram for Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_meals}{Meals}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_afdf24275fcdcc1e22757b06632fad45a}{Get\+All\+Meals}} ()
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a4d10f31f2577381d6d82974c559c23fd}{Get\+Food\+Database}} (string keyword)
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aeec52231ec1d5ee77d4a9f5c27229e1c}{Get\+Food\+Frequent}} ()
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a818008ed75b4fcc8747e59cc00c39852}{Get\+Food\+Recent}} ()
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3a10cac6195ccae3db76444c3b8f9714}{Update\+Recent\+Or\+Frequent\+Food}} (\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} food, string type)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ad0c2f4469134b92f94f130bfab3173ae}{Delete\+Frequent\+Or\+Recent\+Food}} (\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} food)
+\item 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a83a6e4ebe2419dcb432f8ef3efbc0cae}{Get\+Food\+For\+The\+Day\+\_\+\+Food\+Diary}} (string date, string diary\+Type, string table)
+\item 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a2d1965fc1959e785d41f4a1b8d784a4e}{Ge\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary}} (string date, string diary\+Type)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ac44f8dce008ec262ed97a4cd34b8ab86}{Delete\+Food\+For\+The\+Day\+\_\+\+Food\+Diary}} (string date, int food\+Id, string diary\+Type)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a9d66a9d220b04003f35095d00a9cacd1}{Delete\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary}} (string date, int quick\+Add\+Id, string diary\+Type)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ab315eb5a3f2eb1d27085e0754ed17b36}{Update\+Food\+For\+The\+Day\+\_\+\+Food\+Diary}} (string date, int food\+Id, string food\+Quantity, string diary\+Type)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ae8245d18f5f0463924c938ecc142cf97}{Update\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary}} (string date, List$<$ int $>$ quick\+Add\+List, string diary\+Type)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aee308c5afd6649a2ab555be4d9a5bc6d}{Update\+My\+Food}} (string food\+Name, float food\+Calories, float food\+Carbs, float food\+Fat, float food\+Protein, float food\+Sodium, float food\+Sugar)
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3450f7224d37d39e688edd8308953b16}{Get\+Food\+My\+Food}} ()
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_acae06b204107a958c0f63902bc44933b}{Delete\+My\+Food}} (\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} food)
+\item 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_nutritions}{Nutritions}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3b16598c533ac98c69487f169bf0096a}{Get\+All\+Nutrtion}} ()
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_cardio_exercise}{Cardio\+Exercise}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a16449c9ff46ce20736a97d06d7e0f088}{Get\+All\+Cardio\+Exercise}} (string keyword)
+\item 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_cardio_exercise}{Cardio\+Exercise}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a5c2cf030a5f4f9dfbab1df71d3b2dad9}{Get\+Cardio\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary}} (string date)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a49fcf5989f0cd6054a97e9223bf87311}{Update\+Cardio\+Exercise\+\_\+\+Exercise\+Diary}} (string date, int exercise\+Id, int how\+Long, float calories\+Per\+Minute, int calories\+Burned)
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_strength_training}{Strength\+Training}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aec644e1240aa5206e4a2acba6f213704}{Get\+All\+Strength\+Training}} (string keyword)
+\item 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_strength_training}{Strength\+Training}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a8780917677c604faa7edc76e7a591358}{Get\+Strength\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary}} (string date)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ab9c744a8eee8ec9ffc97fc656830f9db}{Update\+Strength\+Exercise\+\_\+\+Exercise\+Diary}} (string date, int exercise\+Id, int sets, int reps\+\_\+set, int weight\+\_\+set)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ae41aaddaa0b9718a5395e87426e724d4}{Delete\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary}} (string date, int exercise\+Id, string diary\+Type)
+\item 
+string \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a33100d5e58e691c7416c9db01a46f6d9}{Get\+Notes\+For\+The\+Day\+\_\+\+Exercise\+Diary}} (string date)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a1cb36c084390054ad2d182b5339bc50f}{Update\+Notes\+For\+The\+Day\+\_\+\+Exercise\+Diary}} (string date, string notes)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a117d8c4504dd3942ebe9702966a1884b}{Save\+Data\+Sign\+Up}} (string Email, string hashed\+Password, string First\+Name, string Last\+Name, string Date\+Of\+Birth)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_abd7d477603d4891d16625a5a3c023b70}{Verify\+Data\+Sign\+In}} (string email, string hashed\+Password)
+\item 
+string \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a197f06ad9af49684aa643302ed75ea15}{Get\+Stored\+Hashed\+Password}} (string email)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a552a5e76eb01519e283dc56000c419f5}{Update\+New\+Password\+For\+User}} (string email, string hashed\+Password)
+\item 
+void \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a1974dafd935eadb46eebd632f8fccff1}{Delete\+Account}} (string email)
+\item 
+async Task \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a02f8b92e45c88baad47f132dff41a2b0}{Save\+Avatar\+To\+Database}} (byte\mbox{[}$\,$\mbox{]} image\+Bytes)
+\item 
+async Task$<$ byte\mbox{[}$\,$\mbox{]}$>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a86ac76c469635751b3e06722355012d7}{Get\+Avatar\+From\+Database}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_nutritions}{Nutritions}} $>$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a02a7463f77c22e3d1975094a56891aa9}{Get\+All\+Nutrtion}} (\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_view_model_1_1_sign_in_view_model}{Sign\+In\+View\+Model}} info)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a020935c981cf056a4561dc195688ceab}\label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a020935c981cf056a4561dc195688ceab} 
+string {\bfseries connection\+String}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a60c1b64d4751427b174713a290e69fd0}\label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a60c1b64d4751427b174713a290e69fd0} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ {\bfseries Read\+Food\+Info} (Sql\+Data\+Reader reader)
+\item 
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ad8027cb0d8ba930d87a0679db3fb0b8f}\label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ad8027cb0d8ba930d87a0679db3fb0b8f} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_cardio_exercise}{Cardio\+Exercise}} $>$ {\bfseries Read\+Cardio\+Info} (Sql\+Data\+Reader reader)
+\item 
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a28f945de35e6678ed8a89355d5e512da}\label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a28f945de35e6678ed8a89355d5e512da} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_strength_training}{Strength\+Training}} $>$ {\bfseries Read\+Training\+Info} (Sql\+Data\+Reader reader)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a1974dafd935eadb46eebd632f8fccff1}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!DeleteAccount@{DeleteAccount}}
+\index{DeleteAccount@{DeleteAccount}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{DeleteAccount()}{DeleteAccount()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a1974dafd935eadb46eebd632f8fccff1} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Delete\+Account (\begin{DoxyParamCaption}\item[{string}]{email}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ae41aaddaa0b9718a5395e87426e724d4}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!DeleteExerciseForTheDay\_ExerciseDiary@{DeleteExerciseForTheDay\_ExerciseDiary}}
+\index{DeleteExerciseForTheDay\_ExerciseDiary@{DeleteExerciseForTheDay\_ExerciseDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{DeleteExerciseForTheDay\_ExerciseDiary()}{DeleteExerciseForTheDay\_ExerciseDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ae41aaddaa0b9718a5395e87426e724d4} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Delete\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{int}]{exercise\+Id}{, }\item[{string}]{diary\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ac44f8dce008ec262ed97a4cd34b8ab86}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!DeleteFoodForTheDay\_FoodDiary@{DeleteFoodForTheDay\_FoodDiary}}
+\index{DeleteFoodForTheDay\_FoodDiary@{DeleteFoodForTheDay\_FoodDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{DeleteFoodForTheDay\_FoodDiary()}{DeleteFoodForTheDay\_FoodDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ac44f8dce008ec262ed97a4cd34b8ab86} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Delete\+Food\+For\+The\+Day\+\_\+\+Food\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{int}]{food\+Id}{, }\item[{string}]{diary\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ad0c2f4469134b92f94f130bfab3173ae}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!DeleteFrequentOrRecentFood@{DeleteFrequentOrRecentFood}}
+\index{DeleteFrequentOrRecentFood@{DeleteFrequentOrRecentFood}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{DeleteFrequentOrRecentFood()}{DeleteFrequentOrRecentFood()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ad0c2f4469134b92f94f130bfab3173ae} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Delete\+Frequent\+Or\+Recent\+Food (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}}}]{food}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_acae06b204107a958c0f63902bc44933b}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!DeleteMyFood@{DeleteMyFood}}
+\index{DeleteMyFood@{DeleteMyFood}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{DeleteMyFood()}{DeleteMyFood()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_acae06b204107a958c0f63902bc44933b} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Delete\+My\+Food (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}}}]{food}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a9d66a9d220b04003f35095d00a9cacd1}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!DeleteQuickAddForTheDay\_FoodDiary@{DeleteQuickAddForTheDay\_FoodDiary}}
+\index{DeleteQuickAddForTheDay\_FoodDiary@{DeleteQuickAddForTheDay\_FoodDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{DeleteQuickAddForTheDay\_FoodDiary()}{DeleteQuickAddForTheDay\_FoodDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a9d66a9d220b04003f35095d00a9cacd1} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Delete\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{int}]{quick\+Add\+Id}{, }\item[{string}]{diary\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a2d1965fc1959e785d41f4a1b8d784a4e}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GeQuickAddForTheDay\_FoodDiary@{GeQuickAddForTheDay\_FoodDiary}}
+\index{GeQuickAddForTheDay\_FoodDiary@{GeQuickAddForTheDay\_FoodDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GeQuickAddForTheDay\_FoodDiary()}{GeQuickAddForTheDay\_FoodDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a2d1965fc1959e785d41f4a1b8d784a4e} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Ge\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{string}]{diary\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a16449c9ff46ce20736a97d06d7e0f088}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetAllCardioExercise@{GetAllCardioExercise}}
+\index{GetAllCardioExercise@{GetAllCardioExercise}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetAllCardioExercise()}{GetAllCardioExercise()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a16449c9ff46ce20736a97d06d7e0f088} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_cardio_exercise}{Cardio\+Exercise}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+All\+Cardio\+Exercise (\begin{DoxyParamCaption}\item[{string}]{keyword}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_afdf24275fcdcc1e22757b06632fad45a}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetAllMeals@{GetAllMeals}}
+\index{GetAllMeals@{GetAllMeals}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetAllMeals()}{GetAllMeals()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_afdf24275fcdcc1e22757b06632fad45a} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_meals}{Meals}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+All\+Meals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3b16598c533ac98c69487f169bf0096a}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetAllNutrtion@{GetAllNutrtion}}
+\index{GetAllNutrtion@{GetAllNutrtion}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetAllNutrtion()}{GetAllNutrtion()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3b16598c533ac98c69487f169bf0096a} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_nutritions}{Nutritions}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+All\+Nutrtion (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a02a7463f77c22e3d1975094a56891aa9}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetAllNutrtion@{GetAllNutrtion}}
+\index{GetAllNutrtion@{GetAllNutrtion}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetAllNutrtion()}{GetAllNutrtion()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a02a7463f77c22e3d1975094a56891aa9} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_nutritions}{Nutritions}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+All\+Nutrtion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_view_model_1_1_sign_in_view_model}{Sign\+In\+View\+Model}}}]{info}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aec644e1240aa5206e4a2acba6f213704}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetAllStrengthTraining@{GetAllStrengthTraining}}
+\index{GetAllStrengthTraining@{GetAllStrengthTraining}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetAllStrengthTraining()}{GetAllStrengthTraining()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aec644e1240aa5206e4a2acba6f213704} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_strength_training}{Strength\+Training}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+All\+Strength\+Training (\begin{DoxyParamCaption}\item[{string}]{keyword}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a86ac76c469635751b3e06722355012d7}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetAvatarFromDatabase@{GetAvatarFromDatabase}}
+\index{GetAvatarFromDatabase@{GetAvatarFromDatabase}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetAvatarFromDatabase()}{GetAvatarFromDatabase()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a86ac76c469635751b3e06722355012d7} 
+async Task$<$ byte\mbox{[}$\,$\mbox{]}$>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Avatar\+From\+Database (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a5c2cf030a5f4f9dfbab1df71d3b2dad9}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetCardioExerciseForTheDay\_ExerciseDiary@{GetCardioExerciseForTheDay\_ExerciseDiary}}
+\index{GetCardioExerciseForTheDay\_ExerciseDiary@{GetCardioExerciseForTheDay\_ExerciseDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetCardioExerciseForTheDay\_ExerciseDiary()}{GetCardioExerciseForTheDay\_ExerciseDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a5c2cf030a5f4f9dfbab1df71d3b2dad9} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_cardio_exercise}{Cardio\+Exercise}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Cardio\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a4d10f31f2577381d6d82974c559c23fd}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetFoodDatabase@{GetFoodDatabase}}
+\index{GetFoodDatabase@{GetFoodDatabase}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetFoodDatabase()}{GetFoodDatabase()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a4d10f31f2577381d6d82974c559c23fd} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Food\+Database (\begin{DoxyParamCaption}\item[{string}]{keyword}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a83a6e4ebe2419dcb432f8ef3efbc0cae}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetFoodForTheDay\_FoodDiary@{GetFoodForTheDay\_FoodDiary}}
+\index{GetFoodForTheDay\_FoodDiary@{GetFoodForTheDay\_FoodDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetFoodForTheDay\_FoodDiary()}{GetFoodForTheDay\_FoodDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a83a6e4ebe2419dcb432f8ef3efbc0cae} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Food\+For\+The\+Day\+\_\+\+Food\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{string}]{diary\+Type}{, }\item[{string}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aeec52231ec1d5ee77d4a9f5c27229e1c}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetFoodFrequent@{GetFoodFrequent}}
+\index{GetFoodFrequent@{GetFoodFrequent}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetFoodFrequent()}{GetFoodFrequent()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aeec52231ec1d5ee77d4a9f5c27229e1c} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Food\+Frequent (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3450f7224d37d39e688edd8308953b16}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetFoodMyFood@{GetFoodMyFood}}
+\index{GetFoodMyFood@{GetFoodMyFood}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetFoodMyFood()}{GetFoodMyFood()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3450f7224d37d39e688edd8308953b16} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Food\+My\+Food (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a818008ed75b4fcc8747e59cc00c39852}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetFoodRecent@{GetFoodRecent}}
+\index{GetFoodRecent@{GetFoodRecent}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetFoodRecent()}{GetFoodRecent()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a818008ed75b4fcc8747e59cc00c39852} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Food\+Recent (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a33100d5e58e691c7416c9db01a46f6d9}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetNotesForTheDay\_ExerciseDiary@{GetNotesForTheDay\_ExerciseDiary}}
+\index{GetNotesForTheDay\_ExerciseDiary@{GetNotesForTheDay\_ExerciseDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetNotesForTheDay\_ExerciseDiary()}{GetNotesForTheDay\_ExerciseDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a33100d5e58e691c7416c9db01a46f6d9} 
+string Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Notes\+For\+The\+Day\+\_\+\+Exercise\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a197f06ad9af49684aa643302ed75ea15}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetStoredHashedPassword@{GetStoredHashedPassword}}
+\index{GetStoredHashedPassword@{GetStoredHashedPassword}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetStoredHashedPassword()}{GetStoredHashedPassword()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a197f06ad9af49684aa643302ed75ea15} 
+string Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Stored\+Hashed\+Password (\begin{DoxyParamCaption}\item[{string}]{email}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a8780917677c604faa7edc76e7a591358}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!GetStrengthExerciseForTheDay\_ExerciseDiary@{GetStrengthExerciseForTheDay\_ExerciseDiary}}
+\index{GetStrengthExerciseForTheDay\_ExerciseDiary@{GetStrengthExerciseForTheDay\_ExerciseDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{GetStrengthExerciseForTheDay\_ExerciseDiary()}{GetStrengthExerciseForTheDay\_ExerciseDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a8780917677c604faa7edc76e7a591358} 
+List$<$ \mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_strength_training}{Strength\+Training}} $>$ Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Get\+Strength\+Exercise\+For\+The\+Day\+\_\+\+Exercise\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a02f8b92e45c88baad47f132dff41a2b0}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!SaveAvatarToDatabase@{SaveAvatarToDatabase}}
+\index{SaveAvatarToDatabase@{SaveAvatarToDatabase}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{SaveAvatarToDatabase()}{SaveAvatarToDatabase()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a02f8b92e45c88baad47f132dff41a2b0} 
+async Task Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Save\+Avatar\+To\+Database (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{image\+Bytes}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a117d8c4504dd3942ebe9702966a1884b}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!SaveDataSignUp@{SaveDataSignUp}}
+\index{SaveDataSignUp@{SaveDataSignUp}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{SaveDataSignUp()}{SaveDataSignUp()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a117d8c4504dd3942ebe9702966a1884b} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Save\+Data\+Sign\+Up (\begin{DoxyParamCaption}\item[{string}]{Email}{, }\item[{string}]{hashed\+Password}{, }\item[{string}]{First\+Name}{, }\item[{string}]{Last\+Name}{, }\item[{string}]{Date\+Of\+Birth}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a49fcf5989f0cd6054a97e9223bf87311}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!UpdateCardioExercise\_ExerciseDiary@{UpdateCardioExercise\_ExerciseDiary}}
+\index{UpdateCardioExercise\_ExerciseDiary@{UpdateCardioExercise\_ExerciseDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{UpdateCardioExercise\_ExerciseDiary()}{UpdateCardioExercise\_ExerciseDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a49fcf5989f0cd6054a97e9223bf87311} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Update\+Cardio\+Exercise\+\_\+\+Exercise\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{int}]{exercise\+Id}{, }\item[{int}]{how\+Long}{, }\item[{float}]{calories\+Per\+Minute}{, }\item[{int}]{calories\+Burned}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ab315eb5a3f2eb1d27085e0754ed17b36}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!UpdateFoodForTheDay\_FoodDiary@{UpdateFoodForTheDay\_FoodDiary}}
+\index{UpdateFoodForTheDay\_FoodDiary@{UpdateFoodForTheDay\_FoodDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{UpdateFoodForTheDay\_FoodDiary()}{UpdateFoodForTheDay\_FoodDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ab315eb5a3f2eb1d27085e0754ed17b36} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Update\+Food\+For\+The\+Day\+\_\+\+Food\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{int}]{food\+Id}{, }\item[{string}]{food\+Quantity}{, }\item[{string}]{diary\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aee308c5afd6649a2ab555be4d9a5bc6d}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!UpdateMyFood@{UpdateMyFood}}
+\index{UpdateMyFood@{UpdateMyFood}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{UpdateMyFood()}{UpdateMyFood()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_aee308c5afd6649a2ab555be4d9a5bc6d} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Update\+My\+Food (\begin{DoxyParamCaption}\item[{string}]{food\+Name}{, }\item[{float}]{food\+Calories}{, }\item[{float}]{food\+Carbs}{, }\item[{float}]{food\+Fat}{, }\item[{float}]{food\+Protein}{, }\item[{float}]{food\+Sodium}{, }\item[{float}]{food\+Sugar}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a552a5e76eb01519e283dc56000c419f5}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!UpdateNewPasswordForUser@{UpdateNewPasswordForUser}}
+\index{UpdateNewPasswordForUser@{UpdateNewPasswordForUser}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{UpdateNewPasswordForUser()}{UpdateNewPasswordForUser()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a552a5e76eb01519e283dc56000c419f5} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Update\+New\+Password\+For\+User (\begin{DoxyParamCaption}\item[{string}]{email}{, }\item[{string}]{hashed\+Password}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a1cb36c084390054ad2d182b5339bc50f}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!UpdateNotesForTheDay\_ExerciseDiary@{UpdateNotesForTheDay\_ExerciseDiary}}
+\index{UpdateNotesForTheDay\_ExerciseDiary@{UpdateNotesForTheDay\_ExerciseDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{UpdateNotesForTheDay\_ExerciseDiary()}{UpdateNotesForTheDay\_ExerciseDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a1cb36c084390054ad2d182b5339bc50f} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Update\+Notes\+For\+The\+Day\+\_\+\+Exercise\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{string}]{notes}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ae8245d18f5f0463924c938ecc142cf97}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!UpdateQuickAddForTheDay\_FoodDiary@{UpdateQuickAddForTheDay\_FoodDiary}}
+\index{UpdateQuickAddForTheDay\_FoodDiary@{UpdateQuickAddForTheDay\_FoodDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{UpdateQuickAddForTheDay\_FoodDiary()}{UpdateQuickAddForTheDay\_FoodDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ae8245d18f5f0463924c938ecc142cf97} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Update\+Quick\+Add\+For\+The\+Day\+\_\+\+Food\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{List$<$ int $>$}]{quick\+Add\+List}{, }\item[{string}]{diary\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3a10cac6195ccae3db76444c3b8f9714}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!UpdateRecentOrFrequentFood@{UpdateRecentOrFrequentFood}}
+\index{UpdateRecentOrFrequentFood@{UpdateRecentOrFrequentFood}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{UpdateRecentOrFrequentFood()}{UpdateRecentOrFrequentFood()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_a3a10cac6195ccae3db76444c3b8f9714} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Update\+Recent\+Or\+Frequent\+Food (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_keep_it_fit_______project___win_u_i_1_1_model_1_1_food}{Food}}}]{food}{, }\item[{string}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ab9c744a8eee8ec9ffc97fc656830f9db}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!UpdateStrengthExercise\_ExerciseDiary@{UpdateStrengthExercise\_ExerciseDiary}}
+\index{UpdateStrengthExercise\_ExerciseDiary@{UpdateStrengthExercise\_ExerciseDiary}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{UpdateStrengthExercise\_ExerciseDiary()}{UpdateStrengthExercise\_ExerciseDiary()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_ab9c744a8eee8ec9ffc97fc656830f9db} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Update\+Strength\+Exercise\+\_\+\+Exercise\+Diary (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{int}]{exercise\+Id}{, }\item[{int}]{sets}{, }\item[{int}]{reps\+\_\+set}{, }\item[{int}]{weight\+\_\+set}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+\Hypertarget{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_abd7d477603d4891d16625a5a3c023b70}\index{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}!VerifyDataSignIn@{VerifyDataSignIn}}
+\index{VerifyDataSignIn@{VerifyDataSignIn}!KeepItFit\_\_\_Project\_WinUI.Services.SQLDao@{KeepItFit\_\_\_Project\_WinUI.Services.SQLDao}}
+\doxysubsubsection{\texorpdfstring{VerifyDataSignIn()}{VerifyDataSignIn()}}
+{\footnotesize\ttfamily \label{class_keep_it_fit_______project___win_u_i_1_1_services_1_1_s_q_l_dao_abd7d477603d4891d16625a5a3c023b70} 
+void Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+SQLDao.\+Verify\+Data\+Sign\+In (\begin{DoxyParamCaption}\item[{string}]{email}{, }\item[{string}]{hashed\+Password}{}\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_keep_it_fit_______project___win_u_i_1_1_services_1_1_i_dao}{Keep\+It\+Fit\+\_\+\+\_\+\+\_\+\+Project\+\_\+\+Win\+UI.\+Services.\+IDao}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Services/SQLDao.\+cs\end{DoxyCompactItemize}
