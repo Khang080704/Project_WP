@@ -321,7 +321,7 @@ Với người dùng đã quen thuộc, họ có thể thực hiện tác vụ n
 ### VIII. Sign up/Sign in
 #### 1. Giao diện Sign in
 ##### a. UI.
-![AddStr3](.\ImageForReport\signin.png)
+![AddStr3](./ImageForReport/signin.png)
 *Giao diện sign in*
 - Bố cục hợp lý: Logo ("KEEP IT FIT"): Được đặt ở vị trí trung tâm và nổi bật với font chữ lớn, tạo sự chú ý mạnh mẽ và nhấn mạnh thương hiệu.
 - Form đăng nhập: Được căn giữa màn hình, giúp người dùng dễ tập trung và thao tác nhanh chóng.
@@ -354,7 +354,7 @@ Dòng "**Not a member? Sign up now**" được đặt gần nút đăng nhập, 
 
 #### 2. Giao diện Sign up
 ##### a. UI.
-![AddStr3](.\ImageForReport\signup.png)
+![AddStr3](./ImageForReport/signup.png)
 - Bố cục:
 Form "**Sign Up**": Giao diện đăng ký được căn giữa, giúp người dùng dễ tập trung.
 Các trường thông tin (***First Name, Last Name, Email, Password, Date of Birth***) được sắp xếp dọc theo thứ tự logic, phù hợp với quy trình nhập liệu.
@@ -387,13 +387,13 @@ Thông báo "**Congratulations**" với thiết kế tối giản và thông đi
 
 #### 3. Form khảo sát dành cho người dùng đăng kí tài khoản mới
 ##### a. UI.
-![AddStr3](.\ImageForReport\signupa.png)
+![AddStr3](./ImageForReport/signupa.png)
 *Thông báo xác nhận được gửi đến người dùng*
 
-![AddStr3](.\ImageForReport\signupb.png)
+![AddStr3](./ImageForReport/signupb.png)
 *Form khảo sát*
 
-![AddStr3](.\ImageForReport\signupc.png)
+![AddStr3](./ImageForReport/signupc.png)
 *Chi tiết Form*
 - Bố cục:
 Căn giữa: Toàn bộ form được căn giữa trên nền, dễ thu hút sự chú ý của người dùng.
@@ -429,9 +429,9 @@ Các câu hỏi liên quan đến sức khỏe đều phù hợp và không mang
 
 ### IX. Báo cáo
 #### 1. Biểu đồ thành phần dinh dưỡng 
-![AddStr3](.\ImageForReport\food.png)
+![AddStr3](./ImageForReport/food.png)
 *Thêm các bữa ăn*
-![AddStr3](.\ImageForReport\report.png)
+![AddStr3](./ImageForReport/report.png)
 *Biểu đồ dinh dưỡng*
 ##### 1.1 UI.
 ###### a. Bố cục và thiết kế:
@@ -461,7 +461,7 @@ Văn bản cung cấp các thông tin hướng dẫn về dinh dưỡng như lư
 - Nút "**Close**" cho phép người dùng nhanh chóng quay lại giao diện chính sau khi xem biểu đồ, tạo cảm giác tiện lợi.
 
 #### 2. Báo cáo về lượng calories nạp vào. 
-![AddStr3](.\ImageForReport\report2.png)
+![AddStr3](./ImageForReport/report2.png)
 *Sơ đồ báo cáo về lượng calories nạp vào ngày 1/1/2025*
 ##### 2.1. UI
 ###### a. Bố cục và thiết kế:
@@ -496,7 +496,7 @@ Giao diện chào mừng với tên hoặc email người dùng tạo cảm giá
 Việc thay đổi màu sắc của cột mỗi lần truy cập mang lại trải nghiệm mới lạ, tránh sự nhàm chán khi người dùng sử dụng ứng dụng thường xuyên.
 
 ### X. Tính năng giữ chuỗi
-![AddStr3](.\ImageForReport\streak.png)
+![AddStr3](./ImageForReport/streak.png)
 #### 1. UI.
 - Bố cục rõ ràng và dễ hiểu:
 Hộp thông báo được căn giữa màn hình, đảm bảo người dùng nhìn thấy ngay lập tức khi đăng nhập.
