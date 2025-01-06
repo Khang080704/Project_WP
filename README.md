@@ -23,7 +23,9 @@ https://drive.google.com/drive/folders/1ABBcYKWm1sasS0I0_q6ABft9E3ZnoKcf?usp=sha
 7. [Completed Features](#completed-features)
 8. [Product experience](#product-experience)
 9. [Work assignment](#work-assignment-bảng-phân-công-công-việc-từ-đầu-dự-án-cho-đến-nay)
-9. [Self-assessment](#self-assessment)
+10. [Self-assessment](#self-assessment)
+11. [Database Document](#tài-liệu-cơ-sở-dữ-liệu)
+12. [Test Document](#tài-liệu-kiểm-thử)
 
   
   
@@ -672,12 +674,6 @@ _Chọn ảnh từ hệ thống_
 ![ExErr](./ImageForReport/ExerciseError.jpg)
 *Kiểm tra lỗi ở phần tạo mới Exercise*
 
-# Tài liệu kiểm thử
-### Bổ sung cho milestone 3
-
-Sau khi phần mềm được hoàn thành xong, nhóm sẽ liệt kê ra các test case và tiến hành đánh giá phần mềm dựa trên các test case.
-[Link test-document (file Test document - Lap Trinh Window.xlsx)](./Test%20document%20-%20Lap%20Trinh%20Window.xlsx)
-
 ## Completed Features
 ### Những tính năng đã hoàn thành:
 
@@ -830,3 +826,13 @@ Chọn mục Exercise bên cột trái, giao diện chính của mục Exercise:
  
 
 [def]: '
+
+# Tài liệu cơ sở dữ liệu
+### Bổ sung cho milestone 3
+Link Database Document: [DatabaseDocument.md](./DatabaseDocument.md)
+
+# Tài liệu kiểm thử
+### Bổ sung cho milestone 3
+
+Sau khi phần mềm được hoàn thành xong, nhóm sẽ liệt kê ra các test case và tiến hành đánh giá phần mềm dựa trên các test case.
+<br>Link Test Document: [TestDocument.md](./TestDocument.md)
