@@ -26,6 +26,7 @@ https://drive.google.com/drive/folders/1ABBcYKWm1sasS0I0_q6ABft9E3ZnoKcf?usp=sha
 10. [Self-assessment](#self-assessment)
 11. [Database Document](#tài-liệu-cơ-sở-dữ-liệu)
 12. [Test Document](#tài-liệu-kiểm-thử)
+13. [Doxygen Document](#tài-liệu-doxygen)
 
   
   
@@ -833,6 +834,8 @@ Link Database Document: [DatabaseDocument.md](./DatabaseDocument.md)
 
 # Tài liệu kiểm thử
 ### Bổ sung cho milestone 3
+Link Test Document: [TestDocument.md](./TestDocument.md)
 
-Sau khi phần mềm được hoàn thành xong, nhóm sẽ liệt kê ra các test case và tiến hành đánh giá phần mềm dựa trên các test case.
-<br>Link Test Document: [TestDocument.md](./TestDocument.md)
+# Tài liệu Doxygen
+### Bổ sung cho milestone 3
+Link Doxygen Document: [doxygen.html](./Document/html/index.html)

@@ -115,7 +115,7 @@
                 <ListView x:Name="StrengthExerciseSearch"
                           ItemsSource="{x:Bind viewModel.strengthTrainingSearchList, Mode=TwoWay}"
                           ItemTemplate="{StaticResource StrengthExerciseList}"
-                          Height="400" Width="600" 
+                          Height="300" Width="600" 
                           HorizontalAlignment="Left" 
                           Visibility="Visible"
                           SelectionChanged="StrengthExerciseSearch_SelectionChanged"/>

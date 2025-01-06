@@ -48,7 +48,8 @@ namespace KeepItFit___Project_WinUI
             Notes.IsReadOnly = true;
             EditNote.Visibility = Visibility.Visible;
             SaveNote.Visibility = Visibility.Collapsed;
-            
+
+            viewModel.UpdateNotesForTheDay();
         }
 
         private void EditNote_Click(object sender, RoutedEventArgs e)

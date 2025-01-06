@@ -336,21 +336,13 @@
 
             </StackPanel>
         </Grid>
-        
-        
+
+
         <TextBox Name="Notes"
                  IsReadOnly="True"
                  Width="auto"
                  Height="100"
                 Text="{x:Bind viewModel.Notes, Mode=TwoWay}"/>
-
-        <Button Foreground="White" Background="green" Margin="10" HorizontalAlignment="Center"
-                Name="ViewReport"
-                Click="ViewReport_Click">
-            <TextBlock  FontWeight="Bold">
-                View Full Report (Printable)
-            </TextBlock>
-        </Button>
 
     </StackPanel>
     
