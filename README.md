@@ -611,6 +611,16 @@ _Chọn ảnh từ hệ thống_
 
 ![singleton_pattern](https://i.ibb.co/LQWbfSM/Untitled.png)
 
+## Bổ sung cho milestone 3
+### 6. Bộ đếm thời gian chạy trên UI (DispatcherTimer)
+![DispatcherTimer](./ImageForReport/Tick.png)
+- Sử dụng DispatcherTimer để trì hoãn xử lý trong ứng dụng winUI 3
+  + Tạo DispatcherTimer và đặt thời gian hiển thị phần tử là 3 giây
+  + Xử lí sự kiện Tick: Được kích hoạt sau mỗi lần timer đặt đến giới hạn thời gian chờ (Interval). 1 lamda expression được sử dụng để định nghĩa hành động cần thực hiện.
+    + Ẩn processbar
+    + Ngừng timer để không tiếp tục kích hoạt sự kiện Tick
+    + Chuyển trang mới
+  + Bắt đầu timer
 
 
 
